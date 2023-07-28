@@ -1,0 +1,9 @@
+defaults:
+  - __init__
+  - /pipeline: nbcpu
+
+_config_name_: nbcpu
+task_name: nbcpu
+verbose: true
+pipelines:
+  - pipeline

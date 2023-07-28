@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+  - __init__
+  - /task: nbcpu
+  - override /project: nbcpu
+
+workflow_name: nbcpu
+verbose: true
+tasks:
+  - task
