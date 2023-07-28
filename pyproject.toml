@@ -42,7 +42,7 @@ profile = "black"
 skip = ['_version.py', 'node_modules', '_build', 'docs', 'tests', 'venv', '.copier-template', '.refs']
 
 [tool.flake8]
-ignore = ['F401', 'E501', 'W503']
+ignore = ['F401', 'E501', 'W503', 'E203']
 exclude = ["node_modules", "_build", "docs", "tests", "venv", ".copier-template", ".refs"]
 per-file-ignores = ['__init__.py:F401', '_version.py:W292']
 
