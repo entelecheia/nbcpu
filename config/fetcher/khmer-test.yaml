@@ -1,14 +1,11 @@
-_target_: nbcpu.fetcher.khmer.KhmerFetcher
-_config_name_: khmer
-_config_group_: fetcher
-search_url: https://www.khmertimeskh.com/page/{page}/?s={keyword}
+defaults:
+  - khmer
 search_keywords:
   - NBC
+  - Monetary Policy
 max_num_pages: 1
 max_num_articles: 10
-output_dir: workspace/datasets/khmer
-link_filename: links.json
-article_filename: articles.json
+output_dir: workspace/test/khmer
 overwrite_existing: false
-print_every: 10
+num_workers: 2
 verbose: true
