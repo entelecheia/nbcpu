@@ -91,7 +91,7 @@ class KhmerFetcher(BaseModel):
                 print_every=self.print_every,
                 verbose=self.verbose,
             )
-        HyFI.save_json(self._links, self.link_filepath)
+            HyFI.save_json(self._links, self.link_filepath)
         logger.info("Saved %s links to %s", len(self._links), self.link_filepath)
 
     def fetch_articles(self):
