@@ -92,6 +92,7 @@ class KhmerFetcher(BaseModel):
                 verbose=self.verbose,
             )
         HyFI.save_json(self._links, self.link_filepath)
+        logger.info("Saved %s links to %s", len(self._links), self.link_filepath)
 
     def fetch_articles(self):
         self._articles = scrape_article_text(
@@ -103,6 +104,9 @@ class KhmerFetcher(BaseModel):
             verbose=self.verbose,
         )
         HyFI.save_json(self._articles, self.article_filepath)
+        logger.info(
+            "Saved %s articles to %s", len(self._articles), self.article_filepath
+        )
 
 
 def crawl_khmer_times(
@@ -131,7 +135,7 @@ def crawl_khmer_times(
     links = links or []
     link_urls = [link["url"] for link in links]
     logger.info("Fetching links for keyword: %s", keyword)
-    while page <= max_num_pages or max_num_pages is None:
+    while max_num_pages is None or page <= max_num_pages:
         page_url = search_url.format(page=page, keyword=keyword)
 
         response = requests.get(page_url)
@@ -179,14 +183,14 @@ def scrape_article_text(
     links: List[dict],
     articles: Optional[List[dict]] = None,
     overwrite_existing: bool = False,
-    max_num_articles: int = 10,
+    max_num_articles: Optional[int] = 10,
     print_every: int = 10,
     verbose: bool = False,
 ) -> List[dict]:
     articles = articles or []
     article_urls = [article["url"] for article in articles]
     for i, link in enumerate(links):
-        if i >= max_num_articles:
+        if max_num_articles is not None and i >= max_num_articles:
             logger.info("Reached max number of articles, stopping...")
             break
 
