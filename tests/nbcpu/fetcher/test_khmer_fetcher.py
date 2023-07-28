@@ -6,7 +6,10 @@ def test_save_hyfi_config():
 
 
 def test_khmer_fetcher():
-    khmer = KhmerFetcher(verbose=True)
+    khmer = KhmerFetcher(
+        search_keywords=["NBC"],
+        verbose=True,
+    )
     assert khmer.search_url == "https://www.khmertimeskh.com/page/{page}/?s={keyword}"
     khmer.fetch_links()
     khmer.fetch_articles()
@@ -14,4 +17,4 @@ def test_khmer_fetcher():
 
 if __name__ == "__main__":
     test_save_hyfi_config()
-    # test_khmer_fetcher()
+    test_khmer_fetcher()
