@@ -1,0 +1,28 @@
+_target_: nbcpu.fetcher.khmer.KhmerFetcher
+_config_name_: khmer
+_config_group_: fetcher
+search_url: https://www.khmertimeskh.com/page/{page}/?s={keyword}
+search_keywords:
+- NBC
+- National Bank of Cambodia
+- Exchange Rate
+- Economy
+- Riel
+- De-dollarization
+- Inflation
+- Monetary Policy
+- Banking
+- Finance
+- Bank
+- Financial
+- Stock Exchange
+- Uncertain
+- Policy
+max_num_pages: 2
+max_num_articles: 10
+output_dir: workspace/datasets/khmer
+link_filename: links.json
+article_filename: articles.json
+overwrite_existing: false
+print_every: 10
+verbose: true
