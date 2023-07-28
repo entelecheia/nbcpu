@@ -1113,13 +1113,13 @@ packaging = "*"
 
 [[package]]
 name = "hyfi"
-version = "1.12.0"
+version = "1.12.1"
 description = "Hydra Fast Interface (Hydra and Pydantic based interface framework)"
 optional = false
 python-versions = ">=3.8.1,<3.12"
 files = [
-    {file = "hyfi-1.12.0-py3-none-any.whl", hash = "sha256:7e4efb5844e9a8b936015ee88c161484d4642ae46899073a27820bbbe6e5eda0"},
-    {file = "hyfi-1.12.0.tar.gz", hash = "sha256:4a729d703e35eefe6d5d9114d057dd6824d2b2cac859ae4c1aa50b14022d3689"},
+    {file = "hyfi-1.12.1-py3-none-any.whl", hash = "sha256:8fc7a215532c43bb0b1054cce75de5ab32f951eb0e01518c4b599139e8ccdf6b"},
+    {file = "hyfi-1.12.1.tar.gz", hash = "sha256:4e174836c6ad11913209237e16898eeebeb90cc7b58c5aa188f86d33cd870221"},
 ]
 
 [package.dependencies]
@@ -2899,4 +2899,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<3.12"
-content-hash = "302c3cb070a470fad31675871543020188d759fbb4d051029e6d35077f50797d"
+content-hash = "05dde0affcf48881c4f521b1ade15f12f09ad069a3af0b1897d4cf995dc92ec6"
