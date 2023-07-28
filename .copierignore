@@ -2,3 +2,8 @@
 .tasks-extra.toml
 CHANGELOG.md
 pyproject.toml
+src/nbcpu/__cli__.py
+src/nbcpu/_version.py
+src/nbcpu/__init__.py
+tests/nbcpu/test_cli.py
+.gitignore
