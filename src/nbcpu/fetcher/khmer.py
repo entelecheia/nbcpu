@@ -32,8 +32,8 @@ class KhmerFetcher(BaseModel):
         "Uncertain",
         "Policy",
     ]
-    max_num_pages: int = 2
-    max_num_articles: int = 10
+    max_num_pages: Optional[int] = 2
+    max_num_articles: Optional[int] = 10
     output_dir: str = "workspace/datasets/khmer"
     link_filename: str = "links.json"
     article_filename: str = "articles.json"
