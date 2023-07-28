@@ -20,14 +20,14 @@
 
 [repo-url]: https://github.com/entelecheia/nbcpu
 [pypi-url]: https://pypi.org/project/nbcpu
-[docs-url]: https://entelecheia.github.io/nbcpu
+[docs-url]: https://nbcpu.entelecheia.ai
 [changelog]: https://github.com/entelecheia/nbcpu/blob/main/CHANGELOG.md
 [contributing guidelines]: https://github.com/entelecheia/nbcpu/blob/main/CONTRIBUTING.md
 <!-- Links: -->
 
 Quantifying Central Bank Policy Uncertainty in a Highly Dollarized Economy: A Topic Modeling Approach
 
-- Documentation: [https://entelecheia.github.io/nbcpu][docs-url]
+- Documentation: [https://nbcpu.entelecheia.ai][docs-url]
 - GitHub: [https://github.com/entelecheia/nbcpu][repo-url]
 - PyPI: [https://pypi.org/project/nbcpu][pypi-url]
 
