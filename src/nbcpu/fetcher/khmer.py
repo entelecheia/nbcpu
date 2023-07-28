@@ -109,17 +109,7 @@ class KhmerFetcher(BaseModel):
         self._load_links()
         links = self._links
         if num_workers > 1:
-            process_batch_partial = partial(
-                crawl_khmer_times,
-                search_url=self.search_url,
-                links=links,
-                max_num_pages=self.max_num_pages,
-                link_filepath=self.link_filepath_tmp,
-                print_every=self.print_every,
-                verbose=self.verbose,
-            )
-            with mp.Pool(num_workers) as pool:
-                self._links = pool.map(process_batch_partial, self.search_keywords)
+            self._fetch_links_mp(num_workers, links)
         else:
             for keyword in self.search_keywords:
                 self._links = crawl_khmer_times(
@@ -141,28 +131,29 @@ class KhmerFetcher(BaseModel):
         save_jsonl(self._links, self.link_filepath)
         logger.info("Saved %s links to %s", len(self._links), self.link_filepath)
 
+    def _fetch_links_mp(self, num_workers, links):
+        process_batch_partial = partial(
+            crawl_khmer_times,
+            search_url=self.search_url,
+            links=links,
+            max_num_pages=self.max_num_pages,
+            link_filepath=self.link_filepath_tmp,
+            print_every=self.print_every,
+            verbose=self.verbose,
+        )
+        with mp.Pool(num_workers) as pool:
+            results = pool.map(process_batch_partial, self.search_keywords)
+        links = []
+        for result in results:
+            links.extend(result)
+        self._links = links
+
     def fetch_articles(self):
         num_workers = self.num_workers
         self._load_articles()
         articles = self._articles
         if num_workers > 1:
-            batch_size = len(self.links) // num_workers
-            batches = [
-                self.links[i : i + batch_size]
-                for i in range(0, len(self.links), batch_size)
-            ]
-            process_batch_partial = partial(
-                scrape_article_text,
-                links=self.links,
-                articles=articles,
-                overwrite_existing=self.overwrite_existing,
-                article_filepath=self.article_filepath_tmp,
-                max_num_articles=self.max_num_articles,
-                print_every=self.print_every,
-                verbose=self.verbose,
-            )
-            with mp.Pool(num_workers) as pool:
-                self._articles = pool.map(process_batch_partial, batches)
+            self._fetch_articles_mp(num_workers, articles)
         else:
             self._articles = scrape_article_text(
                 self.links,
@@ -184,6 +175,28 @@ class KhmerFetcher(BaseModel):
         logger.info(
             "Saved %s articles to %s", len(self._articles), self.article_filepath
         )
+
+    def _fetch_articles_mp(self, num_workers, articles):
+        batch_size = len(self.links) // num_workers
+        batches = [
+            self.links[i : i + batch_size]
+            for i in range(0, len(self.links), batch_size)
+        ]
+        process_batch_partial = partial(
+            scrape_article_text,
+            articles=articles,
+            overwrite_existing=self.overwrite_existing,
+            article_filepath=self.article_filepath_tmp,
+            max_num_articles=self.max_num_articles,
+            print_every=self.print_every,
+            verbose=self.verbose,
+        )
+        with mp.Pool(num_workers) as pool:
+            results = pool.map(process_batch_partial, batches)
+        articles = []
+        for result in results:
+            articles.extend(result)
+        self._articles = articles
 
 
 def crawl_khmer_times(
@@ -216,6 +229,7 @@ def crawl_khmer_times(
     link_urls = [link["url"] for link in links]
     logger.info("Fetching links for keyword: %s", keyword)
     while max_num_pages is None or page <= max_num_pages:
+        keyword = keyword.replace(" ", "+")
         page_url = search_url.format(page=page, keyword=keyword)
 
         response = requests.get(page_url)
@@ -224,39 +238,39 @@ def crawl_khmer_times(
             logger.info("Page %s does not exist, stopping...", page)
             break
 
-        try:
-            soup = BeautifulSoup(response.text, "html.parser")
+        # try:
+        soup = BeautifulSoup(response.text, "html.parser")
 
-            # Find the section with class 'section-category'
-            section = soup.find("section", class_="section-category")
+        # Find the section with class 'section-category'
+        section = soup.find("section", class_="section-category")
 
-            # Find all articles within the section
-            articles = section.find_all("article")
+        # Find all articles within the section
+        articles = section.find_all("article")
 
-            for article in articles:
-                article_no += 1
-                # Extract and print article information
-                title = article.find("h2", class_="item-title").text
-                url = article.find("a")["href"]
-                if verbose and article_no % print_every == 0:
-                    logger.info("[Keyword: %s] Page: %s", keyword, page)
-                    logger.info("Title: %s", title)
-                    logger.info("URL: %s", url)
-                if url not in link_urls:
-                    link = {
-                        "title": title,
-                        "url": url,
-                        "keyword": keyword,
-                    }
-                    links.append(link)
-                    link_urls.append(url)
-                    if link_filepath:
-                        append_to_jsonl(link_filepath, link)
-                else:
-                    logger.info("Link %s already exists, skipping...", url)
-        except Exception as e:
-            logger.error("Error while fetching the page url: %s", page_url)
-            logger.error(e)
+        for article in articles:
+            article_no += 1
+            # Extract and print article information
+            title = article.find("h2", class_="item-title").text
+            url = article.find("a")["href"]
+            if verbose and article_no % print_every == 0:
+                logger.info("[Keyword: %s] Page: %s", keyword, page)
+                logger.info("Title: %s", title)
+                logger.info("URL: %s", url)
+            if url not in link_urls:
+                link = {
+                    "title": title,
+                    "url": url,
+                    "keyword": keyword,
+                }
+                links.append(link)
+                link_urls.append(url)
+                if link_filepath:
+                    append_to_jsonl(link, link_filepath)
+            else:
+                logger.info("Link %s already exists, skipping...", url)
+        # except Exception as e:
+        #     logger.error("Error while fetching the page url: %s", page_url)
+        #     logger.error(e)
 
         page += 1
 
@@ -323,7 +337,7 @@ def scrape_article_text(
                 articles.append(article)
                 article_urls.append(url)
                 if article_filepath:
-                    append_to_jsonl(article_filepath, article)
+                    append_to_jsonl(article, article_filepath)
                 if verbose and (i + 1) % print_every == 0:
                     logger.info("Article [%s](%s) scraped", title, url)
             else:
