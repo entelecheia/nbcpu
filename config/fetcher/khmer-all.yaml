@@ -1,7 +1,5 @@
-_target_: nbcpu.fetcher.khmer.KhmerFetcher
-_config_name_: khmer
-_config_group_: fetcher
-search_url: https://www.khmertimeskh.com/page/{page}/?s={keyword}
+defaults:
+  - khmer
 search_keywords:
   - NBC
   - National Bank of Cambodia
@@ -20,9 +18,5 @@ search_keywords:
   - Policy
 max_num_pages:
 max_num_articles:
-output_dir: workspace/datasets/khmer
-link_filename: links.json
-article_filename: articles.json
-overwrite_existing: false
-print_every: 10
+num_workers: 10
 verbose: true
