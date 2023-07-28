@@ -1,0 +1,11 @@
+# @package _global_
+defaults:
+  - __init__
+  - /task: nbcpu
+  - /fetcher: khmer-all
+  - override /project: nbcpu
+
+workflow_name: fetcher
+verbose: true
+tasks:
+  - fetcher
