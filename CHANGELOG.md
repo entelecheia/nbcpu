@@ -1,5 +1,15 @@
 <!--next-version-placeholder-->
 
+## v0.3.0 (2023-07-28)
+
+### Feature
+
+* **khmer:** Add multiprocessing ([`e3293d6`](https://github.com/entelecheia/nbcpu/commit/e3293d68d2be198ea1d7c8cff0f56c10e826db40))
+
+### Fix
+
+* **khmer:** Handle spaces in keyword query, correct arguments in append_to_jsonl call ([`dc79d98`](https://github.com/entelecheia/nbcpu/commit/dc79d98c116f12cb6bcbf85da917361faeb66f1a))
+
 ## v0.2.0 (2023-07-28)
 
 ### Feature
