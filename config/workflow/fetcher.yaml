@@ -2,7 +2,7 @@
 defaults:
   - __init__
   - /task: nbcpu
-  - /fetcher: khmer-test
+  - /fetcher: khmer-all
   - override /project: nbcpu
 
 workflow_name: fetcher
