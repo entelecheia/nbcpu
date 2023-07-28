@@ -238,39 +238,39 @@ def crawl_khmer_times(
             logger.info("Page %s does not exist, stopping...", page)
             break
 
-        # try:
-        soup = BeautifulSoup(response.text, "html.parser")
+        try:
+            soup = BeautifulSoup(response.text, "html.parser")
 
-        # Find the section with class 'section-category'
-        section = soup.find("section", class_="section-category")
+            # Find the section with class 'section-category'
+            section = soup.find("section", class_="section-category")
 
-        # Find all articles within the section
-        articles = section.find_all("article")
+            # Find all articles within the section
+            articles = section.find_all("article")
 
-        for article in articles:
-            article_no += 1
-            # Extract and print article information
-            title = article.find("h2", class_="item-title").text
-            url = article.find("a")["href"]
-            if verbose and article_no % print_every == 0:
-                logger.info("[Keyword: %s] Page: %s", keyword, page)
-                logger.info("Title: %s", title)
-                logger.info("URL: %s", url)
-            if url not in link_urls:
-                link = {
-                    "title": title,
-                    "url": url,
-                    "keyword": keyword,
-                }
-                links.append(link)
-                link_urls.append(url)
-                if link_filepath:
-                    append_to_jsonl(link, link_filepath)
-            else:
-                logger.info("Link %s already exists, skipping...", url)
-        # except Exception as e:
-        #     logger.error("Error while fetching the page url: %s", page_url)
-        #     logger.error(e)
+            for article in articles:
+                article_no += 1
+                # Extract and print article information
+                title = article.find("h2", class_="item-title").text
+                url = article.find("a")["href"]
+                if verbose and article_no % print_every == 0:
+                    logger.info("[Keyword: %s] Page: %s", keyword, page)
+                    logger.info("Title: %s", title)
+                    logger.info("URL: %s", url)
+                if url not in link_urls:
+                    link = {
+                        "title": title,
+                        "url": url,
+                        "keyword": keyword,
+                    }
+                    links.append(link)
+                    link_urls.append(url)
+                    if link_filepath:
+                        append_to_jsonl(link, link_filepath)
+                else:
+                    logger.info("Link %s already exists, skipping...", url)
+        except Exception as e:
+            logger.error("Error while fetching the page url: %s", page_url)
+            logger.error(e)
 
         page += 1
 
