@@ -44,6 +44,13 @@ class KhmerFetcher(BaseModel):
     _links: List[dict] = []
     _articles: List[dict] = []
 
+    def __call__(self):
+        self.fetch()
+
+    def fetch(self):
+        self.fetch_links()
+        self.fetch_articles()
+
     @property
     def links(self):
         return self._links or self._load_links()
