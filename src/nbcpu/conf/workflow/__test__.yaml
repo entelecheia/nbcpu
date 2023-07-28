@@ -1,7 +1,0 @@
-defaults:
-  - /project: __test__
-  - /task@task: __test__
-
-config_name: __test__
-tasks:
-  - task
