@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; do NOT edit manually
-_commit: v0.11.3
+_commit: v0.11.4
 _src_path: gh:entelecheia/hyperfast-python-template
 author: Young Joon Lee
 build_and_release: true
@@ -8,7 +8,7 @@ code_template_source: gh:entelecheia/hyfi-template
 codecov_graph_token: P414TXNSHY
 copyright_year: 2023
 documentaion_tool: jupyter-book
-documentation_url: https://entelecheia.github.io/nbcpu
+documentation_url: https://nbcpu.entelecheia.ai
 email: entelecheia@hotmail.com
 favicon_path: https://assets.entelecheia.ai/favicon.png
 friendly_name: Measuring Central Bank Policy Uncertainty

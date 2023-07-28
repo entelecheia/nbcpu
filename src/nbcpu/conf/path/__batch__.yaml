@@ -1,4 +1,0 @@
-defaults:
-  - __task__
-
-batch_outputs: ${.task_outputs}/${oc.select:..batch_name,batch-outputs}
