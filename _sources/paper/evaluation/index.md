@@ -1,4 +1,4 @@
-# Evaluation of the Topic-Based Uncertainty Measures
+# Evaluation
 
 Evaluating the effectiveness of the topic-based measures of policy uncertainty is a crucial part of this research. Our evaluation methods are twofold; first, a narrative approach that involves a manual examination of articles, and second, a comparison to alternative, established measures of uncertainty.
 
