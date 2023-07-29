@@ -1,5 +1,22 @@
 <!--next-version-placeholder-->
 
+## v0.4.0 (2023-07-29)
+
+### Feature
+
+* **config:** Add new fetcher-test workflow configuration ([`fae1e9f`](https://github.com/entelecheia/nbcpu/commit/fae1e9f7be0b4e50a3a5f4185fd2fc8c64791abb))
+* **data:** Add nbcpu installation and usage in khmer notebook ([`c393ec2`](https://github.com/entelecheia/nbcpu/commit/c393ec21141bd8ff11a73272c0d553192d1a43d9))
+* **book:** Add new sections in chapter, update table of contents structure ([`d295823`](https://github.com/entelecheia/nbcpu/commit/d295823502bafba08706eb2ad58b482177b256fb))
+
+### Fix
+
+* **dependencies:** Upgrade hyfi to 1.12.5 ([`3a3acac`](https://github.com/entelecheia/nbcpu/commit/3a3acac94082a0c7f4b54b9ec75394608cf908c2))
+* **dependencies:** Upgrade hyfi to 1.12.4 ([`c5e7747`](https://github.com/entelecheia/nbcpu/commit/c5e7747c3b93b4bf27f281dab0c2a9cd59f33c8e))
+
+### Documentation
+
+* **khmer.ipynb:** Add Overview and Results sections, include an Example snippet ([`5bb1ac1`](https://github.com/entelecheia/nbcpu/commit/5bb1ac1ef0d8b9ffc250bceffdc8c2621c9c7891))
+
 ## v0.3.0 (2023-07-28)
 
 ### Feature
