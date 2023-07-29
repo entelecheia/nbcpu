@@ -1,6 +1,6 @@
 """Base Fetcher"""
-import time
 import multiprocessing as mp
+import time
 from functools import partial
 from pathlib import Path
 from typing import Callable, List, Optional
