@@ -1,5 +1,30 @@
 <!--next-version-placeholder-->
 
+## v0.5.0 (2023-07-29)
+
+### Feature
+
+* **fetcher:** Add delay_between_requests option to khmer configuration ([`7a76281`](https://github.com/entelecheia/nbcpu/commit/7a76281de67aeefc65caf7fbd4d89a6c5d5e5a63))
+* **config/fetcher:** Add new configuration file for Phnompenh keywords search ([`ebe3dbf`](https://github.com/entelecheia/nbcpu/commit/ebe3dbf17d5a697124d79b0cb5df403e6d368279))
+* **fetcher:** Add phnompenh fetcher ([`46f3f3e`](https://github.com/entelecheia/nbcpu/commit/46f3f3e7a0446316d26ad3781e706249facb573d))
+* **nbcpu/fetcher:** Add delay between requests parameter to phnomphen fetcher, remove snippet from parse page links function ([`ddce346`](https://github.com/entelecheia/nbcpu/commit/ddce346f4e45bf35383b7c24eef81543234a082c))
+* **nbcpu/fetcher:** Add delay between requests functionality, consolidate article metadata assembly, add user agent to headers ([`d15204c`](https://github.com/entelecheia/nbcpu/commit/d15204c57f6e204bfd347f67c165df28da85a19b))
+* **fetcher:** Add delay between requests configuration ([`5da36f1`](https://github.com/entelecheia/nbcpu/commit/5da36f11cde56bd500bb2d04d8361c5ef57121b5))
+* **nbcpu/fetcher:** Add delay between requests in phnompenh.py ([`b81ca72`](https://github.com/entelecheia/nbcpu/commit/b81ca721285e628bb0b682e411726c594492b92e))
+* **fetcher:** Add start_page to khmer.yaml configuration ([`9d4bfdf`](https://github.com/entelecheia/nbcpu/commit/9d4bfdff98f1c14eac2a150a1932d44976c1e7c3))
+* **fetcher:** Add PhnompenhFetcher for Phnom Penh Post articles ([`08eb8bd`](https://github.com/entelecheia/nbcpu/commit/08eb8bdc8fda628d312b96dc9ee73e2c43636fa0))
+* **nbcpu/fetcher:** Add start_page property in BaseFetcher class, use encoded keywords for searching and crawling ([`f2ddb13`](https://github.com/entelecheia/nbcpu/commit/f2ddb13dc93ed42e2e552eb96c8c77889a76f487))
+* **fetcher:** Add start_page to phnompenh configuration ([`e550bcb`](https://github.com/entelecheia/nbcpu/commit/e550bcb443c975502d70ea0b6c64b44199d2d546))
+* **tests:** Add test_phnompenh_fetcher.py for nbcpu fetcher testing ([`197adba`](https://github.com/entelecheia/nbcpu/commit/197adba6927a81eb0cd2c2bc4b24e1708275bbd9))
+* **fetcher:** Add new configuration file for PhnompenhFetcher ([`6c0e4c1`](https://github.com/entelecheia/nbcpu/commit/6c0e4c15b1d17d81ab319c0a24e6d3ca663bdb2c))
+* **fetcher:** Implement base fetcher functionalities for crawling and scraping articles ([`f4fae2e`](https://github.com/entelecheia/nbcpu/commit/f4fae2eb5d5d726d56cc404d09f59f42cfce1563))
+
+### Documentation
+
+* **literature:** Correct reference year for Azqueta-Gavaldón, update heading format ([`74860ce`](https://github.com/entelecheia/nbcpu/commit/74860ce6ff474e1c0e3ea63fc0e56a143b25a5cc))
+* **book/paper:** Add references.md ([`5a8d8de`](https://github.com/entelecheia/nbcpu/commit/5a8d8decc46ad851fe8bdb1776343880f5235160))
+* **book:** Add references to the table of contents ([`94c334c`](https://github.com/entelecheia/nbcpu/commit/94c334ce40acb23c0ae71295a630848a9c0b768a))
+
 ## v0.4.0 (2023-07-29)
 
 ### Feature
