@@ -275,7 +275,9 @@ def crawl_links(
                 )
 
         # Delay between requests
-        time.sleep(delay_between_requests)
+        if delay_between_requests > 0:
+            logger.info("Sleeping for %s seconds...", delay_between_requests)
+            time.sleep(delay_between_requests)
 
         page += 1
 
@@ -341,7 +343,9 @@ def scrape_article_text(
             logger.info("Article [%s](%s) scraped", title, url)
 
         # Delay between requests
-        time.sleep(delay_between_requests)
+        if delay_between_requests > 0:
+            logger.info("Sleeping for %s seconds...", delay_between_requests)
+            time.sleep(delay_between_requests)
 
     logger.info("Finished scraping articles")
     logger.info("Total articles scraped: %s", len(articles))
