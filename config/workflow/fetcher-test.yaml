@@ -10,5 +10,6 @@ verbose: true
 tasks:
   - fetcher
 fetcher:
+  max_num_pages: 1
   output_dir: ${..task.task_root}/test/khmer
-  num_workers: 1
+  num_workers: 2

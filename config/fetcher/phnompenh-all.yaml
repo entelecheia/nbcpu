@@ -1,5 +1,5 @@
 defaults:
-  - khmer
+  - phnompenh
 search_keywords:
   - NBC
   - Exchange Rate
@@ -21,5 +21,7 @@ search_keywords:
   - National Bank of Cambodia
 max_num_pages:
 max_num_articles:
-num_workers: 10
+delay_between_requests: 20.0
+num_workers: 1
+print_every: 1
 verbose: true

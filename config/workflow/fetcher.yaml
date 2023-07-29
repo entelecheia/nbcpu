@@ -2,12 +2,16 @@
 defaults:
   - __init__
   - /task: nbcpu
-  - /fetcher: khmer-all
+  - /fetcher@fetcher_khmer: khmer-all
+  - /fetcher@fetcher_phnompenh: phnompenh-all
   - override /project: nbcpu
 
 workflow_name: fetcher
 verbose: true
 tasks:
-  - fetcher
-fetcher:
+  # - fetcher_khmer
+  - fetcher_phnompenh
+fetcher_khmer:
   output_dir: ${..task.task_root}/datasets/khmer
+fetcher_phnompenh:
+  output_dir: ${..task.task_root}/datasets/phnompenh
