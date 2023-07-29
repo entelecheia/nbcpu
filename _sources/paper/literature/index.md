@@ -1,4 +1,4 @@
-## Literature Review
+# Literature Review
 
 Economic policy uncertainty, with implications for financial markets, economic performance, corporate investment, labor market dynamics, and political polarization, has garnered significant research interest ({cite:t}`Azqueta-gavaldon:2017`). Methods to measure uncertainty generally fall into three categories: financial measures, textual measures, and miscellaneous methods ({cite:t}`Kaveh-yazdy:2021`).
 
@@ -10,7 +10,7 @@ These measures often utilize stock market volatility, such as the VIX index, or 
 
 Textual measures predominantly rely on documents, like monetary policy documents, and social media/news articles. They assess uncertainty by examining central bank minutes and gauge public sentiment towards uncertainty using social media posts and news articles ({cite:t}`Kaveh-yazdy:2021`). A notable early attempt at quantifying uncertainty through textual analysis was the Economic Policy Uncertainty (EPU) Index proposed by {cite:t}`Baker:2016`. This index measures the frequency of articles in major newspapers that contain certain uncertainty-related keywords, thus providing a quantifiable metric for policy uncertainty. The EPU index was subsequently expanded to include older newspaper archives, other countries, and specific policy category indices.
 
-However, the manual process of article selection was cumbersome and paved the way for more efficient, unsupervised machine learning methods. For instance, Azqueta-Gavaldón used the Latent Dirichlet Allocation (LDA) to automate topic modeling in uncertainty measurement, providing a more efficient and flexible alternative to the EPU index ({cite:t}`Azqueta-gavaldon:2021`). Further advancements saw the adoption of more sophisticated machine learning techniques, such as support vector machines and logistic regression, for more accurate document classification and tagging ({cite:t}`Kaveh-yazdy:2021`).
+However, the manual process of article selection was cumbersome and paved the way for more efficient, unsupervised machine learning methods. For instance, Azqueta-Gavaldón used the Latent Dirichlet Allocation (LDA) to automate topic modeling in uncertainty measurement, providing a more efficient and flexible alternative to the EPU index ({cite:t}`Azqueta-gavaldon:2017`). Further advancements saw the adoption of more sophisticated machine learning techniques, such as support vector machines and logistic regression, for more accurate document classification and tagging ({cite:t}`Kaveh-yazdy:2021`).
 
 **Topic-based Methods**
 
