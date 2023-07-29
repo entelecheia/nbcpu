@@ -10,6 +10,7 @@ chapters:
   - file: paper/evaluation/index
   - file: paper/results/index
   - file: paper/conclusion/index
+  - file: paper/references
   - file: supplementary/index
     sections:
       - file: supplementary/data/index
