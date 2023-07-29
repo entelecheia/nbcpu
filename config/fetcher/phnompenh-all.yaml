@@ -1,0 +1,27 @@
+defaults:
+  - phnompenh
+search_keywords:
+  - NBC
+  - Exchange Rate
+  - De-dollarization
+  - Inflation
+  - GDP
+  - Monetary Policy
+  - Finance
+  - Banking
+  - Stock Exchange
+  - Uncertain
+  - Economic
+  - Policy
+  - Financial
+  - Riel
+  - Bank
+  - Economy
+  - Securities Exchange
+  - National Bank of Cambodia
+max_num_pages:
+max_num_articles:
+delay_between_requests: 20.0
+num_workers: 1
+print_every: 1
+verbose: true
