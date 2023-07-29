@@ -29,6 +29,7 @@ link_filename: links.jsonl
 article_filename: articles.jsonl
 overwrite_existing: false
 key_field: url
+delay_between_requests: 0.0
 num_workers: 1
 print_every: 10
 verbose: true
