@@ -1,3 +1,5 @@
+"""Phnom Penh Post Fetcher."""
+import time
 from datetime import datetime
 from functools import partial
 from typing import List, Optional
@@ -65,9 +67,10 @@ def _parse_page_links(
 ) -> Optional[List[dict]]:
     """Get the links from the given page."""
     links = []
-    # TODO: Slow down requests:
-    # try adding a delay between your requests to avoid this.
+    # Slow down requests:
+    # try adding a delay between your requests to avoid getting blocked.
     # use the time.sleep function to add a delay.
+    time.sleep(1)
     try:
         response = requests.get(page_url)
         # Check if page exists (status code 200) or not (status code 404)
