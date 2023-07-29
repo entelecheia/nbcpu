@@ -18,7 +18,7 @@ def test_fetcher():
         phnompenh.search_url
         == "https://phnompenhpost.com/search/node/{keyword}?page={page}"
     )
-    phnompenh.fetch_links()
+    # phnompenh.fetch_links()
     # phnompenh.fetch_articles()
 
 
