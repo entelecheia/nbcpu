@@ -1,5 +1,6 @@
 # working directory
 workspace/
+tmp/
 
 # hypothesis: https://github.com/HypothesisWorks/hypothesis
 .hypothesis/

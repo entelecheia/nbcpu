@@ -4,6 +4,14 @@
 format: jb-book
 root: index
 chapters:
-  - file: usage
-  - file: api
-  - file: examples
+  - file: paper/introduction/index
+  - file: paper/literature/index
+  - file: paper/methodology/index
+  - file: paper/evaluation/index
+  - file: paper/results/index
+  - file: paper/conclusion/index
+  - file: supplementary/index
+    sections:
+      - file: supplementary/data/index
+        sections:
+          - file: supplementary/data/khmer

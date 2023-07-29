@@ -1,0 +1,212 @@
+# Methodology
+
+## Overview
+
+Measuring central bank policy uncertainty involves gauging the uncertainty related to the monetary policy decisions taken by central banks, such as changes in interest rates, reserve requirements, or other monetary tools. These are several common approaches used:
+
+**1. Textual Analysis of Central Bank Communications:** This involves analyzing the communications made by central banks, including minutes of the meetings, speeches, reports, press releases, and other forms of communication. The textual content can be analyzed manually or using automated natural language processing techniques. Researchers may look for keywords related to uncertainty or employ more sophisticated techniques, such as topic modeling or sentiment analysis, to quantify the level of uncertainty. For instance, the Baker, Bloom, and Davis EPU index uses this approach.
+
+**2. Financial Market-based Measures:** These measures use financial market data to infer the level of policy uncertainty. The assumption is that financial markets incorporate all available information, including the perceived uncertainty about future monetary policy. Examples of such measures include options-implied volatility measures such as the VIX index, which captures the market's expectation of future volatility, and the MOVE index, which specifically measures the volatility in U.S. Treasury markets.
+
+**3. Surveys of Professional Forecasters:** Another approach is to conduct surveys of professional economic forecasters and use their responses to measure policy uncertainty. This could involve questions about the expected future path of policy rates or other monetary policy actions. The dispersion or disagreement among forecasters' responses can then be used as a measure of uncertainty.
+
+**4. Econometric Models:** Econometric models, like the GARCH model (Generalized Autoregressive Conditional Heteroskedasticity), are also used to measure policy uncertainty. These models estimate volatility in economic variables that might be affected by central bank policies, such as inflation or exchange rates.
+
+**5. Machine Learning Techniques:** With advancements in technology, machine learning techniques are increasingly being used to measure policy uncertainty. For instance, Support Vector Machines, Logistic Regression, or Neural Networks can be used to classify and tag documents relevant to policy uncertainty.
+
+## The Merits of Topic-based Methods
+
+The topic-based method of measuring economic uncertainty has several strengths relative to other methods:
+
+1. **Comprehensiveness:** Unlike methods that rely on specific keywords, a topic-based approach analyzes the entire mixture of words in an article, providing a more holistic view of the content and theme of the article. This allows for a comprehensive understanding of the context in which uncertainty is discussed.
+
+2. **Flexibility:** It's not reliant on the presence of specific pre-determined keywords, which can sometimes lead to false positives (an article might contain all the keywords but not actually be about the specific type of uncertainty being measured) or false negatives (an article could be discussing a topic of uncertainty without using the specific keywords).
+
+3. **Disambiguation:** Topic-based methods can differentiate between different types of uncertainty, allowing for more nuanced analysis. For instance, the paper mentions the ability to differentiate between uncertainty related to "economic and financial distress", "institutional framework of monetary policy", "Norway’s relationship with the EU", and "technology and firm expansion".
+
+4. **Correlation with other measures:** The paper found positive correlations between the topic-based uncertainty measures and other established uncertainty proxies such as the US VIX and realized stock market volatility in Norway, suggesting that this method is valid and reliable.
+
+However, it's worth noting that topic-based methods also have limitations. The process of assigning labels based on the topic correlations may be subjective, and the measures may not capture all forms of uncertainty, especially those not frequently discussed in the news media. As with any method, topic-based measures are one tool in the larger toolbox for analyzing economic uncertainty and are likely to be most effective when used in conjunction with other methods.
+
+## Topic Modeling
+
+Topic modeling is an unsupervised machine learning technique that automatically identifies the main topics in a collection of documents. It provides a way of uncovering hidden thematic patterns in the text and categorizing the documents based on these themes.
+
+The output of topic modeling is a list of topics, each represented by a collection of words, and a weight or probability distribution over those words. Each document is then represented as a mixture of these topics. The idea is that certain combinations of words tend to appear together in documents on the same topic. For instance, a document about monetary policy might frequently use words like "interest", "rates", "central bank", and "inflation".
+
+There are several algorithms used for topic modeling, but one of the most popular ones is Latent Dirichlet Allocation (LDA).
+
+### Latent Dirichlet Allocation (LDA)
+
+LDA is a generative probabilistic model that assumes each document is a mixture of a certain number of topics and each word in the document is attributable to one of the document's topics. The "latent" in LDA refers to the fact that the assignment of words to topics is not observed and needs to be inferred.
+
+A generative model, such as Latent Dirichlet Allocation (LDA), tries to mimic the process of how the data was generated. In the context of text data and topic modeling, LDA attempts to reverse engineer the process by which a human might have written a collection of documents.
+
+When a human writes an article or a document, they typically have several topics or themes in mind. For example, if a journalist is writing an article about monetary policy in Cambodia, they might want to discuss topics such as inflation, interest rates, and the role of the National Bank of Cambodia. The writer doesn't pick topics for each word randomly; instead, they have a distribution of topics in their mind, and words related to those topics are more likely to appear in the article.
+
+In the process of writing, the author selects a topic based on their topic distribution and then writes down a word based on the word distribution of that topic. This process is repeated until the article is complete. This is the generative process that LDA tries to model.
+
+LDA, as a generative model, attempts to go back from the observed data (the words in the documents) to the hidden parameters that might have generated this data (the topic mixtures for each document and the word distributions for each topic). It does this by assuming that documents are produced in the following way:
+
+1. For each document, a mixture of topics is chosen from a Dirichlet distribution. Each topic is represented as a distribution over words.
+2. For each word in the document, a topic is chosen from the document's topic mixture.
+3. A word is chosen from the word distribution of the selected topic.
+
+By working backwards from the observed documents, LDA can infer the hidden topic structure, providing insight into the underlying themes of the collection of documents. This makes LDA a powerful tool for uncovering the latent topics that pervade a large corpus of text.
+
+**The Number of Topics**
+
+One of the crucial decisions a researcher needs to make when using Latent Dirichlet Allocation (LDA) for topic modeling is deciding the number of topics (often denoted as "K") in the model. This choice highly impacts the results because it determines how granular the topics identified by the model will be.
+
+If the number of topics is set too low, the model may produce broad, unspecific topics that are not very informative. On the other hand, if the number of topics is set too high, the model may produce very specific topics that only cover a small number of documents, or even split what is conceptually one topic into multiple topics.
+
+Unfortunately, there is no surefire way to select the "correct" number of topics a priori. It often requires iterative trial and error, guided by the researcher's domain knowledge and the quality of the topics produced. To aid in this process, measures such as perplexity and topic coherence can be used.
+
+**Topic Coherence**
+
+Topic coherence is a measure of how semantically consistent the words in a topic are. It aims to quantify the degree to which a topic is interpretable and meaningful to humans. Topic coherence measures have been found to correlate well with human interpretability.
+
+Several different measures of topic coherence exist, but they generally follow the same logic: topics containing words that frequently co-occur or are semantically similar should have high coherence, while topics with words that rarely co-occur or are semantically dissimilar should have low coherence. Some popular measures of topic coherence include:
+
+1. **C_v measure**: This measure leverages a sliding window to capture the semantic similarity of word pairs and normalize indirect confirmation measures. It is widely used due to its superior performance compared to other coherence measures.
+
+2. **U_mass measure**: It is based on document co-occurrence and a sliding window. It measures the co-occurrence of pairs of words in the same window.
+
+High coherence scores suggest that the words within a given topic co-occur more frequently, making the topic more interpretable and, thus, more useful.
+
+## The Output of Topic Modeling
+
+The output of the LDA model will provide two primary components relevant to the research study: topic-word distributions and document-topic distributions.
+
+**Topic-Word Distributions:**
+
+A topic-word distribution is a matrix that indicates the probability of a word being part of a particular topic. This distribution allows us to understand the composition of each topic. In the context of this research, it provides insights into the primary themes discussed in the context of Cambodia's monetary policy.
+
+For example, a topic might include words such as "dollarization", "riel", "exchange rate", and "currency" with high probabilities, which could indicate a theme focused on currency management. Alternatively, a topic might include words like "inflation", "price stability", and "consumer price index", pointing to a topic centered on price stability concerns.
+
+**Document-Topic Distributions:**
+
+The document-topic distribution is a matrix that indicates the probability of a document (or in this case, a news article) being about a certain topic. This distribution allows us to understand which topics are discussed in each news article.
+
+In the context of this research, it can give a sense of the main themes addressed in each article, and by extension, it can provide insights into what aspects of monetary policy were of primary concern at different points in time. For example, if many articles around a certain date have a high probability for a topic related to inflation, it could suggest that inflation concerns were particularly salient at that time.
+
+Furthermore, the temporal trends in these topic probabilities can give insights into the evolution of monetary policy uncertainty over time. If the probabilities for certain topics increase during periods of economic instability or major policy changes, it would suggest that these topics contribute to monetary policy uncertainty.
+
+### Estimation of LDA and Identification of Uncertainty Topics
+
+Given the mathematical foundation of our LDA model, we further specify the methodology for identifying and quantifying uncertainty-related topics.
+
+Firstly, we define a set of seed words related to uncertainty to guide the second LDA model. These seed words represent the inherent vocabulary of uncertainty and are used to initialize the topic-word distribution for the uncertainty-related topics.
+
+The EM algorithm then comes into play to estimate both the topic-word and document-topic distributions. During the E-step, we calculate the posterior distribution of the topic assignments considering the observed words and the current estimates of the distributions:
+
+$$p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)}) = \frac{\phi_{k,w_{i,j}}^{(t)} \theta_{i,k}^{(t)}}{\sum_{l=1}^K \phi_{l,w_{i,j}}^{(t)} \theta_{i,l}^{(t)}}$$
+
+In the subsequent M-step, we update the estimates of the topic-word and document-topic distributions based on this posterior distribution:
+
+$$\phi_{k,w}^{(t+1)} = \frac{\sum_{i=1}^M \sum_{j=1}^{N_i} w_{i,j} [z_{i,j}=k] p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}{\sum_{i=1}^M \sum_{j=1}^{N_i} [z_{i,j}=k] p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}$$
+
+$$\theta_{i,k}^{(t+1)} = \frac{\sum_{j=1}^{N_i} [z_{i,j}=k] p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}{\sum_{j=1}^{N_i} \sum_{l=1}^K [z_{i,j}=l] p(z_{i,j}=l|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}$$
+
+With the aid of the indicator function $[z_{i,j}=k]$ which equals 1 when $z_{i,j}=k$ and 0 otherwise.
+
+The algorithm iterates until convergence, after which we select the uncertainty-related topics as those with the highest probabilities of containing at least one of the seed words.
+
+Finally, to quantify uncertainty, we compute an 'uncertainty score' for each document. This score is derived as the sum of the probabilities of the uncertainty-related topics in the document. Thus, a document with a higher uncertainty score signifies a higher level of policy uncertainty.
+
+This method of identifying and quantifying uncertainty-related topics underpins the second LDA model for measuring the intensity of policy uncertainty.
+
+## Quantifying Uncertainty
+
+Given the complexities associated with assessing policy uncertainty in a highly dollarized economy such as Cambodia, a sophisticated, dual-model approach will be employed. This involves developing two separate Latent Dirichlet Allocation (LDA) models. The first will categorize the topic of policy uncertainty, and the second will measure the intensity of the uncertainty.
+
+1. **Topic Classification Model (Model 1):**
+
+   The first LDA model is used to classify potential topics that represent key areas of policy uncertainty. The focus areas are:
+
+   - Exchange Rate Policy Uncertainty
+   - Currency Stabilization Policy Uncertainty
+   - De-dollarization Policy Uncertainty
+   - Impact of International Monetary Policy Uncertainty
+
+   This model is initialized with seed words that represent each of these topics. The seed words are expected to guide the model to learn a vocabulary associated with these areas of interest. However, the number of topics ($K$) in this model is not predetermined as four, but set higher to allow the model to learn a broader set of topics. Subsequent analysis will help identify which of these learned topics are most related to the policy areas of interest.
+
+2. **Uncertainty Intensity Model (Model 2):**
+
+   The second LDA model is designed to measure the intensity of uncertainty within articles. The goal is to pin down uncertainty-related articles to one or more specific topics, signifying the primary areas of uncertainty for that article.
+
+   For this model, we use a predefined set of seed words related to uncertainty. These seed words guide the topic modeling process. After initializing the topic-word distribution for the topics with a uniform distribution over the seed words, we employ the EM algorithm, as described in the previous section, to estimate the topic-word and document-topic distributions.
+
+   After the algorithm's convergence, we identify uncertainty-related topics as those having the highest probability of containing at least one seed word. This gives us a set of themes of uncertainty for each article. To measure the intensity of this uncertainty, we then compute the 'uncertainty score' for each document. This score is the sum of the probabilities of the uncertainty-related topics within the document:
+
+   $$\text{Uncertainty Score}_i = \sum_{k \in K_{unc}} \theta_{i,k}$$
+
+   where $K_{unc}$ is the set of uncertainty-related topics, and $\theta_{i,k}$ is the proportion of the $i$th document assigned to topic $k$. A higher uncertainty score signifies a higher level of policy uncertainty within that document.
+
+Through these two models, we aim to classify the main themes of policy uncertainty (Model 1) and measure the intensity of such uncertainty (Model 2), providing a comprehensive approach to quantifying central bank policy uncertainty in the context of the National Bank of Cambodia.
+
+### Aggregation
+
+Once we've obtained the uncertainty scores from the LDA Model 2 for all articles, our next step involves the aggregation of these scores to derive a single measure of policy uncertainty over time. We aim to analyze the overall policy uncertainty and its evolution, hence the need for this time-series representation.
+
+The process of aggregation is as follows:
+
+1. **Time Frame Determination:** The temporal granularity of the final uncertainty measure needs to be determined. Depending on the research question and the density of our data, we may want to aggregate the scores into daily, monthly, or annual measures.
+
+2. **Normalization:** Uncertainty scores are normalized across all articles to have the same scale. This is typically done using min-max normalization or standardization (z-score), depending on the distribution of scores.
+
+3. **Aggregation:** For each time period (day/month/year depending on step 1), we aggregate the normalized uncertainty scores of all articles published within that period. Aggregation can be done through several methods such as mean, median, or sum. The choice depends on whether we want to mitigate the effect of potential outliers (median), or whether we want to include all information, including potential extreme values (sum).
+
+4. **Smoothness:** Depending on the nature of our data, there might be significant fluctuations in the uncertainty measure over short periods. To ensure that our measure captures the broader trends and not the short-term fluctuations, we may apply a smoothing technique, such as moving average smoothing.
+
+5. **Standardization (Optional):** Depending on the research needs, the series can be further standardized to have a mean of zero and a standard deviation of one. This allows for better comparison with other economic indicators or series.
+
+6. **Interpretation:** The final measure represents the level of monetary policy uncertainty in the Cambodian economy for each time period. Higher values represent periods of greater uncertainty, while lower values signify periods of relative clarity or predictability.
+
+Through this process, we transform our document-level uncertainty scores into a coherent, time-series measure of policy uncertainty. This aggregated measure can then be used for further econometric analysis or to study the impact of policy uncertainty on various economic indicators.
+
+### Aggregation
+
+After each article has been assigned a topic category from Model 1 and an uncertainty score from Model 2, these data points can be aggregated over time to create a series of policy uncertainty indices. These indices can then be used to track the level of policy uncertainty in each category over time.
+
+For instance, we could compute a monthly Exchange Rate Policy Uncertainty Index by taking the average uncertainty score of all articles classified under 'Exchange Rate Policy Uncertainty' in each month. Similar indices could be created for the other categories.
+
+This dual-model approach allows us to capture not only the overall level of policy uncertainty but also how this uncertainty is distributed across different policy areas. This can provide valuable insights into the specific sources of policy uncertainty and how these evolve over time.
+
+It is important to note, however, that this approach assumes that the relative weight of uncertainty-related topics in an article is indicative of the intensity of uncertainty. This assumption should be validated by comparing the results with other indicators of policy uncertainty, where available. Also, the robustness of the findings should be verified by applying different topic modeling parameters and checking for consistency in the results.
+
+##
+
+To explain the method using equations in LaTex, we can start by defining some notation. Let $w_{i,j}$ be the $j$th word in the $i$th document, and let $z_{i,j}$ be the topic assignment for that word. We assume that there are $K$ topics, and that the topic-word distribution is given by $\phi_{k,w}$, which is the probability of word $w$ given topic $k$. Similarly, the document-topic distribution is given by $\theta_{i,k}$, which is the probability of topic $k$ given document $i$.
+
+The joint probability of the observed words and topic assignments is given by:
+
+$$p(\mathbf{w},\mathbf{z}|\boldsymbol{\phi},\boldsymbol{\theta}) = \prod_{i=1}^M \prod_{j=1}^{N_i} p(w_{i,j}|z_{i,j},\boldsymbol{\phi}) p(z_{i,j}|\boldsymbol{\theta}_i)$$
+
+where $M$ is the number of documents, $N_i$ is the number of words in document $i$, and $\boldsymbol{\phi}$ and $\boldsymbol{\theta}$ are the topic-word and document-topic distributions, respectively.
+
+The first term in the product is the probability of the observed word given its topic assignment and the topic-word distribution:
+
+$$p(w_{i,j}|z_{i,j},\boldsymbol{\phi}) = \phi_{z_{i,j},w_{i,j}}$$
+
+The second term is the probability of the topic assignment given the document and the document-topic distribution:
+
+$$p(z_{i,j}|\boldsymbol{\theta}_i) = \theta_{i,z_{i,j}}$$
+
+To estimate the topic-word and document-topic distributions, we use the EM algorithm. In the E-step, we compute the posterior distribution of the topic assignments given the observed words and the current estimates of the topic-word and document-topic distributions:
+
+$$p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)}) = \frac{\phi_{k,w_{i,j}}^{(t)} \theta_{i,k}^{(t)}}{\sum_{l=1}^K \phi_{l,w_{i,j}}^{(t)} \theta_{i,l}^{(t)}}$$
+
+where $\boldsymbol{\phi}^{(t)}$ and $\boldsymbol{\theta}^{(t)}$ are the estimates of the topic-word and document-topic distributions at iteration $t$.
+
+In the M-step, we update the estimates of the topic-word and document-topic distributions based on the posterior distribution of the topic assignments:
+
+$$\phi_{k,w}^{(t+1)} = \frac{\sum_{i=1}^M \sum_{j=1}^{N_i} w_{i,j} [z_{i,j}=k] p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}{\sum_{i=1}^M \sum_{j=1}^{N_i} [z_{i,j}=k] p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}$$
+
+$$\theta_{i,k}^{(t+1)} = \frac{\sum_{j=1}^{N_i} [z_{i,j}=k] p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}{\sum_{j=1}^{N_i} \sum_{l=1}^K [z_{i,j}=l] p(z_{i,j}=l|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}$$
+
+where $[z_{i,j}=k]$ is an indicator function that takes the value 1 if $z_{i,j}=k$ and 0 otherwise.
+
+To pin down topics in relation to the LDA distribution estimation process for Model 2, we use a predefined set of keywords related to uncertainty to guide the topic modeling process. These keywords are used to create a list of seed words for each uncertainty-related topic. We then initialize the topic-word distribution for each uncertainty-related topic to be a uniform distribution over the seed words, and the topic-word distribution for all other topics to be a uniform distribution over all words.
+
+We then run the EM algorithm to estimate the topic-word and document-topic distributions, as described above. After convergence, we identify the uncertainty-related topics by selecting the topics with the highest probability of containing at least one seed word. We then compute the uncertainty score for each document as the sum of the probabilities of the uncertainty-related topics in that document.

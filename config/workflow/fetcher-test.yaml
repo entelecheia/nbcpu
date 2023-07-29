@@ -1,0 +1,14 @@
+# @package _global_
+defaults:
+  - __init__
+  - /task: nbcpu
+  - /fetcher: khmer-test
+  - override /project: nbcpu
+
+workflow_name: fetcher-test
+verbose: true
+tasks:
+  - fetcher
+fetcher:
+  output_dir: ${..task.task_root}/test/khmer
+  num_workers: 1

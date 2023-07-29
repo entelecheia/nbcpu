@@ -1,4 +1,3 @@
-import json
 import multiprocessing as mp
 from datetime import datetime
 from functools import partial
@@ -96,12 +95,12 @@ class KhmerFetcher(BaseModel):
 
     def _load_links(self):
         if Path(self.link_filepath).exists():
-            self._links = load_jsonl(self.link_filepath)
+            self._links = HyFI.load_jsonl(self.link_filepath)
         return self._links
 
     def _load_articles(self):
         if Path(self.article_filepath).exists():
-            self._articles = load_jsonl(self.article_filepath)
+            self._articles = HyFI.load_jsonl(self.article_filepath)
         return self._articles
 
     def fetch_links(self):
@@ -122,13 +121,13 @@ class KhmerFetcher(BaseModel):
                     verbose=self.verbose,
                 )
         original_len = len(self._links)
-        self._links = remove_duplicates(self._links, key="url")
+        self._links = HyFI.remove_duplicates_from_list_of_dicts(self._links, key="url")
         logger.info(
             "Removed %s duplicate links from %s links",
             original_len - len(self._links),
             original_len,
         )
-        save_jsonl(self._links, self.link_filepath)
+        HyFI.save_jsonl(self._links, self.link_filepath)
         logger.info("Saved %s links to %s", len(self._links), self.link_filepath)
 
     def _fetch_links_mp(self, num_workers, links):
@@ -165,13 +164,15 @@ class KhmerFetcher(BaseModel):
                 verbose=self.verbose,
             )
         original_len = len(self._articles)
-        self._articles = remove_duplicates(self._articles, key="url")
+        self._articles = HyFI.remove_duplicates_from_list_of_dicts(
+            self._articles, key="url"
+        )
         logger.info(
             "Removed %s duplicate articles from %s articles",
             original_len - len(self._articles),
             original_len,
         )
-        save_jsonl(self._articles, self.article_filepath)
+        HyFI.save_jsonl(self._articles, self.article_filepath)
         logger.info(
             "Saved %s articles to %s", len(self._articles), self.article_filepath
         )
@@ -265,7 +266,7 @@ def crawl_khmer_times(
                     links.append(link)
                     link_urls.append(url)
                     if link_filepath:
-                        append_to_jsonl(link, link_filepath)
+                        HyFI.append_to_jsonl(link, link_filepath)
                 else:
                     logger.info("Link %s already exists, skipping...", url)
         except Exception as e:
@@ -337,7 +338,7 @@ def scrape_article_text(
                 articles.append(article)
                 article_urls.append(url)
                 if article_filepath:
-                    append_to_jsonl(article, article_filepath)
+                    HyFI.append_to_jsonl(article, article_filepath)
                 if verbose and (i + 1) % print_every == 0:
                     logger.info("Article [%s](%s) scraped", title, url)
             else:
@@ -378,40 +379,3 @@ def parse_article_text(
         "time": entry_time.isoformat(),  # Convert datetime to string
         "text": article_text,
     }
-
-
-def append_to_jsonl(data, filename: str, encoding: str = "utf-8") -> None:
-    """Append a json payload to the end of a jsonl file."""
-    json_string = json.dumps(data, ensure_ascii=False)
-    with open(filename, "a", encoding=encoding) as f:
-        f.write(json_string + "\n")
-
-
-def load_jsonl(filename: str, encoding: str = "utf-8") -> List[dict]:
-    """Load a jsonl file into a list of json objects."""
-    with open(filename, "r", encoding=encoding) as f:
-        return [json.loads(line) for line in f]
-
-
-def save_jsonl(
-    data: List[dict],
-    filename: str,
-    encoding: str = "utf-8",
-) -> None:
-    """
-    Save a list of json objects to a jsonl file.
-    """
-    with open(filename, "w", encoding=encoding) as f:
-        for line in data:
-            f.write(json.dumps(line, ensure_ascii=False) + "\n")
-
-
-def remove_duplicates(data: List[dict], key: str) -> List[dict]:
-    """Remove duplicates from a list of dicts based on a key."""
-    seen = set()
-    new_data = []
-    for d in data:
-        if d[key] not in seen:
-            new_data.append(d)
-            seen.add(d[key])
-    return new_data
