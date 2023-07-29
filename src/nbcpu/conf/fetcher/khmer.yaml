@@ -21,6 +21,7 @@ search_keywords:
 - Economy
 - Securities Exchange
 - National Bank of Cambodia
+start_page: 1
 max_num_pages: 2
 max_num_articles: 10
 output_dir: workspace/datasets/fetcher/khmer
