@@ -1,7 +1,7 @@
 import multiprocessing as mp
 from functools import partial
 from pathlib import Path
-from typing import List, Optional, Callable
+from typing import Callable, List, Optional
 
 from hyfi.composer import BaseModel
 from hyfi.main import HyFI
