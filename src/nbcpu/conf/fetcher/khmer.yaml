@@ -23,10 +23,11 @@ search_keywords:
 - National Bank of Cambodia
 max_num_pages: 2
 max_num_articles: 10
-output_dir: workspace/datasets/khmer
+output_dir: workspace/datasets/fetcher/khmer
 link_filename: links.jsonl
 article_filename: articles.jsonl
 overwrite_existing: false
+key_field: url
 num_workers: 1
 print_every: 10
 verbose: true
