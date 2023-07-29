@@ -19,6 +19,7 @@ class BaseFetcher(BaseModel):
 
     search_url: str = ""
     search_keywords: List[str] = []
+    start_page: int = 1
     max_num_pages: Optional[int] = 2
     max_num_articles: Optional[int] = 10
     output_dir: str = f"workspace/datasets/{_config_group_}/{_config_name_}"
@@ -39,6 +40,13 @@ class BaseFetcher(BaseModel):
     def fetch(self):
         self.fetch_links()
         self.fetch_articles()
+
+    @property
+    def search_keywords_encoded(self):
+        return [self.encode_keyword(keyword) for keyword in self.search_keywords]
+
+    def encode_keyword(self, keyword: str):
+        return keyword.replace(" ", "+")
 
     @property
     def links(self):
@@ -102,6 +110,7 @@ class BaseFetcher(BaseModel):
             search_url=self.search_url,
             parse_page_func=parse_page_func,
             link_urls=link_urls,
+            start_page=self.start_page,
             max_num_pages=self.max_num_pages,
             link_filepath=self.link_filepath_tmp,
         )
@@ -111,7 +120,7 @@ class BaseFetcher(BaseModel):
                 fetch_links_func,
             )
         else:
-            for keyword in self.search_keywords:
+            for keyword in self.search_keywords_encoded:
                 links = fetch_links_func(keyword)
         if links:
             self.save_links(links)
@@ -138,7 +147,7 @@ class BaseFetcher(BaseModel):
         batch_func: Callable,
     ) -> List[dict]:
         with mp.Pool(num_workers) as pool:
-            results = pool.map(batch_func, self.search_keywords)
+            results = pool.map(batch_func, self.search_keywords_encoded)
         links = []
         for result in results:
             links.extend(result)
@@ -207,6 +216,7 @@ def crawl_links(
     search_url: str,
     parse_page_func: Callable,
     link_urls: Optional[List[str]] = None,
+    start_page: int = 1,
     max_num_pages: Optional[int] = 2,
     link_filepath: Optional[str] = None,
 ) -> List[dict]:
@@ -225,12 +235,11 @@ def crawl_links(
         List[dict]: List of links.
     """
 
-    page = 1
+    page = start_page
     links = []
     link_urls = link_urls or []
     logger.info("Fetching links for keyword: %s", keyword)
     while max_num_pages is None or page <= max_num_pages:
-        keyword = keyword.replace(" ", "+")
         page_url = search_url.format(page=page, keyword=keyword)
 
         logger.info("[Keyword: %s] Page: %s", keyword, page)
