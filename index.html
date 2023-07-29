@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Measuring Central Bank Policy Uncertainty &#8212; Measuring Central Bank Policy Uncertainty</title>
+    <title>Abstract &#8212; Measuring Central Bank Policy Uncertainty</title>
   
   
   
@@ -89,7 +89,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="https://assets.entelecheia.ai/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Usage" href="usage.html" />
+    <link rel="next" title="Introduction" href="paper/introduction/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -170,20 +170,24 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Measuring Central Bank Policy Uncertainty
+                    Abstract
                 </a>
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="api.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="_autosummary/nbcpu.html">nbcpu</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="_autosummary/nbcpu.conf.html">nbcpu.conf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paper/introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paper/literature/index.html">Literature Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paper/methodology/index.html">Methodology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paper/evaluation/index.html">Evaluation of the Topic-Based Uncertainty Measures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paper/results/index.html">Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paper/conclusion/index.html">Concluding Remarks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="supplementary/index.html">Supplemental material</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="supplementary/data/index.html">Data</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="supplementary/data/khmer.html">Dataset Preparation for Khmer Times</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 
     </div>
@@ -384,7 +388,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Measuring Central Bank Policy Uncertainty</h1>
+    <h1>Abstract</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -394,9 +398,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog">Changelog</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">Contributing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#license">License</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
 </ul>
             </nav>
@@ -409,8 +410,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="measuring-central-bank-policy-uncertainty">
-<h1>Measuring Central Bank Policy Uncertainty<a class="headerlink" href="#measuring-central-bank-policy-uncertainty" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="abstract">
+<h1>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://pypi.org/project/nbcpu"><img alt="pypi-image" src="https://img.shields.io/pypi/v/nbcpu" /></a>
 <a class="reference external" href="https://github.com/entelecheia/nbcpu/releases"><img alt="version-image" src="https://img.shields.io/github/v/release/entelecheia/nbcpu?sort=semver" /></a>
 <a class="reference external" href="https://github.com/entelecheia/nbcpu/releases"><img alt="release-date-image" src="https://img.shields.io/github/release-date/entelecheia/nbcpu" /></a>
@@ -419,40 +420,27 @@ document.write(`
 <a class="reference external" href="https://codecov.io/gh/entelecheia/nbcpu"><img alt="codecov" src="https://codecov.io/gh/entelecheia/nbcpu/branch/main/graph/badge.svg?token=P414TXNSHY" /></a></p>
 <!-- Links: -->
 <!-- Links: -->
-<p>Quantifying Central Bank Policy Uncertainty in a Highly Dollarized Economy: A Topic Modeling Approach</p>
-<ul class="simple">
-<li><p>Documentation: <a class="reference external" href="https://nbcpu.entelecheia.ai">https://nbcpu.entelecheia.ai</a></p></li>
-<li><p>GitHub: <a class="github reference external" href="https://github.com/entelecheia/nbcpu">entelecheia/nbcpu</a></p></li>
-<li><p>PyPI: <a class="reference external" href="https://pypi.org/project/nbcpu">https://pypi.org/project/nbcpu</a></p></li>
-</ul>
+<p><strong>Quantifying Central Bank Policy Uncertainty in a Highly Dollarized Economy: A Topic Modeling Approach</strong></p>
 <p>Understanding and measuring central bank policy uncertainty are fundamental to predicting economic outcomes, particularly in economies like Cambodia where the monetary policy tools are underdeveloped and the economy is heavily dollarized. This study aims to develop and evaluate topic-based measures of policy uncertainty in the Cambodian context, using narrative text data derived from major news media outlets. Leveraging Latent Dirichlet Allocation (LDA), a widely-used generative model for text data, we estimate the document-topic and topic-word distributions from a corpus of news articles, thereby deriving measures of policy uncertainty.</p>
 <p>Our methodology involves applying two topic models: one classifies articles into four categories of interest - Exchange Rate Policy Uncertainty, Currency Stabilization Policy Uncertainty, De-dollarization Policy Uncertainty, and International Monetary Policy Impact Uncertainty; the other quantifies the intensity of uncertainty within these articles. We use a seed word approach to guide the LDA in determining relevant topics and the level of associated uncertainty.</p>
 <p>The effectiveness of these measures is evaluated via a narrative approach, analyzing articles with high uncertainty scores, and through comparison with established policy uncertainty indices. The proposed methodology and findings offer valuable insights for central banks and policymakers in dollarized economies, like Cambodia, enhancing their communication strategies to effectively manage policy uncertainty and its economic implications.</p>
-<section id="changelog">
-<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading">#</a></h2>
-<p>See the <a class="reference external" href="https://github.com/entelecheia/nbcpu/blob/main/CHANGELOG.md">CHANGELOG</a> for more information.</p>
-</section>
-<section id="contributing">
-<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this heading">#</a></h2>
-<p>Contributions are welcome! Please see the <a class="reference external" href="https://github.com/entelecheia/nbcpu/blob/main/CONTRIBUTING.md">contributing guidelines</a> for more information.</p>
-</section>
-<section id="license">
-<h2>License<a class="headerlink" href="#license" title="Permalink to this heading">#</a></h2>
-<p>This project is released under the <a class="reference external" href="https://github.com/entelecheia/nbcpu/blob/main/LICENSE">MIT License</a>.</p>
-</section>
 <section id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="_autosummary/nbcpu.html">nbcpu</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="_autosummary/nbcpu.conf.html">nbcpu.conf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paper/introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paper/literature/index.html">Literature Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paper/methodology/index.html">Methodology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paper/evaluation/index.html">Evaluation of the Topic-Based Uncertainty Measures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paper/results/index.html">Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paper/conclusion/index.html">Concluding Remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supplementary/index.html">Supplemental material</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="supplementary/data/index.html">Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="supplementary/data/khmer.html">Dataset Preparation for Khmer Times</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 </div>
 </section>
@@ -490,11 +478,11 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="right-next"
-       href="usage.html"
+       href="paper/introduction/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Usage</p>
+        <p class="prev-next-title">Introduction</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -516,9 +504,6 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog">Changelog</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">Contributing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#license">License</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
 </ul>
   </nav></div>

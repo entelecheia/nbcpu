@@ -1,0 +1,721 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Methodology &#8212; Measuring Central Bank Policy Uncertainty</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-shadow.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-punk.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-noir.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-light.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-borderless.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/micromodal.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/tabs.js"></script>
+    <script src="../../_static/js/hoverxref.js"></script>
+    <script src="../../_static/js/tooltipster.bundle.min.js"></script>
+    <script src="../../_static/js/micromodal.min.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-SY9MF3HBFB"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-SY9MF3HBFB');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'paper/methodology/index';</script>
+    <link rel="shortcut icon" href="https://assets.entelecheia.ai/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Evaluation of the Topic-Based Uncertainty Measures" href="../evaluation/index.html" />
+    <link rel="prev" title="Literature Review" href="../literature/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Measuring Central Bank Policy Uncertainty</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Abstract
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../literature/index.html">Literature Review</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Methodology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evaluation/index.html">Evaluation of the Topic-Based Uncertainty Measures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results/index.html">Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/index.html">Concluding Remarks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../supplementary/index.html">Supplemental material</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../supplementary/data/index.html">Data</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../supplementary/data/khmer.html">Dataset Preparation for Khmer Times</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/entelecheia/nbcpu" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/entelecheia/nbcpu/edit/main/book/paper/methodology/index.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/entelecheia/nbcpu/issues/new?title=Issue%20on%20page%20%2Fpaper/methodology/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/paper/methodology/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Methodology</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-merits-of-topic-based-methods">The Merits of Topic-based Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-modeling">Topic Modeling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#latent-dirichlet-allocation-lda">Latent Dirichlet Allocation (LDA)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-output-of-topic-modeling">The Output of Topic Modeling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation-of-lda-and-identification-of-uncertainty-topics">Estimation of LDA and Identification of Uncertainty Topics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-uncertainty">Quantifying Uncertainty</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregation">Aggregation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Aggregation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="methodology">
+<h1>Methodology<a class="headerlink" href="#methodology" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<p>Measuring central bank policy uncertainty involves gauging the uncertainty related to the monetary policy decisions taken by central banks, such as changes in interest rates, reserve requirements, or other monetary tools. These are several common approaches used:</p>
+<p><strong>1. Textual Analysis of Central Bank Communications:</strong> This involves analyzing the communications made by central banks, including minutes of the meetings, speeches, reports, press releases, and other forms of communication. The textual content can be analyzed manually or using automated natural language processing techniques. Researchers may look for keywords related to uncertainty or employ more sophisticated techniques, such as topic modeling or sentiment analysis, to quantify the level of uncertainty. For instance, the Baker, Bloom, and Davis EPU index uses this approach.</p>
+<p><strong>2. Financial Market-based Measures:</strong> These measures use financial market data to infer the level of policy uncertainty. The assumption is that financial markets incorporate all available information, including the perceived uncertainty about future monetary policy. Examples of such measures include options-implied volatility measures such as the VIX index, which captures the market’s expectation of future volatility, and the MOVE index, which specifically measures the volatility in U.S. Treasury markets.</p>
+<p><strong>3. Surveys of Professional Forecasters:</strong> Another approach is to conduct surveys of professional economic forecasters and use their responses to measure policy uncertainty. This could involve questions about the expected future path of policy rates or other monetary policy actions. The dispersion or disagreement among forecasters’ responses can then be used as a measure of uncertainty.</p>
+<p><strong>4. Econometric Models:</strong> Econometric models, like the GARCH model (Generalized Autoregressive Conditional Heteroskedasticity), are also used to measure policy uncertainty. These models estimate volatility in economic variables that might be affected by central bank policies, such as inflation or exchange rates.</p>
+<p><strong>5. Machine Learning Techniques:</strong> With advancements in technology, machine learning techniques are increasingly being used to measure policy uncertainty. For instance, Support Vector Machines, Logistic Regression, or Neural Networks can be used to classify and tag documents relevant to policy uncertainty.</p>
+</section>
+<section id="the-merits-of-topic-based-methods">
+<h2>The Merits of Topic-based Methods<a class="headerlink" href="#the-merits-of-topic-based-methods" title="Permalink to this heading">#</a></h2>
+<p>The topic-based method of measuring economic uncertainty has several strengths relative to other methods:</p>
+<ol class="arabic simple">
+<li><p><strong>Comprehensiveness:</strong> Unlike methods that rely on specific keywords, a topic-based approach analyzes the entire mixture of words in an article, providing a more holistic view of the content and theme of the article. This allows for a comprehensive understanding of the context in which uncertainty is discussed.</p></li>
+<li><p><strong>Flexibility:</strong> It’s not reliant on the presence of specific pre-determined keywords, which can sometimes lead to false positives (an article might contain all the keywords but not actually be about the specific type of uncertainty being measured) or false negatives (an article could be discussing a topic of uncertainty without using the specific keywords).</p></li>
+<li><p><strong>Disambiguation:</strong> Topic-based methods can differentiate between different types of uncertainty, allowing for more nuanced analysis. For instance, the paper mentions the ability to differentiate between uncertainty related to “economic and financial distress”, “institutional framework of monetary policy”, “Norway’s relationship with the EU”, and “technology and firm expansion”.</p></li>
+<li><p><strong>Correlation with other measures:</strong> The paper found positive correlations between the topic-based uncertainty measures and other established uncertainty proxies such as the US VIX and realized stock market volatility in Norway, suggesting that this method is valid and reliable.</p></li>
+</ol>
+<p>However, it’s worth noting that topic-based methods also have limitations. The process of assigning labels based on the topic correlations may be subjective, and the measures may not capture all forms of uncertainty, especially those not frequently discussed in the news media. As with any method, topic-based measures are one tool in the larger toolbox for analyzing economic uncertainty and are likely to be most effective when used in conjunction with other methods.</p>
+</section>
+<section id="topic-modeling">
+<h2>Topic Modeling<a class="headerlink" href="#topic-modeling" title="Permalink to this heading">#</a></h2>
+<p>Topic modeling is an unsupervised machine learning technique that automatically identifies the main topics in a collection of documents. It provides a way of uncovering hidden thematic patterns in the text and categorizing the documents based on these themes.</p>
+<p>The output of topic modeling is a list of topics, each represented by a collection of words, and a weight or probability distribution over those words. Each document is then represented as a mixture of these topics. The idea is that certain combinations of words tend to appear together in documents on the same topic. For instance, a document about monetary policy might frequently use words like “interest”, “rates”, “central bank”, and “inflation”.</p>
+<p>There are several algorithms used for topic modeling, but one of the most popular ones is Latent Dirichlet Allocation (LDA).</p>
+<section id="latent-dirichlet-allocation-lda">
+<h3>Latent Dirichlet Allocation (LDA)<a class="headerlink" href="#latent-dirichlet-allocation-lda" title="Permalink to this heading">#</a></h3>
+<p>LDA is a generative probabilistic model that assumes each document is a mixture of a certain number of topics and each word in the document is attributable to one of the document’s topics. The “latent” in LDA refers to the fact that the assignment of words to topics is not observed and needs to be inferred.</p>
+<p>A generative model, such as Latent Dirichlet Allocation (LDA), tries to mimic the process of how the data was generated. In the context of text data and topic modeling, LDA attempts to reverse engineer the process by which a human might have written a collection of documents.</p>
+<p>When a human writes an article or a document, they typically have several topics or themes in mind. For example, if a journalist is writing an article about monetary policy in Cambodia, they might want to discuss topics such as inflation, interest rates, and the role of the National Bank of Cambodia. The writer doesn’t pick topics for each word randomly; instead, they have a distribution of topics in their mind, and words related to those topics are more likely to appear in the article.</p>
+<p>In the process of writing, the author selects a topic based on their topic distribution and then writes down a word based on the word distribution of that topic. This process is repeated until the article is complete. This is the generative process that LDA tries to model.</p>
+<p>LDA, as a generative model, attempts to go back from the observed data (the words in the documents) to the hidden parameters that might have generated this data (the topic mixtures for each document and the word distributions for each topic). It does this by assuming that documents are produced in the following way:</p>
+<ol class="arabic simple">
+<li><p>For each document, a mixture of topics is chosen from a Dirichlet distribution. Each topic is represented as a distribution over words.</p></li>
+<li><p>For each word in the document, a topic is chosen from the document’s topic mixture.</p></li>
+<li><p>A word is chosen from the word distribution of the selected topic.</p></li>
+</ol>
+<p>By working backwards from the observed documents, LDA can infer the hidden topic structure, providing insight into the underlying themes of the collection of documents. This makes LDA a powerful tool for uncovering the latent topics that pervade a large corpus of text.</p>
+<p><strong>The Number of Topics</strong></p>
+<p>One of the crucial decisions a researcher needs to make when using Latent Dirichlet Allocation (LDA) for topic modeling is deciding the number of topics (often denoted as “K”) in the model. This choice highly impacts the results because it determines how granular the topics identified by the model will be.</p>
+<p>If the number of topics is set too low, the model may produce broad, unspecific topics that are not very informative. On the other hand, if the number of topics is set too high, the model may produce very specific topics that only cover a small number of documents, or even split what is conceptually one topic into multiple topics.</p>
+<p>Unfortunately, there is no surefire way to select the “correct” number of topics a priori. It often requires iterative trial and error, guided by the researcher’s domain knowledge and the quality of the topics produced. To aid in this process, measures such as perplexity and topic coherence can be used.</p>
+<p><strong>Topic Coherence</strong></p>
+<p>Topic coherence is a measure of how semantically consistent the words in a topic are. It aims to quantify the degree to which a topic is interpretable and meaningful to humans. Topic coherence measures have been found to correlate well with human interpretability.</p>
+<p>Several different measures of topic coherence exist, but they generally follow the same logic: topics containing words that frequently co-occur or are semantically similar should have high coherence, while topics with words that rarely co-occur or are semantically dissimilar should have low coherence. Some popular measures of topic coherence include:</p>
+<ol class="arabic simple">
+<li><p><strong>C_v measure</strong>: This measure leverages a sliding window to capture the semantic similarity of word pairs and normalize indirect confirmation measures. It is widely used due to its superior performance compared to other coherence measures.</p></li>
+<li><p><strong>U_mass measure</strong>: It is based on document co-occurrence and a sliding window. It measures the co-occurrence of pairs of words in the same window.</p></li>
+</ol>
+<p>High coherence scores suggest that the words within a given topic co-occur more frequently, making the topic more interpretable and, thus, more useful.</p>
+</section>
+</section>
+<section id="the-output-of-topic-modeling">
+<h2>The Output of Topic Modeling<a class="headerlink" href="#the-output-of-topic-modeling" title="Permalink to this heading">#</a></h2>
+<p>The output of the LDA model will provide two primary components relevant to the research study: topic-word distributions and document-topic distributions.</p>
+<p><strong>Topic-Word Distributions:</strong></p>
+<p>A topic-word distribution is a matrix that indicates the probability of a word being part of a particular topic. This distribution allows us to understand the composition of each topic. In the context of this research, it provides insights into the primary themes discussed in the context of Cambodia’s monetary policy.</p>
+<p>For example, a topic might include words such as “dollarization”, “riel”, “exchange rate”, and “currency” with high probabilities, which could indicate a theme focused on currency management. Alternatively, a topic might include words like “inflation”, “price stability”, and “consumer price index”, pointing to a topic centered on price stability concerns.</p>
+<p><strong>Document-Topic Distributions:</strong></p>
+<p>The document-topic distribution is a matrix that indicates the probability of a document (or in this case, a news article) being about a certain topic. This distribution allows us to understand which topics are discussed in each news article.</p>
+<p>In the context of this research, it can give a sense of the main themes addressed in each article, and by extension, it can provide insights into what aspects of monetary policy were of primary concern at different points in time. For example, if many articles around a certain date have a high probability for a topic related to inflation, it could suggest that inflation concerns were particularly salient at that time.</p>
+<p>Furthermore, the temporal trends in these topic probabilities can give insights into the evolution of monetary policy uncertainty over time. If the probabilities for certain topics increase during periods of economic instability or major policy changes, it would suggest that these topics contribute to monetary policy uncertainty.</p>
+<section id="estimation-of-lda-and-identification-of-uncertainty-topics">
+<h3>Estimation of LDA and Identification of Uncertainty Topics<a class="headerlink" href="#estimation-of-lda-and-identification-of-uncertainty-topics" title="Permalink to this heading">#</a></h3>
+<p>Given the mathematical foundation of our LDA model, we further specify the methodology for identifying and quantifying uncertainty-related topics.</p>
+<p>Firstly, we define a set of seed words related to uncertainty to guide the second LDA model. These seed words represent the inherent vocabulary of uncertainty and are used to initialize the topic-word distribution for the uncertainty-related topics.</p>
+<p>The EM algorithm then comes into play to estimate both the topic-word and document-topic distributions. During the E-step, we calculate the posterior distribution of the topic assignments considering the observed words and the current estimates of the distributions:</p>
+<div class="math notranslate nohighlight">
+\[p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)}) = \frac{\phi_{k,w_{i,j}}^{(t)} \theta_{i,k}^{(t)}}{\sum_{l=1}^K \phi_{l,w_{i,j}}^{(t)} \theta_{i,l}^{(t)}}\]</div>
+<p>In the subsequent M-step, we update the estimates of the topic-word and document-topic distributions based on this posterior distribution:</p>
+<div class="math notranslate nohighlight">
+\[\phi_{k,w}^{(t+1)} = \frac{\sum_{i=1}^M \sum_{j=1}^{N_i} w_{i,j} [z_{i,j}=k] p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}{\sum_{i=1}^M \sum_{j=1}^{N_i} [z_{i,j}=k] p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}\]</div>
+<div class="math notranslate nohighlight">
+\[\theta_{i,k}^{(t+1)} = \frac{\sum_{j=1}^{N_i} [z_{i,j}=k] p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}{\sum_{j=1}^{N_i} \sum_{l=1}^K [z_{i,j}=l] p(z_{i,j}=l|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}\]</div>
+<p>With the aid of the indicator function <span class="math notranslate nohighlight">\([z_{i,j}=k]\)</span> which equals 1 when <span class="math notranslate nohighlight">\(z_{i,j}=k\)</span> and 0 otherwise.</p>
+<p>The algorithm iterates until convergence, after which we select the uncertainty-related topics as those with the highest probabilities of containing at least one of the seed words.</p>
+<p>Finally, to quantify uncertainty, we compute an ‘uncertainty score’ for each document. This score is derived as the sum of the probabilities of the uncertainty-related topics in the document. Thus, a document with a higher uncertainty score signifies a higher level of policy uncertainty.</p>
+<p>This method of identifying and quantifying uncertainty-related topics underpins the second LDA model for measuring the intensity of policy uncertainty.</p>
+</section>
+</section>
+<section id="quantifying-uncertainty">
+<h2>Quantifying Uncertainty<a class="headerlink" href="#quantifying-uncertainty" title="Permalink to this heading">#</a></h2>
+<p>Given the complexities associated with assessing policy uncertainty in a highly dollarized economy such as Cambodia, a sophisticated, dual-model approach will be employed. This involves developing two separate Latent Dirichlet Allocation (LDA) models. The first will categorize the topic of policy uncertainty, and the second will measure the intensity of the uncertainty.</p>
+<ol class="arabic">
+<li><p><strong>Topic Classification Model (Model 1):</strong></p>
+<p>The first LDA model is used to classify potential topics that represent key areas of policy uncertainty. The focus areas are:</p>
+<ul class="simple">
+<li><p>Exchange Rate Policy Uncertainty</p></li>
+<li><p>Currency Stabilization Policy Uncertainty</p></li>
+<li><p>De-dollarization Policy Uncertainty</p></li>
+<li><p>Impact of International Monetary Policy Uncertainty</p></li>
+</ul>
+<p>This model is initialized with seed words that represent each of these topics. The seed words are expected to guide the model to learn a vocabulary associated with these areas of interest. However, the number of topics (<span class="math notranslate nohighlight">\(K\)</span>) in this model is not predetermined as four, but set higher to allow the model to learn a broader set of topics. Subsequent analysis will help identify which of these learned topics are most related to the policy areas of interest.</p>
+</li>
+<li><p><strong>Uncertainty Intensity Model (Model 2):</strong></p>
+<p>The second LDA model is designed to measure the intensity of uncertainty within articles. The goal is to pin down uncertainty-related articles to one or more specific topics, signifying the primary areas of uncertainty for that article.</p>
+<p>For this model, we use a predefined set of seed words related to uncertainty. These seed words guide the topic modeling process. After initializing the topic-word distribution for the topics with a uniform distribution over the seed words, we employ the EM algorithm, as described in the previous section, to estimate the topic-word and document-topic distributions.</p>
+<p>After the algorithm’s convergence, we identify uncertainty-related topics as those having the highest probability of containing at least one seed word. This gives us a set of themes of uncertainty for each article. To measure the intensity of this uncertainty, we then compute the ‘uncertainty score’ for each document. This score is the sum of the probabilities of the uncertainty-related topics within the document:</p>
+<div class="math notranslate nohighlight">
+\[\text{Uncertainty Score}_i = \sum_{k \in K_{unc}} \theta_{i,k}\]</div>
+<p>where <span class="math notranslate nohighlight">\(K_{unc}\)</span> is the set of uncertainty-related topics, and <span class="math notranslate nohighlight">\(\theta_{i,k}\)</span> is the proportion of the <span class="math notranslate nohighlight">\(i\)</span>th document assigned to topic <span class="math notranslate nohighlight">\(k\)</span>. A higher uncertainty score signifies a higher level of policy uncertainty within that document.</p>
+</li>
+</ol>
+<p>Through these two models, we aim to classify the main themes of policy uncertainty (Model 1) and measure the intensity of such uncertainty (Model 2), providing a comprehensive approach to quantifying central bank policy uncertainty in the context of the National Bank of Cambodia.</p>
+<section id="aggregation">
+<h3>Aggregation<a class="headerlink" href="#aggregation" title="Permalink to this heading">#</a></h3>
+<p>Once we’ve obtained the uncertainty scores from the LDA Model 2 for all articles, our next step involves the aggregation of these scores to derive a single measure of policy uncertainty over time. We aim to analyze the overall policy uncertainty and its evolution, hence the need for this time-series representation.</p>
+<p>The process of aggregation is as follows:</p>
+<ol class="arabic simple">
+<li><p><strong>Time Frame Determination:</strong> The temporal granularity of the final uncertainty measure needs to be determined. Depending on the research question and the density of our data, we may want to aggregate the scores into daily, monthly, or annual measures.</p></li>
+<li><p><strong>Normalization:</strong> Uncertainty scores are normalized across all articles to have the same scale. This is typically done using min-max normalization or standardization (z-score), depending on the distribution of scores.</p></li>
+<li><p><strong>Aggregation:</strong> For each time period (day/month/year depending on step 1), we aggregate the normalized uncertainty scores of all articles published within that period. Aggregation can be done through several methods such as mean, median, or sum. The choice depends on whether we want to mitigate the effect of potential outliers (median), or whether we want to include all information, including potential extreme values (sum).</p></li>
+<li><p><strong>Smoothness:</strong> Depending on the nature of our data, there might be significant fluctuations in the uncertainty measure over short periods. To ensure that our measure captures the broader trends and not the short-term fluctuations, we may apply a smoothing technique, such as moving average smoothing.</p></li>
+<li><p><strong>Standardization (Optional):</strong> Depending on the research needs, the series can be further standardized to have a mean of zero and a standard deviation of one. This allows for better comparison with other economic indicators or series.</p></li>
+<li><p><strong>Interpretation:</strong> The final measure represents the level of monetary policy uncertainty in the Cambodian economy for each time period. Higher values represent periods of greater uncertainty, while lower values signify periods of relative clarity or predictability.</p></li>
+</ol>
+<p>Through this process, we transform our document-level uncertainty scores into a coherent, time-series measure of policy uncertainty. This aggregated measure can then be used for further econometric analysis or to study the impact of policy uncertainty on various economic indicators.</p>
+</section>
+<section id="id1">
+<h3>Aggregation<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>After each article has been assigned a topic category from Model 1 and an uncertainty score from Model 2, these data points can be aggregated over time to create a series of policy uncertainty indices. These indices can then be used to track the level of policy uncertainty in each category over time.</p>
+<p>For instance, we could compute a monthly Exchange Rate Policy Uncertainty Index by taking the average uncertainty score of all articles classified under ‘Exchange Rate Policy Uncertainty’ in each month. Similar indices could be created for the other categories.</p>
+<p>This dual-model approach allows us to capture not only the overall level of policy uncertainty but also how this uncertainty is distributed across different policy areas. This can provide valuable insights into the specific sources of policy uncertainty and how these evolve over time.</p>
+<p>It is important to note, however, that this approach assumes that the relative weight of uncertainty-related topics in an article is indicative of the intensity of uncertainty. This assumption should be validated by comparing the results with other indicators of policy uncertainty, where available. Also, the robustness of the findings should be verified by applying different topic modeling parameters and checking for consistency in the results.</p>
+</section>
+</section>
+<section id="id2">
+<h2><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>To explain the method using equations in LaTex, we can start by defining some notation. Let <span class="math notranslate nohighlight">\(w_{i,j}\)</span> be the <span class="math notranslate nohighlight">\(j\)</span>th word in the <span class="math notranslate nohighlight">\(i\)</span>th document, and let <span class="math notranslate nohighlight">\(z_{i,j}\)</span> be the topic assignment for that word. We assume that there are <span class="math notranslate nohighlight">\(K\)</span> topics, and that the topic-word distribution is given by <span class="math notranslate nohighlight">\(\phi_{k,w}\)</span>, which is the probability of word <span class="math notranslate nohighlight">\(w\)</span> given topic <span class="math notranslate nohighlight">\(k\)</span>. Similarly, the document-topic distribution is given by <span class="math notranslate nohighlight">\(\theta_{i,k}\)</span>, which is the probability of topic <span class="math notranslate nohighlight">\(k\)</span> given document <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>The joint probability of the observed words and topic assignments is given by:</p>
+<div class="math notranslate nohighlight">
+\[p(\mathbf{w},\mathbf{z}|\boldsymbol{\phi},\boldsymbol{\theta}) = \prod_{i=1}^M \prod_{j=1}^{N_i} p(w_{i,j}|z_{i,j},\boldsymbol{\phi}) p(z_{i,j}|\boldsymbol{\theta}_i)\]</div>
+<p>where <span class="math notranslate nohighlight">\(M\)</span> is the number of documents, <span class="math notranslate nohighlight">\(N_i\)</span> is the number of words in document <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol{\phi}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> are the topic-word and document-topic distributions, respectively.</p>
+<p>The first term in the product is the probability of the observed word given its topic assignment and the topic-word distribution:</p>
+<div class="math notranslate nohighlight">
+\[p(w_{i,j}|z_{i,j},\boldsymbol{\phi}) = \phi_{z_{i,j},w_{i,j}}\]</div>
+<p>The second term is the probability of the topic assignment given the document and the document-topic distribution:</p>
+<div class="math notranslate nohighlight">
+\[p(z_{i,j}|\boldsymbol{\theta}_i) = \theta_{i,z_{i,j}}\]</div>
+<p>To estimate the topic-word and document-topic distributions, we use the EM algorithm. In the E-step, we compute the posterior distribution of the topic assignments given the observed words and the current estimates of the topic-word and document-topic distributions:</p>
+<div class="math notranslate nohighlight">
+\[p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)}) = \frac{\phi_{k,w_{i,j}}^{(t)} \theta_{i,k}^{(t)}}{\sum_{l=1}^K \phi_{l,w_{i,j}}^{(t)} \theta_{i,l}^{(t)}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{\phi}^{(t)}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\theta}^{(t)}\)</span> are the estimates of the topic-word and document-topic distributions at iteration <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>In the M-step, we update the estimates of the topic-word and document-topic distributions based on the posterior distribution of the topic assignments:</p>
+<div class="math notranslate nohighlight">
+\[\phi_{k,w}^{(t+1)} = \frac{\sum_{i=1}^M \sum_{j=1}^{N_i} w_{i,j} [z_{i,j}=k] p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}{\sum_{i=1}^M \sum_{j=1}^{N_i} [z_{i,j}=k] p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}\]</div>
+<div class="math notranslate nohighlight">
+\[\theta_{i,k}^{(t+1)} = \frac{\sum_{j=1}^{N_i} [z_{i,j}=k] p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}{\sum_{j=1}^{N_i} \sum_{l=1}^K [z_{i,j}=l] p(z_{i,j}=l|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}\]</div>
+<p>where <span class="math notranslate nohighlight">\([z_{i,j}=k]\)</span> is an indicator function that takes the value 1 if <span class="math notranslate nohighlight">\(z_{i,j}=k\)</span> and 0 otherwise.</p>
+<p>To pin down topics in relation to the LDA distribution estimation process for Model 2, we use a predefined set of keywords related to uncertainty to guide the topic modeling process. These keywords are used to create a list of seed words for each uncertainty-related topic. We then initialize the topic-word distribution for each uncertainty-related topic to be a uniform distribution over the seed words, and the topic-word distribution for all other topics to be a uniform distribution over all words.</p>
+<p>We then run the EM algorithm to estimate the topic-word and document-topic distributions, as described above. After convergence, we identify the uncertainty-related topics by selecting the topics with the highest probability of containing at least one seed word. We then compute the uncertainty score for each document as the sum of the probabilities of the uncertainty-related topics in that document.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "entelecheia/nbcpu",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./paper/methodology"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../literature/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Literature Review</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../evaluation/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Evaluation of the Topic-Based Uncertainty Measures</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-merits-of-topic-based-methods">The Merits of Topic-based Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-modeling">Topic Modeling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#latent-dirichlet-allocation-lda">Latent Dirichlet Allocation (LDA)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-output-of-topic-modeling">The Output of Topic Modeling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation-of-lda-and-identification-of-uncertainty-topics">Estimation of LDA and Identification of Uncertainty Topics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-uncertainty">Quantifying Uncertainty</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregation">Aggregation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Aggregation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Young Joon Lee
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
