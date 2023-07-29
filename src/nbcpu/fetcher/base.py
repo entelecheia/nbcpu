@@ -248,7 +248,7 @@ def crawl_links(
     links = []
     link_urls = link_urls or []
     logger.info("Fetching links for keyword: %s", keyword)
-    while max_num_pages is None or page <= max_num_pages:
+    while True:
         page_url = search_url.format(page=page, keyword=keyword)
 
         logger.info("[Keyword: %s] Page: %s", keyword, page)
@@ -274,12 +274,15 @@ def crawl_links(
                     link["url"],
                 )
 
+        page += 1
+
+        if max_num_pages and page > max_num_pages:
+            logger.info("Reached max number of pages, stopping...")
+            break
         # Delay between requests
         if delay_between_requests > 0:
             logger.info("Sleeping for %s seconds...", delay_between_requests)
             time.sleep(delay_between_requests)
-
-        page += 1
 
     logger.info("Finished fetching links for keyword: %s", keyword)
     logger.info("Total links fetched: %s", len(links))
@@ -343,7 +346,7 @@ def scrape_article_text(
             logger.info("Article [%s](%s) scraped", title, url)
 
         # Delay between requests
-        if delay_between_requests > 0:
+        if delay_between_requests > 0 and i < len(links) - 1:
             logger.info("Sleeping for %s seconds...", delay_between_requests)
             time.sleep(delay_between_requests)
 
