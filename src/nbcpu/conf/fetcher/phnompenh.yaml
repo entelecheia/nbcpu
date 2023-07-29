@@ -1,0 +1,33 @@
+_target_: nbcpu.fetcher.phnompenh.PhnompenhFetcher
+_config_name_: phnompenh
+_config_group_: fetcher
+search_url: https://phnompenhpost.com/search/node/{keyword}?page={page}
+search_keywords:
+- NBC
+- Exchange Rate
+- De-dollarization
+- Inflation
+- GDP
+- Monetary Policy
+- Finance
+- Banking
+- Stock Exchange
+- Uncertain
+- Economic
+- Policy
+- Financial
+- Riel
+- Bank
+- Economy
+- Securities Exchange
+- National Bank of Cambodia
+max_num_pages: 2
+max_num_articles: 10
+output_dir: workspace/datasets/fetcher/phnompenh
+link_filename: links.jsonl
+article_filename: articles.jsonl
+overwrite_existing: false
+key_field: url
+num_workers: 1
+print_every: 10
+verbose: true
