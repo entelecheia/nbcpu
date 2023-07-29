@@ -447,9 +447,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-scraping">1. Web Scraping</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text-extraction">2. Article Text Extraction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-serialization">3. Data Serialization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-snippet">Example snippet</a></li>
 </ul>
             </nav>
         </div>
@@ -463,7 +466,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="dataset-preparation-for-khmer-times">
 <h1>Dataset Preparation for Khmer Times<a class="headerlink" href="#dataset-preparation-for-khmer-times" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <p>The dataset for Khmer Times is prepared as follows:</p>
+</section>
 <section id="web-scraping">
 <h2>1. Web Scraping<a class="headerlink" href="#web-scraping" title="Permalink to this heading">#</a></h2>
 <p>Web scraping is performed using Python with the help of the <code class="docutils literal notranslate"><span class="pre">requests</span></code> and <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> libraries. A Python function is written to crawl the search results pages of the Khmer Times website and extract the URLs of the news articles. The function takes a search keyword as input and iteratively crawls the search results pages until it encounters a page that returns a 404 error, indicating that there are no more results.</p>
@@ -491,6 +497,66 @@ document.write(`
 <p>The list of dictionaries containing the article data is then serialized to a JSON file using Python’s <code class="docutils literal notranslate"><span class="pre">json</span></code> library. The <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects representing the publication times of the articles are converted to ISO 8601 formatted strings before serialization, as <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects are not JSON serializable.</p>
 <p>The resulting JSON file contains an array of objects, where each object represents an article and has a <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">categories</span></code>, and <code class="docutils literal notranslate"><span class="pre">time</span></code> field. The <code class="docutils literal notranslate"><span class="pre">text</span></code> field contains the text of the article, the <code class="docutils literal notranslate"><span class="pre">categories</span></code> field contains a list of the categories of the article, and the <code class="docutils literal notranslate"><span class="pre">time</span></code> field contains the publication time of the article as an ISO 8601 formatted string.</p>
 <p>This JSON file serves as the dataset for this project.</p>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
+<p>We have saved 40002 articles from Khmer Times. Next task is to do the exploratory data analysis.</p>
+</section>
+<section id="example-snippet">
+<h2>Example snippet<a class="headerlink" href="#example-snippet" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># install nbcpu</span>
+<span class="o">%</span><span class="k">pip</span> install nbcpu
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nbcpu.fetcher.khmer</span> <span class="kn">import</span> <span class="n">KhmerFetcher</span>
+
+
+<span class="n">khmer</span> <span class="o">=</span> <span class="n">KhmerFetcher</span><span class="p">(</span>
+    <span class="n">search_keywords</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;NBC&quot;</span><span class="p">],</span>
+    <span class="n">max_num_pages</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">max_num_articles</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;./tmp/khmer&quot;</span><span class="p">,</span>
+    <span class="n">overwrite_existing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">khmer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/yj.lee/.venvs/nbcpu/lib/python3.8/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+INFO:nbcpu.fetcher.khmer:Fetching links for keyword: NBC
+INFO:nbcpu.fetcher.khmer:[Keyword: NBC] Page: 1
+INFO:nbcpu.fetcher.khmer:Title: NBC expanding Bakong operations to more Asian countries
+INFO:nbcpu.fetcher.khmer:URL: https://www.khmertimeskh.com/501317628/nbc-expanding-bakong-operations-to-more-asian-countries/
+INFO:nbcpu.fetcher.khmer:[Keyword: NBC] Page: 1
+INFO:nbcpu.fetcher.khmer:Title: All member banks of the Association of Banks in Cambodia have followed 10% loan portfolio in Riel as mandated by the NBC
+INFO:nbcpu.fetcher.khmer:URL: https://www.khmertimeskh.com/501265406/all-member-banks-of-the-association-of-banks-in-cambodia-have-followed-10-loan-portfolio-in-riel-as-mandated-by-the-nbc/
+INFO:nbcpu.fetcher.khmer:[Keyword: NBC] Page: 1
+INFO:nbcpu.fetcher.khmer:Title: Chea Serey is new NBC Dy Governor
+INFO:nbcpu.fetcher.khmer:URL: https://www.khmertimeskh.com/501252333/chea-serey-is-new-nbc-dy-governor/
+INFO:nbcpu.fetcher.khmer:Finished fetching links for keyword: NBC
+INFO:nbcpu.fetcher.khmer:Total links fetched: 30
+INFO:nbcpu.fetcher.khmer:Removed 0 duplicate links from 30 links
+INFO:nbcpu.fetcher.khmer:Saved 30 links to tmp/khmer/links.jsonl
+INFO:nbcpu.fetcher.khmer:Reached max number of articles, stopping...
+INFO:nbcpu.fetcher.khmer:Finished scraping articles
+INFO:nbcpu.fetcher.khmer:Total articles scraped: 5
+INFO:nbcpu.fetcher.khmer:Removed 0 duplicate articles from 5 articles
+INFO:nbcpu.fetcher.khmer:Saved 5 articles to tmp/khmer/articles.jsonl
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -552,9 +618,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-scraping">1. Web Scraping</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text-extraction">2. Article Text Extraction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-serialization">3. Data Serialization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-snippet">Example snippet</a></li>
 </ul>
   </nav></div>
 
