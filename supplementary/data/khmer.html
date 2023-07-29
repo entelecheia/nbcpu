@@ -447,10 +447,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-scraping">1. Web Scraping</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text-extraction">2. Article Text Extraction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-serialization">3. Data Serialization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-scraping">1. Web Scraping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text-extraction">2. Article Text Extraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-serialization">3. Data Serialization</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-snippet">Example snippet</a></li>
 </ul>
@@ -469,9 +471,8 @@ document.write(`
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <p>The dataset for Khmer Times is prepared as follows:</p>
-</section>
 <section id="web-scraping">
-<h2>1. Web Scraping<a class="headerlink" href="#web-scraping" title="Permalink to this heading">#</a></h2>
+<h3>1. Web Scraping<a class="headerlink" href="#web-scraping" title="Permalink to this heading">#</a></h3>
 <p>Web scraping is performed using Python with the help of the <code class="docutils literal notranslate"><span class="pre">requests</span></code> and <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> libraries. A Python function is written to crawl the search results pages of the Khmer Times website and extract the URLs of the news articles. The function takes a search keyword as input and iteratively crawls the search results pages until it encounters a page that returns a 404 error, indicating that there are no more results.</p>
 <p>The structure of the search results pages is as follows:</p>
 <ul class="simple">
@@ -482,7 +483,7 @@ document.write(`
 <p>The function extracts the title and URL of each article and stores them in a list of dictionaries.</p>
 </section>
 <section id="article-text-extraction">
-<h2>2. Article Text Extraction<a class="headerlink" href="#article-text-extraction" title="Permalink to this heading">#</a></h2>
+<h3>2. Article Text Extraction<a class="headerlink" href="#article-text-extraction" title="Permalink to this heading">#</a></h3>
 <p>Another Python function is written to follow the URLs extracted in the previous step and scrape the text of the articles. The function iterates over the list of URLs and sends a GET request to each URL. It then parses the HTML of the article page using BeautifulSoup.</p>
 <p>The structure of the article pages is as follows:</p>
 <ul class="simple">
@@ -493,10 +494,11 @@ document.write(`
 <p>The function extracts the text, categories, and publication time of each article and stores them in a list of dictionaries.</p>
 </section>
 <section id="data-serialization">
-<h2>3. Data Serialization<a class="headerlink" href="#data-serialization" title="Permalink to this heading">#</a></h2>
+<h3>3. Data Serialization<a class="headerlink" href="#data-serialization" title="Permalink to this heading">#</a></h3>
 <p>The list of dictionaries containing the article data is then serialized to a JSON file using Python’s <code class="docutils literal notranslate"><span class="pre">json</span></code> library. The <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects representing the publication times of the articles are converted to ISO 8601 formatted strings before serialization, as <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects are not JSON serializable.</p>
 <p>The resulting JSON file contains an array of objects, where each object represents an article and has a <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">categories</span></code>, and <code class="docutils literal notranslate"><span class="pre">time</span></code> field. The <code class="docutils literal notranslate"><span class="pre">text</span></code> field contains the text of the article, the <code class="docutils literal notranslate"><span class="pre">categories</span></code> field contains a list of the categories of the article, and the <code class="docutils literal notranslate"><span class="pre">time</span></code> field contains the publication time of the article as an ISO 8601 formatted string.</p>
 <p>This JSON file serves as the dataset for this project.</p>
+</section>
 </section>
 <section id="results">
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
@@ -618,10 +620,12 @@ INFO:nbcpu.fetcher.khmer:Saved 5 articles to tmp/khmer/articles.jsonl
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-scraping">1. Web Scraping</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text-extraction">2. Article Text Extraction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-serialization">3. Data Serialization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-scraping">1. Web Scraping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text-extraction">2. Article Text Extraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-serialization">3. Data Serialization</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-snippet">Example snippet</a></li>
 </ul>
