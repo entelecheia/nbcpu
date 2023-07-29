@@ -1,5 +1,4 @@
 """Phnom Penh Post Fetcher."""
-import time
 from datetime import datetime
 from functools import partial
 from typing import List, Optional
@@ -23,6 +22,7 @@ class PhnompenhFetcher(BaseFetcher):
     output_dir: str = f"workspace/datasets/{_config_group_}/{_config_name_}"
 
     start_page: int = 0
+    delay_between_requests: float = 20.0
     search_url: str = "https://phnompenhpost.com/search/node/{keyword}?page={page}"
     search_keywords: List[str] = [
         "NBC",
@@ -62,17 +62,19 @@ class PhnompenhFetcher(BaseFetcher):
 
 def _parse_page_links(
     page_url: str,
+    header: Optional[dict] = None,
     print_every: int = 10,
     verbose: bool = False,
 ) -> Optional[List[dict]]:
     """Get the links from the given page."""
     links = []
-    # Slow down requests:
-    # try adding a delay between your requests to avoid getting blocked.
-    # use the time.sleep function to add a delay.
-    time.sleep(1)
     try:
-        response = requests.get(page_url)
+        if header is None:
+            header = {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36"
+            }
+        response = requests.get(page_url, headers=header)
         # Check if page exists (status code 200) or not (status code 404)
         if response.status_code == 404:
             logger.info("Page [%s] does not exist, stopping...", page_url)
@@ -96,15 +98,16 @@ def _parse_page_links(
                 item.find("div", class_="posted-date").span.text.split("by")[0].strip()
             )
             date = datetime.strptime(date_str, "%d %b %Y")
-            snippet = item.find("p", class_="search-snippet").text.strip()
+            # snippet = item.find("p", class_="search-snippet").text.strip()
+
             if verbose and item_no % print_every == 0:
+                logger.info("Date: %s", date.isoformat())
                 logger.info("Title: %s", title)
                 logger.info("URL: %s", url)
             link = {
                 "title": title,
                 "url": url,
                 "date": date.isoformat(),
-                "snippet": snippet,
             }
             links.append(link)
     except Exception as e:
@@ -113,10 +116,18 @@ def _parse_page_links(
     return links
 
 
-def _parse_article_text(url: str) -> Optional[dict]:
+def _parse_article_text(
+    url: str,
+    header: Optional[dict] = None,
+) -> Optional[dict]:
     """Parse the article text from the given divs."""
     try:
-        response = requests.get(url)
+        if header is None:
+            header = {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36"
+            }
+        response = requests.get(url, headers=header)
         soup = BeautifulSoup(response.text, "html.parser")
 
         if article_body_div := soup.find("div", itemprop="articleBody"):
