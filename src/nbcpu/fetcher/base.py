@@ -132,7 +132,7 @@ class BaseFetcher(BaseModel):
         if links:
             self.save_links(links)
         else:
-            logger.info("No links found")
+            logger.info("No more links found")
 
     def save_links(self, links: List[dict]):
         self._links.extend(links)
@@ -181,7 +181,7 @@ class BaseFetcher(BaseModel):
         if articles:
             self.save_articles(articles)
         else:
-            logger.info("No articles found")
+            logger.info("No more articles found")
 
     def save_articles(self, articles: List[dict]):
         self._articles.extend(articles)
@@ -337,7 +337,7 @@ def scrape_article_text(
         article_urls.append(url)
         if article_filepath:
             HyFI.append_to_jsonl(article, article_filepath)
-        if verbose and (i + 1) % print_every == 0:
+        if (verbose and (i + 1) % print_every == 0) or delay_between_requests > 0:
             logger.info("Article [%s](%s) scraped", title, url)
 
         # Delay between requests
