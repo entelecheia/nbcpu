@@ -163,10 +163,6 @@ The process of aggregation is as follows:
 
 6. **Interpretation:** The final measure represents the level of monetary policy uncertainty in the Cambodian economy for each time period. Higher values represent periods of greater uncertainty, while lower values signify periods of relative clarity or predictability.
 
-Through this process, we transform our document-level uncertainty scores into a coherent, time-series measure of policy uncertainty. This aggregated measure can then be used for further econometric analysis or to study the impact of policy uncertainty on various economic indicators.
-
-### Aggregation
-
 After each article has been assigned a topic category from Model 1 and an uncertainty score from Model 2, these data points can be aggregated over time to create a series of policy uncertainty indices. These indices can then be used to track the level of policy uncertainty in each category over time.
 
 For instance, we could compute a monthly Exchange Rate Policy Uncertainty Index by taking the average uncertainty score of all articles classified under 'Exchange Rate Policy Uncertainty' in each month. Similar indices could be created for the other categories.
@@ -174,39 +170,3 @@ For instance, we could compute a monthly Exchange Rate Policy Uncertainty Index 
 This dual-model approach allows us to capture not only the overall level of policy uncertainty but also how this uncertainty is distributed across different policy areas. This can provide valuable insights into the specific sources of policy uncertainty and how these evolve over time.
 
 It is important to note, however, that this approach assumes that the relative weight of uncertainty-related topics in an article is indicative of the intensity of uncertainty. This assumption should be validated by comparing the results with other indicators of policy uncertainty, where available. Also, the robustness of the findings should be verified by applying different topic modeling parameters and checking for consistency in the results.
-
-##
-
-To explain the method using equations in LaTex, we can start by defining some notation. Let $w_{i,j}$ be the $j$th word in the $i$th document, and let $z_{i,j}$ be the topic assignment for that word. We assume that there are $K$ topics, and that the topic-word distribution is given by $\phi_{k,w}$, which is the probability of word $w$ given topic $k$. Similarly, the document-topic distribution is given by $\theta_{i,k}$, which is the probability of topic $k$ given document $i$.
-
-The joint probability of the observed words and topic assignments is given by:
-
-$$p(\mathbf{w},\mathbf{z}|\boldsymbol{\phi},\boldsymbol{\theta}) = \prod_{i=1}^M \prod_{j=1}^{N_i} p(w_{i,j}|z_{i,j},\boldsymbol{\phi}) p(z_{i,j}|\boldsymbol{\theta}_i)$$
-
-where $M$ is the number of documents, $N_i$ is the number of words in document $i$, and $\boldsymbol{\phi}$ and $\boldsymbol{\theta}$ are the topic-word and document-topic distributions, respectively.
-
-The first term in the product is the probability of the observed word given its topic assignment and the topic-word distribution:
-
-$$p(w_{i,j}|z_{i,j},\boldsymbol{\phi}) = \phi_{z_{i,j},w_{i,j}}$$
-
-The second term is the probability of the topic assignment given the document and the document-topic distribution:
-
-$$p(z_{i,j}|\boldsymbol{\theta}_i) = \theta_{i,z_{i,j}}$$
-
-To estimate the topic-word and document-topic distributions, we use the EM algorithm. In the E-step, we compute the posterior distribution of the topic assignments given the observed words and the current estimates of the topic-word and document-topic distributions:
-
-$$p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)}) = \frac{\phi_{k,w_{i,j}}^{(t)} \theta_{i,k}^{(t)}}{\sum_{l=1}^K \phi_{l,w_{i,j}}^{(t)} \theta_{i,l}^{(t)}}$$
-
-where $\boldsymbol{\phi}^{(t)}$ and $\boldsymbol{\theta}^{(t)}$ are the estimates of the topic-word and document-topic distributions at iteration $t$.
-
-In the M-step, we update the estimates of the topic-word and document-topic distributions based on the posterior distribution of the topic assignments:
-
-$$\phi_{k,w}^{(t+1)} = \frac{\sum_{i=1}^M \sum_{j=1}^{N_i} w_{i,j} [z_{i,j}=k] p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}{\sum_{i=1}^M \sum_{j=1}^{N_i} [z_{i,j}=k] p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}$$
-
-$$\theta_{i,k}^{(t+1)} = \frac{\sum_{j=1}^{N_i} [z_{i,j}=k] p(z_{i,j}=k|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}{\sum_{j=1}^{N_i} \sum_{l=1}^K [z_{i,j}=l] p(z_{i,j}=l|\mathbf{w},\boldsymbol{\phi}^{(t)},\boldsymbol{\theta}^{(t)})}$$
-
-where $[z_{i,j}=k]$ is an indicator function that takes the value 1 if $z_{i,j}=k$ and 0 otherwise.
-
-To pin down topics in relation to the LDA distribution estimation process for Model 2, we use a predefined set of keywords related to uncertainty to guide the topic modeling process. These keywords are used to create a list of seed words for each uncertainty-related topic. We then initialize the topic-word distribution for each uncertainty-related topic to be a uniform distribution over the seed words, and the topic-word distribution for all other topics to be a uniform distribution over all words.
-
-We then run the EM algorithm to estimate the topic-word and document-topic distributions, as described above. After convergence, we identify the uncertainty-related topics by selecting the topics with the highest probability of containing at least one seed word. We then compute the uncertainty score for each document as the sum of the probabilities of the uncertainty-related topics in that document.
