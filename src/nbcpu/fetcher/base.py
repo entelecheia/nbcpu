@@ -1,3 +1,5 @@
+"""Base Fetcher"""
+import time
 import multiprocessing as mp
 from functools import partial
 from pathlib import Path
@@ -27,12 +29,16 @@ class BaseFetcher(BaseModel):
     article_filename: str = "articles.jsonl"
     overwrite_existing: bool = False
     key_field: str = "url"
+    delay_between_requests: float = 0.0
     num_workers: int = 1
     print_every: int = 10
     verbose: bool = True
 
     _links: List[dict] = []
     _articles: List[dict] = []
+    _headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+    }
 
     def __call__(self):
         self.fetch()
@@ -113,6 +119,7 @@ class BaseFetcher(BaseModel):
             start_page=self.start_page,
             max_num_pages=self.max_num_pages,
             link_filepath=self.link_filepath_tmp,
+            delay_between_requests=self.delay_between_requests,
         )
         if num_workers > 1:
             links = self._fetch_links_mp(
@@ -163,6 +170,7 @@ class BaseFetcher(BaseModel):
             overwrite_existing=self.overwrite_existing,
             article_filepath=self.article_filepath_tmp,
             max_num_articles=self.max_num_articles,
+            delay_between_requests=self.delay_between_requests,
             print_every=self.print_every,
             verbose=self.verbose,
         )
@@ -219,6 +227,7 @@ def crawl_links(
     start_page: int = 1,
     max_num_pages: Optional[int] = 2,
     link_filepath: Optional[str] = None,
+    delay_between_requests: float = 0.0,
 ) -> List[dict]:
     """Crawl links for article links with the given keyword.
 
@@ -243,7 +252,10 @@ def crawl_links(
         page_url = search_url.format(page=page, keyword=keyword)
 
         logger.info("[Keyword: %s] Page: %s", keyword, page)
+
+        # Parse page
         page_links = parse_page_func(page_url)
+
         # Check if page_links is None
         if page_links is None:
             logger.info("No more links found, stopping...")
@@ -262,6 +274,9 @@ def crawl_links(
                     link["url"],
                 )
 
+        # Delay between requests
+        time.sleep(delay_between_requests)
+
         page += 1
 
     logger.info("Finished fetching links for keyword: %s", keyword)
@@ -276,6 +291,7 @@ def scrape_article_text(
     overwrite_existing: bool = False,
     max_num_articles: Optional[int] = 10,
     article_filepath: Optional[str] = None,
+    delay_between_requests: float = 0.0,
     print_every: int = 10,
     verbose: bool = False,
 ) -> List[dict]:
@@ -302,11 +318,11 @@ def scrape_article_text(
 
         url = link["url"]
         title = link["title"]
-        keyword = link["keyword"]
         if url in article_urls and not overwrite_existing:
             logger.info("Article [%s](%s) already exists, skipping...", title, url)
             continue
 
+        # Parse article
         _article = parse_article_func(url)
         if _article is None:
             logger.info(
@@ -315,11 +331,7 @@ def scrape_article_text(
                 url,
             )
             continue
-        article = {
-            "url": url,
-            "keyword": keyword,
-            "title": title,
-        }
+        article = link.copy()
         article.update(_article)
         articles.append(article)
         article_urls.append(url)
@@ -327,8 +339,9 @@ def scrape_article_text(
             HyFI.append_to_jsonl(article, article_filepath)
         if verbose and (i + 1) % print_every == 0:
             logger.info("Article [%s](%s) scraped", title, url)
-        else:
-            logger.info("Article [%s](%s) does not exist, skipping...", title, url)
+
+        # Delay between requests
+        time.sleep(delay_between_requests)
 
     logger.info("Finished scraping articles")
     logger.info("Total articles scraped: %s", len(articles))
