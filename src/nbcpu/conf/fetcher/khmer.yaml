@@ -1,6 +1,6 @@
 _target_: nbcpu.fetcher.khmer.KhmerFetcher
 _config_name_: khmer
-_config_group_: fetcher
+_config_group_: /fetcher
 search_url: https://www.khmertimeskh.com/page/{page}/?s={keyword}
 search_keywords:
 - NBC
@@ -24,7 +24,7 @@ search_keywords:
 start_page: 1
 max_num_pages: 2
 max_num_articles: 10
-output_dir: workspace/datasets/fetcher/khmer
+output_dir: workspace/datasets//fetcher/khmer
 link_filename: links.jsonl
 article_filename: articles.jsonl
 overwrite_existing: false

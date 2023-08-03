@@ -1,6 +1,6 @@
 _target_: nbcpu.fetcher.phnompenh.PhnompenhFetcher
 _config_name_: phnompenh
-_config_group_: fetcher
+_config_group_: /fetcher
 search_url: https://phnompenhpost.com/search/node/{keyword}?page={page}
 search_keywords:
 - NBC
