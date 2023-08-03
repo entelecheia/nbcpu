@@ -17,7 +17,7 @@ class BaseFetcher(BaseModel):
     """
 
     _config_name_: str = "base"
-    _config_group_: str = "fetcher"
+    _config_group_: str = "/fetcher"
 
     search_url: str = ""
     search_keywords: List[str] = []
@@ -121,15 +121,10 @@ class BaseFetcher(BaseModel):
             link_filepath=self.link_filepath_tmp,
             delay_between_requests=self.delay_between_requests,
         )
-        if num_workers > 1:
-            links = self._fetch_links_mp(
-                num_workers,
-                fetch_links_func,
-            )
-        else:
-            for keyword in self.search_keywords_encoded:
-                links = fetch_links_func(keyword)
-        if links:
+        if links := self._fetch_links_mp(
+            num_workers,
+            fetch_links_func,
+        ):
             self.save_links(links)
         else:
             logger.info("No more links found")
@@ -174,11 +169,7 @@ class BaseFetcher(BaseModel):
             print_every=self.print_every,
             verbose=self.verbose,
         )
-        if num_workers > 1:
-            articles = self._fetch_articles_mp(num_workers, fetch_articles_func)
-        else:
-            articles = fetch_articles_func(self.links)
-        if articles:
+        if articles := self._fetch_articles_mp(num_workers, fetch_articles_func):
             self.save_articles(articles)
         else:
             logger.info("No more articles found")
