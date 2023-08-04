@@ -3,7 +3,7 @@ defaults:
   - /pipe@pipe_load_dataset: load_dataset
   - /pipe@pipe_load: load_dataset_from_disk
   - /pipe@pipe_save: save_dataset_to_disk
-  # - /pipe@pipe_tokenize: tokenize_dataset
+  - /pipe@pipe_tokenize: tokenize_dataset
   - /pipe@pipe_sample: sample_dataset
   # - /pipe@pipe_extract: extract_tokens
   - /pipe@pipe_to_pandas: dataset_to_pandas

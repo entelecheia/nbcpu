@@ -14,6 +14,16 @@ steps:
       sample_size: 15
       randomize: true
       verbose: true
+  - uses: pipe_tokenize
+    with:
+      tokenizer_config_name: nltk
+      # batch_size: 3
+      num_workers: 10
+      text_col: text
+      token_col: tokens
+      # remove_columns: [bodyText, analyse_text]
+      load_from_cache_file: false
+      verbose: true
   - uses: pipe_save
     with:
       dataset_path: datasets/processed/kakao_nouns_test
