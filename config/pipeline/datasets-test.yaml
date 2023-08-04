@@ -16,7 +16,7 @@ steps:
       verbose: true
   - uses: pipe_tokenize
     with:
-      tokenizer_config_name: nltk
+      tokenizer: nbcpu
       # batch_size: 3
       num_workers: 10
       text_col: text
@@ -26,5 +26,5 @@ steps:
       verbose: true
   - uses: pipe_save
     with:
-      dataset_path: datasets/processed/kakao_nouns_test
+      dataset_path: datasets/processed/khmer
     verbose: true
