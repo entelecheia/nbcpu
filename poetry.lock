@@ -1173,13 +1173,13 @@ packaging = "*"
 
 [[package]]
 name = "hyfi"
-version = "1.18.0"
+version = "1.18.1"
 description = "Hydra Fast Interface (Hydra and Pydantic based interface framework)"
 optional = false
 python-versions = ">=3.8.1,<3.12"
 files = [
-    {file = "hyfi-1.18.0-py3-none-any.whl", hash = "sha256:afee1c4766c4016502c5472fc9ec5e5894ff5e19bfe06b0c52597b598025a6ea"},
-    {file = "hyfi-1.18.0.tar.gz", hash = "sha256:769c6e36008e40bfb7cebcea9efbf9d9b61f23dfdb7333609ef231c3c048c499"},
+    {file = "hyfi-1.18.1-py3-none-any.whl", hash = "sha256:d71ef0abc5087f6f55bd6013daae7154a429cf7a56db76f8f2f9d9574137f298"},
+    {file = "hyfi-1.18.1.tar.gz", hash = "sha256:ffe41168f52b72b92ac3646462eb10e0ec615661e3179deb64a86b08a1cd38ee"},
 ]
 
 [package.dependencies]
@@ -1440,13 +1440,13 @@ files = [
 
 [[package]]
 name = "lexikanon"
-version = "0.4.1"
+version = "0.4.2"
 description = "A Python Library for Tokenizers"
 optional = false
 python-versions = ">=3.8.1,<3.12"
 files = [
-    {file = "lexikanon-0.4.1-py3-none-any.whl", hash = "sha256:b099e6fe7fe478e8b203d1518c32e15dc628bd1f34890a20f8ff4cbe708c59fe"},
-    {file = "lexikanon-0.4.1.tar.gz", hash = "sha256:d35a52c2bf35d3f22e36a89d9d616a3a8beaa269546c5f286594de07c03e6935"},
+    {file = "lexikanon-0.4.2-py3-none-any.whl", hash = "sha256:3b8601275397430b3c476288244b97fb8d9c0df460da264d9deb3cf587c362e3"},
+    {file = "lexikanon-0.4.2.tar.gz", hash = "sha256:d981ab1253116e18f27dddaa40811a3022b00aa6023accfff94fffec192743eb"},
 ]
 
 [package.dependencies]
@@ -3110,4 +3110,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<3.12"
-content-hash = "abcb173ce971f6e9c18b335bea09c2f87df617db56bac64eac2ff8f4c69ba6ff"
+content-hash = "799fc04b9662cf8cd6dd470061b3793c81dfd0ab14aab843d4252b26a0809636"
