@@ -1,5 +1,16 @@
 <!--next-version-placeholder-->
 
+## v0.6.0 (2023-08-04)
+
+### Feature
+
+* **pipeline:** Add pipe_tokenize to datasets-test.yaml and datasets.yaml ([`439eaa8`](https://github.com/entelecheia/nbcpu/commit/439eaa851dcb8de79a087a9a7e7a8ca2e5218821))
+* **nbcpu:** Add lexikanon to plugins ([`9c08de9`](https://github.com/entelecheia/nbcpu/commit/9c08de9d6f874f0cb17e0f7bdd14030bf1d326e5))
+* **pyproject.toml:** Add lexikanon dependency ([`8f6f444`](https://github.com/entelecheia/nbcpu/commit/8f6f444dc5a93018334d591db98e80c16fb71028))
+* **pipeline:** Add datasets-test configuration ([`d657675`](https://github.com/entelecheia/nbcpu/commit/d657675673825ed5cfe18556d0d26aa7e6f58202))
+* **config:** Add datasets.yaml configuration for pipeline ([`712a229`](https://github.com/entelecheia/nbcpu/commit/712a2293b5a80906f6ecffbe16c38273ba269572))
+* **config/task:** Add datasets configuration file ([`3919fde`](https://github.com/entelecheia/nbcpu/commit/3919fdecc5dfafd2b13e7a8e4261d7b1d2f8defa))
+
 ## v0.5.0 (2023-07-29)
 
 ### Feature
