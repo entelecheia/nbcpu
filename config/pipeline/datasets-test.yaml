@@ -1,0 +1,20 @@
+defaults:
+  - datasets
+
+use_task_as_initial_object: true
+steps:
+  - uses: pipe_load_dataset
+    with:
+      data_files: datasets/khmer/articles.jsonl
+      path: json
+      split: train
+    verbose: true
+  - uses: pipe_sample
+    with:
+      sample_size: 15
+      randomize: true
+      verbose: true
+  - uses: pipe_save
+    with:
+      dataset_path: datasets/processed/kakao_nouns_test
+    verbose: true
