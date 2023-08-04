@@ -24,7 +24,7 @@ class BaseFetcher(BaseModel):
     start_page: int = 1
     max_num_pages: Optional[int] = 2
     max_num_articles: Optional[int] = 10
-    output_dir: str = f"workspace/datasets/{_config_group_}/{_config_name_}"
+    output_dir: str = f"workspace/datasets{_config_group_}/{_config_name_}"
     link_filename: str = "links.jsonl"
     article_filename: str = "articles.jsonl"
     overwrite_existing: bool = False

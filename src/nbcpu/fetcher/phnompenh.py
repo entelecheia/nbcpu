@@ -19,7 +19,7 @@ class PhnompenhFetcher(BaseFetcher):
 
     _config_name_: str = "phnompenh"
     _config_group_: str = "/fetcher"
-    output_dir: str = f"workspace/datasets/{_config_group_}/{_config_name_}"
+    output_dir: str = f"workspace/datasets{_config_group_}/{_config_name_}"
 
     start_page: int = 0
     delay_between_requests: float = 20.0

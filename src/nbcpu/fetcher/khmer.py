@@ -18,7 +18,7 @@ class KhmerFetcher(BaseFetcher):
 
     _config_name_: str = "khmer"
     _config_group_: str = "/fetcher"
-    output_dir: str = f"workspace/datasets/{_config_group_}/{_config_name_}"
+    output_dir: str = f"workspace/datasets{_config_group_}/{_config_name_}"
 
     search_url: str = "https://www.khmertimeskh.com/page/{page}/?s={keyword}"
     search_keywords: List[str] = [
