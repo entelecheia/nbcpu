@@ -1,8 +1,8 @@
 from nbcpu.fetcher.phnompenh import PhnompenhFetcher
 
 
-def test_save_hyfi_config():
-    PhnompenhFetcher.save_hyfi_config()
+def test_generate_config():
+    PhnompenhFetcher.generate_config()
 
 
 def test_fetcher():
@@ -23,5 +23,5 @@ def test_fetcher():
 
 
 if __name__ == "__main__":
-    test_save_hyfi_config()
+    test_generate_config()
     test_fetcher()

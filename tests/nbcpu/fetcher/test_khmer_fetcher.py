@@ -1,8 +1,8 @@
 from nbcpu.fetcher.khmer import KhmerFetcher
 
 
-def test_save_hyfi_config():
-    KhmerFetcher.save_hyfi_config()
+def test_generate_config():
+    KhmerFetcher.generate_config()
 
 
 def test_khmer_fetcher():
@@ -20,5 +20,5 @@ def test_khmer_fetcher():
 
 
 if __name__ == "__main__":
-    test_save_hyfi_config()
+    test_generate_config()
     test_khmer_fetcher()

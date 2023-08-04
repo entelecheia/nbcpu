@@ -1,0 +1,17 @@
+defaults:
+  - __init__
+  - /pipe@pipe_load_dataset: load_dataset
+  - /pipe@pipe_load: load_dataset_from_disk
+  - /pipe@pipe_save: save_dataset_to_disk
+  - /pipe@pipe_tokenize: tokenize_dataset
+  - /pipe@pipe_sample: sample_dataset
+  # - /pipe@pipe_extract: extract_tokens
+  - /pipe@pipe_to_pandas: dataset_to_pandas
+  # - /pipe@pipe_head: pandas_print_head
+  - /pipe@pipe_save_df: save_dataframes
+  # - /pipe@pipe_find_similar: find_similar_docs_ac
+  # - /pipe@pipe_filter: filter_dataset
+  - /pipe@pipe_load_dfs: load_dataframes
+
+use_task_as_initial_object: true
+steps:
