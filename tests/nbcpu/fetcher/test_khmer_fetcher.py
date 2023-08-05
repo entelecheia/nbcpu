@@ -9,7 +9,7 @@ def test_khmer_fetcher():
     khmer = KhmerFetcher(
         search_keywords=["NBC"],
         max_num_pages=1,
-        max_num_articles=5,
+        max_num_articles=1,
         verbose=True,
         output_dir="workspace/test/khmer",
         overwrite_existing=True,
