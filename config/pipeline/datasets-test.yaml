@@ -24,6 +24,17 @@ steps:
       # remove_columns: [bodyText, analyse_text]
       load_from_cache_file: false
       verbose: true
+  - uses: pipe_extract
+    with:
+      tokenizer: nbcpu
+      # batch_size: 3
+      num_workers: 10
+      token_col: tokens
+      extracted_col: nouns
+      nouns_only: true
+      # remove_columns: [tokenizedText]
+      load_from_cache_file: false
+      verbose: true
   - uses: pipe_save
     with:
       dataset_path: datasets/processed/khmer
