@@ -1173,13 +1173,13 @@ packaging = "*"
 
 [[package]]
 name = "hyfi"
-version = "1.18.1"
+version = "1.21.0"
 description = "Hydra Fast Interface (Hydra and Pydantic based interface framework)"
 optional = false
 python-versions = ">=3.8.1,<3.12"
 files = [
-    {file = "hyfi-1.18.1-py3-none-any.whl", hash = "sha256:d71ef0abc5087f6f55bd6013daae7154a429cf7a56db76f8f2f9d9574137f298"},
-    {file = "hyfi-1.18.1.tar.gz", hash = "sha256:ffe41168f52b72b92ac3646462eb10e0ec615661e3179deb64a86b08a1cd38ee"},
+    {file = "hyfi-1.21.0-py3-none-any.whl", hash = "sha256:89ddf261202bf740c9a0d3a8770bc1fc94f9fd56e0489bdf738b92d2ec54b109"},
+    {file = "hyfi-1.21.0.tar.gz", hash = "sha256:ba4a3817d1a301e96cd12f7f8e9141a05688cf891f7a7974d71ac57600fb9f07"},
 ]
 
 [package.dependencies]
@@ -1440,20 +1440,20 @@ files = [
 
 [[package]]
 name = "lexikanon"
-version = "0.5.1"
+version = "0.5.2"
 description = "A Python Library for Tokenizers"
 optional = false
 python-versions = ">=3.8.1,<3.12"
 files = [
-    {file = "lexikanon-0.5.1-py3-none-any.whl", hash = "sha256:4a03f19f1bf746a67dd891ce3d46abfa68aeec5cdc60884e5794ee5a241f3851"},
-    {file = "lexikanon-0.5.1.tar.gz", hash = "sha256:a6861c51e921c3a59354e94e18fe01f50a5a821bbf8dd01e9b604d9c6afd6178"},
+    {file = "lexikanon-0.5.2-py3-none-any.whl", hash = "sha256:8092feeb855e5b18eba6fe84b7518f51b3b331de03867c9cab1351ef643e9b8a"},
+    {file = "lexikanon-0.5.2.tar.gz", hash = "sha256:4fbc69dfd1ee0fae3064dc4a1e159efe81a943b21dbdb367129f81a38f001eee"},
 ]
 
 [package.dependencies]
 click = ">=8.1.3,<9.0.0"
 ekonlpy = ">=2.0.2,<3.0.0"
 ftfy = ">=6.1.1,<7.0.0"
-hyfi = ">=1.18.1,<2.0.0"
+hyfi = ">=1.20.1,<2.0.0"
 nltk = ">=3.8.1,<4.0.0"
 scikit-learn = ">=1.3.0,<2.0.0"
 
@@ -3164,4 +3164,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<3.12"
-content-hash = "81812b9f9eb06e9951c3bb27c39ed3318c32990819c2fe0c5650dfd7f7a0e029"
+content-hash = "443654168394f0426c6300482e825e7a5db474f105940806844251d119af10ff"
