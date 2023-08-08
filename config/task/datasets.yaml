@@ -1,10 +1,10 @@
 defaults:
   - __init__
-  - /pipeline@pl_datasets: datasets
-  - /pipeline@pl_datasets_test: datasets-test
+  - /pipeline@datasets: datasets
+  - /pipeline@datasets-test: datasets-test
 
 _config_name_: datasets
 verbose: true
 pipelines:
   # - pl_datasets
-  - pl_datasets_test
+  - datasets-test
