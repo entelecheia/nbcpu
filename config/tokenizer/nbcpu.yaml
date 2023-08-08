@@ -1,0 +1,16 @@
+defaults:
+  - nltk
+
+stopwords:
+  stopwords_fn: "lambda x: len(x) <= 2"
+  # stopwords_list:
+  nltk_stopwords_lang: english
+  # stopwords_path: ${__project_root_path__:}/tests/assets/stopwords/nbcpu.txt
+  verbose: true
+lowercase: true
+include_whitespace_token: false
+strip_pos: true
+tagger:
+  stem: false
+  lemmatize: true
+verbose: false

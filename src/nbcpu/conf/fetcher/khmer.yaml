@@ -24,7 +24,7 @@ search_keywords:
 start_page: 1
 max_num_pages: 2
 max_num_articles: 10
-output_dir: workspace/datasets//fetcher/khmer
+output_dir: workspace/datasets/fetcher/khmer
 link_filename: links.jsonl
 article_filename: articles.jsonl
 overwrite_existing: false

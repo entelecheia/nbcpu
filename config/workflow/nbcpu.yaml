@@ -2,10 +2,10 @@
 defaults:
   - __init__
   - /task: nbcpu
-  - /task@task_datasets: datasets
+  - /task@datasets: datasets
   - override /project: nbcpu
 
 _config_name_: nbcpu
 verbose: true
 tasks:
-  - task_datasets
+  - datasets
