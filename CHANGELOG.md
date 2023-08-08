@@ -1,5 +1,12 @@
 <!--next-version-placeholder-->
 
+## v0.7.0 (2023-08-08)
+
+### Feature
+
+* **pipeline:** Enable extract_tokens in datasets configuration ([`25a09b2`](https://github.com/entelecheia/nbcpu/commit/25a09b2eb30a16d03b258690b04a0888b646bf7a))
+* **tokenizer:** Add new nbcpu configuration, add nbcpu stopwords assets ([`4a89af6`](https://github.com/entelecheia/nbcpu/commit/4a89af6c61385c1f6fc6be0dbf155d4ad8441536))
+
 ## v0.6.0 (2023-08-04)
 
 ### Feature
