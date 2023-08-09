@@ -9,6 +9,7 @@ defaults:
   - /pipe@dataset_to_pandas: dataset_to_pandas
   - /pipe@save_dataframes: save_dataframes
   - /pipe@load_dataframes: load_dataframes
+  - /pipe@dataframe_print_head_and_tail: dataframe_print_head_and_tail
 
 use_task_as_initial_object: true
 steps:

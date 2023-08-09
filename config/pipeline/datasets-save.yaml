@@ -1,0 +1,18 @@
+defaults:
+  - datasets
+
+use_task_as_initial_object: true
+steps:
+  - uses: load_dataset
+    with:
+      data_files: datasets/khmer/articles.jsonl
+      path: json
+      split: train
+    verbose: true
+  - uses: dataset_to_pandas
+    verbose: true
+  - uses: dataframe_print_head_and_tail
+    verbose: true
+  - uses: save_dataframes
+    with:
+      data_file: datasets/raw/khmer_articles.parquet
