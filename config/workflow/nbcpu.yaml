@@ -1,11 +1,12 @@
 # @package _global_
 defaults:
   - __init__
-  - /task: nbcpu
-  - /task@datasets: datasets
+  # - /task: nbcpu
+  - /pipeline@datasets-save: datasets-save
   - override /project: nbcpu
 
 _config_name_: nbcpu
 verbose: true
 tasks:
-  - datasets
+pipelines:
+  - datasets-save
