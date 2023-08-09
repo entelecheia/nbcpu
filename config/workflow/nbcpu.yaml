@@ -3,10 +3,12 @@ defaults:
   - __init__
   # - /task: nbcpu
   - /pipeline@datasets-save: datasets-save
+  - /pipeline@datasets-tokenize: datasets-tokenize
   - override /project: nbcpu
 
 _config_name_: nbcpu
 verbose: true
 tasks:
 pipelines:
-  - datasets-save
+  # - datasets-save
+  - datasets-tokenize
