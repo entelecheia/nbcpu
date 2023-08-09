@@ -5,8 +5,8 @@ use_task_as_initial_object: true
 steps:
   - uses: load_dataset
     with:
-      data_files: datasets/khmer/articles.jsonl
-      path: json
+      data_files: datasets/raw/khmer_articles.parquet
+      path: parquet
       split: train
     verbose: true
   - uses: sample_dataset
@@ -35,7 +35,19 @@ steps:
       # remove_columns: [tokenizedText]
       load_from_cache_file: false
       verbose: true
-  - uses: save_dataset_to_disk
-    with:
-      dataset_path: datasets/processed/khmer
+  - uses: dataset_to_pandas
     verbose: true
+  - uses: dataframe_print_head_and_tail
+    verbose: true
+  # - uses: filter_and_sample_data
+  #   with:
+  #     queries:
+  #       - "duplicate == False"
+  #       - "cleaned_text.str.split().str.len() > 10"
+  #     sample_size: 100
+  #     sample_seed: 123
+  #     output_dir: datasets/filtered/kakao_deduped
+  #     sample_filename: sample.parquet
+  #     train_filename: train.parquet
+  #     discard_filename: discard.parquet
+  #     verbose: true
