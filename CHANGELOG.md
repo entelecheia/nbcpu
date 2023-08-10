@@ -1,5 +1,14 @@
 <!--next-version-placeholder-->
 
+## v0.8.0 (2023-08-10)
+
+### Feature
+
+* **pipeline:** Add dataframe eval columns ([`25e3d26`](https://github.com/entelecheia/nbcpu/commit/25e3d2657c8435e1939537316853894cdd411360))
+* **pipeline:** Add new data filter and eval functions to datasets config ([`43e13e9`](https://github.com/entelecheia/nbcpu/commit/43e13e9df2601dbe4a376b882ab3c4e540033ad8))
+* **config:** Add datasets-tokenize pipeline ([`5760a07`](https://github.com/entelecheia/nbcpu/commit/5760a07b34209448874e8a25ab43ea1123e05d22))
+* **pipeline:** Add datasets-save configuration file ([`8c60c2a`](https://github.com/entelecheia/nbcpu/commit/8c60c2abeb39bb189288aa35dd3cde6c4c6e8669))
+
 ## v0.7.0 (2023-08-08)
 
 ### Feature
