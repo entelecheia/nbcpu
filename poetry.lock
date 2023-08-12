@@ -2800,13 +2800,13 @@ files = [
 
 [[package]]
 name = "thematos"
-version = "0.9.0"
+version = "0.10.0"
 description = "A Python Library for Topic Modeling"
 optional = false
 python-versions = ">=3.8.1,<3.12"
 files = [
-    {file = "thematos-0.9.0-py3-none-any.whl", hash = "sha256:bee8802730d4b50a58c2bd1d9f95f98a97e26c675a9f7aec28eca6da67affae6"},
-    {file = "thematos-0.9.0.tar.gz", hash = "sha256:177c93e1971a3c54fff306f1bcea91b7a6974f5be4876f17029c1cd13b9bda85"},
+    {file = "thematos-0.10.0-py3-none-any.whl", hash = "sha256:34e28225b2b676a0aee13b657f1e33ea8fc8f0626743ddde5e5841975f088d4f"},
+    {file = "thematos-0.10.0.tar.gz", hash = "sha256:d5e21a20a10d2c892bdccfea5a99e707d0e14a6eeccfe7593d0a2b3a229ba596"},
 ]
 
 [package.dependencies]
@@ -3274,4 +3274,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<3.12"
-content-hash = "abafc5861c255b34b5222ead6b2ead7fbfe52fe0e8f788982cb6f2a24372f598"
+content-hash = "72ba32cf154bdc584466c84dcedd808bdd0fefb26893263383d5e4e0e44e01e4"
