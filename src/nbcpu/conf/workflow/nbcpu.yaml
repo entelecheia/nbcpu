@@ -3,7 +3,7 @@ defaults:
   - __init__
   - /fetcher@khmer_all: khmer_all
   - /task@nbcpu-datasets: nbcpu-datasets
-  - /runner@nbcpu-topic: nbcpu-topic
+  - /runner@nbcpu-topic_nouns: nbcpu-topic_nouns
   - override /project: nbcpu
 
 _config_name_: nbcpu
@@ -11,7 +11,7 @@ verbose: true
 tasks:
   # - khmer_all
   # - nbcpu-datasets
-  - nbcpu-topic
+  - nbcpu-topic_nouns
   # - nbcpu-topic_modeling
 
 global:
