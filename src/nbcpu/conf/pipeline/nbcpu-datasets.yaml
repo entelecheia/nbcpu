@@ -1,0 +1,38 @@
+defaults:
+  - __init__
+  - /pipe@load_dataset: load_dataset
+  - /pipe@load_dataset_from_disk: load_dataset_from_disk
+  - /pipe@save_dataset_to_disk: save_dataset_to_disk
+  - /pipe@tokenize_dataset: tokenize_dataset
+  - /pipe@sample_dataset: sample_dataset
+  - /pipe@extract_tokens: extract_tokens
+  - /pipe@dataset_to_pandas: dataset_to_pandas
+  - /pipe@save_dataframes: save_dataframes
+  - /pipe@load_dataframes: load_dataframes
+  - /pipe@dataframe_print_head_and_tail: dataframe_print_head_and_tail
+  - /pipe@filter_and_sample_data: filter_and_sample_data
+  - /pipe@filter_data_by_queries: filter_data_by_queries
+  - /pipe@dataframe_eval_columns: dataframe_eval_columns
+
+use_task_as_initial_object: true
+steps:
+  - uses: load_dataset
+    with:
+      data_files: datasets/raw/khmer_articles.parquet
+      path: parquet
+      split: train
+    verbose: true
+  - uses: sample_dataset
+    with:
+      sample_size: 100
+      randomize: true
+      verbose: true
+  - uses: tokenize_dataset
+    with:
+      tokenizer: nbcpu
+      # batch_size: 100
+      num_workers: 50
+      text_col: text
+      token_col: tokenized
+      load_from_cache_file: false
+      verbose: true

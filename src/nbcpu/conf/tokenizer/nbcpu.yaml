@@ -1,16 +1,17 @@
 defaults:
-  - nltk
+  - nltk_universal
 
 stopwords:
   stopwords_fn: "lambda x: len(x) <= 2"
   # stopwords_list:
   nltk_stopwords_lang: english
-  # stopwords_path: ${__project_root_path__:}/tests/assets/stopwords/nbcpu.txt
-  verbose: true
+  stopwords_path: ${__project_root_path__:}/tests/assets/stopwords/nbcpu-tokenizer.txt
+  verbose: false
 lowercase: true
 include_whitespace_token: false
-strip_pos: true
+strip_pos: false
 tagger:
   stem: false
   lemmatize: true
-verbose: false
+verbose: true
+

@@ -1,0 +1,20 @@
+# @package _global_
+defaults:
+  - __init__
+  - /fetcher@khmer_all: khmer_all
+  - /task@nbcpu-datasets: nbcpu-datasets
+  - /runner@nbcpu-topic_noprior: nbcpu-topic_noprior
+  - /runner@nbcpu-topic_prior: nbcpu-topic_prior
+  - override /project: nbcpu
+
+_config_name_: nbcpu
+verbose: true
+tasks:
+  # - khmer_all
+  # - nbcpu-datasets
+  - nbcpu-topic_noprior
+  # - nbcpu-topic_prior
+
+global:
+  num_workers: 100
+  datasets_path: ${__get_path__:datasets}

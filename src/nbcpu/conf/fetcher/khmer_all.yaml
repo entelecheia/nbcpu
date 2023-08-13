@@ -1,5 +1,6 @@
 defaults:
   - khmer
+_config_name_: khmer_all
 search_keywords:
   - NBC
   - Exchange Rate

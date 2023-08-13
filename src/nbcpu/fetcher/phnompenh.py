@@ -1,4 +1,5 @@
 """Phnom Penh Post Fetcher."""
+import logging
 from datetime import datetime
 from functools import partial
 from typing import List, Optional
@@ -9,7 +10,7 @@ from hyfi.main import HyFI
 
 from .base import BaseFetcher
 
-logger = HyFI.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class PhnompenhFetcher(BaseFetcher):

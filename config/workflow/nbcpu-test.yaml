@@ -1,6 +1,6 @@
 # @package _global_
 defaults:
-  - __init__
+  - npcpu
   # - /task: nbcpu
   - /pipeline@datasets-save: datasets-save
   - /pipeline@datasets-tokenize: datasets-tokenize

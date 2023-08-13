@@ -1,5 +1,5 @@
 defaults:
-  - datasets
+  - nbcpu-datasets
 
 use_task_as_initial_object: true
 steps:
@@ -11,42 +11,38 @@ steps:
     verbose: true
   # - uses: sample_dataset
   #   with:
-  #     sample_size: 15
+  #     sample_size: 1000
   #     randomize: true
   #     verbose: true
   - uses: tokenize_dataset
     with:
       tokenizer: nbcpu
-      # batch_size: 3
-      num_workers: 50
+      num_workers: ${oc.select:global.num_workers,1}
       text_col: text
       token_col: tokenized
-      # remove_columns: [bodyText, analyse_text]
       load_from_cache_file: false
       verbose: true
   - uses: extract_tokens
     with:
       tokenizer: nbcpu
-      # batch_size: 3
-      num_workers: 50
+      num_workers: ${oc.select:global.num_workers,1}
       token_col: tokenized
       extracted_col: tokens
-      # nouns_only: true
-      # remove_columns: [tokenizedText]
+      strip_pos: true
+      load_from_cache_file: false
+      verbose: true
+  - uses: extract_tokens
+    with:
+      tokenizer: nbcpu
+      num_workers: ${oc.select:global.num_workers,1}
+      token_col: tokenized
+      extracted_col: nouns
+      nouns_only: true
+      strip_pos: true
       load_from_cache_file: false
       verbose: true
   - uses: dataset_to_pandas
     verbose: true
-  # - uses: dataframe_print_head_and_tail
-  #   with:
-  #     columns: [tokens]
-  #     verbose: true
-  #   verbose: true
-  # - uses: filter_data_by_queries
-  #   with:
-  #     queries:
-  #       - "tokens.str.len() > 50"
-  #     verbose: true
   - uses: dataframe_eval_columns
     with:
       expressions:
@@ -62,9 +58,6 @@ steps:
       verbose: true
   - uses: dataframe_print_head_and_tail
     with:
-      columns: [tokens, id]
+      columns: [id, tokens, nouns]
       verbose: true
     verbose: true
-  # - uses: save_dataframes
-  #   with:
-  #     data_file: datasets/processed/khmer_articles_tokenized.parquet
