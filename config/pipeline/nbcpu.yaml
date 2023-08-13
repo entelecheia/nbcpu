@@ -1,5 +1,0 @@
-defaults:
-  - __init__
-
-use_task_as_initial_object: true
-steps:
