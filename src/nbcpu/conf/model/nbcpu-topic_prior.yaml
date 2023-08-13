@@ -1,5 +1,6 @@
 defaults:
   - nbcpu-topic_noprior
+  - override /dataset@corpus: nbcpu-topic_prior
 set_wordprior: true
 wordprior:
   verbose: true
