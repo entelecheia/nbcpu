@@ -1,0 +1,5 @@
+defaults:
+  - wordprior
+
+data_file: ${__project_root_path__:}/tests/assets/words/word_prior.yaml
+verbose: true
