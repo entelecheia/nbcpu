@@ -1,7 +1,6 @@
 defaults:
   - nbcpu-datasets
 
-use_task_as_initial_object: true
 steps:
   - uses: load_dataset
     with:
