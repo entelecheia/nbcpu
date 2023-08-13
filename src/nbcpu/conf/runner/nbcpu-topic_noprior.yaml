@@ -1,0 +1,29 @@
+defaults:
+  - topic
+  - override /model: nbcpu-topic_noprior
+
+task_name: nbcpu-topic_noprior
+run_args:
+  k:
+    - 10
+    - 20
+    - 30
+    - 40
+    - 50
+    - 60
+    - 70
+    - 80
+    - 90
+    - 100
+model:
+  train_args:
+    interval: 10
+    iterations: 100
+  train_summary_args:
+    topic_word_top_n: 10
+  save_full: false
+  task_name: ${..task_name}
+  corpus:
+    task_name: ${..task_name}
+  batch:
+    num_workers: 0
