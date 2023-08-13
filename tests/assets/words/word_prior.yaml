@@ -1,6 +1,8 @@
 0:
-- bank
-- nbc
-- central
-- rate
-- interest
+  - price
+  - oil
+  - inflation
+  - growth
+  - economy
+  - rate
+  - nbc
