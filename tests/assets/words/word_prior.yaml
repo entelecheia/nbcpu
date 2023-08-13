@@ -1,8 +1,10 @@
 0:
   - price
-  - oil
   - inflation
   - growth
   - economy
-  - rate
+1:
   - nbc
+  - bank
+  - national_bank
+  - national_bank_cambodia
