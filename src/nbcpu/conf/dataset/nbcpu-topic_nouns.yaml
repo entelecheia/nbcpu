@@ -6,4 +6,6 @@ data_load:
 id_col: id
 text_col: nouns
 timestamp_col: time
+ngrams:
+  max_len: 3
 verbose: true
