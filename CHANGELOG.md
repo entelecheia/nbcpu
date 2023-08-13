@@ -1,5 +1,17 @@
 <!--next-version-placeholder-->
 
+## v0.10.0 (2023-08-13)
+
+### Feature
+
+* **nbcpu-conf:** Add new dataset configuration file ([`ebe8fb0`](https://github.com/entelecheia/nbcpu/commit/ebe8fb0472fa3ab29650b0cf9a554e74321c8d2e))
+* **nbcpu-topic_noprior_filter:** Add new evaluation column for irrelevant topics ([`7fe8e2c`](https://github.com/entelecheia/nbcpu/commit/7fe8e2cc36cd1a5839bfecf732a2b41f044dd95a))
+* **pipeline:** Add additional filter step in nbcpu-topic_noprior_filter.yaml ([`0088c07`](https://github.com/entelecheia/nbcpu/commit/0088c075b6a0435d20f15b814475280134308e88))
+* **nbcpu:** Add nbcpu-topic_noprior_filter task ([`c5c5a08`](https://github.com/entelecheia/nbcpu/commit/c5c5a088a93261bc51c7cf408b4fda373371b667))
+* **nbcpu:** Add topic_noprior_filter configuration ([`0febe00`](https://github.com/entelecheia/nbcpu/commit/0febe00a81c986940cfa664921ebaf0d1b7ada35))
+* **nbcpu-topic_noprior_filter:** Add new configuration file ([`1028d0f`](https://github.com/entelecheia/nbcpu/commit/1028d0fc2fdb4f22596ba47a899e8f3d1e83a0e4))
+* **pipeline:** Add load_dataframe to nbcpu-datasets.yaml ([`4fe52ce`](https://github.com/entelecheia/nbcpu/commit/4fe52ce3bdaaa3c27450a56f3c03a25fa8ca0234))
+
 ## v0.9.0 (2023-08-13)
 
 ### Feature
