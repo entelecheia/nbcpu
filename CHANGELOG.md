@@ -1,5 +1,43 @@
 <!--next-version-placeholder-->
 
+## v0.9.0 (2023-08-13)
+
+### Feature
+
+* **tests:** Add new stopwords file for nbcpu uncertainty ([`b0b7935`](https://github.com/entelecheia/nbcpu/commit/b0b7935e06864ca49196f8d836a362e3310b433b))
+* **tests:** Add new stopwords file for nbcpu-topic ([`08cbd5d`](https://github.com/entelecheia/nbcpu/commit/08cbd5de447366eff11c282271b8bcd47f8f3528))
+* **tests:** Add nbcpu-tokenizer test asset ([`b7849ba`](https://github.com/entelecheia/nbcpu/commit/b7849bae13edf0a397467653dc82fa60f0130f9d))
+* **nbcpu-topic_prior:** Add new configuration file ([`ce85f75`](https://github.com/entelecheia/nbcpu/commit/ce85f7506d2bf963cf97c27d1a7ee7454cedb697))
+* **nbcpu:** Add new configuration for topic noprior model ([`e918f47`](https://github.com/entelecheia/nbcpu/commit/e918f47c5fc0f28bedb0d40351cc4cc6b82cd34c))
+* **nbcpu:** Add new configuration for topic_prior model ([`8bce1b1`](https://github.com/entelecheia/nbcpu/commit/8bce1b19d12be4e8c4c146973555b8527fd401eb))
+* **nbcpu-conf:** Add new nbcpu-topic_noprior configuration file ([`af7c5f2`](https://github.com/entelecheia/nbcpu/commit/af7c5f21161fefc008b238e24c14c66eaa3de88e))
+* **topoc:** Add index file with stats ([`425c64e`](https://github.com/entelecheia/nbcpu/commit/425c64eb6f02e354efba95a3d04027564135ad6b))
+* **nbcpu-topic_noprior.yaml:** Add new config file ([`64c9e63`](https://github.com/entelecheia/nbcpu/commit/64c9e638e3f89fe89888441448944937e68510a3))
+* **dataset:** Add ngrams with max length 3 ([`ea8cf7d`](https://github.com/entelecheia/nbcpu/commit/ea8cf7d59c5139e41f65ac84a182b786b9c4938f))
+* **tests:** Add new words to word_prior.yaml ([`6c255d9`](https://github.com/entelecheia/nbcpu/commit/6c255d912495c883f2d6a6d1f9adddf5fcf031a1))
+* **nbcpu-topic_nouns:** Increase run_args and iterations, add train_summary_args ([`ea980ed`](https://github.com/entelecheia/nbcpu/commit/ea980ede85994cf7c428e8c53813847a5cce6e4b))
+* **nbcpu-model:** Add additional configuration parameters ([`3dc75f1`](https://github.com/entelecheia/nbcpu/commit/3dc75f120ba82788680f8916854a06bb9e538080))
+* **nbcpu:** Add nbcpu-topic task ([`1351d4b`](https://github.com/entelecheia/nbcpu/commit/1351d4bafff65760ec4ff8443aee6442002905e6))
+* **nbcpu/conf/dataset:** Add new config file nbcpu-topic.yaml ([`ca18168`](https://github.com/entelecheia/nbcpu/commit/ca18168a0b516de99a63b67afb39a7301ac5e6f4))
+* **nbcpu:** Create new nbcpu-topic.yaml configuration model ([`60112ac`](https://github.com/entelecheia/nbcpu/commit/60112ac0f13661fa8cbd03928d3bb78e88ba7aeb))
+* **nbcpu-topic:** Add new configuration file ([`0715790`](https://github.com/entelecheia/nbcpu/commit/071579085eb3a9ec6dde1f0ad0ecb60bc4b1937b))
+* **nbcpu-topic:** Add new configuration file ([`371176c`](https://github.com/entelecheia/nbcpu/commit/371176ccd87c6a5c02ff596ea4819de7710eaa71))
+* **tests:** Add word_prior.yaml in assets/words ([`66d800d`](https://github.com/entelecheia/nbcpu/commit/66d800d4c42d12db34d831c6a016173297455b8c))
+* **nbcpu:** Add thematos to plugins ([`bbc7c2f`](https://github.com/entelecheia/nbcpu/commit/bbc7c2ff51d929de32f6754c91a59a4e7183077f))
+* **nbcpu:** Add new topic modeling configuration ([`6dec3b7`](https://github.com/entelecheia/nbcpu/commit/6dec3b785d454a000bf4aacfd109244124cc1033))
+* **nbcpu:** Add new configuration file ([`4503099`](https://github.com/entelecheia/nbcpu/commit/4503099a76c488dbd77c0c2d669464bc267d9e0e))
+* **nbcpu-datasets:** Add new configurations for data pipeline and tokenization ([`69aad65`](https://github.com/entelecheia/nbcpu/commit/69aad65c0c9ca1b0d13c135d6bf11dba8d7a2b48))
+* **nbcpu:** Add new nbcpu-datasets configuration file ([`a9ca637`](https://github.com/entelecheia/nbcpu/commit/a9ca637a9968d2739dbc8bd0be18d7f97e7db00b))
+* **nbcpu:** Add new tokenizer configuration ([`7ebdf16`](https://github.com/entelecheia/nbcpu/commit/7ebdf16c838725c107138d7381d4ff66ef522062))
+* **config:** Add new nbcpu-test.yml configuration file ([`38ec41e`](https://github.com/entelecheia/nbcpu/commit/38ec41e79f611a53c3f83eb8933c85246809bfa1))
+* **fetcher:** Add khmer_all configuration for data fetching ([`ff1d88e`](https://github.com/entelecheia/nbcpu/commit/ff1d88ec869683a6d95340eb0022196bcbc9d968))
+* **nbcpu:** Add new project configuration file ([`5ad93d9`](https://github.com/entelecheia/nbcpu/commit/5ad93d90415600c2b8398469d06950a0a831905f))
+* **dependencies:** Add thematos 0.9.0 ([`03fc521`](https://github.com/entelecheia/nbcpu/commit/03fc5217bfb83132332cc5ea2ca1ff92870b306e))
+
+### Fix
+
+* **tests:** Change 'rates' to 'rate' in word_prior.yaml ([`f813756`](https://github.com/entelecheia/nbcpu/commit/f813756c35cc53e8cba7f3468f3e93bb6ffcc28d))
+
 ## v0.8.0 (2023-08-10)
 
 ### Feature
