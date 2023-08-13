@@ -1,0 +1,63 @@
+defaults:
+  - nbcpu-datasets
+
+use_task_as_initial_object: true
+steps:
+  - uses: load_dataset
+    with:
+      data_files: datasets/raw/khmer_articles.parquet
+      path: parquet
+      split: train
+    verbose: true
+  # - uses: sample_dataset
+  #   with:
+  #     sample_size: 1000
+  #     randomize: true
+  #     verbose: true
+  - uses: tokenize_dataset
+    with:
+      tokenizer: nbcpu
+      num_workers: ${oc.select:global.num_workers,1}
+      text_col: text
+      token_col: tokenized
+      load_from_cache_file: false
+      verbose: true
+  - uses: extract_tokens
+    with:
+      tokenizer: nbcpu
+      num_workers: ${oc.select:global.num_workers,1}
+      token_col: tokenized
+      extracted_col: tokens
+      strip_pos: true
+      load_from_cache_file: false
+      verbose: true
+  - uses: extract_tokens
+    with:
+      tokenizer: nbcpu
+      num_workers: ${oc.select:global.num_workers,1}
+      token_col: tokenized
+      extracted_col: nouns
+      nouns_only: true
+      strip_pos: true
+      load_from_cache_file: false
+      verbose: true
+  - uses: dataset_to_pandas
+    verbose: true
+  - uses: dataframe_eval_columns
+    with:
+      expressions:
+        id: "url.str.split('/').str[3]"
+      verbose: true
+  - uses: filter_and_sample_data
+    with:
+      queries:
+        - "tokens.str.len() > 50"
+      output_dir: datasets/processed/khmer_tokenized
+      train_filename: train.parquet
+      discard_filename: discard.parquet
+      verbose: true
+  - uses: dataframe_print_head_and_tail
+    with:
+      columns: [tokens, id]
+      verbose: true
+    verbose: true
