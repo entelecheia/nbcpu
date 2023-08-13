@@ -13,4 +13,4 @@ tasks:
   # - nbcpu-topic_modeling
 
 global:
-  num_workers: 50
+  num_workers: 100

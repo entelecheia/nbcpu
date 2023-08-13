@@ -58,6 +58,6 @@ steps:
       verbose: true
   - uses: dataframe_print_head_and_tail
     with:
-      columns: [tokens, id]
+      columns: [id, tokens, nouns]
       verbose: true
     verbose: true
