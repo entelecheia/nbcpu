@@ -18,7 +18,7 @@ steps:
     with:
       tokenizer: nbcpu
       # batch_size: 3
-      num_workers: 10
+      num_workers: 50
       text_col: text
       token_col: tokenized
       # remove_columns: [bodyText, analyse_text]
@@ -28,7 +28,7 @@ steps:
     with:
       tokenizer: nbcpu
       # batch_size: 3
-      num_workers: 10
+      num_workers: 50
       token_col: tokenized
       extracted_col: tokens
       # nouns_only: true
