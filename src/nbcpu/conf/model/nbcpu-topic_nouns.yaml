@@ -1,7 +1,7 @@
 defaults:
   - lda
   - override /words@wordprior: nbcpu-topic
-  - override /dataset@corpus: nbcpu-topic
+  - override /dataset@corpus: nbcpu-topic_nouns
 
 model_args:
   k: 10

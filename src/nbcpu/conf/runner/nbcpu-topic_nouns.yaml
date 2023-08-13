@@ -1,8 +1,8 @@
 defaults:
   - topic
-  - override /model: nbcpu-topic
+  - override /model: nbcpu-topic_nouns
 
-task_name: nbcpu-topic
+task_name: nbcpu-topic_nouns
 run_args:
   k:
     - 10
