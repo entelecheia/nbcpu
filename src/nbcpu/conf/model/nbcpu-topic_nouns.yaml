@@ -10,6 +10,6 @@ model_args:
   rm_top: 10
 wc_args:
   top_n: 500
-  num_images_per_page: 40
+  num_images_per_page: 20
 set_wordprior: true
 verbose: true
