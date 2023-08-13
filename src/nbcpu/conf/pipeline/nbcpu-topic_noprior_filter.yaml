@@ -1,0 +1,13 @@
+defaults:
+  - nbcpu-datasets
+
+use_task_as_initial_object: false
+steps:
+  - uses: load_dataframes
+    with:
+      data_files: ${__project_workspace_path__:}/nbcpu-topic_noprior/model/outputs/LDA_model(1)_k(20)-doc_topic_dists.parquet
+      verbose: true
+  - uses: dataframe_print_head_and_tail
+    with:
+      verbose: true
+    verbose: true
