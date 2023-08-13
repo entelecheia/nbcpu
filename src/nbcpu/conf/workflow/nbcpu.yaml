@@ -14,8 +14,8 @@ tasks:
   # - khmer_all
   # - nbcpu-datasets
   # - nbcpu-topic_noprior
-  - nbcpu-topic_noprior_filter
-  # - nbcpu-topic_prior
+  # - nbcpu-topic_noprior_filter
+  - nbcpu-topic_prior
 
 global:
   num_workers: 100
