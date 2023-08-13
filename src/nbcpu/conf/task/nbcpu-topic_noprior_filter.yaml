@@ -1,0 +1,8 @@
+defaults:
+  - __init__
+  - /pipeline@nbcpu-topic_noprior_filter: nbcpu-topic_noprior_filter
+
+_config_name_: nbcpu-topic_noprior_filter
+verbose: true
+pipelines:
+  - nbcpu-topic_noprior_filter
