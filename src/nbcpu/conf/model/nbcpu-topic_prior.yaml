@@ -1,0 +1,5 @@
+defaults:
+  - nbcpu-topic_noprior
+set_wordprior: true
+wordprior:
+  verbose: true
