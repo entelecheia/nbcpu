@@ -3,14 +3,17 @@ defaults:
   - __init__
   - /fetcher@khmer_all: khmer_all
   - /task@nbcpu-datasets: nbcpu-datasets
+  - /runner@nbcpu-topic: nbcpu-topic
   - override /project: nbcpu
 
 _config_name_: nbcpu
 verbose: true
 tasks:
   # - khmer_all
-  - nbcpu-datasets
+  # - nbcpu-datasets
+  - nbcpu-topic
   # - nbcpu-topic_modeling
 
 global:
   num_workers: 100
+  datasets_path: ${__get_path__:datasets}
