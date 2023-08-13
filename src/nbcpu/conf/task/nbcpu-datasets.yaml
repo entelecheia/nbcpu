@@ -1,0 +1,8 @@
+defaults:
+  - __init__
+  - /pipeline@nbcpu-datasets_tokenize: nbcpu-datasets_tokenize
+
+_config_name_: nbcpu-datasets
+verbose: true
+pipelines:
+  - nbcpu-datasets_tokenize
