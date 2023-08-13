@@ -1,6 +1,0 @@
-defaults:
-  - __init__
-
-_config_name_: nbcpu-topic_modeling
-verbose: true
-pipelines:
