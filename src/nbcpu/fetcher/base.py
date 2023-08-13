@@ -1,4 +1,5 @@
 """Base Fetcher"""
+import logging
 import multiprocessing as mp
 import time
 from functools import partial
@@ -8,7 +9,7 @@ from typing import Callable, List, Optional
 from hyfi.composer import BaseModel
 from hyfi.main import HyFI
 
-logger = HyFI.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class BaseFetcher(BaseModel):
