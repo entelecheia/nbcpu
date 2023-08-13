@@ -3,6 +3,7 @@ defaults:
   - __init__
   - /fetcher@khmer_all: khmer_all
   - /task@nbcpu-datasets: nbcpu-datasets
+  - /task@nbcpu-topic_noprior_filter: nbcpu-topic_noprior_filter
   - /runner@nbcpu-topic_noprior: nbcpu-topic_noprior
   - /runner@nbcpu-topic_prior: nbcpu-topic_prior
   - override /project: nbcpu
@@ -12,9 +13,11 @@ verbose: true
 tasks:
   # - khmer_all
   # - nbcpu-datasets
-  - nbcpu-topic_noprior
+  # - nbcpu-topic_noprior
+  - nbcpu-topic_noprior_filter
   # - nbcpu-topic_prior
 
 global:
   num_workers: 100
   datasets_path: ${__get_path__:datasets}
+  workspace_path: ${__project_workspace_path__:}
