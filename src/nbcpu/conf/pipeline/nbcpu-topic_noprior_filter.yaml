@@ -11,3 +11,15 @@ steps:
     with:
       verbose: true
     verbose: true
+  - uses: filter_and_sample_data
+    with:
+      queries:
+        - "topic3 < 0.5 and topic4 < 0.5 and topic5 < 0.5 and topic11 < 0.5 and topic14 < 0.5 and topic16 < 0.5"
+      output_dir: datasets/processed/topic_noprior_filtered
+      train_filename: train.parquet
+      discard_filename: discard.parquet
+      verbose: true
+  - uses: dataframe_print_head_and_tail
+    with:
+      verbose: true
+    verbose: true
