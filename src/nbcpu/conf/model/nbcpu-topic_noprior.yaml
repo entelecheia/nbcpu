@@ -1,0 +1,17 @@
+defaults:
+  - lda
+  - override /words@wordprior: nbcpu-topic
+  - override /dataset@corpus: nbcpu-topic_noprior
+
+model_args:
+  k: 10
+  min_cf: 10
+  min_df: 10
+  rm_top: 0
+wc_args:
+  top_n: 500
+  num_images_per_page: 20
+set_wordprior: false
+wordprior:
+  verbose: true
+verbose: true
