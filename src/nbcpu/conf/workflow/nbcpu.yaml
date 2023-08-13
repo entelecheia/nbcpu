@@ -12,7 +12,6 @@ tasks:
   # - khmer_all
   # - nbcpu-datasets
   - nbcpu-topic_nouns
-  # - nbcpu-topic_modeling
 
 global:
   num_workers: 100
