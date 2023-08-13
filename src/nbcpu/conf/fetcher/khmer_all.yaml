@@ -1,0 +1,26 @@
+defaults:
+  - khmer
+_config_name_: khmer_all
+search_keywords:
+  - NBC
+  - Exchange Rate
+  - De-dollarization
+  - Inflation
+  - GDP
+  - Monetary Policy
+  - Finance
+  - Banking
+  - Stock Exchange
+  - Uncertain
+  - Economic
+  - Policy
+  - Financial
+  - Riel
+  - Bank
+  - Economy
+  - Securities Exchange
+  - National Bank of Cambodia
+max_num_pages:
+max_num_articles:
+num_workers: 10
+verbose: true
