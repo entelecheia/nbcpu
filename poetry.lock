@@ -2800,18 +2800,18 @@ files = [
 
 [[package]]
 name = "thematos"
-version = "0.13.0"
+version = "0.14.0"
 description = "A Python Library for Topic Modeling"
 optional = false
 python-versions = ">=3.8.1,<3.12"
 files = [
-    {file = "thematos-0.13.0-py3-none-any.whl", hash = "sha256:15fdc205f7330f15d7e50d279722f74ee5501a221061844d44b4d4c14ea218b9"},
-    {file = "thematos-0.13.0.tar.gz", hash = "sha256:f989b94ac261dccaca67e208fc4153f068f459605ae47733ff555eb091fd6988"},
+    {file = "thematos-0.14.0-py3-none-any.whl", hash = "sha256:44935af0b16767fc577ba676e0ed6236818cb0f9daeb19313196e33e2e8387f8"},
+    {file = "thematos-0.14.0.tar.gz", hash = "sha256:4dd6f0e9e79d5425d93fe0aefa03defcb11f89f0e8aae49335dde37f3339b7b2"},
 ]
 
 [package.dependencies]
 click = ">=8.1.3,<9.0.0"
-hyfi = ">=1.29.3,<2.0.0"
+hyfi = ">=1.29.5,<2.0.0"
 lexikanon = ">=0.6.1,<0.7.0"
 tomotopy = ">=0.12.5,<0.13.0"
 wordcloud = ">=1.9.2,<2.0.0"
@@ -3274,4 +3274,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<3.12"
-content-hash = "c5fbd11a5ddea1ede2ac4a5caa91ccb1ee0b32651ad255b8d24c652100b03086"
+content-hash = "2a709e1db2f5d8763eeeb8051a75cd1df93ca4068fafad2c32bfe76076c963e4"
