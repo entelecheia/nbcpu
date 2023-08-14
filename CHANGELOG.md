@@ -1,5 +1,12 @@
 <!--next-version-placeholder-->
 
+## v0.12.0 (2023-08-14)
+
+### Feature
+
+* **nbcpu:** Add topic_uncertainty_filtered task in workflow configuration ([`245abbf`](https://github.com/entelecheia/nbcpu/commit/245abbf3457072668fdbe180d4f4069e73384e63))
+* **nbcpu-dataset:** Add sample_data to pipeline ([`d021340`](https://github.com/entelecheia/nbcpu/commit/d021340b6b98f5e2e8f76cf6641c637b714d3c83))
+
 ## v0.11.0 (2023-08-14)
 
 ### Feature
