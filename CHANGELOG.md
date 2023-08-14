@@ -1,5 +1,24 @@
 <!--next-version-placeholder-->
 
+## v0.11.0 (2023-08-14)
+
+### Feature
+
+* **tests:** Add new stopwords to nbcpu-uncertainty_filtered.txt ([`8ffe65c`](https://github.com/entelecheia/nbcpu/commit/8ffe65c54b35b4aab9d6033e81555ae1f9f6b1e6))
+* **book:** Add uncertainty docs to data preprocessing ([`2f57aa6`](https://github.com/entelecheia/nbcpu/commit/2f57aa66be998c14284d1337a86fd4f614fbfaa1))
+* **nbcpu:** Add new tasks and runners for uncertainty filtering ([`918fd35`](https://github.com/entelecheia/nbcpu/commit/918fd351494d4f26702bf579365480776571ea22))
+* **tests:** Add 'provide' to stopwords list ([`2ae326f`](https://github.com/entelecheia/nbcpu/commit/2ae326f3ee31c045906026b6819cb7f1d55231f3))
+* **nbcpu:** Add topic uncertainty filter to pipeline configuration ([`2836d55`](https://github.com/entelecheia/nbcpu/commit/2836d55a75b6b3aa64e5b7ee5f1211df5faa0f1c))
+* **dataset:** Add nbcpu-topic_uncertainty_filtered configuration ([`b8915dd`](https://github.com/entelecheia/nbcpu/commit/b8915dddb163790ee5f261d7a9af74e1eb0e286f))
+* **tests:** Add word_prior_uncertainty yaml file ([`157a3cb`](https://github.com/entelecheia/nbcpu/commit/157a3cbde8d3f2a4d0a8ebb34b41327b913ec3c8))
+* **nbcpu:** Add topic_uncertainty runner ([`11b5fd0`](https://github.com/entelecheia/nbcpu/commit/11b5fd057f7a89f167bb3adff6f0ec891c7047b1))
+* **nbcpu-topic_uncertainty.yaml:** Add new configuration file ([`2500dcd`](https://github.com/entelecheia/nbcpu/commit/2500dcdf91f455ec080bfb21f04ba4a2a411416e))
+* **nbcpu:** Add topic uncertainty model configuration ([`5dcbb23`](https://github.com/entelecheia/nbcpu/commit/5dcbb2368dc04b2a0c7bbf74716169c20ec704a9))
+* **dataset:** Add nbcpu-topic_uncertainty configuration ([`2445539`](https://github.com/entelecheia/nbcpu/commit/2445539f3c29f17b4d31dcd52288078394019fd2))
+* **tests/assets:** Add stopwords/nbcpu-uncertainty.txt ([`065d011`](https://github.com/entelecheia/nbcpu/commit/065d011c94eeb1c779397f120fd0880d873125fb))
+* **nbcpu-topic_noprior_filter:** Add dataframe_select_columns step, add merge_dataframes step ([`e9f39f0`](https://github.com/entelecheia/nbcpu/commit/e9f39f0e6595a3de00e6995cfd0914f8540afca3))
+* **nbcpu-topic_prior:** Add dataset corpus override ([`091905c`](https://github.com/entelecheia/nbcpu/commit/091905ceae833d0ce660588772c71d0d23f3c631))
+
 ## v0.10.0 (2023-08-13)
 
 ### Feature

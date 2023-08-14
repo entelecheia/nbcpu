@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nbcpu"
-version = "0.10.0"
+version = "0.11.0"
 description = "Quantifying Central Bank Policy Uncertainty in a Highly Dollarized Economy: A Topic Modeling Approach"
 authors = ["Young Joon Lee <entelecheia@hotmail.com>"]
 license = "MIT"
