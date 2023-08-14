@@ -9,13 +9,13 @@ run_args:
     - 20
     - 30
     - 40
-    - 50
+    # - 50
 model:
   train_args:
     interval: 10
     iterations: 100
   train_summary_args:
-    topic_word_top_n: 10
+    topic_word_top_n: 20
   save_full: false
   task_name: ${..task_name}
   corpus:
