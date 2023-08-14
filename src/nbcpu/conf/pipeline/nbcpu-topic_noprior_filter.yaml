@@ -13,7 +13,7 @@ steps:
   - uses: dataframe_eval_columns
     with:
       expressions:
-        topic_irrelevant: "topic3 + topic4 + topic5 + topic11 + topic14 + topic16"
+        topic_irrelevant: "topic9 + topic10 + topic11 + topic6 + topic16 + topic18 + topic19 + topic4"
       verbose: true
   - uses: dataframe_select_columns
     with:
