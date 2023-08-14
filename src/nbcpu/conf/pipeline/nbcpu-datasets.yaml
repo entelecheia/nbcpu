@@ -5,6 +5,7 @@ defaults:
   - /pipe@save_dataset_to_disk: save_dataset_to_disk
   - /pipe@tokenize_dataset: tokenize_dataset
   - /pipe@sample_dataset: sample_dataset
+  - /pipe@sample_data: sample_data
   - /pipe@extract_tokens: extract_tokens
   - /pipe@dataset_to_pandas: dataset_to_pandas
   - /pipe@save_dataframes: save_dataframes
