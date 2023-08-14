@@ -1,0 +1,11 @@
+defaults:
+  - nbcpu-topic_noprior
+  - override /dataset@corpus: nbcpu-topic_uncertainty_filtered
+model_args:
+  min_cf: 500
+  min_df: 500
+  rm_top: 0
+set_wordprior: true
+wordprior:
+  data_file: ${__project_root_path__:}/tests/assets/words/word_prior_uncertainty_filtered.yaml
+  verbose: true

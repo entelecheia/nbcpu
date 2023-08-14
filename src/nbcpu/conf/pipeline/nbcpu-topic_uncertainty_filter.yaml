@@ -4,33 +4,38 @@ defaults:
 steps:
   - uses: load_dataframes
     with:
-      data_files: nbcpu-topic_noprior/model/outputs/LDA_model(1)_k(20)-doc_topic_dists.parquet
+      data_files: nbcpu-topic_uncertainty/model/outputs/LDA_model(3)_k(20)-doc_topic_dists.parquet
       verbose: true
-  - uses: dataframe_print_head_and_tail
-    with:
-      verbose: true
-    verbose: true
   - uses: dataframe_eval_columns
     with:
       expressions:
-        topic_irrelevant: "topic9 + topic10 + topic11 + topic6 + topic16 + topic18 + topic19 + topic4"
+        topic_relevant: "topic0 + topic1"
       verbose: true
   - uses: dataframe_select_columns
     with:
       columns:
         - id
-        - topic_irrelevant
+        - topic_relevant
       verbose: true
   - uses: merge_dataframes
     with:
       right: datasets/processed/khmer_tokenized/train.parquet
       "on": id
       verbose: true
+  - uses: dataframe_print_head_and_tail
+    with:
+      columns:
+        - id
+        - text
+        - tokens
+        - topic_relevant
+      verbose: true
+    verbose: true
   - uses: filter_and_sample_data
     with:
       queries:
-        - "topic_irrelevant < 0.5"
-      output_dir: datasets/processed/topic_noprior_filtered
+        - "topic_relevant > 0.5"
+      output_dir: datasets/processed/topic_uncertainty_filtered
       train_filename: train.parquet
       discard_filename: discard.parquet
       verbose: true

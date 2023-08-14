@@ -4,12 +4,12 @@ defaults:
 data_load:
   data_file: ${oc.select:global.datasets_path,datasets}/processed/topic_noprior_filtered/train.parquet
 id_col: id
-text_col: adjnouns
+text_col: tokens
 timestamp_col: time
 stopwords:
   # stopwords_fn: "lambda x: len(x) <= 2"
   # stopwords_list:
-  stopwords_path: ${__project_root_path__:}/tests/assets/stopwords/nbcpu-topic.txt
+  stopwords_path: ${__project_root_path__:}/tests/assets/stopwords/nbcpu-uncertainty.txt
   verbose: true
 ngrams:
   max_len: 3

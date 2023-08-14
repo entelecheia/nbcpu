@@ -4,8 +4,11 @@ defaults:
   - /fetcher@khmer_all: khmer_all
   - /task@nbcpu-datasets: nbcpu-datasets
   - /task@nbcpu-topic_noprior_filter: nbcpu-topic_noprior_filter
+  - /task@nbcpu-topic_uncertainty_filter: nbcpu-topic_uncertainty_filter
   - /runner@nbcpu-topic_noprior: nbcpu-topic_noprior
   - /runner@nbcpu-topic_prior: nbcpu-topic_prior
+  - /runner@nbcpu-topic_uncertainty: nbcpu-topic_uncertainty
+  - /runner@nbcpu-topic_uncertainty_filtered: nbcpu-topic_uncertainty_filtered
   - override /project: nbcpu
 
 _config_name_: nbcpu
@@ -15,7 +18,10 @@ tasks:
   # - nbcpu-datasets
   # - nbcpu-topic_noprior
   # - nbcpu-topic_noprior_filter
-  - nbcpu-topic_prior
+  # - nbcpu-topic_prior
+  # - nbcpu-topic_uncertainty
+  # - nbcpu-topic_uncertainty_filter
+  - nbcpu-topic_uncertainty_filtered
 
 global:
   num_workers: 100

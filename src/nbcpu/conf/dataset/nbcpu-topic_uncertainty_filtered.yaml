@@ -1,0 +1,16 @@
+defaults:
+  - topic_corpus
+
+data_load:
+  data_file: ${oc.select:global.datasets_path,datasets}/processed/topic_uncertainty_filtered/train.parquet
+id_col: id
+text_col: tokens
+timestamp_col: time
+stopwords:
+  # stopwords_fn: "lambda x: len(x) <= 2"
+  # stopwords_list:
+  stopwords_path: ${__project_root_path__:}/tests/assets/stopwords/nbcpu-uncertainty_filtered.txt
+  verbose: true
+ngrams:
+  max_len: 3
+verbose: true

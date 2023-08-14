@@ -1173,13 +1173,13 @@ packaging = "*"
 
 [[package]]
 name = "hyfi"
-version = "1.29.2"
+version = "1.29.3"
 description = "Hydra Fast Interface (Hydra and Pydantic based interface framework)"
 optional = false
 python-versions = ">=3.8.1,<3.12"
 files = [
-    {file = "hyfi-1.29.2-py3-none-any.whl", hash = "sha256:ac07ed92aacd91ba1be992843c3c2fa1ce8c8c09ef255c95be2bf8beb2f43327"},
-    {file = "hyfi-1.29.2.tar.gz", hash = "sha256:78095a79b401af6b4b7c62c7ad08bd82338d38805726925bedd12fc3c411722c"},
+    {file = "hyfi-1.29.3-py3-none-any.whl", hash = "sha256:51dd4611fd077a6fa8f2ff54318a0eff3217a809c4156f6d79d406c160097caf"},
+    {file = "hyfi-1.29.3.tar.gz", hash = "sha256:c62c4718227462028f4d8271c010d741f98292a3c08810027240a31c89e29f1e"},
 ]
 
 [package.dependencies]
@@ -2800,18 +2800,18 @@ files = [
 
 [[package]]
 name = "thematos"
-version = "0.12.0"
+version = "0.13.0"
 description = "A Python Library for Topic Modeling"
 optional = false
 python-versions = ">=3.8.1,<3.12"
 files = [
-    {file = "thematos-0.12.0-py3-none-any.whl", hash = "sha256:aebab0107d6a6983b3d43731ad8211f56605f30fed6bacdca92079578a33ff1a"},
-    {file = "thematos-0.12.0.tar.gz", hash = "sha256:d6eaae532755c3451231bf0d4c9aeb33632e9ab11ba7a5ae526b934cfdea551b"},
+    {file = "thematos-0.13.0-py3-none-any.whl", hash = "sha256:15fdc205f7330f15d7e50d279722f74ee5501a221061844d44b4d4c14ea218b9"},
+    {file = "thematos-0.13.0.tar.gz", hash = "sha256:f989b94ac261dccaca67e208fc4153f068f459605ae47733ff555eb091fd6988"},
 ]
 
 [package.dependencies]
 click = ">=8.1.3,<9.0.0"
-hyfi = ">=1.29.2,<2.0.0"
+hyfi = ">=1.29.3,<2.0.0"
 lexikanon = ">=0.6.1,<0.7.0"
 tomotopy = ">=0.12.5,<0.13.0"
 wordcloud = ">=1.9.2,<2.0.0"
@@ -3274,4 +3274,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<3.12"
-content-hash = "b7c646e27c218c805ca78a222002322290e0b1666eff0d739c3f22d9bca931eb"
+content-hash = "edfcbf13bd43e0b1771f06b0aa46ac0981a334bb91b9adc3f00f4e0675355cd9"

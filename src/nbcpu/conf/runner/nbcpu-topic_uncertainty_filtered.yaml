@@ -1,15 +1,14 @@
 defaults:
   - topic
-  - override /model: nbcpu-topic_noprior
+  - override /model: nbcpu-topic_uncertainty_filtered
 
-task_name: nbcpu-topic_noprior
+task_name: nbcpu-topic_uncertainty_filtered
 run_args:
   k:
-    - 10
-    - 20
-    - 30
-    - 40
-    # - 50
+    - 3
+    - 4
+    - 5
+    - 6
 model:
   train_args:
     interval: 10

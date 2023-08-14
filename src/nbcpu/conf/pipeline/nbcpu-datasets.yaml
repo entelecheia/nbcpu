@@ -14,26 +14,5 @@ defaults:
   - /pipe@filter_and_sample_data: filter_and_sample_data
   - /pipe@filter_data_by_queries: filter_data_by_queries
   - /pipe@dataframe_eval_columns: dataframe_eval_columns
-
-use_task_as_initial_object: true
-steps:
-  - uses: load_dataset
-    with:
-      data_files: datasets/raw/khmer_articles.parquet
-      path: parquet
-      split: train
-    verbose: true
-  - uses: sample_dataset
-    with:
-      sample_size: 100
-      randomize: true
-      verbose: true
-  - uses: tokenize_dataset
-    with:
-      tokenizer: nbcpu
-      # batch_size: 100
-      num_workers: 50
-      text_col: text
-      token_col: tokenized
-      load_from_cache_file: false
-      verbose: true
+  - /pipe@merge_dataframes: merge_dataframes
+  - /pipe@dataframe_select_columns: dataframe_select_columns
