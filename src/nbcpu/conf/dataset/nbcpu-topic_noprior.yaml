@@ -4,7 +4,7 @@ defaults:
 data_load:
   data_file: ${oc.select:global.datasets_path,datasets}/processed/khmer_tokenized/train.parquet
 id_col: id
-text_col: nouns
+text_col: adjnouns
 timestamp_col: time
 stopwords:
   # stopwords_fn: "lambda x: len(x) <= 2"
