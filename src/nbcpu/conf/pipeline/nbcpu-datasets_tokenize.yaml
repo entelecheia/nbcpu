@@ -35,8 +35,24 @@ steps:
       tokenizer: nbcpu
       num_workers: ${oc.select:global.num_workers,1}
       token_col: tokenized
-      extracted_col: nouns
-      nouns_only: true
+      extracted_col: adjnouns
+      postags:
+        - ADJ
+        - NOUN
+      strip_pos: true
+      load_from_cache_file: false
+      verbose: true
+  - uses: extract_tokens
+    with:
+      tokenizer: nbcpu
+      num_workers: ${oc.select:global.num_workers,1}
+      token_col: tokenized
+      extracted_col: predicates
+      postags:
+        - VERB
+        - PRT
+        - ADJ
+        - ADV
       strip_pos: true
       load_from_cache_file: false
       verbose: true
@@ -57,6 +73,6 @@ steps:
       verbose: true
   - uses: dataframe_print_head_and_tail
     with:
-      columns: [id, tokens, nouns]
+      columns: [id, text, tokens, adjnouns, predicates]
       verbose: true
     verbose: true
