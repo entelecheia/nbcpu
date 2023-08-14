@@ -1,5 +1,0 @@
-cambodia
-year
-country
-percent
-people
