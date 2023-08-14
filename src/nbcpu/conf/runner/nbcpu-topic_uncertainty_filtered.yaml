@@ -1,0 +1,23 @@
+defaults:
+  - topic
+  - override /model: nbcpu-topic_uncertainty_filtered
+
+task_name: nbcpu-topic_uncertainty_filtered
+run_args:
+  k:
+    - 3
+    - 4
+    - 5
+    - 6
+model:
+  train_args:
+    interval: 10
+    iterations: 100
+  train_summary_args:
+    topic_word_top_n: 20
+  save_full: false
+  task_name: ${..task_name}
+  corpus:
+    task_name: ${..task_name}
+  batch:
+    num_workers: 0
