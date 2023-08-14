@@ -6,6 +6,7 @@ defaults:
   - /task@nbcpu-topic_noprior_filter: nbcpu-topic_noprior_filter
   - /runner@nbcpu-topic_noprior: nbcpu-topic_noprior
   - /runner@nbcpu-topic_prior: nbcpu-topic_prior
+  - /runner@nbcpu-topic_uncertainty: nbcpu-topic_uncertainty
   - override /project: nbcpu
 
 _config_name_: nbcpu
@@ -15,7 +16,8 @@ tasks:
   # - nbcpu-datasets
   # - nbcpu-topic_noprior
   # - nbcpu-topic_noprior_filter
-  - nbcpu-topic_prior
+  # - nbcpu-topic_prior
+  - nbcpu-topic_uncertainty
 
 global:
   num_workers: 100
