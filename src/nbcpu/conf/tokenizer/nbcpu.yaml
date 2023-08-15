@@ -13,5 +13,4 @@ strip_pos: false
 tagger:
   stem: false
   lemmatize: true
-verbose: true
-
+verbose: false
