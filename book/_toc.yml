@@ -17,5 +17,6 @@ chapters:
       - file: supplementary/processing/index
       - file: supplementary/topic/index
       - file: supplementary/topic/prior
+      - file: supplementary/topic-uncertainty/index
+      - file: supplementary/topic-uncertainty/second
       - file: supplementary/analysis/index
-      - file: supplementary/analysis/second
