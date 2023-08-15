@@ -1,4 +1,4 @@
-# Supplemental Material
+# Supplementary Materials
 
 The research code is publicly available as a Python package named `nbcpu`, hosted on [GitHub](http://github.com/entelecheia/nbcpu) and published on [PyPI](https://pypi.org/project/nbcpu/). Built on the [Hydra Fast Interface (HyFI)](https://hyfi.entelecheia.ai) framework and integrated with plugins [ThematOS](https://thematos.entelecheia.ai) and [Lexikanon](https://lexikanon.entelecheia.ai), `nbcpu` offers a streamlined command-line interface for replicating the experiments described in this research.
 
