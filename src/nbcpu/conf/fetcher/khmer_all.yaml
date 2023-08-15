@@ -22,5 +22,5 @@ search_keywords:
   - National Bank of Cambodia
 max_num_pages:
 max_num_articles:
-num_workers: 10
+num_workers: 2
 verbose: true

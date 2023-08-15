@@ -1,8 +1,0 @@
-defaults:
-  - __init__
-  - /pipeline@nbcpu-topic_uncertainty_filter: nbcpu-topic_uncertainty_filter
-
-_config_name_: nbcpu-topic_uncertainty_filter
-verbose: true
-pipelines:
-  - nbcpu-topic_uncertainty_filter

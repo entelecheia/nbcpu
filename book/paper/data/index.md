@@ -34,7 +34,3 @@ Once we have a comprehensive dataset of articles, we will filter the articles ba
 We will determine a specific time frame for our study, and only gather articles published within this period. This will allow us to understand the evolution of policy uncertainty over a specified period of time.
 
 This dataset will provide a rich source of information from which to analyze and measure the uncertainty surrounding Cambodia's central bank policy.
-
-```{tableofcontents}
-
-```
