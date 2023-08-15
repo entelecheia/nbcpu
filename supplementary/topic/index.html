@@ -463,7 +463,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-the-appropriate-k">Selecting the Appropriate k</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-results">Model Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-results">Model Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-interpretation">Topic Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-topics-for-the-second-stage-of-the-analysis">Filtering Topics for the Second Stage of the Analysis</a></li>
 </ul>
             </nav>
         </div>
@@ -754,9 +758,9 @@ document.write(`
 <p>The selection of k is a nuanced process that depends on both quantitative metrics and qualitative assessment. While coherence values provide a quantitative measure, the interpretability and relevance of the topics should also be considered. It might be beneficial to examine the actual topics generated for the selected k and assess their relevance to the domain of interest.</p>
 <p>Here, we select k = 20 as the optimal number of topics. The topics generated for this model are examined in the next section.</p>
 <figure class="align-default" id="fig-lda-cv-noprior">
-<img alt="../../_images/cv-noprior.png" src="../../_images/cv-noprior.png" />
+<a class="reference internal image-reference" href="../../_images/cv-noprior.png"><img alt="../../_images/cv-noprior.png" src="../../_images/cv-noprior.png" style="width: 70%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Wordcloud of the top 500 words in each topic from the LDA model with 20 topics. The size of the word is proportional to the frequency of the word in the topic.</span><a class="headerlink" href="#fig-lda-cv-noprior" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Coherence values for different k values</span><a class="headerlink" href="#fig-lda-cv-noprior" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -781,6 +785,36 @@ document.write(`
 <p><span class="caption-number">Fig. 2 </span><span class="caption-text">Wordcloud of the top 500 words in each topic from the LDA model with 20 topics. The size of the word is proportional to the frequency of the word in the topic.</span><a class="headerlink" href="#fig-lda-wordcloud-noprior" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<section id="topic-interpretation">
+<h3>Topic Interpretation<a class="headerlink" href="#topic-interpretation" title="Permalink to this heading">#</a></h3>
+<p>The following interpretation analyzes 20 topics extracted from a corpus of documents using Latent Dirichlet Allocation (LDA). These topics encompass a wide range of subjects, including politics, health, environment, technology, economy, culture, and international relations. The interpretation of each topic provides insights into the thematic structure of the corpus, reflecting societal, cultural, economic, and political dimensions. The analysis concludes with alternative considerations that could lead to a more nuanced understanding of the topics.</p>
+<ol class="arabic simple">
+<li><p><strong>Topic #0</strong>: Focuses on political dynamics, including elections, legal matters, human rights, corruption, and governance. It reflects the political landscape and the struggle for democracy and justice.</p></li>
+<li><p><strong>Topic #1</strong>: Centers on the global health crisis, specifically COVID-19, its impact, vaccination efforts, and medical responses to the pandemic.</p></li>
+<li><p><strong>Topic #2</strong>: Addresses environmental and rural issues, such as water management, land use, farming, and community living. It may indicate concerns about sustainability and local livelihoods.</p></li>
+<li><p><strong>Topic #3</strong>: Highlights Cambodia’s social development, women’s issues, poverty alleviation, tourism, and governmental policies. It reflects a focus on national growth and societal well-being.</p></li>
+<li><p><strong>Topic #4</strong>: Emphasizes regional cooperation within ASEAN, international relations, economic development, and security matters. It suggests a focus on diplomacy and global interconnectedness.</p></li>
+<li><p><strong>Topic #5</strong>: Pertains to economic indicators, market trends, inflation, currency, and investment. It reflects the financial landscape and economic health.</p></li>
+<li><p><strong>Topic #6</strong>: Focuses on geopolitical tensions, specifically involving Russia, Ukraine, and related international conflicts and sanctions. It may indicate global power dynamics and diplomatic challenges.</p></li>
+<li><p><strong>Topic #7</strong>: Concerns trade, labor, and industry, including exports, tariffs, labor rights, and agreements. It reflects the dynamics of the global supply chain and workforce.</p></li>
+<li><p><strong>Topic #8</strong>: Centers on energy, technology, and environmental sustainability, including renewable energy, climate change, and technological innovation.</p></li>
+<li><p><strong>Topic #9</strong>: Highlights cultural aspects, including arts, entertainment, food, and urban lifestyle. It reflects cultural richness and societal engagement.</p></li>
+<li><p><strong>Topic #10</strong>: Focuses on education, youth development, skills training, and family dynamics. It may indicate a societal emphasis on education and personal growth.</p></li>
+<li><p><strong>Topic #11</strong>: Pertains to sports, entertainment, and aviation, reflecting leisure activities, competitions, and travel.</p></li>
+<li><p><strong>Topic #12</strong>: Addresses law enforcement, crime, traffic, and legal proceedings. It reflects societal order and legal matters.</p></li>
+<li><p><strong>Topic #13</strong>: Focuses on South Asian history, politics, and cultural connections, including India, Pakistan, Bangladesh, and Myanmar.</p></li>
+<li><p><strong>Topic #14</strong>: Highlights tourism, investment, agriculture, and infrastructure development, reflecting economic growth sectors.</p></li>
+<li><p><strong>Topic #15</strong>: Concerns banking, financial services, digital transactions, and business operations. It reflects the financial infrastructure and modern banking trends.</p></li>
+<li><p><strong>Topic #16</strong>: Focuses on Britain’s international relations, Brexit, business deals, and connections with Australia and Hong Kong.</p></li>
+<li><p><strong>Topic #17</strong>: Centers on digital platforms, online services, internet companies, and digital branding. It reflects the digital economy and technological advancements.</p></li>
+<li><p><strong>Topic #18</strong>: Addresses U.S. politics, military matters, nuclear issues, and international relations, reflecting global power dynamics.</p></li>
+<li><p><strong>Topic #19</strong>: Focuses on Southeast Asian politics and relations, including Malaysia, Indonesia, the Philippines, and related regional matters.</p></li>
+</ol>
+</section>
+</section>
+<section id="filtering-topics-for-the-second-stage-of-the-analysis">
+<h2>Filtering Topics for the Second Stage of the Analysis<a class="headerlink" href="#filtering-topics-for-the-second-stage-of-the-analysis" title="Permalink to this heading">#</a></h2>
+<p>In the second stage of the research, the focus is on refining the analysis of central bank policy uncertainty in Cambodia’s highly dollarized economy by filtering out specific unrelated topics. The exclusion of topics #4, #6, #9, #10, #11, #16, #18, and #19, all of which have a combined weight greater than 0.5, is a vital part of this process. These topics are not aligned with the study’s core focus on the uncertainties surrounding central bank policies in a highly dollarized economic context. By meticulously eliminating these unrelated topics, the research narrows its scope to concentrate solely on the relevant narrative text data pertaining to monetary policy, economic indicators, and financial dynamics specific to Cambodia. This targeted approach not only enhances the precision of the derived measures of policy uncertainty but also ensures that the analysis is finely tuned to the unique economic phenomena under investigation in the Cambodian context.</p>
 </section>
 </section>
 
@@ -865,7 +899,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-the-appropriate-k">Selecting the Appropriate k</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-results">Model Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-results">Model Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-interpretation">Topic Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-topics-for-the-second-stage-of-the-analysis">Filtering Topics for the Second Stage of the Analysis</a></li>
 </ul>
   </nav></div>
 
