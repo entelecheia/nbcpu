@@ -67,45 +67,6 @@ To run the entire workflow, run the following command:
 nbcpu +workflow=nbcpu
 ```
 
-## Crawling
-
-The crawling configuration is located in the `src/nbcpu/conf/fetcher` directory. The configuration is divided into several sub configurations, each of which is located in the `src/nbcpu/conf/fetcher` directory.
-
-```yaml
-defaults:
-  - khmer
-_config_name_: khmer_all
-search_keywords:
-  - NBC
-  - Exchange Rate
-  - De-dollarization
-  - Inflation
-  - GDP
-  - Monetary Policy
-  - Finance
-  - Banking
-  - Stock Exchange
-  - Uncertain
-  - Economic
-  - Policy
-  - Financial
-  - Riel
-  - Bank
-  - Economy
-  - Securities Exchange
-  - National Bank of Cambodia
-max_num_pages:
-max_num_articles:
-num_workers: 10
-verbose: true
-```
-
-To run the crawling configuration, run the following command:
-
-```bash
-nbcpu +workflow=nbcpu +fetcher=khmer_all
-```
-
 ```{tableofcontents}
 
 ```
