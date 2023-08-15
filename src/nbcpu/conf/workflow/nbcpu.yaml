@@ -14,15 +14,25 @@ defaults:
 _config_name_: nbcpu
 verbose: false
 tasks:
-  - khmer_all
-  - nbcpu-datasets
-  - nbcpu-topic_noprior
-  - nbcpu-datasets_noprior_filter
-  - nbcpu-topic_prior
+  # - khmer_all
+  # - nbcpu-datasets
+  # - nbcpu-topic_noprior
+  # - nbcpu-datasets_noprior_filter
+  # - nbcpu-topic_prior
   - nbcpu-topic_uncertainty
-  - nbcpu-datasets_uncertainty_filter
-  - nbcpu-topic_uncertainty_filtered
+  # - nbcpu-datasets_uncertainty_filter
+  # - nbcpu-topic_uncertainty_filtered
 
+nbcpu-topic_uncertainty:
+  calls:
+    # - train
+    - infer
+  infer_args:
+    model_config_file: ${__project_root_path__:}/workspace/nbcpu-topic_uncertainty/model/configs/model(3)_config.yaml
+  corpus_to_infer:
+    text_col: tokens
+    data_load:
+      data_file: ${__project_root_path__:}/workspace/datasets/processed/topic_noprior_filtered/train.parquet
 nbcpu-topic_uncertainty_filtered:
   calls:
     # - train
