@@ -16,4 +16,5 @@ chapters:
       - file: supplementary/crawling/index
       - file: supplementary/processing/index
       - file: supplementary/topic/index
+      - file: supplementary/topic/prior
       - file: supplementary/analysis/index

@@ -6,9 +6,9 @@ task_name: nbcpu-topic_prior
 run_args:
   k:
     - 10
-    - 20
-    - 30
-    - 40
+    # - 20
+    # - 30
+    # - 40
 model:
   train_args:
     interval: 10
