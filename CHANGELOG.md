@@ -1,5 +1,20 @@
 <!--next-version-placeholder-->
 
+## v0.14.0 (2023-08-15)
+
+### Feature
+
+* **book/supplementary/topic/figs:** Add LDA_model(1)_k(20)_wordcloud_00.png ([`caf3b54`](https://github.com/entelecheia/nbcpu/commit/caf3b545ffeb49e32b54faa6769eb7bbeb2421c1))
+* **book:** Add cv.png figure to supplementary topic ([`39c8c11`](https://github.com/entelecheia/nbcpu/commit/39c8c11c14501d1c514f5f10dd9ee0975bca5d17))
+* **supplementary:** Add model-summary.jsonl with 4 LDA model configs ([`9344e79`](https://github.com/entelecheia/nbcpu/commit/9344e7977a622ab7f9a1ed3173e027c1ad28fc28))
+
+### Documentation
+
+* Add supplementary/topic notebook ([`9c6ddfa`](https://github.com/entelecheia/nbcpu/commit/9c6ddfa41af9ff823abe3731312017704a8182f5))
+* Update supplementary/processing notebook ([`83905a5`](https://github.com/entelecheia/nbcpu/commit/83905a5eaf09f404df6acfb344eefd923f29e072))
+* Add supplementary/processing notebook ([`e6a9687`](https://github.com/entelecheia/nbcpu/commit/e6a9687837db314b97357094c9b44ff3565c546b))
+* Update supplementary/crawling ([`a3f1307`](https://github.com/entelecheia/nbcpu/commit/a3f1307ae4c0bf4045b3eab8228e6c96e0851b9a))
+
 ## v0.13.0 (2023-08-15)
 
 ### Feature
