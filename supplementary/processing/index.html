@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Preprocessing the crawled data &#8212; Measuring Central Bank Policy Uncertainty</title>
+    <title>Processing the Data &#8212; Measuring Central Bank Policy Uncertainty</title>
   
   
   
@@ -183,9 +183,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../paper/results/index.html">Results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../paper/conclusion/index.html">Concluding Remarks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../paper/references.html">References</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Supplemental material</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Supplemental Material</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../crawling/index.html">Crawling Khmer Times</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Preprocessing the crawled data</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Processing the Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../topic/index.html">Topic modeling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html">Topic analysis</a></li>
 </ul>
@@ -236,6 +236,55 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/entelecheia/nbcpu/blob/main/book/supplementary/processing/index.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -261,7 +310,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/entelecheia/nbcpu/edit/main/book/supplementary/processing/index.md" target="_blank"
+      <li><a href="https://github.com/entelecheia/nbcpu/edit/main/book/supplementary/processing/index.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -308,7 +357,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/supplementary/processing/index.md" target="_blank"
+      <li><a href="../../_sources/supplementary/processing/index.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -318,7 +367,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -377,7 +426,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -388,11 +439,22 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Preprocessing the crawled data</h1>
+    <h1>Processing the Data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization-and-lemmatization">1. Normalization and Lemmatization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">2. Tokenization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization-workflow">3. Tokenization Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution">Execution</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -402,12 +464,631 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="preprocessing-the-crawled-data">
-<h1>Preprocessing the crawled data<a class="headerlink" href="#preprocessing-the-crawled-data" title="Permalink to this heading">#</a></h1>
-<p>40002/40002</p>
-<p>Created 0 samples, 39713 train samples, and 289 discard samples</p>
-<p>uncertainty docs</p>
-<p>Created 0 samples, 6917 train samples, and 20693 discard samples</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="processing-the-data">
+<h1>Processing the Data<a class="headerlink" href="#processing-the-data" title="Permalink to this heading">#</a></h1>
+<p>The processing of the data crawled from Khmer Times involves several critical steps, including normalization, lemmatization, tokenization, and extraction of specific parts of speech. This section provides a comprehensive overview of the entire process, detailing the configuration and workflow for tokenization.</p>
+<section id="normalization-and-lemmatization">
+<h2>1. Normalization and Lemmatization<a class="headerlink" href="#normalization-and-lemmatization" title="Permalink to this heading">#</a></h2>
+<p>Before tokenization, the raw data is normalized and lemmatized to ensure consistency and reduce complexity. The normalization process includes fixing inconsistent UTF-8 encoding, character width, line breaks, and other text-related issues. Lemmatization reduces words to their base or root form, ensuring that different forms of a word are treated as a single item.</p>
+</section>
+<section id="tokenization">
+<h2>2. Tokenization<a class="headerlink" href="#tokenization" title="Permalink to this heading">#</a></h2>
+<p>Tokenization is the process of breaking down the text into individual tokens or words. The configuration for tokenization includes various parameters to control the process:</p>
+<ul class="simple">
+<li><p><strong>Tokenizer Settings:</strong> Utilizes the NLTK tokenizer, with options to include whitespace tokens, convert to lowercase, and specify part-of-speech tags for nouns, verbs, adjectives, adverbs, etc.</p></li>
+<li><p><strong>Normalizer Settings:</strong> Includes options to fix various text issues, such as inconsistent encoding, character width, line breaks, and special characters.</p></li>
+<li><p><strong>Stopwords Settings:</strong> Defines the rules for removing common words that may not contribute to the analysis, such as pronouns, conjunctions, determiners, etc.</p></li>
+<li><p><strong>Tagger Settings:</strong> Utilizes the NLTK tagger for part-of-speech tagging, with options for lemmatization and stemming.</p></li>
+</ul>
+<p>The detailed JSON configuration for tokenization is provided in the code snippet below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nbcpu<span class="w"> </span>+tokenizer<span class="o">=</span>nbcpu<span class="w"> </span><span class="nv">dryrun</span><span class="o">=</span>true
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## Command Line Interface for HyFI ##
+{&#39;about&#39;: {&#39;authors&#39;: &#39;Young Joon Lee &lt;entelecheia@hotmail.com&gt;&#39;,
+           &#39;description&#39;: &#39;Quantifying Central Bank Policy Uncertainty in a &#39;
+                          &#39;Highly Dollarized Economy: A Topic Modeling &#39;
+                          &#39;Approach&#39;,
+           &#39;homepage&#39;: &#39;https://nbcpu.entelecheia.ai&#39;,
+           &#39;license&#39;: &#39;MIT&#39;,
+           &#39;name&#39;: &#39;Measuring Central Bank Policy Uncertainty&#39;},
+ &#39;debug_mode&#39;: False,
+ &#39;dryrun&#39;: True,
+ &#39;hydra_log_dir&#39;: &#39;/home/yjlee/.hyfi/logs/hydra&#39;,
+ &#39;ignore_warnings&#39;: True,
+ &#39;logging_level&#39;: &#39;WARNING&#39;,
+ &#39;noop&#39;: False,
+ &#39;resolve&#39;: True,
+ &#39;tokenizer&#39;: {&#39;_config_group_&#39;: &#39;/tokenizer&#39;,
+               &#39;_config_name_&#39;: &#39;nltk&#39;,
+               &#39;_target_&#39;: &#39;lexikanon.tokenizers.NLTKTokenizer&#39;,
+               &#39;include_whitespace_token&#39;: False,
+               &#39;lowercase&#39;: True,
+               &#39;normalizer&#39;: {&#39;_config_group_&#39;: &#39;/normalizer&#39;,
+                              &#39;_config_name_&#39;: &#39;formal_en&#39;,
+                              &#39;_target_&#39;: &#39;lexikanon.normalizers.Normalizer&#39;,
+                              &#39;ftfy&#39;: {&#39;decode_inconsistent_utf8&#39;: True,
+                                       &#39;fix_c1_controls&#39;: True,
+                                       &#39;fix_character_width&#39;: True,
+                                       &#39;fix_encoding&#39;: True,
+                                       &#39;fix_latin_ligatures&#39;: True,
+                                       &#39;fix_line_breaks&#39;: True,
+                                       &#39;fix_surrogates&#39;: True,
+                                       &#39;max_decode_length&#39;: 1000000,
+                                       &#39;normalization&#39;: &#39;NFKC&#39;,
+                                       &#39;remove_control_chars&#39;: True,
+                                       &#39;remove_terminal_escapes&#39;: True,
+                                       &#39;replace_lossy_sequences&#39;: True,
+                                       &#39;restore_byte_a0&#39;: True,
+                                       &#39;uncurl_quotes&#39;: True,
+                                       &#39;unescape_html&#39;: &#39;auto&#39;},
+                              &#39;hanja2hangle&#39;: False,
+                              &#39;num_repeats&#39;: 2,
+                              &#39;spaces&#39;: {&#39;collapse_whitespaces&#39;: True,
+                                         &#39;fix_whitespaces&#39;: True,
+                                         &#39;num_spaces_for_tab&#39;: 4,
+                                         &#39;replace_tabs&#39;: True,
+                                         &#39;strip&#39;: True},
+                              &#39;special_characters&#39;: {&#39;fix_ellipsis&#39;: True,
+                                                     &#39;fix_emoticons&#39;: False,
+                                                     &#39;fix_hyphens&#39;: True,
+                                                     &#39;fix_slashes&#39;: True,
+                                                     &#39;fix_tildes&#39;: True,
+                                                     &#39;regular_parentheses_only&#39;: False,
+                                                     &#39;single_quotes_only&#39;: False}},
+               &#39;noun_postags&#39;: [&#39;NOUN&#39;],
+               &#39;postag_delim&#39;: &#39;/&#39;,
+               &#39;postag_length&#39;: None,
+               &#39;postags&#39;: [&#39;NOUN&#39;, &#39;VERB&#39;, &#39;PRT&#39;, &#39;ADJ&#39;, &#39;ADV&#39;],
+               &#39;punct_postags&#39;: [&#39;.&#39;],
+               &#39;sentence_separator&#39;: &#39;\\n&#39;,
+               &#39;stop_postags&#39;: [&#39;PRON&#39;, &#39;ADP&#39;, &#39;CONJ&#39;, &#39;DET&#39;, &#39;NUM&#39;, &#39;X&#39;, &#39;.&#39;],
+               &#39;stopwords&#39;: {&#39;_config_group_&#39;: &#39;/stopwords&#39;,
+                             &#39;_config_name_&#39;: &#39;__init__&#39;,
+                             &#39;_target_&#39;: &#39;lexikanon.stopwords.Stopwords&#39;,
+                             &#39;lowercase&#39;: True,
+                             &#39;name&#39;: &#39;stopwords&#39;,
+                             &#39;nltk_stopwords_lang&#39;: &#39;english&#39;,
+                             &#39;stopwords_fn&#39;: &#39;lambda x: len(x) &lt;= 2&#39;,
+                             &#39;stopwords_list&#39;: None,
+                             &#39;stopwords_path&#39;: &#39;/home/yjlee/.hyfi/logs/hydra/hyfi/2023-08-15/2023-08-15_16-06-11/tests/assets/stopwords/nbcpu-tokenizer.txt&#39;,
+                             &#39;verbose&#39;: False},
+               &#39;strip_pos&#39;: False,
+               &#39;tagger&#39;: {&#39;_config_group_&#39;: &#39;/tokenizer/tagger&#39;,
+                          &#39;_config_name_&#39;: &#39;nltk&#39;,
+                          &#39;_target_&#39;: &#39;lexikanon.tokenizers.nltk.NLTKTagger&#39;,
+                          &#39;language&#39;: &#39;english&#39;,
+                          &#39;lemmatize&#39;: True,
+                          &#39;lemmatizer&#39;: {&#39;_target_&#39;: &#39;nltk.stem.WordNetLemmatizer&#39;},
+                          &#39;stem&#39;: False,
+                          &#39;stemmer&#39;: {&#39;_target_&#39;: &#39;nltk.stem.PorterStemmer&#39;},
+                          &#39;tagset&#39;: &#39;universal&#39;,
+                          &#39;verbose&#39;: False},
+               &#39;tokenize_each_word&#39;: False,
+               &#39;verbose&#39;: False,
+               &#39;wordpieces_prefix&#39;: &#39;##&#39;},
+ &#39;verbose&#39;: False,
+ &#39;version&#39;: &#39;0.13.0&#39;}
+
+Dryrun is enabled, not running the HyFI config
+
+
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tokenization-workflow">
+<h2>3. Tokenization Workflow<a class="headerlink" href="#tokenization-workflow" title="Permalink to this heading">#</a></h2>
+<p>The tokenization workflow is defined in the <code class="docutils literal notranslate"><span class="pre">src/nbcpu/conf/pipeline</span></code> directory and consists of several steps:</p>
+<ul class="simple">
+<li><p><strong>Loading Dataset:</strong> Loads the dataset from the specified path in the desired format (e.g., parquet).</p></li>
+<li><p><strong>Tokenizing Dataset:</strong> Applies the specified tokenizer to the text column, creating a new tokenized column.</p></li>
+<li><p><strong>Extracting Tokens:</strong> Extracts specific tokens based on part-of-speech tags, such as nouns and adjectives for Topic Classification Model 1, and additional verbs and adverbs for Model 2.</p></li>
+<li><p><strong>Converting to Pandas DataFrame:</strong> Transforms the dataset into a Pandas DataFrame for further processing.</p></li>
+<li><p><strong>Evaluating and Filtering Data:</strong> Applies expressions to evaluate specific columns, filters data based on queries, and samples the data if needed.</p></li>
+<li><p><strong>Printing Head and Tail:</strong> Prints the beginning and end of the DataFrame for verification.</p></li>
+</ul>
+<p>The detailed YAML configuration for the tokenization workflow is provided in the code snippet below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nbcpu<span class="w"> </span>+pipeline<span class="o">=</span>nbcpu-datasets_tokenize<span class="w"> </span><span class="nv">dryrun</span><span class="o">=</span>true
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## Command Line Interface for HyFI ##
+{&#39;about&#39;: {&#39;authors&#39;: &#39;Young Joon Lee &lt;entelecheia@hotmail.com&gt;&#39;,
+           &#39;description&#39;: &#39;Quantifying Central Bank Policy Uncertainty in a &#39;
+                          &#39;Highly Dollarized Economy: A Topic Modeling &#39;
+                          &#39;Approach&#39;,
+           &#39;homepage&#39;: &#39;https://nbcpu.entelecheia.ai&#39;,
+           &#39;license&#39;: &#39;MIT&#39;,
+           &#39;name&#39;: &#39;Measuring Central Bank Policy Uncertainty&#39;},
+ &#39;debug_mode&#39;: False,
+ &#39;dryrun&#39;: True,
+ &#39;hydra_log_dir&#39;: &#39;/home/yjlee/.hyfi/logs/hydra&#39;,
+ &#39;ignore_warnings&#39;: True,
+ &#39;logging_level&#39;: &#39;WARNING&#39;,
+ &#39;noop&#39;: False,
+ &#39;pipeline&#39;: {&#39;dataframe_eval_columns&#39;: {&#39;desc&#39;: None,
+                                         &#39;env&#39;: None,
+                                         &#39;name&#39;: None,
+                                         &#39;pipe_obj_arg_name&#39;: None,
+                                         &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
+                                         &#39;return_pipe_obj&#39;: False,
+                                         &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.basic.DSBasic.dataframe_eval_columns&#39;,
+                                                 &#39;engine&#39;: &#39;python&#39;,
+                                                 &#39;expressions&#39;: None,
+                                                 &#39;verbose&#39;: False},
+                                         &#39;use_pipe_obj&#39;: True,
+                                         &#39;verbose&#39;: False},
+              &#39;dataframe_print_head_and_tail&#39;: {&#39;desc&#39;: None,
+                                                &#39;env&#39;: None,
+                                                &#39;name&#39;: None,
+                                                &#39;pipe_obj_arg_name&#39;: None,
+                                                &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
+                                                &#39;return_pipe_obj&#39;: False,
+                                                &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.basic.DSBasic.dataframe_print_head_and_tail&#39;,
+                                                        &#39;columns&#39;: None,
+                                                        &#39;num_heads&#39;: 5,
+                                                        &#39;num_tails&#39;: 5,
+                                                        &#39;verbose&#39;: False},
+                                                &#39;use_pipe_obj&#39;: True,
+                                                &#39;verbose&#39;: False},
+              &#39;dataframe_select_columns&#39;: {&#39;desc&#39;: None,
+                                           &#39;env&#39;: None,
+                                           &#39;name&#39;: None,
+                                           &#39;pipe_obj_arg_name&#39;: None,
+                                           &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
+                                           &#39;return_pipe_obj&#39;: False,
+                                           &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.basic.DSBasic.dataframe_select_columns&#39;,
+                                                   &#39;columns&#39;: None,
+                                                   &#39;verbose&#39;: False},
+                                           &#39;use_pipe_obj&#39;: True,
+                                           &#39;verbose&#39;: False},
+              &#39;dataset_to_pandas&#39;: {&#39;desc&#39;: None,
+                                    &#39;env&#39;: None,
+                                    &#39;name&#39;: None,
+                                    &#39;pipe_obj_arg_name&#39;: None,
+                                    &#39;pipe_target&#39;: &#39;hyfi.pipe.general_instance_methods&#39;,
+                                    &#39;return_pipe_obj&#39;: False,
+                                    &#39;run&#39;: {&#39;_target_&#39;: &#39;to_pandas&#39;},
+                                    &#39;use_pipe_obj&#39;: True,
+                                    &#39;verbose&#39;: True},
+              &#39;extract_tokens&#39;: {&#39;desc&#39;: None,
+                                 &#39;env&#39;: None,
+                                 &#39;name&#39;: None,
+                                 &#39;pipe_obj_arg_name&#39;: None,
+                                 &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
+                                 &#39;return_pipe_obj&#39;: False,
+                                 &#39;run&#39;: {&#39;_target_&#39;: &#39;lexikanon.pipes.tokenize.extract_tokens&#39;,
+                                         &#39;batch_size&#39;: 1000,
+                                         &#39;batched&#39;: True,
+                                         &#39;extracted_col&#39;: &#39;extracted_tokens&#39;,
+                                         &#39;load_from_cache_file&#39;: True,
+                                         &#39;nouns_only&#39;: False,
+                                         &#39;num_heads&#39;: 1,
+                                         &#39;num_tails&#39;: 1,
+                                         &#39;num_workers&#39;: 1,
+                                         &#39;postag_delim&#39;: None,
+                                         &#39;postag_length&#39;: None,
+                                         &#39;postags&#39;: None,
+                                         &#39;remove_columns&#39;: None,
+                                         &#39;stop_postags&#39;: None,
+                                         &#39;strip_pos&#39;: None,
+                                         &#39;token_col&#39;: &#39;tokens&#39;,
+                                         &#39;tokenizer&#39;: &#39;simple&#39;,
+                                         &#39;verbose&#39;: False},
+                                 &#39;use_pipe_obj&#39;: True,
+                                 &#39;verbose&#39;: False},
+              &#39;filter_and_sample_data&#39;: {&#39;columns_to_apply&#39;: None,
+                                         &#39;desc&#39;: None,
+                                         &#39;env&#39;: None,
+                                         &#39;name&#39;: None,
+                                         &#39;num_workers&#39;: 1,
+                                         &#39;pipe_obj_arg_name&#39;: None,
+                                         &#39;pipe_target&#39;: &#39;hyfi.pipe.dataframe_external_funcs&#39;,
+                                         &#39;return_pipe_obj&#39;: False,
+                                         &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.slice.DSSlice.filter_and_sample_data&#39;,
+                                                 &#39;discard_filename&#39;: None,
+                                                 &#39;output_dir&#39;: &#39;.&#39;,
+                                                 &#39;queries&#39;: None,
+                                                 &#39;returning_data&#39;: &#39;train&#39;,
+                                                 &#39;sample_filename&#39;: None,
+                                                 &#39;sample_seed&#39;: 42,
+                                                 &#39;sample_size&#39;: None,
+                                                 &#39;train_filename&#39;: &#39;train.parquet&#39;,
+                                                 &#39;verbose&#39;: False},
+                                         &#39;use_batcher&#39;: False,
+                                         &#39;use_pipe_obj&#39;: True,
+                                         &#39;verbose&#39;: False},
+              &#39;filter_data_by_queries&#39;: {&#39;columns_to_apply&#39;: None,
+                                         &#39;desc&#39;: None,
+                                         &#39;env&#39;: None,
+                                         &#39;name&#39;: None,
+                                         &#39;num_workers&#39;: 1,
+                                         &#39;pipe_obj_arg_name&#39;: None,
+                                         &#39;pipe_target&#39;: &#39;hyfi.pipe.dataframe_external_funcs&#39;,
+                                         &#39;return_pipe_obj&#39;: False,
+                                         &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.slice.DSSlice.filter_data_by_queries&#39;,
+                                                 &#39;queries&#39;: None,
+                                                 &#39;verbose&#39;: False},
+                                         &#39;use_batcher&#39;: False,
+                                         &#39;use_pipe_obj&#39;: True,
+                                         &#39;verbose&#39;: False},
+              &#39;initial_object&#39;: None,
+              &#39;load_dataframe&#39;: {&#39;columns_to_apply&#39;: None,
+                                 &#39;desc&#39;: None,
+                                 &#39;env&#39;: None,
+                                 &#39;name&#39;: None,
+                                 &#39;num_workers&#39;: 1,
+                                 &#39;pipe_obj_arg_name&#39;: None,
+                                 &#39;pipe_target&#39;: &#39;hyfi.pipe.dataframe_external_funcs&#39;,
+                                 &#39;return_pipe_obj&#39;: False,
+                                 &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.load.DSLoad.load_dataframe&#39;,
+                                         &#39;columns&#39;: None,
+                                         &#39;data_dir&#39;: None,
+                                         &#39;data_file&#39;: None,
+                                         &#39;filetype&#39;: None,
+                                         &#39;index_col&#39;: None,
+                                         &#39;verbose&#39;: False},
+                                 &#39;use_batcher&#39;: False,
+                                 &#39;use_pipe_obj&#39;: False,
+                                 &#39;verbose&#39;: False},
+              &#39;load_dataframes&#39;: {&#39;columns_to_apply&#39;: None,
+                                  &#39;desc&#39;: None,
+                                  &#39;env&#39;: None,
+                                  &#39;name&#39;: None,
+                                  &#39;num_workers&#39;: 1,
+                                  &#39;pipe_obj_arg_name&#39;: None,
+                                  &#39;pipe_target&#39;: &#39;hyfi.pipe.dataframe_external_funcs&#39;,
+                                  &#39;return_pipe_obj&#39;: False,
+                                  &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.load.DSLoad.load_dataframes&#39;,
+                                          &#39;concatenate&#39;: False,
+                                          &#39;data_dir&#39;: None,
+                                          &#39;data_files&#39;: None,
+                                          &#39;filetype&#39;: None,
+                                          &#39;ignore_index&#39;: False,
+                                          &#39;split&#39;: None,
+                                          &#39;use_cached&#39;: False,
+                                          &#39;verbose&#39;: False},
+                                  &#39;use_batcher&#39;: False,
+                                  &#39;use_pipe_obj&#39;: False,
+                                  &#39;verbose&#39;: False},
+              &#39;load_dataset&#39;: {&#39;desc&#39;: None,
+                               &#39;env&#39;: None,
+                               &#39;name&#39;: None,
+                               &#39;pipe_obj_arg_name&#39;: None,
+                               &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
+                               &#39;return_pipe_obj&#39;: False,
+                               &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.load.DSLoad.load_dataset&#39;,
+                                       &#39;cache_dir&#39;: None,
+                                       &#39;data_dir&#39;: None,
+                                       &#39;data_files&#39;: None,
+                                       &#39;download_config&#39;: None,
+                                       &#39;download_mode&#39;: None,
+                                       &#39;features&#39;: None,
+                                       &#39;name&#39;: None,
+                                       &#39;num_proc&#39;: None,
+                                       &#39;path&#39;: None,
+                                       &#39;split&#39;: None,
+                                       &#39;verification_mode&#39;: None},
+                               &#39;use_pipe_obj&#39;: False,
+                               &#39;verbose&#39;: False},
+              &#39;load_dataset_from_disk&#39;: {&#39;desc&#39;: None,
+                                         &#39;env&#39;: None,
+                                         &#39;name&#39;: None,
+                                         &#39;pipe_obj_arg_name&#39;: None,
+                                         &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
+                                         &#39;return_pipe_obj&#39;: False,
+                                         &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.load.DSLoad.load_dataset_from_disk&#39;,
+                                                 &#39;dataset_path&#39;: None,
+                                                 &#39;keep_in_memory&#39;: None,
+                                                 &#39;num_heads&#39;: 1,
+                                                 &#39;num_tails&#39;: 1,
+                                                 &#39;storage_options&#39;: None,
+                                                 &#39;verbose&#39;: False},
+                                         &#39;use_pipe_obj&#39;: False,
+                                         &#39;verbose&#39;: False},
+              &#39;merge_dataframes&#39;: {&#39;desc&#39;: None,
+                                   &#39;env&#39;: None,
+                                   &#39;name&#39;: None,
+                                   &#39;pipe_obj_arg_name&#39;: None,
+                                   &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
+                                   &#39;return_pipe_obj&#39;: False,
+                                   &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.combine.DSCombine.merge_dataframes&#39;,
+                                           &#39;copy&#39;: True,
+                                           &#39;how&#39;: &#39;inner&#39;,
+                                           &#39;indicator&#39;: False,
+                                           &#39;left_index&#39;: False,
+                                           &#39;left_on&#39;: None,
+                                           &#39;on&#39;: None,
+                                           &#39;right&#39;: None,
+                                           &#39;right_index&#39;: False,
+                                           &#39;right_on&#39;: None,
+                                           &#39;sort&#39;: False,
+                                           &#39;suffixes&#39;: [&#39;_x&#39;, &#39;_y&#39;],
+                                           &#39;validate&#39;: None,
+                                           &#39;verbose&#39;: False},
+                                   &#39;use_pipe_obj&#39;: True,
+                                   &#39;verbose&#39;: False},
+              &#39;sample_data&#39;: {&#39;columns_to_apply&#39;: None,
+                              &#39;desc&#39;: None,
+                              &#39;env&#39;: None,
+                              &#39;name&#39;: None,
+                              &#39;num_workers&#39;: 1,
+                              &#39;pipe_obj_arg_name&#39;: None,
+                              &#39;pipe_target&#39;: &#39;hyfi.pipe.dataframe_external_funcs&#39;,
+                              &#39;return_pipe_obj&#39;: False,
+                              &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.slice.DSSlice.sample_data&#39;,
+                                      &#39;group_by&#39;: None,
+                                      &#39;remove_columns&#39;: None,
+                                      &#39;sample_seed&#39;: 123,
+                                      &#39;sample_size_per_group&#39;: None,
+                                      &#39;value_col&#39;: None,
+                                      &#39;verbose&#39;: False},
+                              &#39;use_batcher&#39;: False,
+                              &#39;use_pipe_obj&#39;: True,
+                              &#39;verbose&#39;: False},
+              &#39;sample_dataset&#39;: {&#39;desc&#39;: None,
+                                 &#39;env&#39;: None,
+                                 &#39;name&#39;: None,
+                                 &#39;pipe_obj_arg_name&#39;: None,
+                                 &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
+                                 &#39;return_pipe_obj&#39;: False,
+                                 &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.slice.DSSlice.sample_dataset&#39;,
+                                         &#39;num_heads&#39;: 1,
+                                         &#39;num_tails&#39;: 1,
+                                         &#39;randomize&#39;: True,
+                                         &#39;sample_seed&#39;: 42,
+                                         &#39;sample_size&#39;: 100,
+                                         &#39;split&#39;: None,
+                                         &#39;verbose&#39;: False},
+                                 &#39;use_pipe_obj&#39;: True,
+                                 &#39;verbose&#39;: False},
+              &#39;save_dataframes&#39;: {&#39;columns_to_apply&#39;: None,
+                                  &#39;desc&#39;: None,
+                                  &#39;env&#39;: None,
+                                  &#39;name&#39;: None,
+                                  &#39;num_workers&#39;: 1,
+                                  &#39;pipe_obj_arg_name&#39;: None,
+                                  &#39;pipe_target&#39;: &#39;hyfi.pipe.dataframe_external_funcs&#39;,
+                                  &#39;return_pipe_obj&#39;: False,
+                                  &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.save.DSSave.save_dataframes&#39;,
+                                          &#39;columns&#39;: None,
+                                          &#39;data_dir&#39;: None,
+                                          &#39;data_file&#39;: None,
+                                          &#39;filetype&#39;: &#39;parquet&#39;,
+                                          &#39;index&#39;: False,
+                                          &#39;suffix&#39;: None,
+                                          &#39;verbose&#39;: False},
+                                  &#39;use_batcher&#39;: False,
+                                  &#39;use_pipe_obj&#39;: True,
+                                  &#39;verbose&#39;: False},
+              &#39;save_dataset_to_disk&#39;: {&#39;desc&#39;: None,
+                                       &#39;env&#39;: None,
+                                       &#39;name&#39;: None,
+                                       &#39;pipe_obj_arg_name&#39;: None,
+                                       &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
+                                       &#39;return_pipe_obj&#39;: False,
+                                       &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.save.DSSave.save_dataset_to_disk&#39;,
+                                               &#39;dataset_path&#39;: None,
+                                               &#39;max_shard_size&#39;: None,
+                                               &#39;num_proc&#39;: None,
+                                               &#39;num_shards&#39;: None,
+                                               &#39;storage_options&#39;: None,
+                                               &#39;verbose&#39;: False},
+                                       &#39;use_pipe_obj&#39;: True,
+                                       &#39;verbose&#39;: False},
+              &#39;steps&#39;: [{&#39;uses&#39;: &#39;load_dataset&#39;,
+                         &#39;verbose&#39;: True,
+                         &#39;with&#39;: {&#39;data_files&#39;: &#39;datasets/raw/khmer_articles.parquet&#39;,
+                                  &#39;path&#39;: &#39;parquet&#39;,
+                                  &#39;split&#39;: &#39;train&#39;}},
+                        {&#39;uses&#39;: &#39;sample_dataset&#39;,
+                         &#39;with&#39;: {&#39;randomize&#39;: True,
+                                  &#39;sample_size&#39;: 1000,
+                                  &#39;verbose&#39;: True}},
+                        {&#39;uses&#39;: &#39;tokenize_dataset&#39;,
+                         &#39;with&#39;: {&#39;load_from_cache_file&#39;: False,
+                                  &#39;num_workers&#39;: 1,
+                                  &#39;text_col&#39;: &#39;text&#39;,
+                                  &#39;token_col&#39;: &#39;tokenized&#39;,
+                                  &#39;tokenizer&#39;: &#39;nbcpu&#39;,
+                                  &#39;verbose&#39;: True}},
+                        {&#39;uses&#39;: &#39;extract_tokens&#39;,
+                         &#39;with&#39;: {&#39;extracted_col&#39;: &#39;tokens&#39;,
+                                  &#39;load_from_cache_file&#39;: False,
+                                  &#39;num_workers&#39;: 1,
+                                  &#39;strip_pos&#39;: True,
+                                  &#39;token_col&#39;: &#39;tokenized&#39;,
+                                  &#39;tokenizer&#39;: &#39;nbcpu&#39;,
+                                  &#39;verbose&#39;: True}},
+                        {&#39;uses&#39;: &#39;extract_tokens&#39;,
+                         &#39;with&#39;: {&#39;extracted_col&#39;: &#39;adjnouns&#39;,
+                                  &#39;load_from_cache_file&#39;: False,
+                                  &#39;num_workers&#39;: 1,
+                                  &#39;postags&#39;: [&#39;ADJ&#39;, &#39;NOUN&#39;],
+                                  &#39;strip_pos&#39;: True,
+                                  &#39;token_col&#39;: &#39;tokenized&#39;,
+                                  &#39;tokenizer&#39;: &#39;nbcpu&#39;,
+                                  &#39;verbose&#39;: True}},
+                        {&#39;uses&#39;: &#39;extract_tokens&#39;,
+                         &#39;with&#39;: {&#39;extracted_col&#39;: &#39;predicates&#39;,
+                                  &#39;load_from_cache_file&#39;: False,
+                                  &#39;num_workers&#39;: 1,
+                                  &#39;postags&#39;: [&#39;VERB&#39;, &#39;PRT&#39;, &#39;ADJ&#39;, &#39;ADV&#39;],
+                                  &#39;strip_pos&#39;: True,
+                                  &#39;token_col&#39;: &#39;tokenized&#39;,
+                                  &#39;tokenizer&#39;: &#39;nbcpu&#39;,
+                                  &#39;verbose&#39;: True}},
+                        {&#39;uses&#39;: &#39;dataset_to_pandas&#39;, &#39;verbose&#39;: True},
+                        {&#39;uses&#39;: &#39;dataframe_eval_columns&#39;,
+                         &#39;with&#39;: {&#39;expressions&#39;: {&#39;id&#39;: &quot;url.str.split(&#39;/&#39;).str[3]&quot;},
+                                  &#39;verbose&#39;: True}},
+                        {&#39;uses&#39;: &#39;filter_and_sample_data&#39;,
+                         &#39;with&#39;: {&#39;discard_filename&#39;: &#39;discard.parquet&#39;,
+                                  &#39;output_dir&#39;: &#39;datasets/processed/khmer_tokenized_sample&#39;,
+                                  &#39;queries&#39;: [&#39;tokens.str.len() &gt; 50&#39;],
+                                  &#39;train_filename&#39;: &#39;train.parquet&#39;,
+                                  &#39;verbose&#39;: True}},
+                        {&#39;uses&#39;: &#39;dataframe_print_head_and_tail&#39;,
+                         &#39;verbose&#39;: True,
+                         &#39;with&#39;: {&#39;columns&#39;: [&#39;id&#39;,
+                                              &#39;text&#39;,
+                                              &#39;tokens&#39;,
+                                              &#39;adjnouns&#39;,
+                                              &#39;predicates&#39;],
+                                  &#39;verbose&#39;: True}}],
+              &#39;tokenize_dataset&#39;: {&#39;desc&#39;: None,
+                                   &#39;env&#39;: None,
+                                   &#39;name&#39;: None,
+                                   &#39;pipe_obj_arg_name&#39;: None,
+                                   &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
+                                   &#39;return_pipe_obj&#39;: False,
+                                   &#39;run&#39;: {&#39;_target_&#39;: &#39;lexikanon.pipes.tokenize.tokenize_dataset&#39;,
+                                           &#39;batch_size&#39;: 1000,
+                                           &#39;batched&#39;: True,
+                                           &#39;load_from_cache_file&#39;: True,
+                                           &#39;num_heads&#39;: 1,
+                                           &#39;num_tails&#39;: 1,
+                                           &#39;num_workers&#39;: 1,
+                                           &#39;remove_columns&#39;: None,
+                                           &#39;text_col&#39;: &#39;text&#39;,
+                                           &#39;token_col&#39;: &#39;tokens&#39;,
+                                           &#39;tokenizer&#39;: &#39;simple&#39;,
+                                           &#39;verbose&#39;: False},
+                                   &#39;use_pipe_obj&#39;: True,
+                                   &#39;verbose&#39;: False},
+              &#39;use_task_as_initial_object&#39;: False},
+ &#39;resolve&#39;: True,
+ &#39;verbose&#39;: False,
+ &#39;version&#39;: &#39;0.13.0&#39;}
+
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="execution">
+<h2>Execution<a class="headerlink" href="#execution" title="Permalink to this heading">#</a></h2>
+<p>For the actual execution of the tokenization and processing workflow, you can run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!nbcpu<span class="w"> </span>+workflow<span class="o">=</span>nbcpu<span class="w"> </span><span class="nv">tasks</span><span class="o">=</span><span class="s1">&#39;[nbcpu-datasets]&#39;</span><span class="w"> </span><span class="nv">mode</span><span class="o">=</span>__info__
+</pre></div>
+</div>
+<p>This command initiates the entire processing workflow as defined in the configuration, including normalization, lemmatization, tokenization, and extraction of specific parts of speech. The <code class="docutils literal notranslate"><span class="pre">mode=__info__</span></code> part of the command provides informational output, allowing you to monitor the progress and verify the process.</p>
+<p>By executing this command, you will transform the raw data crawled from Khmer Times into a structured and consistent format, ready for topic modeling and further analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nbcpu<span class="w"> </span>+workflow<span class="o">=</span>nbcpu<span class="w"> </span><span class="nv">tasks</span><span class="o">=</span><span class="s1">&#39;[nbcpu-datasets]&#39;</span><span class="w"> </span><span class="nv">mode</span><span class="o">=</span>__info__
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[<span class=" -Color -Color-Cyan">2023-08-15 16:02:15,053</span>][<span class=" -Color -Color-Blue">hyfi.joblib.joblib</span>][<span class=" -Color -Color-Green">INFO</span>] - initialized batcher with &lt;hyfi.joblib.batch.batcher.Batcher object at 0x7fae180975e0&gt;
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:15,053</span>][<span class=" -Color -Color-Blue">hyfi.main.config</span>][<span class=" -Color -Color-Green">INFO</span>] - HyFi project [nbcpu] initialized
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:15,245</span>][<span class=" -Color -Color-Blue">hyfi.main.main</span>][<span class=" -Color -Color-Green">INFO</span>] - The HyFI config is not instantiatable, running HyFI task with the config
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:16,077</span>][<span class=" -Color -Color-Blue">hyfi.joblib.joblib</span>][<span class=" -Color -Color-Green">INFO</span>] - initialized batcher with &lt;hyfi.joblib.batch.batcher.Batcher object at 0x7fae18032eb0&gt;
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:17,318</span>][<span class=" -Color -Color-Blue">hyfi.workflow.workflow</span>][<span class=" -Color -Color-Green">INFO</span>] - Running task [nbcpu-datasets] with [run={} verbose=False uses=&#39;nbcpu-datasets&#39;]
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:17,346</span>][<span class=" -Color -Color-Blue">hyfi.task.task</span>][<span class=" -Color -Color-Green">INFO</span>] - Running 1 pipeline(s)
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:17,346</span>][<span class=" -Color -Color-Blue">hyfi.task.task</span>][<span class=" -Color -Color-Green">INFO</span>] - Running pipeline: nbcpu-datasets_tokenize
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:17,368</span>][<span class=" -Color -Color-Blue">hyfi.task.task</span>][<span class=" -Color -Color-Green">INFO</span>] - Applying 10 pipes: [{&#39;_target_&#39;: &#39;hyfi.utils.datasets.load.DSLoad.load_dataset&#39;, &#39;path&#39;: &#39;parquet&#39;, &#39;name&#39;: None, &#39;data_dir&#39;: None, &#39;data_files&#39;: &#39;datasets/raw/khmer_articles.parquet&#39;, &#39;split&#39;: &#39;train&#39;, &#39;cache_dir&#39;: None, &#39;features&#39;: None, &#39;download_config&#39;: None, &#39;download_mode&#39;: None, &#39;verification_mode&#39;: None, &#39;num_proc&#39;: None}, {&#39;_target_&#39;: &#39;hyfi.utils.datasets.slice.DSSlice.sample_dataset&#39;, &#39;split&#39;: None, &#39;sample_size&#39;: 1000, &#39;sample_seed&#39;: 42, &#39;randomize&#39;: True, &#39;num_heads&#39;: 1, &#39;num_tails&#39;: 1, &#39;verbose&#39;: True}, {&#39;_target_&#39;: &#39;lexikanon.pipes.tokenize.tokenize_dataset&#39;, &#39;tokenizer&#39;: &#39;nbcpu&#39;, &#39;num_workers&#39;: 100, &#39;batched&#39;: True, &#39;batch_size&#39;: 1000, &#39;text_col&#39;: &#39;text&#39;, &#39;token_col&#39;: &#39;tokenized&#39;, &#39;remove_columns&#39;: None, &#39;load_from_cache_file&#39;: False, &#39;num_heads&#39;: 1, &#39;num_tails&#39;: 1, &#39;verbose&#39;: True}, {&#39;_target_&#39;: &#39;lexikanon.pipes.tokenize.extract_tokens&#39;, &#39;tokenizer&#39;: &#39;nbcpu&#39;, &#39;num_workers&#39;: 100, &#39;batched&#39;: True, &#39;batch_size&#39;: 1000, &#39;token_col&#39;: &#39;tokenized&#39;, &#39;extracted_col&#39;: &#39;tokens&#39;, &#39;nouns_only&#39;: False, &#39;postags&#39;: None, &#39;stop_postags&#39;: None, &#39;strip_pos&#39;: True, &#39;postag_delim&#39;: None, &#39;postag_length&#39;: None, &#39;remove_columns&#39;: None, &#39;load_from_cache_file&#39;: False, &#39;num_heads&#39;: 1, &#39;num_tails&#39;: 1, &#39;verbose&#39;: True}, {&#39;_target_&#39;: &#39;lexikanon.pipes.tokenize.extract_tokens&#39;, &#39;tokenizer&#39;: &#39;nbcpu&#39;, &#39;num_workers&#39;: 100, &#39;batched&#39;: True, &#39;batch_size&#39;: 1000, &#39;token_col&#39;: &#39;tokenized&#39;, &#39;extracted_col&#39;: &#39;adjnouns&#39;, &#39;nouns_only&#39;: False, &#39;postags&#39;: [&#39;ADJ&#39;, &#39;NOUN&#39;], &#39;stop_postags&#39;: None, &#39;strip_pos&#39;: True, &#39;postag_delim&#39;: None, &#39;postag_length&#39;: None, &#39;remove_columns&#39;: None, &#39;load_from_cache_file&#39;: False, &#39;num_heads&#39;: 1, &#39;num_tails&#39;: 1, &#39;verbose&#39;: True}, {&#39;_target_&#39;: &#39;lexikanon.pipes.tokenize.extract_tokens&#39;, &#39;tokenizer&#39;: &#39;nbcpu&#39;, &#39;num_workers&#39;: 100, &#39;batched&#39;: True, &#39;batch_size&#39;: 1000, &#39;token_col&#39;: &#39;tokenized&#39;, &#39;extracted_col&#39;: &#39;predicates&#39;, &#39;nouns_only&#39;: False, &#39;postags&#39;: [&#39;VERB&#39;, &#39;PRT&#39;, &#39;ADJ&#39;, &#39;ADV&#39;], &#39;stop_postags&#39;: None, &#39;strip_pos&#39;: True, &#39;postag_delim&#39;: None, &#39;postag_length&#39;: None, &#39;remove_columns&#39;: None, &#39;load_from_cache_file&#39;: False, &#39;num_heads&#39;: 1, &#39;num_tails&#39;: 1, &#39;verbose&#39;: True}, {&#39;_target_&#39;: &#39;to_pandas&#39;}, {&#39;_target_&#39;: &#39;hyfi.utils.datasets.basic.DSBasic.dataframe_eval_columns&#39;, &#39;expressions&#39;: {&#39;id&#39;: &quot;url.str.split(&#39;/&#39;).str[3]&quot;}, &#39;engine&#39;: &#39;python&#39;, &#39;verbose&#39;: True}, {&#39;_target_&#39;: &#39;hyfi.utils.datasets.slice.DSSlice.filter_and_sample_data&#39;, &#39;queries&#39;: [&#39;tokens.str.len() &gt; 50&#39;], &#39;sample_size&#39;: None, &#39;sample_seed&#39;: 42, &#39;output_dir&#39;: &#39;datasets/processed/khmer_tokenized_sample&#39;, &#39;sample_filename&#39;: None, &#39;train_filename&#39;: &#39;train.parquet&#39;, &#39;discard_filename&#39;: &#39;discard.parquet&#39;, &#39;returning_data&#39;: &#39;train&#39;, &#39;verbose&#39;: True}, {&#39;_target_&#39;: &#39;hyfi.utils.datasets.basic.DSBasic.dataframe_print_head_and_tail&#39;, &#39;num_heads&#39;: 5, &#39;num_tails&#39;: 5, &#39;columns&#39;: [&#39;id&#39;, &#39;text&#39;, &#39;tokens&#39;, &#39;adjnouns&#39;, &#39;predicates&#39;], &#39;verbose&#39;: True}]
+ Change directory to /home/yjlee/workspace/projects/nbcpu/workspace
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:17,369</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Running a pipe with hyfi.pipe.general_external_funcs
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:17,371</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Returning partial function: hyfi.utils.datasets.load.DSLoad.load_dataset with kwargs: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.load.DSLoad.load_dataset&#39;, &#39;path&#39;: &#39;parquet&#39;, &#39;name&#39;: None, &#39;data_dir&#39;: None, &#39;data_files&#39;: &#39;datasets/raw/khmer_articles.parquet&#39;, &#39;split&#39;: &#39;train&#39;, &#39;cache_dir&#39;: None, &#39;features&#39;: None, &#39;download_config&#39;: None, &#39;download_mode&#39;: None, &#39;verification_mode&#39;: None, &#39;num_proc&#39;: None}
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:18,300</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Returning partial function: hyfi.utils.datasets.slice.DSSlice.sample_dataset with kwargs: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.slice.DSSlice.sample_dataset&#39;, &#39;split&#39;: None, &#39;sample_size&#39;: 1000, &#39;sample_seed&#39;: 42, &#39;randomize&#39;: True, &#39;num_heads&#39;: 1, &#39;num_tails&#39;: 1, &#39;verbose&#39;: True}
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:18,301</span>][<span class=" -Color -Color-Blue">hyfi.composer.composer</span>][<span class=" -Color -Color-Green">INFO</span>] - instantiating hyfi.utils.datasets.slice.DSSlice.sample_dataset ...
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:18,310</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.slice</span>][<span class=" -Color -Color-Green">INFO</span>] - Sampling done.
+{&#39;url&#39;: [&#39;https://www.khmertimeskh.com/743741/thaicom-cat-tie-up-for-low-earth-orbit-satellite-services-for-cambodia-and-other-countries/&#39;], &#39;keyword&#39;: [&#39;Exchange+Rate&#39;], &#39;title&#39;: [&#39;Thaicom-CAT tie-up for low earth orbit satellite services for Cambodia and other countries&#39;], &#39;categories&#39;: [[&#39;Business&#39;]], &#39;time&#39;: [datetime.datetime(2020, 7, 11, 1, 20, 57)], &#39;text&#39;: [&#39;SET-listed Thaicom says a joint venture it recently formed with CAT Telecom would serve as a hub for low earth orbit (LEO) satellite service in the Cambodia, Laos, Myanmar and Vietnam (CLMV) market, catering to demand for high-speed internet via 5G tech and innovative applications.\nThe establishment of the joint venture, called Nation Space and Technology Co, was reported by Thaicom to the Stock Exchange of Thailand late last month.\nIn the JV with registered capital of 10 million baht, Thaicom holds a 75% stake, while CAT holds 25%.\nThe JV is aimed at providing satellite gateway services and solutions as well as marketing the sale of LEO satellites.\nThaicom chief executive Anant Kaewruamvongs said LEO satellites operate between 500 and 2,000 kilometres above the earth’s surface, compared to 36,000km for geostationary satellites, a traditional type of communication satellite.\nHe said the advantage of LEO satellites is a low latency signal, which could benefit people with access to high-speed internet services via 5G tech as well as the usage of Internet of Things devices, machine-to-machine tech, drones and applications that require high levels of accuracy, such as remote surgery.\nLEO satellite projects are operated by two main companies: Space Exploration Technologies Corp (SpaceX) and London-based satellite internet access provider OneWeb.\nLEO satellites have been launched and commercial service is expected from next year.\nMr Anant said related LEO businesses are going to be the focus of the JV.\n“Thaicom’s strength lies in global communication and network system management as well as marketing and sales channels, while CAT Telecom’s strengths are gateway service, submarine fibre and telecom networks,” he said.\nThe partnership should enhance the business strategy of the two companies, including providing engineering network management, gateway service and a marketing arm, said Mr Anant. “Through the JV, we can form the strongest partnership in Asean for LEO commercial services, especially in the CLMV market,” he said.\nCAT was recently approved by the National Digital Economy and Society Committee as the sole agency handling the operations and assets of Thaicom’s satellite service concession, which is due to end in September next year.\nCAT expressed its readiness to take control of satellites Thaicom 4 and 6 after the concession expires.\nThe state telecom enterprise indicated it will assign 24 staff to attend a training course in collaboration with Thaicom for one year, starting this September, to ensure seamless continuity of the two satellites’ operation. Bangkok Post&#39;]}
+{&#39;url&#39;: [&#39;https://www.khmertimeskh.com/50657009/mcdonalds-ceo-forced-out-over-consensual-relationship-with-employee/&#39;], &#39;keyword&#39;: [&#39;Financial&#39;], &#39;title&#39;: [&#39;McDonald’s CEO forced out over ‘consensual relationship’ with employee&#39;], &#39;categories&#39;: [[&#39;Business&#39;]], &#39;time&#39;: [datetime.datetime(2019, 11, 4, 18, 3, 39)], &#39;text&#39;: [&#39;(AFP) – McDonald’s announced Sunday that its president and CEO Steve Easterbrook was forced out after showing “poor judgment” by engaging in a “consensual relationship” with an employee.\nHe was replaced by Chris Kempczinski, the president of McDonald’s USA. Mr Kempczinski was also elected to the board of directors.\n“Easterbrook… has separated from the company following the board’s determination that he violated company policy and demonstrated poor judgment involving a recent consensual relationship with an employee,” the company said in a statement.\n“The company confirms that this leadership transition is unrelated to the company’s operational or financial performance.”\nIn an email to McDonald’s employees, Easterbrook said his relationship was “a mistake” that violated company policy.\n“Given the values of the company, I agree with the board that it is time for me to move on,” the email said.\nJoe Erlinger, president of international operated markets, will take over as head of McDonald’s USA, the company said.\nIn its most recent earnings report, on October 22, McDonald’s said profits dipped 1.8 percent in the third quarter from the year-ago period to $1.6 billion.\nRevenues at the company, which has 38,000 restaurants in more than 100 countries, edged up 1.1 percent to $5.4 billion.\nThe fast-food giant notched a healthy 5.9 percent increase in global comparable sales, including a solid rise in the United States.\nBut profits were pressured by increased spending on technology and research and development.\nMcDonald’s has invested heavily in home delivery and mobile pay initiatives in recent years, and in 2019 has unveiled a number of acquisitions to boost its drive-through operation.\nMr Kempczinski told The Wall Street Journal on Sunday that he plans to continue the focus on technology.\n“There isn’t going to be some radical, strategic shift. The plan is working,” he said.\nMr Easterbrook had served as chief executive since 2015. Under his leadership, McDonald’s share price doubled, but he was unable to stop a decline in sales.\nLike other fast food chains, McDonald’s is facing headwinds as consumers seek out healthier dining options.\nMr Easterbrook’s pay as CEO rose with McDonald’s share price, which closed last week at $194. His compensation hit a peak in 2017 at $21.8 million, including $9.1 million in incentive-based pay, the Journal said.\nWorkplace relationships have cost a number of CEOs their jobs in recent years, and the topic has become even more sensitive amid the #MeToo movement.\nIntel CEO Brian Krzanich and yoga apparel brand Lululemon chief Laurent Potdevin resigned from their companies in 2018 following revelations of relationships with employees.\nIn 2016, Priceline CEO Darren Huston stepped down for the same reason, as did BestBuy CEO Brian Dunn in 2012.&#39;]}
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:18,313</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Returning partial function: lexikanon.pipes.tokenize.tokenize_dataset with kwargs: {&#39;_target_&#39;: &#39;lexikanon.pipes.tokenize.tokenize_dataset&#39;, &#39;tokenizer&#39;: &#39;nbcpu&#39;, &#39;num_workers&#39;: 100, &#39;batched&#39;: True, &#39;batch_size&#39;: 1000, &#39;text_col&#39;: &#39;text&#39;, &#39;token_col&#39;: &#39;tokenized&#39;, &#39;remove_columns&#39;: None, &#39;load_from_cache_file&#39;: False, &#39;num_heads&#39;: 1, &#39;num_tails&#39;: 1, &#39;verbose&#39;: True}
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:18,314</span>][<span class=" -Color -Color-Blue">hyfi.composer.composer</span>][<span class=" -Color -Color-Green">INFO</span>] - instantiating lexikanon.pipes.tokenize.tokenize_dataset ...
+Map (num_proc=100): 100%|███████████| 1000/1000 [00:05&lt;00:00, 187.20 examples/s]
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:24,403</span>][<span class=" -Color -Color-Blue">lexikanon.pipes.tokenize</span>][<span class=" -Color -Color-Green">INFO</span>] - POS tagging done. See column &#39;tokenized&#39;.
+[[&#39;set-listed/ADJ&#39;, &#39;thaicom/NOUN&#39;, &#39;say/VERB&#39;, &#39;a/DET&#39;, &#39;joint/ADJ&#39;, &#39;venture/NOUN&#39;, &#39;it/PRON&#39;, &#39;recently/ADV&#39;, &#39;form/VERB&#39;, &#39;with/ADP&#39;, &#39;cat/NOUN&#39;, &#39;telecom/NOUN&#39;, &#39;would/VERB&#39;, &#39;serve/VERB&#39;, &#39;a/ADP&#39;, &#39;a/DET&#39;, &#39;hub/NOUN&#39;, &#39;for/ADP&#39;, &#39;low/ADJ&#39;, &#39;earth/NOUN&#39;, &#39;orbit/NOUN&#39;, &#39;(/.&#39;, &#39;leo/NOUN&#39;, &#39;)/.&#39;, &#39;satellite/NOUN&#39;, &#39;service/NOUN&#39;, &#39;in/ADP&#39;, &#39;the/DET&#39;, &#39;cambodia/NOUN&#39;, &#39;,/.&#39;, &#39;lao/NOUN&#39;, &#39;,/.&#39;, &#39;myanmar/NOUN&#39;, &#39;and/CONJ&#39;, &#39;vietnam/NOUN&#39;, &#39;(/.&#39;, &#39;clmv/NOUN&#39;, &#39;)/.&#39;, &#39;market/NOUN&#39;, &#39;,/.&#39;, &#39;cater/VERB&#39;, &#39;to/PRT&#39;, &#39;demand/VERB&#39;, &#39;for/ADP&#39;, &#39;high-speed/ADJ&#39;, &#39;internet/NOUN&#39;, &#39;via/ADP&#39;, &#39;5g/NUM&#39;, &#39;tech/NOUN&#39;, &#39;and/CONJ&#39;, &#39;innovative/ADJ&#39;, &#39;application/NOUN&#39;, &#39;./.&#39;, &#39;the/DET&#39;, &#39;establishment/NOUN&#39;, &#39;of/ADP&#39;, &#39;the/DET&#39;, &#39;joint/ADJ&#39;, &#39;venture/NOUN&#39;, &#39;,/.&#39;, &#39;call/VERB&#39;, &#39;nation/NOUN&#39;, &#39;space/NOUN&#39;, &#39;and/CONJ&#39;, &#39;technology/NOUN&#39;, &#39;co/NOUN&#39;, &#39;,/.&#39;, &#39;be/VERB&#39;, &#39;report/VERB&#39;, &#39;by/ADP&#39;, &#39;thaicom/NOUN&#39;, &#39;to/PRT&#39;, &#39;the/DET&#39;, &#39;stock/NOUN&#39;, &#39;exchange/NOUN&#39;, &#39;of/ADP&#39;, &#39;thailand/NOUN&#39;, &#39;late/ADJ&#39;, &#39;last/ADJ&#39;, &#39;month/NOUN&#39;, &#39;./.&#39;, &#39;in/ADP&#39;, &#39;the/DET&#39;, &#39;jv/NOUN&#39;, &#39;with/ADP&#39;, &#39;registered/ADJ&#39;, &#39;capital/NOUN&#39;, &#39;of/ADP&#39;, &#39;10/NUM&#39;, &#39;million/NUM&#39;, &#39;baht/NOUN&#39;, &#39;,/.&#39;, &#39;thaicom/NOUN&#39;, &#39;hold/VERB&#39;, &#39;a/DET&#39;, &#39;75/NUM&#39;, &#39;%/NOUN&#39;, &#39;stake/NOUN&#39;, &#39;,/.&#39;, &#39;while/ADP&#39;, &#39;cat/NOUN&#39;, &#39;hold/VERB&#39;, &#39;25/NUM&#39;, &#39;%/NOUN&#39;, &#39;./.&#39;, &#39;the/DET&#39;, &#39;jv/NOUN&#39;, &#39;be/VERB&#39;, &#39;aim/VERB&#39;, &#39;at/ADP&#39;, &#39;provide/VERB&#39;, &#39;satellite/ADJ&#39;, &#39;gateway/NOUN&#39;, &#39;service/NOUN&#39;, &#39;and/CONJ&#39;, &#39;solution/NOUN&#39;, &#39;as/ADV&#39;, &#39;well/ADV&#39;, &#39;a/ADP&#39;, &#39;market/VERB&#39;, &#39;the/DET&#39;, &#39;sale/NOUN&#39;, &#39;of/ADP&#39;, &#39;leo/ADJ&#39;, &#39;satellite/NOUN&#39;, &#39;./.&#39;, &#39;thaicom/NOUN&#39;, &#39;chief/ADJ&#39;, &#39;executive/NOUN&#39;, &#39;anant/NOUN&#39;, &#39;kaewruamvongs/NOUN&#39;, &#39;say/VERB&#39;, &#39;leo/ADJ&#39;, &#39;satellite/NOUN&#39;, &#39;operate/VERB&#39;, &#39;between/ADP&#39;, &#39;500/NUM&#39;, &#39;and/CONJ&#39;, &#39;2,000/NUM&#39;, &#39;kilometre/NOUN&#39;, &#39;above/ADP&#39;, &#39;the/DET&#39;, &#39;earth/NOUN&#39;, &quot;&#39;s/PRT&quot;, &#39;surface/NOUN&#39;, &#39;,/.&#39;, &#39;compare/VERB&#39;, &#39;to/PRT&#39;, &#39;36,000km/NUM&#39;, &#39;for/ADP&#39;, &#39;geostationary/ADJ&#39;, &#39;satellite/NOUN&#39;, &#39;,/.&#39;, &#39;a/DET&#39;, &#39;traditional/ADJ&#39;, &#39;type/NOUN&#39;, &#39;of/ADP&#39;, &#39;communication/NOUN&#39;, &#39;satellite/NOUN&#39;, &#39;./.&#39;, &#39;he/PRON&#39;, &#39;say/VERB&#39;, &#39;the/DET&#39;, &#39;advantage/NOUN&#39;, &#39;of/ADP&#39;, &#39;leo/NOUN&#39;, &#39;satellite/NOUN&#39;, &#39;be/VERB&#39;, &#39;a/DET&#39;, &#39;low/ADJ&#39;, &#39;latency/NOUN&#39;, &#39;signal/NOUN&#39;, &#39;,/.&#39;, &#39;which/DET&#39;, &#39;could/VERB&#39;, &#39;benefit/VERB&#39;, &#39;people/NOUN&#39;, &#39;with/ADP&#39;, &#39;access/NOUN&#39;, &#39;to/PRT&#39;, &#39;high-speed/ADJ&#39;, &#39;internet/NOUN&#39;, &#39;service/NOUN&#39;, &#39;via/ADP&#39;, &#39;5g/NUM&#39;, &#39;tech/NOUN&#39;, &#39;as/ADV&#39;, &#39;well/ADV&#39;, &#39;a/ADP&#39;, &#39;the/DET&#39;, &#39;usage/NOUN&#39;, &#39;of/ADP&#39;, &#39;internet/NOUN&#39;, &#39;of/ADP&#39;, &#39;thing/NOUN&#39;, &#39;device/NOUN&#39;, &#39;,/.&#39;, &#39;machine-to-machine/ADJ&#39;, &#39;tech/NOUN&#39;, &#39;,/.&#39;, &#39;drone/NOUN&#39;, &#39;and/CONJ&#39;, &#39;application/NOUN&#39;, &#39;that/ADP&#39;, &#39;require/VERB&#39;, &#39;high/ADJ&#39;, &#39;level/NOUN&#39;, &#39;of/ADP&#39;, &#39;accuracy/NOUN&#39;, &#39;,/.&#39;, &#39;such/ADJ&#39;, &#39;a/ADP&#39;, &#39;remote/ADJ&#39;, &#39;surgery/NOUN&#39;, &#39;./.&#39;, &#39;leo/NOUN&#39;, &#39;satellite/NOUN&#39;, &#39;project/NOUN&#39;, &#39;be/VERB&#39;, &#39;operate/VERB&#39;, &#39;by/ADP&#39;, &#39;two/NUM&#39;, &#39;main/ADJ&#39;, &#39;company/NOUN&#39;, &#39;:/.&#39;, &#39;space/NOUN&#39;, &#39;exploration/NOUN&#39;, &#39;technology/NOUN&#39;, &#39;corp/VERB&#39;, &#39;(/.&#39;, &#39;spacex/NOUN&#39;, &#39;)/.&#39;, &#39;and/CONJ&#39;, &#39;london-based/ADJ&#39;, &#39;satellite/NOUN&#39;, &#39;internet/NOUN&#39;, &#39;access/NOUN&#39;, &#39;provider/NOUN&#39;, &#39;oneweb/NOUN&#39;, &#39;./.&#39;, &#39;leo/NOUN&#39;, &#39;satellite/NOUN&#39;, &#39;have/VERB&#39;, &#39;be/VERB&#39;, &#39;launch/VERB&#39;, &#39;and/CONJ&#39;, &#39;commercial/ADJ&#39;, &#39;service/NOUN&#39;, &#39;be/VERB&#39;, &#39;expect/VERB&#39;, &#39;from/ADP&#39;, &#39;next/ADJ&#39;, &#39;year/NOUN&#39;, &#39;./.&#39;, &#39;mr/NOUN&#39;, &#39;anant/NOUN&#39;, &#39;say/VERB&#39;, &#39;related/ADJ&#39;, &#39;leo/NOUN&#39;, &#39;business/NOUN&#39;, &#39;be/VERB&#39;, &#39;go/VERB&#39;, &#39;to/PRT&#39;, &#39;be/VERB&#39;, &#39;the/DET&#39;, &#39;focus/NOUN&#39;, &#39;of/ADP&#39;, &#39;the/DET&#39;, &#39;jv/NOUN&#39;, &#39;./.&#39;, &#39;``/.&#39;, &#39;thaicom/NOUN&#39;, &quot;&#39;s/PRT&quot;, &#39;strength/NOUN&#39;, &#39;lie/VERB&#39;, &#39;in/ADP&#39;, &#39;global/ADJ&#39;, &#39;communication/NOUN&#39;, &#39;and/CONJ&#39;, &#39;network/NOUN&#39;, &#39;system/NOUN&#39;, &#39;management/NOUN&#39;, &#39;as/ADV&#39;, &#39;well/ADV&#39;, &#39;a/ADP&#39;, &#39;marketing/NOUN&#39;, &#39;and/CONJ&#39;, &#39;sale/NOUN&#39;, &#39;channel/NOUN&#39;, &#39;,/.&#39;, &#39;while/ADP&#39;, &#39;cat/NOUN&#39;, &#39;telecom/NOUN&#39;, &quot;&#39;s/PRT&quot;, &#39;strength/NOUN&#39;, &#39;be/VERB&#39;, &#39;gateway/ADJ&#39;, &#39;service/NOUN&#39;, &#39;,/.&#39;, &#39;submarine/ADJ&#39;, &#39;fibre/NOUN&#39;, &#39;and/CONJ&#39;, &#39;telecom/NOUN&#39;, &#39;network/NOUN&#39;, &#39;,/.&#39;, &quot;&#39;&#39;/.&quot;, &#39;he/PRON&#39;, &#39;say/VERB&#39;, &#39;./.&#39;, &#39;the/DET&#39;, &#39;partnership/NOUN&#39;, &#39;should/VERB&#39;, &#39;enhance/VERB&#39;, &#39;the/DET&#39;, &#39;business/NOUN&#39;, &#39;strategy/NOUN&#39;, &#39;of/ADP&#39;, &#39;the/DET&#39;, &#39;two/NUM&#39;, &#39;company/NOUN&#39;, &#39;,/.&#39;, &#39;include/VERB&#39;, &#39;provide/VERB&#39;, &#39;engineering/NOUN&#39;, &#39;network/NOUN&#39;, &#39;management/NOUN&#39;, &#39;,/.&#39;, &#39;gateway/NOUN&#39;, &#39;service/NOUN&#39;, &#39;and/CONJ&#39;, &#39;a/DET&#39;, &#39;marketing/NOUN&#39;, &#39;arm/NOUN&#39;, &#39;,/.&#39;, &#39;say/VERB&#39;, &#39;mr/NOUN&#39;, &#39;anant/NOUN&#39;, &#39;./.&#39;, &#39;``/.&#39;, &#39;through/ADP&#39;, &#39;the/DET&#39;, &#39;jv/NOUN&#39;, &#39;,/.&#39;, &#39;we/PRON&#39;, &#39;can/VERB&#39;, &#39;form/VERB&#39;, &#39;the/DET&#39;, &#39;strong/ADJ&#39;, &#39;partnership/NOUN&#39;, &#39;in/ADP&#39;, &#39;asean/NOUN&#39;, &#39;for/ADP&#39;, &#39;leo/ADJ&#39;, &#39;commercial/ADJ&#39;, &#39;service/NOUN&#39;, &#39;,/.&#39;, &#39;especially/ADV&#39;, &#39;in/ADP&#39;, &#39;the/DET&#39;, &#39;clmv/NOUN&#39;, &#39;market/NOUN&#39;, &#39;,/.&#39;, &quot;&#39;&#39;/.&quot;, &#39;he/PRON&#39;, &#39;say/VERB&#39;, &#39;./.&#39;, &#39;cat/NOUN&#39;, &#39;be/VERB&#39;, &#39;recently/ADV&#39;, &#39;approve/VERB&#39;, &#39;by/ADP&#39;, &#39;the/DET&#39;, &#39;national/ADJ&#39;, &#39;digital/ADJ&#39;, &#39;economy/NOUN&#39;, &#39;and/CONJ&#39;, &#39;society/NOUN&#39;, &#39;committee/NOUN&#39;, &#39;a/ADP&#39;, &#39;the/DET&#39;, &#39;sole/ADJ&#39;, &#39;agency/NOUN&#39;, &#39;handle/VERB&#39;, &#39;the/DET&#39;, &#39;operation/NOUN&#39;, &#39;and/CONJ&#39;, &#39;asset/NOUN&#39;, &#39;of/ADP&#39;, &#39;thaicom/NOUN&#39;, &quot;&#39;s/PRT&quot;, &#39;satellite/ADJ&#39;, &#39;service/NOUN&#39;, &#39;concession/NOUN&#39;, &#39;,/.&#39;, &#39;which/DET&#39;, &#39;be/VERB&#39;, &#39;due/ADJ&#39;, &#39;to/PRT&#39;, &#39;end/VERB&#39;, &#39;in/ADP&#39;, &#39;september/NOUN&#39;, &#39;next/ADJ&#39;, &#39;year/NOUN&#39;, &#39;./.&#39;, &#39;cat/NOUN&#39;, &#39;express/VERB&#39;, &#39;it/PRON&#39;, &#39;readiness/NOUN&#39;, &#39;to/PRT&#39;, &#39;take/VERB&#39;, &#39;control/NOUN&#39;, &#39;of/ADP&#39;, &#39;satellite/NOUN&#39;, &#39;thaicom/VERB&#39;, &#39;4/NUM&#39;, &#39;and/CONJ&#39;, &#39;6/NUM&#39;, &#39;after/ADP&#39;, &#39;the/DET&#39;, &#39;concession/NOUN&#39;, &#39;expire/VERB&#39;, &#39;./.&#39;, &#39;the/DET&#39;, &#39;state/NOUN&#39;, &#39;telecom/NOUN&#39;, &#39;enterprise/NOUN&#39;, &#39;indicate/VERB&#39;, &#39;it/PRON&#39;, &#39;will/VERB&#39;, &#39;assign/VERB&#39;, &#39;24/NUM&#39;, &#39;staff/NOUN&#39;, &#39;to/PRT&#39;, &#39;attend/VERB&#39;, &#39;a/DET&#39;, &#39;training/NOUN&#39;, &#39;course/NOUN&#39;, &#39;in/ADP&#39;, &#39;collaboration/NOUN&#39;, &#39;with/ADP&#39;, &#39;thaicom/NOUN&#39;, &#39;for/ADP&#39;, &#39;one/NUM&#39;, &#39;year/NOUN&#39;, &#39;,/.&#39;, &#39;start/VERB&#39;, &#39;this/DET&#39;, &#39;september/NOUN&#39;, &#39;,/.&#39;, &#39;to/PRT&#39;, &#39;ensure/VERB&#39;, &#39;seamless/ADJ&#39;, &#39;continuity/NOUN&#39;, &#39;of/ADP&#39;, &#39;the/DET&#39;, &#39;two/NUM&#39;, &#39;satellite/NOUN&#39;, &quot;&#39;/PRT&quot;, &#39;operation/NOUN&#39;, &#39;./.&#39;, &#39;bangkok/NOUN&#39;, &#39;post/NOUN&#39;]]
+[[&#39;(/.&#39;, &#39;afp/NOUN&#39;, &#39;)/.&#39;, &#39;-/.&#39;, &#39;mcdonald/NOUN&#39;, &quot;&#39;s/PRT&quot;, &#39;announce/VERB&#39;, &#39;sunday/NOUN&#39;, &#39;that/ADP&#39;, &#39;it/PRON&#39;, &#39;president/NOUN&#39;, &#39;and/CONJ&#39;, &#39;ceo/NOUN&#39;, &#39;steve/VERB&#39;, &#39;easterbrook/NOUN&#39;, &#39;be/VERB&#39;, &#39;force/VERB&#39;, &#39;out/PRT&#39;, &#39;after/ADP&#39;, &#39;show/VERB&#39;, &#39;``/.&#39;, &#39;poor/ADJ&#39;, &#39;judgment/NOUN&#39;, &quot;&#39;&#39;/.&quot;, &#39;by/ADP&#39;, &#39;engage/VERB&#39;, &#39;in/ADP&#39;, &#39;a/DET&#39;, &#39;``/.&#39;, &#39;consensual/ADJ&#39;, &#39;relationship/NOUN&#39;, &quot;&#39;&#39;/.&quot;, &#39;with/ADP&#39;, &#39;an/DET&#39;, &#39;employee/NOUN&#39;, &#39;./.&#39;, &#39;he/PRON&#39;, &#39;be/VERB&#39;, &#39;replace/VERB&#39;, &#39;by/ADP&#39;, &#39;chris/NOUN&#39;, &#39;kempczinski/NOUN&#39;, &#39;,/.&#39;, &#39;the/DET&#39;, &#39;president/NOUN&#39;, &#39;of/ADP&#39;, &#39;mcdonald/NOUN&#39;, &quot;&#39;s/PRT&quot;, &#39;usa/ADJ&#39;, &#39;./.&#39;, &#39;mr/NOUN&#39;, &#39;kempczinski/NOUN&#39;, &#39;be/VERB&#39;, &#39;also/ADV&#39;, &#39;elect/VERB&#39;, &#39;to/PRT&#39;, &#39;the/DET&#39;, &#39;board/NOUN&#39;, &#39;of/ADP&#39;, &#39;director/NOUN&#39;, &#39;./.&#39;, &#39;``/.&#39;, &#39;easterbrook/NOUN&#39;, &#39;.../.&#39;, &#39;have/VERB&#39;, &#39;separate/VERB&#39;, &#39;from/ADP&#39;, &#39;the/DET&#39;, &#39;company/NOUN&#39;, &#39;follow/VERB&#39;, &#39;the/DET&#39;, &#39;board/NOUN&#39;, &quot;&#39;s/PRT&quot;, &#39;determination/NOUN&#39;, &#39;that/ADP&#39;, &#39;he/PRON&#39;, &#39;violate/VERB&#39;, &#39;company/NOUN&#39;, &#39;policy/NOUN&#39;, &#39;and/CONJ&#39;, &#39;demonstrate/VERB&#39;, &#39;poor/ADJ&#39;, &#39;judgment/NOUN&#39;, &#39;involve/VERB&#39;, &#39;a/DET&#39;, &#39;recent/ADJ&#39;, &#39;consensual/ADJ&#39;, &#39;relationship/NOUN&#39;, &#39;with/ADP&#39;, &#39;an/DET&#39;, &#39;employee/NOUN&#39;, &#39;,/.&#39;, &quot;&#39;&#39;/.&quot;, &#39;the/DET&#39;, &#39;company/NOUN&#39;, &#39;say/VERB&#39;, &#39;in/ADP&#39;, &#39;a/DET&#39;, &#39;statement/NOUN&#39;, &#39;./.&#39;, &#39;``/.&#39;, &#39;the/DET&#39;, &#39;company/NOUN&#39;, &#39;confirm/VERB&#39;, &#39;that/ADP&#39;, &#39;this/DET&#39;, &#39;leadership/NOUN&#39;, &#39;transition/NOUN&#39;, &#39;be/VERB&#39;, &#39;unrelated/ADJ&#39;, &#39;to/PRT&#39;, &#39;the/DET&#39;, &#39;company/NOUN&#39;, &quot;&#39;s/PRT&quot;, &#39;operational/ADJ&#39;, &#39;or/CONJ&#39;, &#39;financial/ADJ&#39;, &#39;performance/NOUN&#39;, &#39;./.&#39;, &quot;&#39;&#39;/.&quot;, &#39;in/ADP&#39;, &#39;an/DET&#39;, &#39;email/NOUN&#39;, &#39;to/PRT&#39;, &#39;mcdonald/VERB&#39;, &quot;&#39;s/PRT&quot;, &#39;employee/NOUN&#39;, &#39;,/.&#39;, &#39;easterbrook/NOUN&#39;, &#39;say/VERB&#39;, &#39;his/PRON&#39;, &#39;relationship/NOUN&#39;, &#39;be/VERB&#39;, &#39;``/.&#39;, &#39;a/DET&#39;, &#39;mistake/NOUN&#39;, &quot;&#39;&#39;/.&quot;, &#39;that/DET&#39;, &#39;violate/VERB&#39;, &#39;company/NOUN&#39;, &#39;policy/NOUN&#39;, &#39;./.&#39;, &#39;``/.&#39;, &#39;give/VERB&#39;, &#39;the/DET&#39;, &#39;value/NOUN&#39;, &#39;of/ADP&#39;, &#39;the/DET&#39;, &#39;company/NOUN&#39;, &#39;,/.&#39;, &#39;i/ADJ&#39;, &#39;agree/VERB&#39;, &#39;with/ADP&#39;, &#39;the/DET&#39;, &#39;board/NOUN&#39;, &#39;that/ADP&#39;, &#39;it/PRON&#39;, &#39;be/VERB&#39;, &#39;time/NOUN&#39;, &#39;for/ADP&#39;, &#39;me/PRON&#39;, &#39;to/PRT&#39;, &#39;move/VERB&#39;, &#39;on/ADP&#39;, &#39;,/.&#39;, &quot;&#39;&#39;/.&quot;, &#39;the/DET&#39;, &#39;email/NOUN&#39;, &#39;say/VERB&#39;, &#39;./.&#39;, &#39;joe/NOUN&#39;, &#39;erlinger/NOUN&#39;, &#39;,/.&#39;, &#39;president/NOUN&#39;, &#39;of/ADP&#39;, &#39;international/ADJ&#39;, &#39;operated/ADJ&#39;, &#39;market/NOUN&#39;, &#39;,/.&#39;, &#39;will/VERB&#39;, &#39;take/VERB&#39;, &#39;over/PRT&#39;, &#39;a/ADP&#39;, &#39;head/NOUN&#39;, &#39;of/ADP&#39;, &#39;mcdonald/NOUN&#39;, &quot;&#39;s/PRT&quot;, &#39;usa/ADJ&#39;, &#39;,/.&#39;, &#39;the/DET&#39;, &#39;company/NOUN&#39;, &#39;say/VERB&#39;, &#39;./.&#39;, &#39;in/ADP&#39;, &#39;it/PRON&#39;, &#39;most/ADV&#39;, &#39;recent/ADJ&#39;, &#39;earnings/NOUN&#39;, &#39;report/NOUN&#39;, &#39;,/.&#39;, &#39;on/ADP&#39;, &#39;october/PRON&#39;, &#39;22/NUM&#39;, &#39;,/.&#39;, &#39;mcdonald/NOUN&#39;, &quot;&#39;s/PRT&quot;, &#39;say/VERB&#39;, &#39;profit/NOUN&#39;, &#39;dip/VERB&#39;, &#39;1.8/NUM&#39;, &#39;percent/NOUN&#39;, &#39;in/ADP&#39;, &#39;the/DET&#39;, &#39;third/ADJ&#39;, &#39;quarter/NOUN&#39;, &#39;from/ADP&#39;, &#39;the/DET&#39;, &#39;year-ago/ADJ&#39;, &#39;period/NOUN&#39;, &#39;to/PRT&#39;, &#39;$/.&#39;, &#39;1.6/NUM&#39;, &#39;billion/NUM&#39;, &#39;./.&#39;, &#39;revenue/NOUN&#39;, &#39;at/ADP&#39;, &#39;the/DET&#39;, &#39;company/NOUN&#39;, &#39;,/.&#39;, &#39;which/DET&#39;, &#39;have/VERB&#39;, &#39;38,000/NUM&#39;, &#39;restaurant/NOUN&#39;, &#39;in/ADP&#39;, &#39;more/ADJ&#39;, &#39;than/ADP&#39;, &#39;100/NUM&#39;, &#39;country/NOUN&#39;, &#39;,/.&#39;, &#39;edge/VERB&#39;, &#39;up/ADV&#39;, &#39;1.1/NUM&#39;, &#39;percent/NOUN&#39;, &#39;to/PRT&#39;, &#39;$/.&#39;, &#39;5.4/NUM&#39;, &#39;billion/NUM&#39;, &#39;./.&#39;, &#39;the/DET&#39;, &#39;fast-food/NOUN&#39;, &#39;giant/NOUN&#39;, &#39;notch/VERB&#39;, &#39;a/DET&#39;, &#39;healthy/ADJ&#39;, &#39;5.9/NUM&#39;, &#39;percent/ADJ&#39;, &#39;increase/NOUN&#39;, &#39;in/ADP&#39;, &#39;global/ADJ&#39;, &#39;comparable/ADJ&#39;, &#39;sale/NOUN&#39;, &#39;,/.&#39;, &#39;include/VERB&#39;, &#39;a/DET&#39;, &#39;solid/ADJ&#39;, &#39;rise/NOUN&#39;, &#39;in/ADP&#39;, &#39;the/DET&#39;, &#39;united/ADJ&#39;, &#39;state/NOUN&#39;, &#39;./.&#39;, &#39;but/CONJ&#39;, &#39;profit/NOUN&#39;, &#39;be/VERB&#39;, &#39;pressure/VERB&#39;, &#39;by/ADP&#39;, &#39;increased/ADJ&#39;, &#39;spending/NOUN&#39;, &#39;on/ADP&#39;, &#39;technology/NOUN&#39;, &#39;and/CONJ&#39;, &#39;research/NOUN&#39;, &#39;and/CONJ&#39;, &#39;development/NOUN&#39;, &#39;./.&#39;, &#39;mcdonald/NOUN&#39;, &quot;&#39;s/PRT&quot;, &#39;have/VERB&#39;, &#39;invest/VERB&#39;, &#39;heavily/ADV&#39;, &#39;in/ADP&#39;, &#39;home/NOUN&#39;, &#39;delivery/NOUN&#39;, &#39;and/CONJ&#39;, &#39;mobile/ADJ&#39;, &#39;pay/NOUN&#39;, &#39;initiative/NOUN&#39;, &#39;in/ADP&#39;, &#39;recent/ADJ&#39;, &#39;year/NOUN&#39;, &#39;,/.&#39;, &#39;and/CONJ&#39;, &#39;in/ADP&#39;, &#39;2019/NUM&#39;, &#39;have/VERB&#39;, &#39;unveil/VERB&#39;, &#39;a/DET&#39;, &#39;number/NOUN&#39;, &#39;of/ADP&#39;, &#39;acquisition/NOUN&#39;, &#39;to/PRT&#39;, &#39;boost/VERB&#39;, &#39;it/PRON&#39;, &#39;drive-through/ADJ&#39;, &#39;operation/NOUN&#39;, &#39;./.&#39;, &#39;mr/NOUN&#39;, &#39;kempczinski/NOUN&#39;, &#39;tell/VERB&#39;, &#39;the/DET&#39;, &#39;wall/ADJ&#39;, &#39;street/NOUN&#39;, &#39;journal/NOUN&#39;, &#39;on/ADP&#39;, &#39;sunday/NOUN&#39;, &#39;that/ADP&#39;, &#39;he/PRON&#39;, &#39;plan/VERB&#39;, &#39;to/PRT&#39;, &#39;continue/VERB&#39;, &#39;the/DET&#39;, &#39;focus/NOUN&#39;, &#39;on/ADP&#39;, &#39;technology/NOUN&#39;, &#39;./.&#39;, &#39;``/.&#39;, &#39;there/DET&#39;, &#39;be/VERB&#39;, &quot;n&#39;t/ADV&quot;, &#39;go/VERB&#39;, &#39;to/PRT&#39;, &#39;be/VERB&#39;, &#39;some/DET&#39;, &#39;radical/ADJ&#39;, &#39;,/.&#39;, &#39;strategic/ADJ&#39;, &#39;shift/NOUN&#39;, &#39;./.&#39;, &#39;the/DET&#39;, &#39;plan/NOUN&#39;, &#39;be/VERB&#39;, &#39;work/VERB&#39;, &#39;,/.&#39;, &quot;&#39;&#39;/.&quot;, &#39;he/PRON&#39;, &#39;say/VERB&#39;, &#39;./.&#39;, &#39;mr/NOUN&#39;, &#39;easterbrook/NOUN&#39;, &#39;have/VERB&#39;, &#39;serve/VERB&#39;, &#39;a/ADP&#39;, &#39;chief/NOUN&#39;, &#39;executive/NOUN&#39;, &#39;since/ADP&#39;, &#39;2015./NUM&#39;, &#39;under/ADP&#39;, &#39;his/PRON&#39;, &#39;leadership/NOUN&#39;, &#39;,/.&#39;, &#39;mcdonald/NOUN&#39;, &quot;&#39;s/PRT&quot;, &#39;share/NOUN&#39;, &#39;price/NOUN&#39;, &#39;double/VERB&#39;, &#39;,/.&#39;, &#39;but/CONJ&#39;, &#39;he/PRON&#39;, &#39;be/VERB&#39;, &#39;unable/ADJ&#39;, &#39;to/PRT&#39;, &#39;stop/VERB&#39;, &#39;a/DET&#39;, &#39;decline/NOUN&#39;, &#39;in/ADP&#39;, &#39;sale/NOUN&#39;, &#39;./.&#39;, &#39;like/ADP&#39;, &#39;other/ADJ&#39;, &#39;fast/ADJ&#39;, &#39;food/NOUN&#39;, &#39;chain/NOUN&#39;, &#39;,/.&#39;, &#39;mcdonald/NOUN&#39;, &quot;&#39;s/PRT&quot;, &#39;be/VERB&#39;, &#39;face/VERB&#39;, &#39;headwind/NOUN&#39;, &#39;a/ADP&#39;, &#39;consumer/NOUN&#39;, &#39;seek/VERB&#39;, &#39;out/PRT&#39;, &#39;healthy/ADJ&#39;, &#39;din/VERB&#39;, &#39;option/NOUN&#39;, &#39;./.&#39;, &#39;mr/NOUN&#39;, &#39;easterbrook/NOUN&#39;, &quot;&#39;s/PRT&quot;, &#39;pay/NOUN&#39;, &#39;a/ADP&#39;, &#39;ceo/NOUN&#39;, &#39;rise/VERB&#39;, &#39;with/ADP&#39;, &#39;mcdonald/NOUN&#39;, &quot;&#39;s/PRT&quot;, &#39;share/NOUN&#39;, &#39;price/NOUN&#39;, &#39;,/.&#39;, &#39;which/DET&#39;, &#39;close/VERB&#39;, &#39;last/ADJ&#39;, &#39;week/NOUN&#39;, &#39;at/ADP&#39;, &#39;$/.&#39;, &#39;194/NUM&#39;, &#39;./.&#39;, &#39;his/PRON&#39;, &#39;compensation/NOUN&#39;, &#39;hit/VERB&#39;, &#39;a/DET&#39;, &#39;peak/NOUN&#39;, &#39;in/ADP&#39;, &#39;2017/NUM&#39;, &#39;at/ADP&#39;, &#39;$/.&#39;, &#39;21.8/NUM&#39;, &#39;million/NUM&#39;, &#39;,/.&#39;, &#39;include/VERB&#39;, &#39;$/.&#39;, &#39;9.1/NUM&#39;, &#39;million/NUM&#39;, &#39;in/ADP&#39;, &#39;incentive-based/ADJ&#39;, &#39;pay/NOUN&#39;, &#39;,/.&#39;, &#39;the/DET&#39;, &#39;journal/NOUN&#39;, &#39;say/VERB&#39;, &#39;./.&#39;, &#39;workplace/NOUN&#39;, &#39;relationship/NOUN&#39;, &#39;have/VERB&#39;, &#39;cost/VERB&#39;, &#39;a/DET&#39;, &#39;number/NOUN&#39;, &#39;of/ADP&#39;, &#39;ceo/NOUN&#39;, &#39;their/PRON&#39;, &#39;job/NOUN&#39;, &#39;in/ADP&#39;, &#39;recent/ADJ&#39;, &#39;year/NOUN&#39;, &#39;,/.&#39;, &#39;and/CONJ&#39;, &#39;the/DET&#39;, &#39;topic/NOUN&#39;, &#39;have/VERB&#39;, &#39;become/VERB&#39;, &#39;even/ADV&#39;, &#39;more/ADV&#39;, &#39;sensitive/ADJ&#39;, &#39;amid/ADP&#39;, &#39;the/DET&#39;, &#39;#/.&#39;, &#39;metoo/ADJ&#39;, &#39;movement/NOUN&#39;, &#39;./.&#39;, &#39;intel/NOUN&#39;, &#39;ceo/NOUN&#39;, &#39;brian/NOUN&#39;, &#39;krzanich/NOUN&#39;, &#39;and/CONJ&#39;, &#39;yoga/NOUN&#39;, &#39;apparel/NOUN&#39;, &#39;brand/NOUN&#39;, &#39;lululemon/NOUN&#39;, &#39;chief/ADJ&#39;, &#39;laurent/ADJ&#39;, &#39;potdevin/NOUN&#39;, &#39;resign/VERB&#39;, &#39;from/ADP&#39;, &#39;their/PRON&#39;, &#39;company/NOUN&#39;, &#39;in/ADP&#39;, &#39;2018/NUM&#39;, &#39;follow/VERB&#39;, &#39;revelation/NOUN&#39;, &#39;of/ADP&#39;, &#39;relationship/NOUN&#39;, &#39;with/ADP&#39;, &#39;employee/NOUN&#39;, &#39;./.&#39;, &#39;in/ADP&#39;, &#39;2016/NUM&#39;, &#39;,/.&#39;, &#39;priceline/VERB&#39;, &#39;ceo/ADJ&#39;, &#39;darren/NOUN&#39;, &#39;huston/NOUN&#39;, &#39;step/VERB&#39;, &#39;down/ADV&#39;, &#39;for/ADP&#39;, &#39;the/DET&#39;, &#39;same/ADJ&#39;, &#39;reason/NOUN&#39;, &#39;,/.&#39;, &#39;a/ADP&#39;, &#39;do/VERB&#39;, &#39;bestbuy/VERB&#39;, &#39;ceo/NOUN&#39;, &#39;brian/ADJ&#39;, &#39;dunn/NOUN&#39;, &#39;in/ADP&#39;, &#39;2012/NUM&#39;, &#39;./.&#39;]]
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:24,409</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Returning partial function: lexikanon.pipes.tokenize.extract_tokens with kwargs: {&#39;_target_&#39;: &#39;lexikanon.pipes.tokenize.extract_tokens&#39;, &#39;tokenizer&#39;: &#39;nbcpu&#39;, &#39;num_workers&#39;: 100, &#39;batched&#39;: True, &#39;batch_size&#39;: 1000, &#39;token_col&#39;: &#39;tokenized&#39;, &#39;extracted_col&#39;: &#39;tokens&#39;, &#39;nouns_only&#39;: False, &#39;postags&#39;: None, &#39;stop_postags&#39;: None, &#39;strip_pos&#39;: True, &#39;postag_delim&#39;: None, &#39;postag_length&#39;: None, &#39;remove_columns&#39;: None, &#39;load_from_cache_file&#39;: False, &#39;num_heads&#39;: 1, &#39;num_tails&#39;: 1, &#39;verbose&#39;: True}
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:24,410</span>][<span class=" -Color -Color-Blue">hyfi.composer.composer</span>][<span class=" -Color -Color-Green">INFO</span>] - instantiating lexikanon.pipes.tokenize.extract_tokens ...
+Map (num_proc=100): 100%|███████████| 1000/1000 [00:03&lt;00:00, 313.19 examples/s]
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:28,396</span>][<span class=" -Color -Color-Blue">lexikanon.pipes.tokenize</span>][<span class=" -Color -Color-Green">INFO</span>] - Extracting tokens done, see column &#39;tokens&#39;.
+[[&#39;set-listed&#39;, &#39;thaicom&#39;, &#39;say&#39;, &#39;joint&#39;, &#39;venture&#39;, &#39;recently&#39;, &#39;form&#39;, &#39;cat&#39;, &#39;telecom&#39;, &#39;would&#39;, &#39;serve&#39;, &#39;hub&#39;, &#39;low&#39;, &#39;earth&#39;, &#39;orbit&#39;, &#39;leo&#39;, &#39;satellite&#39;, &#39;service&#39;, &#39;cambodia&#39;, &#39;lao&#39;, &#39;myanmar&#39;, &#39;vietnam&#39;, &#39;clmv&#39;, &#39;market&#39;, &#39;cater&#39;, &#39;demand&#39;, &#39;high-speed&#39;, &#39;internet&#39;, &#39;tech&#39;, &#39;innovative&#39;, &#39;application&#39;, &#39;establishment&#39;, &#39;joint&#39;, &#39;venture&#39;, &#39;call&#39;, &#39;nation&#39;, &#39;space&#39;, &#39;technology&#39;, &#39;report&#39;, &#39;thaicom&#39;, &#39;stock&#39;, &#39;exchange&#39;, &#39;thailand&#39;, &#39;late&#39;, &#39;last&#39;, &#39;month&#39;, &#39;registered&#39;, &#39;capital&#39;, &#39;baht&#39;, &#39;thaicom&#39;, &#39;hold&#39;, &#39;stake&#39;, &#39;cat&#39;, &#39;hold&#39;, &#39;aim&#39;, &#39;provide&#39;, &#39;satellite&#39;, &#39;gateway&#39;, &#39;service&#39;, &#39;solution&#39;, &#39;well&#39;, &#39;market&#39;, &#39;sale&#39;, &#39;leo&#39;, &#39;satellite&#39;, &#39;thaicom&#39;, &#39;chief&#39;, &#39;executive&#39;, &#39;anant&#39;, &#39;kaewruamvongs&#39;, &#39;say&#39;, &#39;leo&#39;, &#39;satellite&#39;, &#39;operate&#39;, &#39;kilometre&#39;, &#39;earth&#39;, &#39;surface&#39;, &#39;compare&#39;, &#39;geostationary&#39;, &#39;satellite&#39;, &#39;traditional&#39;, &#39;type&#39;, &#39;communication&#39;, &#39;satellite&#39;, &#39;say&#39;, &#39;advantage&#39;, &#39;leo&#39;, &#39;satellite&#39;, &#39;low&#39;, &#39;latency&#39;, &#39;signal&#39;, &#39;could&#39;, &#39;benefit&#39;, &#39;people&#39;, &#39;access&#39;, &#39;high-speed&#39;, &#39;internet&#39;, &#39;service&#39;, &#39;tech&#39;, &#39;well&#39;, &#39;usage&#39;, &#39;internet&#39;, &#39;thing&#39;, &#39;device&#39;, &#39;machine-to-machine&#39;, &#39;tech&#39;, &#39;drone&#39;, &#39;application&#39;, &#39;require&#39;, &#39;high&#39;, &#39;level&#39;, &#39;accuracy&#39;, &#39;remote&#39;, &#39;surgery&#39;, &#39;leo&#39;, &#39;satellite&#39;, &#39;project&#39;, &#39;operate&#39;, &#39;main&#39;, &#39;company&#39;, &#39;space&#39;, &#39;exploration&#39;, &#39;technology&#39;, &#39;corp&#39;, &#39;spacex&#39;, &#39;london-based&#39;, &#39;satellite&#39;, &#39;internet&#39;, &#39;access&#39;, &#39;provider&#39;, &#39;oneweb&#39;, &#39;leo&#39;, &#39;satellite&#39;, &#39;launch&#39;, &#39;commercial&#39;, &#39;service&#39;, &#39;expect&#39;, &#39;next&#39;, &#39;year&#39;, &#39;anant&#39;, &#39;say&#39;, &#39;related&#39;, &#39;leo&#39;, &#39;business&#39;, &#39;focus&#39;, &#39;thaicom&#39;, &#39;strength&#39;, &#39;lie&#39;, &#39;global&#39;, &#39;communication&#39;, &#39;network&#39;, &#39;system&#39;, &#39;management&#39;, &#39;well&#39;, &#39;marketing&#39;, &#39;sale&#39;, &#39;channel&#39;, &#39;cat&#39;, &#39;telecom&#39;, &#39;strength&#39;, &#39;gateway&#39;, &#39;service&#39;, &#39;submarine&#39;, &#39;fibre&#39;, &#39;telecom&#39;, &#39;network&#39;, &#39;say&#39;, &#39;partnership&#39;, &#39;enhance&#39;, &#39;business&#39;, &#39;strategy&#39;, &#39;company&#39;, &#39;include&#39;, &#39;provide&#39;, &#39;engineering&#39;, &#39;network&#39;, &#39;management&#39;, &#39;gateway&#39;, &#39;service&#39;, &#39;marketing&#39;, &#39;arm&#39;, &#39;say&#39;, &#39;anant&#39;, &#39;form&#39;, &#39;strong&#39;, &#39;partnership&#39;, &#39;asean&#39;, &#39;leo&#39;, &#39;commercial&#39;, &#39;service&#39;, &#39;especially&#39;, &#39;clmv&#39;, &#39;market&#39;, &#39;say&#39;, &#39;cat&#39;, &#39;recently&#39;, &#39;approve&#39;, &#39;national&#39;, &#39;digital&#39;, &#39;economy&#39;, &#39;society&#39;, &#39;committee&#39;, &#39;sole&#39;, &#39;agency&#39;, &#39;handle&#39;, &#39;operation&#39;, &#39;asset&#39;, &#39;thaicom&#39;, &#39;satellite&#39;, &#39;service&#39;, &#39;concession&#39;, &#39;due&#39;, &#39;end&#39;, &#39;september&#39;, &#39;next&#39;, &#39;year&#39;, &#39;cat&#39;, &#39;express&#39;, &#39;readiness&#39;, &#39;take&#39;, &#39;control&#39;, &#39;satellite&#39;, &#39;thaicom&#39;, &#39;concession&#39;, &#39;expire&#39;, &#39;state&#39;, &#39;telecom&#39;, &#39;enterprise&#39;, &#39;indicate&#39;, &#39;assign&#39;, &#39;staff&#39;, &#39;attend&#39;, &#39;training&#39;, &#39;course&#39;, &#39;collaboration&#39;, &#39;thaicom&#39;, &#39;year&#39;, &#39;start&#39;, &#39;september&#39;, &#39;ensure&#39;, &#39;seamless&#39;, &#39;continuity&#39;, &#39;satellite&#39;, &#39;operation&#39;, &#39;bangkok&#39;, &#39;post&#39;]]
+[[&#39;afp&#39;, &#39;mcdonald&#39;, &#39;announce&#39;, &#39;sunday&#39;, &#39;president&#39;, &#39;ceo&#39;, &#39;steve&#39;, &#39;easterbrook&#39;, &#39;force&#39;, &#39;show&#39;, &#39;poor&#39;, &#39;judgment&#39;, &#39;engage&#39;, &#39;consensual&#39;, &#39;relationship&#39;, &#39;employee&#39;, &#39;replace&#39;, &#39;chris&#39;, &#39;kempczinski&#39;, &#39;president&#39;, &#39;mcdonald&#39;, &#39;usa&#39;, &#39;kempczinski&#39;, &#39;also&#39;, &#39;elect&#39;, &#39;board&#39;, &#39;director&#39;, &#39;easterbrook&#39;, &#39;separate&#39;, &#39;company&#39;, &#39;follow&#39;, &#39;board&#39;, &#39;determination&#39;, &#39;violate&#39;, &#39;company&#39;, &#39;policy&#39;, &#39;demonstrate&#39;, &#39;poor&#39;, &#39;judgment&#39;, &#39;involve&#39;, &#39;recent&#39;, &#39;consensual&#39;, &#39;relationship&#39;, &#39;employee&#39;, &#39;company&#39;, &#39;say&#39;, &#39;statement&#39;, &#39;company&#39;, &#39;confirm&#39;, &#39;leadership&#39;, &#39;transition&#39;, &#39;unrelated&#39;, &#39;company&#39;, &#39;operational&#39;, &#39;financial&#39;, &#39;performance&#39;, &#39;email&#39;, &#39;mcdonald&#39;, &#39;employee&#39;, &#39;easterbrook&#39;, &#39;say&#39;, &#39;relationship&#39;, &#39;mistake&#39;, &#39;violate&#39;, &#39;company&#39;, &#39;policy&#39;, &#39;give&#39;, &#39;value&#39;, &#39;company&#39;, &#39;agree&#39;, &#39;board&#39;, &#39;time&#39;, &#39;move&#39;, &#39;email&#39;, &#39;say&#39;, &#39;joe&#39;, &#39;erlinger&#39;, &#39;president&#39;, &#39;international&#39;, &#39;operated&#39;, &#39;market&#39;, &#39;take&#39;, &#39;head&#39;, &#39;mcdonald&#39;, &#39;usa&#39;, &#39;company&#39;, &#39;say&#39;, &#39;recent&#39;, &#39;earnings&#39;, &#39;report&#39;, &#39;mcdonald&#39;, &#39;say&#39;, &#39;profit&#39;, &#39;dip&#39;, &#39;percent&#39;, &#39;third&#39;, &#39;quarter&#39;, &#39;year-ago&#39;, &#39;period&#39;, &#39;revenue&#39;, &#39;company&#39;, &#39;restaurant&#39;, &#39;country&#39;, &#39;edge&#39;, &#39;percent&#39;, &#39;fast-food&#39;, &#39;giant&#39;, &#39;notch&#39;, &#39;healthy&#39;, &#39;percent&#39;, &#39;increase&#39;, &#39;global&#39;, &#39;comparable&#39;, &#39;sale&#39;, &#39;include&#39;, &#39;solid&#39;, &#39;rise&#39;, &#39;united&#39;, &#39;state&#39;, &#39;profit&#39;, &#39;pressure&#39;, &#39;increased&#39;, &#39;spending&#39;, &#39;technology&#39;, &#39;research&#39;, &#39;development&#39;, &#39;mcdonald&#39;, &#39;invest&#39;, &#39;heavily&#39;, &#39;home&#39;, &#39;delivery&#39;, &#39;mobile&#39;, &#39;pay&#39;, &#39;initiative&#39;, &#39;recent&#39;, &#39;year&#39;, &#39;unveil&#39;, &#39;number&#39;, &#39;acquisition&#39;, &#39;boost&#39;, &#39;drive-through&#39;, &#39;operation&#39;, &#39;kempczinski&#39;, &#39;tell&#39;, &#39;wall&#39;, &#39;street&#39;, &#39;journal&#39;, &#39;sunday&#39;, &#39;plan&#39;, &#39;continue&#39;, &#39;focus&#39;, &#39;technology&#39;, &quot;n&#39;t&quot;, &#39;radical&#39;, &#39;strategic&#39;, &#39;shift&#39;, &#39;plan&#39;, &#39;work&#39;, &#39;say&#39;, &#39;easterbrook&#39;, &#39;serve&#39;, &#39;chief&#39;, &#39;executive&#39;, &#39;leadership&#39;, &#39;mcdonald&#39;, &#39;share&#39;, &#39;price&#39;, &#39;double&#39;, &#39;unable&#39;, &#39;stop&#39;, &#39;decline&#39;, &#39;sale&#39;, &#39;fast&#39;, &#39;food&#39;, &#39;chain&#39;, &#39;mcdonald&#39;, &#39;face&#39;, &#39;headwind&#39;, &#39;consumer&#39;, &#39;seek&#39;, &#39;healthy&#39;, &#39;din&#39;, &#39;option&#39;, &#39;easterbrook&#39;, &#39;pay&#39;, &#39;ceo&#39;, &#39;rise&#39;, &#39;mcdonald&#39;, &#39;share&#39;, &#39;price&#39;, &#39;close&#39;, &#39;last&#39;, &#39;week&#39;, &#39;compensation&#39;, &#39;hit&#39;, &#39;peak&#39;, &#39;include&#39;, &#39;incentive-based&#39;, &#39;pay&#39;, &#39;journal&#39;, &#39;say&#39;, &#39;workplace&#39;, &#39;relationship&#39;, &#39;cost&#39;, &#39;number&#39;, &#39;ceo&#39;, &#39;job&#39;, &#39;recent&#39;, &#39;year&#39;, &#39;topic&#39;, &#39;become&#39;, &#39;even&#39;, &#39;sensitive&#39;, &#39;metoo&#39;, &#39;movement&#39;, &#39;intel&#39;, &#39;ceo&#39;, &#39;brian&#39;, &#39;krzanich&#39;, &#39;yoga&#39;, &#39;apparel&#39;, &#39;brand&#39;, &#39;lululemon&#39;, &#39;chief&#39;, &#39;laurent&#39;, &#39;potdevin&#39;, &#39;resign&#39;, &#39;company&#39;, &#39;follow&#39;, &#39;revelation&#39;, &#39;relationship&#39;, &#39;employee&#39;, &#39;priceline&#39;, &#39;ceo&#39;, &#39;darren&#39;, &#39;huston&#39;, &#39;step&#39;, &#39;reason&#39;, &#39;bestbuy&#39;, &#39;ceo&#39;, &#39;brian&#39;, &#39;dunn&#39;]]
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:28,404</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Returning partial function: lexikanon.pipes.tokenize.extract_tokens with kwargs: {&#39;_target_&#39;: &#39;lexikanon.pipes.tokenize.extract_tokens&#39;, &#39;tokenizer&#39;: &#39;nbcpu&#39;, &#39;num_workers&#39;: 100, &#39;batched&#39;: True, &#39;batch_size&#39;: 1000, &#39;token_col&#39;: &#39;tokenized&#39;, &#39;extracted_col&#39;: &#39;adjnouns&#39;, &#39;nouns_only&#39;: False, &#39;postags&#39;: [&#39;ADJ&#39;, &#39;NOUN&#39;], &#39;stop_postags&#39;: None, &#39;strip_pos&#39;: True, &#39;postag_delim&#39;: None, &#39;postag_length&#39;: None, &#39;remove_columns&#39;: None, &#39;load_from_cache_file&#39;: False, &#39;num_heads&#39;: 1, &#39;num_tails&#39;: 1, &#39;verbose&#39;: True}
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:28,406</span>][<span class=" -Color -Color-Blue">hyfi.composer.composer</span>][<span class=" -Color -Color-Green">INFO</span>] - instantiating lexikanon.pipes.tokenize.extract_tokens ...
+Map (num_proc=100): 100%|███████████| 1000/1000 [00:03&lt;00:00, 325.62 examples/s]
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:32,305</span>][<span class=" -Color -Color-Blue">lexikanon.pipes.tokenize</span>][<span class=" -Color -Color-Green">INFO</span>] - Extracting tokens done, see column &#39;adjnouns&#39;.
+[[&#39;set-listed&#39;, &#39;thaicom&#39;, &#39;joint&#39;, &#39;venture&#39;, &#39;cat&#39;, &#39;telecom&#39;, &#39;hub&#39;, &#39;low&#39;, &#39;earth&#39;, &#39;orbit&#39;, &#39;leo&#39;, &#39;satellite&#39;, &#39;service&#39;, &#39;cambodia&#39;, &#39;lao&#39;, &#39;myanmar&#39;, &#39;vietnam&#39;, &#39;clmv&#39;, &#39;market&#39;, &#39;high-speed&#39;, &#39;internet&#39;, &#39;tech&#39;, &#39;innovative&#39;, &#39;application&#39;, &#39;establishment&#39;, &#39;joint&#39;, &#39;venture&#39;, &#39;nation&#39;, &#39;space&#39;, &#39;technology&#39;, &#39;thaicom&#39;, &#39;stock&#39;, &#39;exchange&#39;, &#39;thailand&#39;, &#39;late&#39;, &#39;last&#39;, &#39;month&#39;, &#39;registered&#39;, &#39;capital&#39;, &#39;baht&#39;, &#39;thaicom&#39;, &#39;stake&#39;, &#39;cat&#39;, &#39;satellite&#39;, &#39;gateway&#39;, &#39;service&#39;, &#39;solution&#39;, &#39;sale&#39;, &#39;leo&#39;, &#39;satellite&#39;, &#39;thaicom&#39;, &#39;chief&#39;, &#39;executive&#39;, &#39;anant&#39;, &#39;kaewruamvongs&#39;, &#39;leo&#39;, &#39;satellite&#39;, &#39;kilometre&#39;, &#39;earth&#39;, &#39;surface&#39;, &#39;geostationary&#39;, &#39;satellite&#39;, &#39;traditional&#39;, &#39;type&#39;, &#39;communication&#39;, &#39;satellite&#39;, &#39;advantage&#39;, &#39;leo&#39;, &#39;satellite&#39;, &#39;low&#39;, &#39;latency&#39;, &#39;signal&#39;, &#39;people&#39;, &#39;access&#39;, &#39;high-speed&#39;, &#39;internet&#39;, &#39;service&#39;, &#39;tech&#39;, &#39;usage&#39;, &#39;internet&#39;, &#39;thing&#39;, &#39;device&#39;, &#39;machine-to-machine&#39;, &#39;tech&#39;, &#39;drone&#39;, &#39;application&#39;, &#39;high&#39;, &#39;level&#39;, &#39;accuracy&#39;, &#39;remote&#39;, &#39;surgery&#39;, &#39;leo&#39;, &#39;satellite&#39;, &#39;project&#39;, &#39;main&#39;, &#39;company&#39;, &#39;space&#39;, &#39;exploration&#39;, &#39;technology&#39;, &#39;spacex&#39;, &#39;london-based&#39;, &#39;satellite&#39;, &#39;internet&#39;, &#39;access&#39;, &#39;provider&#39;, &#39;oneweb&#39;, &#39;leo&#39;, &#39;satellite&#39;, &#39;commercial&#39;, &#39;service&#39;, &#39;next&#39;, &#39;year&#39;, &#39;anant&#39;, &#39;related&#39;, &#39;leo&#39;, &#39;business&#39;, &#39;focus&#39;, &#39;thaicom&#39;, &#39;strength&#39;, &#39;global&#39;, &#39;communication&#39;, &#39;network&#39;, &#39;system&#39;, &#39;management&#39;, &#39;marketing&#39;, &#39;sale&#39;, &#39;channel&#39;, &#39;cat&#39;, &#39;telecom&#39;, &#39;strength&#39;, &#39;gateway&#39;, &#39;service&#39;, &#39;submarine&#39;, &#39;fibre&#39;, &#39;telecom&#39;, &#39;network&#39;, &#39;partnership&#39;, &#39;business&#39;, &#39;strategy&#39;, &#39;company&#39;, &#39;engineering&#39;, &#39;network&#39;, &#39;management&#39;, &#39;gateway&#39;, &#39;service&#39;, &#39;marketing&#39;, &#39;arm&#39;, &#39;anant&#39;, &#39;strong&#39;, &#39;partnership&#39;, &#39;asean&#39;, &#39;leo&#39;, &#39;commercial&#39;, &#39;service&#39;, &#39;clmv&#39;, &#39;market&#39;, &#39;cat&#39;, &#39;national&#39;, &#39;digital&#39;, &#39;economy&#39;, &#39;society&#39;, &#39;committee&#39;, &#39;sole&#39;, &#39;agency&#39;, &#39;operation&#39;, &#39;asset&#39;, &#39;thaicom&#39;, &#39;satellite&#39;, &#39;service&#39;, &#39;concession&#39;, &#39;due&#39;, &#39;september&#39;, &#39;next&#39;, &#39;year&#39;, &#39;cat&#39;, &#39;readiness&#39;, &#39;control&#39;, &#39;satellite&#39;, &#39;concession&#39;, &#39;state&#39;, &#39;telecom&#39;, &#39;enterprise&#39;, &#39;staff&#39;, &#39;training&#39;, &#39;course&#39;, &#39;collaboration&#39;, &#39;thaicom&#39;, &#39;year&#39;, &#39;september&#39;, &#39;seamless&#39;, &#39;continuity&#39;, &#39;satellite&#39;, &#39;operation&#39;, &#39;bangkok&#39;, &#39;post&#39;]]
+[[&#39;afp&#39;, &#39;mcdonald&#39;, &#39;sunday&#39;, &#39;president&#39;, &#39;ceo&#39;, &#39;easterbrook&#39;, &#39;poor&#39;, &#39;judgment&#39;, &#39;consensual&#39;, &#39;relationship&#39;, &#39;employee&#39;, &#39;chris&#39;, &#39;kempczinski&#39;, &#39;president&#39;, &#39;mcdonald&#39;, &#39;usa&#39;, &#39;kempczinski&#39;, &#39;board&#39;, &#39;director&#39;, &#39;easterbrook&#39;, &#39;company&#39;, &#39;board&#39;, &#39;determination&#39;, &#39;company&#39;, &#39;policy&#39;, &#39;poor&#39;, &#39;judgment&#39;, &#39;recent&#39;, &#39;consensual&#39;, &#39;relationship&#39;, &#39;employee&#39;, &#39;company&#39;, &#39;statement&#39;, &#39;company&#39;, &#39;leadership&#39;, &#39;transition&#39;, &#39;unrelated&#39;, &#39;company&#39;, &#39;operational&#39;, &#39;financial&#39;, &#39;performance&#39;, &#39;email&#39;, &#39;employee&#39;, &#39;easterbrook&#39;, &#39;relationship&#39;, &#39;mistake&#39;, &#39;company&#39;, &#39;policy&#39;, &#39;value&#39;, &#39;company&#39;, &#39;board&#39;, &#39;time&#39;, &#39;email&#39;, &#39;joe&#39;, &#39;erlinger&#39;, &#39;president&#39;, &#39;international&#39;, &#39;operated&#39;, &#39;market&#39;, &#39;head&#39;, &#39;mcdonald&#39;, &#39;usa&#39;, &#39;company&#39;, &#39;recent&#39;, &#39;earnings&#39;, &#39;report&#39;, &#39;mcdonald&#39;, &#39;profit&#39;, &#39;percent&#39;, &#39;third&#39;, &#39;quarter&#39;, &#39;year-ago&#39;, &#39;period&#39;, &#39;revenue&#39;, &#39;company&#39;, &#39;restaurant&#39;, &#39;country&#39;, &#39;percent&#39;, &#39;fast-food&#39;, &#39;giant&#39;, &#39;healthy&#39;, &#39;percent&#39;, &#39;increase&#39;, &#39;global&#39;, &#39;comparable&#39;, &#39;sale&#39;, &#39;solid&#39;, &#39;rise&#39;, &#39;united&#39;, &#39;state&#39;, &#39;profit&#39;, &#39;increased&#39;, &#39;spending&#39;, &#39;technology&#39;, &#39;research&#39;, &#39;development&#39;, &#39;mcdonald&#39;, &#39;home&#39;, &#39;delivery&#39;, &#39;mobile&#39;, &#39;pay&#39;, &#39;initiative&#39;, &#39;recent&#39;, &#39;year&#39;, &#39;number&#39;, &#39;acquisition&#39;, &#39;drive-through&#39;, &#39;operation&#39;, &#39;kempczinski&#39;, &#39;wall&#39;, &#39;street&#39;, &#39;journal&#39;, &#39;sunday&#39;, &#39;focus&#39;, &#39;technology&#39;, &#39;radical&#39;, &#39;strategic&#39;, &#39;shift&#39;, &#39;plan&#39;, &#39;easterbrook&#39;, &#39;chief&#39;, &#39;executive&#39;, &#39;leadership&#39;, &#39;mcdonald&#39;, &#39;share&#39;, &#39;price&#39;, &#39;unable&#39;, &#39;decline&#39;, &#39;sale&#39;, &#39;fast&#39;, &#39;food&#39;, &#39;chain&#39;, &#39;mcdonald&#39;, &#39;headwind&#39;, &#39;consumer&#39;, &#39;healthy&#39;, &#39;option&#39;, &#39;easterbrook&#39;, &#39;pay&#39;, &#39;ceo&#39;, &#39;mcdonald&#39;, &#39;share&#39;, &#39;price&#39;, &#39;last&#39;, &#39;week&#39;, &#39;compensation&#39;, &#39;peak&#39;, &#39;incentive-based&#39;, &#39;pay&#39;, &#39;journal&#39;, &#39;workplace&#39;, &#39;relationship&#39;, &#39;number&#39;, &#39;ceo&#39;, &#39;job&#39;, &#39;recent&#39;, &#39;year&#39;, &#39;topic&#39;, &#39;sensitive&#39;, &#39;metoo&#39;, &#39;movement&#39;, &#39;intel&#39;, &#39;ceo&#39;, &#39;brian&#39;, &#39;krzanich&#39;, &#39;yoga&#39;, &#39;apparel&#39;, &#39;brand&#39;, &#39;lululemon&#39;, &#39;chief&#39;, &#39;laurent&#39;, &#39;potdevin&#39;, &#39;company&#39;, &#39;revelation&#39;, &#39;relationship&#39;, &#39;employee&#39;, &#39;ceo&#39;, &#39;darren&#39;, &#39;huston&#39;, &#39;reason&#39;, &#39;ceo&#39;, &#39;brian&#39;, &#39;dunn&#39;]]
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:32,320</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Returning partial function: lexikanon.pipes.tokenize.extract_tokens with kwargs: {&#39;_target_&#39;: &#39;lexikanon.pipes.tokenize.extract_tokens&#39;, &#39;tokenizer&#39;: &#39;nbcpu&#39;, &#39;num_workers&#39;: 100, &#39;batched&#39;: True, &#39;batch_size&#39;: 1000, &#39;token_col&#39;: &#39;tokenized&#39;, &#39;extracted_col&#39;: &#39;predicates&#39;, &#39;nouns_only&#39;: False, &#39;postags&#39;: [&#39;VERB&#39;, &#39;PRT&#39;, &#39;ADJ&#39;, &#39;ADV&#39;], &#39;stop_postags&#39;: None, &#39;strip_pos&#39;: True, &#39;postag_delim&#39;: None, &#39;postag_length&#39;: None, &#39;remove_columns&#39;: None, &#39;load_from_cache_file&#39;: False, &#39;num_heads&#39;: 1, &#39;num_tails&#39;: 1, &#39;verbose&#39;: True}
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:32,323</span>][<span class=" -Color -Color-Blue">hyfi.composer.composer</span>][<span class=" -Color -Color-Green">INFO</span>] - instantiating lexikanon.pipes.tokenize.extract_tokens ...
+Map (num_proc=100): 100%|███████████| 1000/1000 [00:03&lt;00:00, 305.79 examples/s]
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:36,435</span>][<span class=" -Color -Color-Blue">lexikanon.pipes.tokenize</span>][<span class=" -Color -Color-Green">INFO</span>] - Extracting tokens done, see column &#39;predicates&#39;.
+[[&#39;set-listed&#39;, &#39;say&#39;, &#39;joint&#39;, &#39;recently&#39;, &#39;form&#39;, &#39;would&#39;, &#39;serve&#39;, &#39;low&#39;, &#39;cater&#39;, &#39;demand&#39;, &#39;high-speed&#39;, &#39;innovative&#39;, &#39;joint&#39;, &#39;call&#39;, &#39;report&#39;, &#39;late&#39;, &#39;last&#39;, &#39;registered&#39;, &#39;hold&#39;, &#39;hold&#39;, &#39;aim&#39;, &#39;provide&#39;, &#39;satellite&#39;, &#39;well&#39;, &#39;market&#39;, &#39;leo&#39;, &#39;chief&#39;, &#39;say&#39;, &#39;leo&#39;, &#39;operate&#39;, &#39;compare&#39;, &#39;geostationary&#39;, &#39;traditional&#39;, &#39;say&#39;, &#39;low&#39;, &#39;could&#39;, &#39;benefit&#39;, &#39;high-speed&#39;, &#39;well&#39;, &#39;machine-to-machine&#39;, &#39;require&#39;, &#39;high&#39;, &#39;remote&#39;, &#39;operate&#39;, &#39;main&#39;, &#39;corp&#39;, &#39;london-based&#39;, &#39;launch&#39;, &#39;commercial&#39;, &#39;expect&#39;, &#39;next&#39;, &#39;say&#39;, &#39;related&#39;, &#39;lie&#39;, &#39;global&#39;, &#39;well&#39;, &#39;gateway&#39;, &#39;submarine&#39;, &#39;say&#39;, &#39;enhance&#39;, &#39;include&#39;, &#39;provide&#39;, &#39;say&#39;, &#39;form&#39;, &#39;strong&#39;, &#39;leo&#39;, &#39;commercial&#39;, &#39;especially&#39;, &#39;say&#39;, &#39;recently&#39;, &#39;approve&#39;, &#39;national&#39;, &#39;digital&#39;, &#39;sole&#39;, &#39;handle&#39;, &#39;satellite&#39;, &#39;due&#39;, &#39;end&#39;, &#39;next&#39;, &#39;express&#39;, &#39;take&#39;, &#39;thaicom&#39;, &#39;expire&#39;, &#39;indicate&#39;, &#39;assign&#39;, &#39;attend&#39;, &#39;start&#39;, &#39;ensure&#39;, &#39;seamless&#39;]]
+[[&#39;announce&#39;, &#39;steve&#39;, &#39;force&#39;, &#39;show&#39;, &#39;poor&#39;, &#39;engage&#39;, &#39;consensual&#39;, &#39;replace&#39;, &#39;usa&#39;, &#39;also&#39;, &#39;elect&#39;, &#39;separate&#39;, &#39;follow&#39;, &#39;violate&#39;, &#39;demonstrate&#39;, &#39;poor&#39;, &#39;involve&#39;, &#39;recent&#39;, &#39;consensual&#39;, &#39;say&#39;, &#39;confirm&#39;, &#39;unrelated&#39;, &#39;operational&#39;, &#39;financial&#39;, &#39;mcdonald&#39;, &#39;say&#39;, &#39;violate&#39;, &#39;give&#39;, &#39;agree&#39;, &#39;move&#39;, &#39;say&#39;, &#39;international&#39;, &#39;operated&#39;, &#39;take&#39;, &#39;usa&#39;, &#39;say&#39;, &#39;recent&#39;, &#39;say&#39;, &#39;dip&#39;, &#39;third&#39;, &#39;year-ago&#39;, &#39;edge&#39;, &#39;notch&#39;, &#39;healthy&#39;, &#39;percent&#39;, &#39;global&#39;, &#39;comparable&#39;, &#39;include&#39;, &#39;solid&#39;, &#39;united&#39;, &#39;pressure&#39;, &#39;increased&#39;, &#39;invest&#39;, &#39;heavily&#39;, &#39;mobile&#39;, &#39;recent&#39;, &#39;unveil&#39;, &#39;boost&#39;, &#39;drive-through&#39;, &#39;tell&#39;, &#39;wall&#39;, &#39;plan&#39;, &#39;continue&#39;, &quot;n&#39;t&quot;, &#39;radical&#39;, &#39;strategic&#39;, &#39;work&#39;, &#39;say&#39;, &#39;serve&#39;, &#39;double&#39;, &#39;unable&#39;, &#39;stop&#39;, &#39;fast&#39;, &#39;face&#39;, &#39;seek&#39;, &#39;healthy&#39;, &#39;din&#39;, &#39;rise&#39;, &#39;close&#39;, &#39;last&#39;, &#39;hit&#39;, &#39;include&#39;, &#39;incentive-based&#39;, &#39;say&#39;, &#39;cost&#39;, &#39;recent&#39;, &#39;become&#39;, &#39;even&#39;, &#39;sensitive&#39;, &#39;metoo&#39;, &#39;chief&#39;, &#39;laurent&#39;, &#39;resign&#39;, &#39;follow&#39;, &#39;priceline&#39;, &#39;ceo&#39;, &#39;step&#39;, &#39;bestbuy&#39;, &#39;brian&#39;]]
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:36,441</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Running a pipe with hyfi.pipe.general_instance_methods
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:36,504</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Returning partial function: hyfi.utils.datasets.basic.DSBasic.dataframe_eval_columns with kwargs: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.basic.DSBasic.dataframe_eval_columns&#39;, &#39;expressions&#39;: {&#39;id&#39;: &quot;url.str.split(&#39;/&#39;).str[3]&quot;}, &#39;engine&#39;: &#39;python&#39;, &#39;verbose&#39;: True}
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:36,504</span>][<span class=" -Color -Color-Blue">hyfi.composer.composer</span>][<span class=" -Color -Color-Green">INFO</span>] - instantiating hyfi.utils.datasets.basic.DSBasic.dataframe_eval_columns ...
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:36,506</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.basic</span>][<span class=" -Color -Color-Green">INFO</span>] - Evaluating column id
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:36,584</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Returning partial function: hyfi.utils.datasets.slice.DSSlice.filter_and_sample_data with kwargs: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.slice.DSSlice.filter_and_sample_data&#39;, &#39;queries&#39;: [&#39;tokens.str.len() &gt; 50&#39;], &#39;sample_size&#39;: None, &#39;sample_seed&#39;: 42, &#39;output_dir&#39;: &#39;datasets/processed/khmer_tokenized_sample&#39;, &#39;sample_filename&#39;: None, &#39;train_filename&#39;: &#39;train.parquet&#39;, &#39;discard_filename&#39;: &#39;discard.parquet&#39;, &#39;returning_data&#39;: &#39;train&#39;, &#39;verbose&#39;: True}
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:36,585</span>][<span class=" -Color -Color-Blue">hyfi.composer.composer</span>][<span class=" -Color -Color-Green">INFO</span>] - instantiating hyfi.utils.datasets.slice.DSSlice.filter_and_sample_data ...
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:36,588</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.slice</span>][<span class=" -Color -Color-Green">INFO</span>] - filtering data by tokens.str.len() &gt; 50
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:36,590</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.slice</span>][<span class=" -Color -Color-Green">INFO</span>] - filtered 8 documents
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:36,591</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving dataframe to /raid/cis/yjlee/workspace/projects/nbcpu/workspace/datasets/processed/khmer_tokenized_sample/train.parquet
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:37,150</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to save data: 0:00:00.558764
+                                                 url  ...         id
+0  https://www.khmertimeskh.com/743741/thaicom-ca...  ...     743741
+1  https://www.khmertimeskh.com/501295606/cambodi...  ...  501295606
+2  https://www.khmertimeskh.com/12732/toshiba-to-...  ...      12732
+3  https://www.khmertimeskh.com/50618111/can-the-...  ...   50618111
+4  https://www.khmertimeskh.com/50747762/go-green...  ...   50747762
+
+[5 rows x 11 columns]
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:37,166</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving dataframe to /raid/cis/yjlee/workspace/projects/nbcpu/workspace/datasets/processed/khmer_tokenized_sample/discard.parquet
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:37,169</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to save data: 0:00:00.003255
+                                                   url  ...         id
+53   https://www.khmertimeskh.com/50981157/37-roads...  ...   50981157
+61   https://www.khmertimeskh.com/50885944/covid-wa...  ...   50885944
+269  https://www.khmertimeskh.com/501258753/evolvin...  ...  501258753
+282  https://www.khmertimeskh.com/510155/china-prom...  ...     510155
+376  https://www.khmertimeskh.com/501312739/video-g...  ...  501312739
+
+[5 rows x 11 columns]
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:37,180</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.slice</span>][<span class=" -Color -Color-Green">INFO</span>] - Created 0 samples, 992 train samples, and 8 discard samples
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:37,181</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Running a pipe with hyfi.pipe.general_external_funcs
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:37,183</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Returning partial function: hyfi.utils.datasets.basic.DSBasic.dataframe_print_head_and_tail with kwargs: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.basic.DSBasic.dataframe_print_head_and_tail&#39;, &#39;num_heads&#39;: 5, &#39;num_tails&#39;: 5, &#39;columns&#39;: [&#39;id&#39;, &#39;text&#39;, &#39;tokens&#39;, &#39;adjnouns&#39;, &#39;predicates&#39;], &#39;verbose&#39;: True}
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:37,184</span>][<span class=" -Color -Color-Blue">hyfi.composer.composer</span>][<span class=" -Color -Color-Green">INFO</span>] - instantiating hyfi.utils.datasets.basic.DSBasic.dataframe_print_head_and_tail ...
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:37,186</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.basic</span>][<span class=" -Color -Color-Green">INFO</span>] - Printing head and tail of dataframe
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:37,186</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.basic</span>][<span class=" -Color -Color-Green">INFO</span>] - Head:
+          id  ...                                         predicates
+0     743741  ...  [set-listed, say, joint, recently, form, would...
+1  501295606  ...  [aim, attract, chinese, take, make, easy, trav...
+2      12732  ...  [cambodian, award, japanese-owned, construct, ...
+3   50618111  ...  [fret, currently, roil, bad, front, centre, in...
+4   50747762  ...  [especially, southern, eastern, central, batte...
+
+[5 rows x 5 columns]
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:37,196</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.basic</span>][<span class=" -Color -Color-Green">INFO</span>] - Tail:
+            id  ...                                         predicates
+995  501163252  ...  [lose, lose, close, open, record, high, main, ...
+996  501319124  ...  [cambodian, set, new, regard, foreign, allow, ...
+997  501072218  ...  [recent, show, extreme, halve, higher, rural, ...
+998  501282549  ...  [publicly-listed, autonomous, start, new, upgr...
+999   50657009  ...  [announce, steve, force, show, poor, engage, c...
+
+[5 rows x 5 columns]
+ Change directory back to /raid/cis/yjlee/workspace/logs/hydra/nbcpu/2023-08-15/2023-08-15_16-02-13
+[<span class=" -Color -Color-Cyan">2023-08-15 16:02:37,205</span>][<span class=" -Color -Color-Blue">hyfi.task.task</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time for the task with 1 pipelines: 0:00:19.859572
+
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -468,6 +1149,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization-and-lemmatization">1. Normalization and Lemmatization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">2. Tokenization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization-workflow">3. Tokenization Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution">Execution</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

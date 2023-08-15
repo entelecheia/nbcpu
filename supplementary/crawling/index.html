@@ -89,8 +89,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="https://assets.entelecheia.ai/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Preprocessing the crawled data" href="../processing/index.html" />
-    <link rel="prev" title="Supplemental material" href="../index.html" />
+    <link rel="next" title="Processing the Data" href="../processing/index.html" />
+    <link rel="prev" title="Supplemental Material" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,9 +183,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../paper/results/index.html">Results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../paper/conclusion/index.html">Concluding Remarks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../paper/references.html">References</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Supplemental material</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Supplemental Material</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Crawling Khmer Times</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">Preprocessing the crawled data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">Processing the Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../topic/index.html">Topic modeling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html">Topic analysis</a></li>
 </ul>
@@ -450,12 +450,22 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-scraping">1. Web Scraping</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text-extraction">2. Article Text Extraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-scraping">1. Web Scraping</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-and-approach">1.1 Structure and Approach</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text-extraction">2. Article Text Extraction</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.1 Structure and Approach</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-serialization">3. Data Serialization</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crawling-workflow">Crawling Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crawling-workflow">Crawling Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-and-commands">Configuration and Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-structure">Output Structure</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -471,39 +481,46 @@ document.write(`
 <h1>Crawling Khmer Times<a class="headerlink" href="#crawling-khmer-times" title="Permalink to this heading">#</a></h1>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
-<p>The dataset for Khmer Times is prepared as follows:</p>
+<p>The dataset for Khmer Times is prepared through a systematic process involving web scraping, article text extraction, and data serialization. This section provides a detailed explanation of each step, along with the specific workflow to crawl the news articles from the Khmer Times.</p>
 <section id="web-scraping">
 <h3>1. Web Scraping<a class="headerlink" href="#web-scraping" title="Permalink to this heading">#</a></h3>
-<p>Web scraping is performed using Python with the help of the <code class="docutils literal notranslate"><span class="pre">requests</span></code> and <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> libraries. A Python function is written to crawl the search results pages of the Khmer Times website and extract the URLs of the news articles. The function takes a search keyword as input and iteratively crawls the search results pages until it encounters a page that returns a 404 error, indicating that there are no more results.</p>
-<p>The structure of the search results pages is as follows:</p>
+<section id="structure-and-approach">
+<h4>1.1 Structure and Approach<a class="headerlink" href="#structure-and-approach" title="Permalink to this heading">#</a></h4>
+<p>The web scraping is performed using Python’s <code class="docutils literal notranslate"><span class="pre">requests</span></code> and <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> libraries. The search results pages of the Khmer Times website are crawled to extract the URLs of the news articles.</p>
 <ul class="simple">
-<li><p>Each article is contained within an <code class="docutils literal notranslate"><span class="pre">&lt;article&gt;</span></code> tag with the class <code class="docutils literal notranslate"><span class="pre">item</span> <span class="pre">item-media</span></code>.</p></li>
-<li><p>The title of the article is contained within an <code class="docutils literal notranslate"><span class="pre">&lt;h2&gt;</span></code> tag with the class <code class="docutils literal notranslate"><span class="pre">item-title</span></code>.</p></li>
-<li><p>The URL of the article is contained within an <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code> tag within the <code class="docutils literal notranslate"><span class="pre">&lt;h2&gt;</span></code> tag.</p></li>
+<li><p><strong>Tags and Classes:</strong> Articles are identified within an <code class="docutils literal notranslate"><span class="pre">&lt;article&gt;</span></code> tag with the class <code class="docutils literal notranslate"><span class="pre">item</span> <span class="pre">item-media</span></code>. The title is found in an <code class="docutils literal notranslate"><span class="pre">&lt;h2&gt;</span></code> tag with the class <code class="docutils literal notranslate"><span class="pre">item-title</span></code>, and the URL is within an <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code> tag inside the <code class="docutils literal notranslate"><span class="pre">&lt;h2&gt;</span></code> tag.</p></li>
+<li><p><strong>Functionality:</strong> A Python function iteratively crawls the search results pages using a search keyword until a 404 error is encountered, indicating no more results.</p></li>
+<li><p><strong>Output:</strong> The title and URL of each article are extracted and stored in a list of dictionaries.</p></li>
 </ul>
-<p>The function extracts the title and URL of each article and stores them in a list of dictionaries.</p>
+</section>
 </section>
 <section id="article-text-extraction">
 <h3>2. Article Text Extraction<a class="headerlink" href="#article-text-extraction" title="Permalink to this heading">#</a></h3>
-<p>Another Python function is written to follow the URLs extracted in the previous step and scrape the text of the articles. The function iterates over the list of URLs and sends a GET request to each URL. It then parses the HTML of the article page using BeautifulSoup.</p>
-<p>The structure of the article pages is as follows:</p>
+<section id="id1">
+<h4>2.1 Structure and Approach<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<p>A separate Python function follows the URLs extracted from the previous step to scrape the text of the articles.</p>
 <ul class="simple">
-<li><p>The text of the article is contained within multiple <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code> tags, which are themselves contained within a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> tag with the class <code class="docutils literal notranslate"><span class="pre">entry-content</span></code>.</p></li>
-<li><p>The categories of the article are contained within <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code> tags within a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> tag with the class <code class="docutils literal notranslate"><span class="pre">entry-meta</span></code>.</p></li>
-<li><p>The publication time of the article is contained within a <code class="docutils literal notranslate"><span class="pre">&lt;time&gt;</span></code> tag within the same <code class="docutils literal notranslate"><span class="pre">entry-meta</span></code> div.</p></li>
+<li><p><strong>Tags and Classes:</strong> The text is found within <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code> tags inside a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> tag with the class <code class="docutils literal notranslate"><span class="pre">entry-content</span></code>. Categories are within <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code> tags in a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> with the class <code class="docutils literal notranslate"><span class="pre">entry-meta</span></code>, and the publication time is in a <code class="docutils literal notranslate"><span class="pre">&lt;time&gt;</span></code> tag within the same div.</p></li>
+<li><p><strong>Functionality:</strong> The function iterates over the URLs, sending a GET request to each and parsing the HTML to extract the text, categories, and publication time.</p></li>
+<li><p><strong>Output:</strong> The extracted data is stored in a list of dictionaries.</p></li>
 </ul>
-<p>The function extracts the text, categories, and publication time of each article and stores them in a list of dictionaries.</p>
+</section>
 </section>
 <section id="data-serialization">
 <h3>3. Data Serialization<a class="headerlink" href="#data-serialization" title="Permalink to this heading">#</a></h3>
-<p>The list of dictionaries containing the article data is then serialized to a JSON file using Python’s <code class="docutils literal notranslate"><span class="pre">json</span></code> library. The <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects representing the publication times of the articles are converted to ISO 8601 formatted strings before serialization, as <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects are not JSON serializable.</p>
-<p>The resulting JSON file contains an array of objects, where each object represents an article and has a <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">categories</span></code>, and <code class="docutils literal notranslate"><span class="pre">time</span></code> field. The <code class="docutils literal notranslate"><span class="pre">text</span></code> field contains the text of the article, the <code class="docutils literal notranslate"><span class="pre">categories</span></code> field contains a list of the categories of the article, and the <code class="docutils literal notranslate"><span class="pre">time</span></code> field contains the publication time of the article as an ISO 8601 formatted string.</p>
-<p>This JSON file serves as the dataset for this project.</p>
+<p>The list of dictionaries is serialized to a JSON file using Python’s <code class="docutils literal notranslate"><span class="pre">json</span></code> library.</p>
+<ul class="simple">
+<li><p><strong>Datetime Conversion:</strong> The <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects for publication times are converted to ISO 8601 formatted strings, as they are not JSON serializable.</p></li>
+<li><p><strong>JSON Structure:</strong> The resulting JSON file contains an array of objects, with fields for <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">categories</span></code>, and <code class="docutils literal notranslate"><span class="pre">time</span></code>.</p></li>
+</ul>
+<p>This JSON file serves as the dataset for the project.</p>
 </section>
 </section>
 <section id="crawling-workflow">
 <h2>Crawling Workflow<a class="headerlink" href="#crawling-workflow" title="Permalink to this heading">#</a></h2>
-<p>The crawling configuration is located in the <code class="docutils literal notranslate"><span class="pre">src/nbcpu/conf/fetcher</span></code> directory. You can print the configuration by running the following command:</p>
+<section id="configuration-and-commands">
+<h3>Configuration and Commands<a class="headerlink" href="#configuration-and-commands" title="Permalink to this heading">#</a></h3>
+<p>The crawling configuration is located in the <code class="docutils literal notranslate"><span class="pre">src/nbcpu/conf/fetcher</span></code> directory. To print the configuration, use:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nbcpu<span class="w"> </span>+fetcher<span class="o">=</span>khmer_all<span class="w"> </span><span class="nv">dryrun</span><span class="o">=</span>true
@@ -568,7 +585,7 @@ Dryrun is enabled, not running the HyFI config
 </div>
 </div>
 </div>
-<p>To crawl the news articles from the Khmer Times, run the following workflow:</p>
+<p>To crawl the news articles, run:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!nbcpu +workflow=nbcpu tasks=&#39;[khmer_all]&#39; \
@@ -605,16 +622,19 @@ Dryrun is enabled, not running the HyFI config
 </div>
 </div>
 </div>
-<p>Crawled articles are stored in a jsonl file. Each line is a json object with the following fields:</p>
+</section>
+<section id="output-structure">
+<h3>Output Structure<a class="headerlink" href="#output-structure" title="Permalink to this heading">#</a></h3>
+<p>Crawled articles are stored in a jsonl file, with each line representing a JSON object containing:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code>: the title of the article</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code>: the url of the article</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">keyword</span></code>: the keyword for which the article was found</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">categories</span></code>: the categories of the article</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code>: the timestamp of the article</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code>: the text of the article</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code>: Title of the article</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code>: URL of the article</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">keyword</span></code>: Keyword for which the article was found</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">categories</span></code>: Categories of the article</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code>: Timestamp of the article</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code>: Text of the article</p></li>
 </ul>
-<p>Example data look like this:</p>
+<p>Example data can be loaded and printed as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">HyFI</span><span class="o">.</span><span class="n">load_jsonl</span><span class="p">(</span>
@@ -639,6 +659,7 @@ Dryrun is enabled, not running the HyFI config
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -679,7 +700,7 @@ Dryrun is enabled, not running the HyFI config
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Supplemental material</p>
+        <p class="prev-next-title">Supplemental Material</p>
       </div>
     </a>
     <a class="right-next"
@@ -687,7 +708,7 @@ Dryrun is enabled, not running the HyFI config
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Preprocessing the crawled data</p>
+        <p class="prev-next-title">Processing the Data</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -710,12 +731,22 @@ Dryrun is enabled, not running the HyFI config
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-scraping">1. Web Scraping</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text-extraction">2. Article Text Extraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-scraping">1. Web Scraping</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-and-approach">1.1 Structure and Approach</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text-extraction">2. Article Text Extraction</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.1 Structure and Approach</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-serialization">3. Data Serialization</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crawling-workflow">Crawling Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crawling-workflow">Crawling Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-and-commands">Configuration and Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-structure">Output Structure</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

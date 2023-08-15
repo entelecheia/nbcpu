@@ -34,3 +34,7 @@ Once we have a comprehensive dataset of articles, we will filter the articles ba
 We will determine a specific time frame for our study, and only gather articles published within this period. This will allow us to understand the evolution of policy uncertainty over a specified period of time.
 
 This dataset will provide a rich source of information from which to analyze and measure the uncertainty surrounding Cambodia's central bank policy.
+
+## Exploratory Data Analysis
+
+We have collected 40,002 articles from the three news outlets. The articles were published between January 1, 2016 and July 31, 2023.
