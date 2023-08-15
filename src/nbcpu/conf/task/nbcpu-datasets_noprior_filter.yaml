@@ -1,0 +1,8 @@
+defaults:
+  - __init__
+  - /pipeline@nbcpu-datasets_noprior_filter: nbcpu-datasets_noprior_filter
+
+_config_name_: nbcpu-datasets_noprior_filter
+verbose: true
+pipelines:
+  - nbcpu-datasets_noprior_filter
