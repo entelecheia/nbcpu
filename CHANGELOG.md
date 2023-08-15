@@ -1,5 +1,18 @@
 <!--next-version-placeholder-->
 
+## v0.15.0 (2023-08-15)
+
+### Feature
+
+* **book/supplementary:** Add new LDA_model(0)_k(10)_wordcloud_00.png image to topic/figs. ([`d48cf93`](https://github.com/entelecheia/nbcpu/commit/d48cf9362e0220c6f7196ff62cd5a83d7bb326c4))
+* **book:** Add prior topic to index ([`5cc82de`](https://github.com/entelecheia/nbcpu/commit/5cc82de89d941aa42826b198a864c84541a199a5))
+
+### Documentation
+
+* Add topic prior notebook ([`52f1efa`](https://github.com/entelecheia/nbcpu/commit/52f1efaf2b013512c48282e277ad41d4b969579c))
+* Update topic notebook ([`a115180`](https://github.com/entelecheia/nbcpu/commit/a115180e7f09af87cce0e392c34dab0604af598d))
+* Update notebooks ([`0cad4f0`](https://github.com/entelecheia/nbcpu/commit/0cad4f0c5dd703cb542c3e2a67882d9efda169c5))
+
 ## v0.14.0 (2023-08-15)
 
 ### Feature
