@@ -8,6 +8,10 @@ Built upon the [Hydra Fast Interface (HyFI)](https://hyfi.entelecheia.ai) framew
 
 The package can be installed with `pip install nbcpu`. The package requires Python 3.8 or higher.
 
+```bash
+pip install -U nbcpu
+```
+
 ## Usage
 
 The package provides a command-line interface for running the experiments. The interface is built upon the [Hydra Fast Interface (HyFI)](https://hyfi.entelecheia.ai) framework. The interface is divided into four main parts: crawling, preprocessing, topic modeling, and analysis. Refer to each sub section for more details.
@@ -42,7 +46,7 @@ tasks:
 
 nbcpu-topic_uncertainty_filtered:
   calls:
-    # - train
+    - train
     - infer
   infer_args:
     model_config_file: ${__project_root_path__:}/workspace/nbcpu-topic_uncertainty_filtered/model/configs/model(2)_config.yaml
@@ -61,6 +65,45 @@ To run the entire workflow, run the following command:
 
 ```bash
 nbcpu +workflow=nbcpu
+```
+
+## Crawling
+
+The crawling configuration is located in the `src/nbcpu/conf/fetcher` directory. The configuration is divided into several sub configurations, each of which is located in the `src/nbcpu/conf/fetcher` directory.
+
+```yaml
+defaults:
+  - khmer
+_config_name_: khmer_all
+search_keywords:
+  - NBC
+  - Exchange Rate
+  - De-dollarization
+  - Inflation
+  - GDP
+  - Monetary Policy
+  - Finance
+  - Banking
+  - Stock Exchange
+  - Uncertain
+  - Economic
+  - Policy
+  - Financial
+  - Riel
+  - Bank
+  - Economy
+  - Securities Exchange
+  - National Bank of Cambodia
+max_num_pages:
+max_num_articles:
+num_workers: 10
+verbose: true
+```
+
+To run the crawling configuration, run the following command:
+
+```bash
+nbcpu +workflow=nbcpu +fetcher=khmer_all
 ```
 
 ```{tableofcontents}
