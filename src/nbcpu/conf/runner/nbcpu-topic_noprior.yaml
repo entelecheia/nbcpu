@@ -5,10 +5,10 @@ defaults:
 task_name: nbcpu-topic_noprior
 run_args:
   k:
-    - 10
+    # - 10
     - 20
-    - 30
-    - 40
+    # - 30
+    # - 40
     # - 50
 model:
   train_args:
