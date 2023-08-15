@@ -1,5 +1,24 @@
 <!--next-version-placeholder-->
 
+## v0.13.0 (2023-08-15)
+
+### Feature
+
+* **book:** Add topic analysis ([`1dae7a2`](https://github.com/entelecheia/nbcpu/commit/1dae7a2d21d1e6ab7a7b25098cd8f7100062351a))
+* **results:** Add evaluation methods for uncertainty measures ([`cb82c56`](https://github.com/entelecheia/nbcpu/commit/cb82c5652796fbf18bd060cab24a4e6b41af4828))
+* **documentation:** Add crawling configuration details ([`faa196e`](https://github.com/entelecheia/nbcpu/commit/faa196ed8062db29f6526dc2fb622c83d29b7cf3))
+* **book:** Add new sections to supplementary topic ([`d226cf7`](https://github.com/entelecheia/nbcpu/commit/d226cf7ecae821a2aecf5ccc6f6fd05dba9b4ee5))
+* **book:** Add preprocessing information to supplementary section ([`2d25011`](https://github.com/entelecheia/nbcpu/commit/2d250115955bb38bb15ed409ed290a3e6ad7225f))
+* **book:** Add supplementary/analysis index ([`2521d2a`](https://github.com/entelecheia/nbcpu/commit/2521d2aa570cdf60e699e92ad166ff4c7ffd963c))
+* **book:** Add data collection information to paper ([`3c6eb0a`](https://github.com/entelecheia/nbcpu/commit/3c6eb0a8d758ef042c5eba912e825d495a622d65))
+* **book:** Add installation and usage guide for the nbcpu package ([`7adf118`](https://github.com/entelecheia/nbcpu/commit/7adf1186f712d0b7cbd29c684d7550229a7f4e00))
+* **references:** Add new publications ([`2ba9eb4`](https://github.com/entelecheia/nbcpu/commit/2ba9eb4ff0009c9d44c1bba2211bdce9d8b9f3bc))
+
+### Documentation
+
+* **book:** Change preprocessing to processing ([`35a587b`](https://github.com/entelecheia/nbcpu/commit/35a587be4b62d35529b2cfb0cdb0e962013647d3))
+* Add crawling supplement ([`5e3348a`](https://github.com/entelecheia/nbcpu/commit/5e3348a2ff43834335a0955aed96c61097117139))
+
 ## v0.12.0 (2023-08-14)
 
 ### Feature
