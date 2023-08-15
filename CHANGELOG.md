@@ -1,5 +1,18 @@
 <!--next-version-placeholder-->
 
+## v0.16.0 (2023-08-15)
+
+### Feature
+
+* **book:** Add topic-uncertainty section ([`0c41905`](https://github.com/entelecheia/nbcpu/commit/0c4190558c57dc17455598476d4919a766ee790a))
+* **book:** Add second analysis chapter to table of contents ([`6562ade`](https://github.com/entelecheia/nbcpu/commit/6562ade0a1c3c47fe44193bc42225bcb28ed575b))
+* **book:** Add new wordcloud images to topic-uncertainty section ([`819a21c`](https://github.com/entelecheia/nbcpu/commit/819a21cd91aa914eaff6b4e98b1541e2ec5d0573))
+
+### Documentation
+
+* Update topic notebooks ([`7fde856`](https://github.com/entelecheia/nbcpu/commit/7fde8569d22cb23be835da79188bb93bb9c5e620))
+* Add topic uncertainty notebooks ([`0583566`](https://github.com/entelecheia/nbcpu/commit/05835667fb4f88033877e832dd59d80a9e882958))
+
 ## v0.15.0 (2023-08-15)
 
 ### Feature
