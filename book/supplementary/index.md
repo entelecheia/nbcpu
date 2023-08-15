@@ -14,7 +14,7 @@ pip install -U nbcpu
 
 ## Usage
 
-The package provides a command-line interface for running the experiments. The interface is built upon the [Hydra Fast Interface (HyFI)](https://hyfi.entelecheia.ai) framework. The interface is divided into four main parts: crawling, preprocessing, topic modeling, and analysis. Refer to each sub section for more details.
+The package provides a command-line interface for running the experiments. The interface is built upon the [Hydra Fast Interface (HyFI)](https://hyfi.entelecheia.ai) framework. The interface is divided into four main parts: crawling, processing, topic modeling, and analysis. Refer to each sub section for more details.
 
 The entire workflow comprises of the several sub configurations and packed into a single configuration called `nbcpu`. The configuration is located in the `src/nbcpu/conf` directory. The configuration is divided into several sub configurations, each of which is located in the `src/nbcpu/conf` directory.
 
