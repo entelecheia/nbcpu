@@ -1,12 +1,10 @@
-# Supplemental material
+# Supplemental Material
 
-All the code for this research is available on [GitHub](http://github.com/entelecheia/nbcpu) and is pulished as a standalone Python package on [PyPI](https://pypi.org/project/nbcpu/). The package is called `nbcpu` and can be installed with `pip install nbcpu`.
-
-Built upon the [Hydra Fast Interface (HyFI)](https://hyfi.entelecheia.ai) framework along with plugins, [ThematOS](https://thematos.entelecheia.ai) and [Lexikanon](https://lexikanon.entelecheia.ai), the package provides a simple command-line interface for running the experiments described in this research. The package also contains the code for the experiments, which can be used as a reference for implementing similar experiments.
+The research code is publicly available as a Python package named `nbcpu`, hosted on [GitHub](http://github.com/entelecheia/nbcpu) and published on [PyPI](https://pypi.org/project/nbcpu/). Built on the [Hydra Fast Interface (HyFI)](https://hyfi.entelecheia.ai) framework and integrated with plugins [ThematOS](https://thematos.entelecheia.ai) and [Lexikanon](https://lexikanon.entelecheia.ai), `nbcpu` offers a streamlined command-line interface for replicating the experiments described in this research.
 
 ## Installation
 
-The package can be installed with `pip install nbcpu`. The package requires Python 3.8 or higher.
+`nbcpu` requires Python 3.8 or higher and can be installed using the following command:
 
 ```bash
 pip install -U nbcpu
@@ -14,34 +12,44 @@ pip install -U nbcpu
 
 ## Usage
 
-The package provides a command-line interface for running the experiments. The interface is built upon the [Hydra Fast Interface (HyFI)](https://hyfi.entelecheia.ai) framework. The interface is divided into four main parts: crawling, processing, topic modeling, and analysis. Refer to each sub section for more details.
+### Overview
 
-The entire workflow comprises of the several sub configurations and packed into a single configuration called `nbcpu`. The configuration is located in the `src/nbcpu/conf` directory. The configuration is divided into several sub configurations, each of which is located in the `src/nbcpu/conf` directory.
+The `nbcpu` package is designed to facilitate the entire workflow of the research, encompassing crawling, processing, topic modeling, and analysis. The interface is structured into four main parts, each corresponding to a specific phase of the research.
+
+### Configuration
+
+The configuration for `nbcpu` is located in the `src/nbcpu/conf` directory and is divided into several sub-configurations. The main configuration file, `nbcpu`, orchestrates the entire workflow and includes the following sections:
+
+- **Defaults:** Specifies the default configurations for various tasks.
+- **Tasks:** Lists the tasks to be executed, such as fetching data, filtering datasets, and running topic models.
+- **Global Settings:** Defines global parameters like the number of workers and paths to datasets and workspace.
+
+A snippet of the configuration file is provided below:
 
 ```yaml
-# @package _global_
+## @package _global_
 defaults:
   - __init__
   - /fetcher@khmer_all: khmer_all
   - /task@nbcpu-datasets: nbcpu-datasets
-  - /task@nbcpu-dataset_noprior_filter: nbcpu-dataset_noprior_filter
-  - /task@nbcpu-dataset_uncertainty_filter: nbcpu-dataset_uncertainty_filter
   - /runner@nbcpu-topic_noprior: nbcpu-topic_noprior
+  - /task@nbcpu-datasets_noprior_filter: nbcpu-datasets_noprior_filter
   - /runner@nbcpu-topic_prior: nbcpu-topic_prior
   - /runner@nbcpu-topic_uncertainty: nbcpu-topic_uncertainty
+  - /task@nbcpu-datasets_uncertainty_filter: nbcpu-datasets_uncertainty_filter
   - /runner@nbcpu-topic_uncertainty_filtered: nbcpu-topic_uncertainty_filtered
   - override /project: nbcpu
 
 _config_name_: nbcpu
-verbose: true
+verbose: false
 tasks:
   - khmer_all
   - nbcpu-datasets
   - nbcpu-topic_noprior
-  - nbcpu-dataset_noprior_filter
+  - nbcpu-datasets_noprior_filter
   - nbcpu-topic_prior
   - nbcpu-topic_uncertainty
-  - nbcpu-dataset_uncertainty_filter
+  - nbcpu-datasets_uncertainty_filter
   - nbcpu-topic_uncertainty_filtered
 
 nbcpu-topic_uncertainty_filtered:
@@ -61,11 +69,24 @@ global:
   workspace_path: ${__project_workspace_path__:}
 ```
 
-To run the entire workflow, run the following command:
+### Running Experiments
+
+The entire workflow can be executed with the following command:
 
 ```bash
 nbcpu +workflow=nbcpu
 ```
+
+This command triggers the sequence of tasks defined in the configuration, including data fetching, preprocessing, topic modeling, and uncertainty analysis.
+
+### Detailed Workflow
+
+1. **Crawling:** Fetches the required data based on the specified configuration.
+2. **Processing:** Includes preprocessing tasks such as filtering datasets based on specific criteria.
+3. **Topic Modeling:** Runs different topic modeling tasks, including those with and without prior information.
+4. **Analysis:** Conducts analysis on the derived topics, including uncertainty filtering and inference.
+
+The package also contains the code for the experiments, serving as a reference for implementing similar research.
 
 ```{tableofcontents}
 
