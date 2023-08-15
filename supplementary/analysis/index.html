@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Topic analysis &#8212; Measuring Central Bank Policy Uncertainty</title>
+    <title>Anaylisis of the results &#8212; Measuring Central Bank Policy Uncertainty</title>
   
   
   
@@ -189,7 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../topic/prior.html">Topic Modeling with Prior</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../topic-uncertainty/index.html">Topic Modeling for Uncertainty Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../topic-uncertainty/second.html">The Second Stage Uncertainty Model</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Topic analysis</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Anaylisis of the results</a></li>
 </ul>
 </li>
 </ul>
@@ -238,6 +238,55 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/entelecheia/nbcpu/blob/main/book/supplementary/analysis/index.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -263,7 +312,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/entelecheia/nbcpu/edit/main/book/supplementary/analysis/index.md" target="_blank"
+      <li><a href="https://github.com/entelecheia/nbcpu/edit/main/book/supplementary/analysis/index.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -310,7 +359,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/supplementary/analysis/index.md" target="_blank"
+      <li><a href="../../_sources/supplementary/analysis/index.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -320,7 +369,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -390,7 +439,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Topic analysis</h1>
+    <h1>Anaylisis of the results</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -404,8 +453,538 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="topic-analysis">
-<h1>Topic analysis<a class="headerlink" href="#topic-analysis" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="anaylisis-of-the-results">
+<h1>Anaylisis of the results<a class="headerlink" href="#anaylisis-of-the-results" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nbcpu</span> <span class="kn">import</span> <span class="n">HyFI</span>
+
+<span class="n">meta_file</span> <span class="o">=</span> <span class="s2">&quot;/home/yjlee/workspace/projects/nbcpu/workspace/datasets/processed/khmer_tokenized/train.parquet&quot;</span>
+<span class="n">uncertainty_file</span> <span class="o">=</span> <span class="s2">&quot;/home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/model/outputs/LDA_model(4)_k(20)-doc_topic_dists.parquet&quot;</span>
+<span class="n">topic_file</span> <span class="o">=</span> <span class="s2">&quot;/home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_prior/model/outputs/LDA_model(1)_k(20)-doc_topic_dists.parquet&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meta</span> <span class="o">=</span> <span class="n">HyFI</span><span class="o">.</span><span class="n">load_dataframe</span><span class="p">(</span><span class="n">meta_file</span><span class="p">)</span>
+<span class="n">meta</span> <span class="o">=</span> <span class="n">meta</span><span class="p">[[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">]]</span>
+<span class="n">meta</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>time</th>
+      <th>title</th>
+      <th>text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>501330943</td>
+      <td>2023-07-25 18:19:23</td>
+      <td>Use consumer behaviour for providing loans, NB...</td>
+      <td>The National Bank of Cambodia (NBC) has asked ...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>501326169</td>
+      <td>2023-07-18 08:19:05</td>
+      <td>VIDEO: Consumers’ complaint mechanism soon, NB...</td>
+      <td>The National Bank of Cambodia has prepared a d...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>501325554</td>
+      <td>2023-07-17 18:19:37</td>
+      <td>Consumers’ complaint mechanism soon, NBC says</td>
+      <td>The National Bank of Cambodia has prepared a d...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>501322478</td>
+      <td>2023-07-11 18:19:19</td>
+      <td>NBC inks deal with UnionPay to expand cross-bo...</td>
+      <td>National Bank of Cambodia (NBC) on Monday sign...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>501321914</td>
+      <td>2023-07-10 18:17:17</td>
+      <td>Inflation drops lowest to 0.48%, says NBC</td>
+      <td>The average price of goods and services suppli...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>39997</th>
+      <td>48187</td>
+      <td>2014-03-15 17:00:00</td>
+      <td>Cuban Americans Hold Meeting</td>
+      <td>MIAMI, March 16 (Reuters) – Cuban Americans me...</td>
+    </tr>
+    <tr>
+      <th>39998</th>
+      <td>48132</td>
+      <td>2014-03-11 17:00:00</td>
+      <td>CNRP and CPP: No Consensus</td>
+      <td>PHNOM PENH: March 12. 2014 (Khmer Times) – CNR...</td>
+    </tr>
+    <tr>
+      <th>39999</th>
+      <td>48115</td>
+      <td>2014-03-10 17:00:00</td>
+      <td>ILOCamfeba On Labor</td>
+      <td>PHNOM PENH: March 11, 2014 (Khmer Times) — The...</td>
+    </tr>
+    <tr>
+      <th>40000</th>
+      <td>48085</td>
+      <td>2014-03-08 17:00:00</td>
+      <td>World Wide Web Turns 25</td>
+      <td>SAN FRANCISCO, March 9, 2014 (AFP) – Twenty-fi...</td>
+    </tr>
+    <tr>
+      <th>40001</th>
+      <td>48087</td>
+      <td>2014-03-08 17:00:00</td>
+      <td>Sarah Palin on Nukes</td>
+      <td>NATIONAL HARBOR, March 9, 2014 (AFP) – Sarah P...</td>
+    </tr>
+  </tbody>
+</table>
+<p>39637 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uncertainty_data</span> <span class="o">=</span> <span class="n">HyFI</span><span class="o">.</span><span class="n">load_dataframe</span><span class="p">(</span><span class="n">uncertainty_file</span><span class="p">)</span>
+<span class="n">uncertainty_data</span> <span class="o">=</span> <span class="n">uncertainty_data</span><span class="p">[[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;topic0&quot;</span><span class="p">,</span> <span class="s2">&quot;topic1&quot;</span><span class="p">]]</span>
+<span class="n">uncertainty_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;topic0&quot;</span><span class="p">:</span> <span class="s2">&quot;uncertainty&quot;</span><span class="p">,</span> <span class="s2">&quot;topic1&quot;</span><span class="p">:</span> <span class="s2">&quot;improve&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">uncertainty_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>uncertainty</th>
+      <th>improve</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>501330943</td>
+      <td>0.000085</td>
+      <td>0.464935</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>501326169</td>
+      <td>0.000458</td>
+      <td>0.001072</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>501325554</td>
+      <td>0.000086</td>
+      <td>0.654193</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>501322478</td>
+      <td>0.000114</td>
+      <td>0.000267</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>501321914</td>
+      <td>0.000080</td>
+      <td>0.161941</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>27589</th>
+      <td>48239</td>
+      <td>0.000176</td>
+      <td>0.000412</td>
+    </tr>
+    <tr>
+      <th>27590</th>
+      <td>48216</td>
+      <td>0.000160</td>
+      <td>0.000375</td>
+    </tr>
+    <tr>
+      <th>27591</th>
+      <td>48132</td>
+      <td>0.000061</td>
+      <td>0.019791</td>
+    </tr>
+    <tr>
+      <th>27592</th>
+      <td>48115</td>
+      <td>0.258588</td>
+      <td>0.740238</td>
+    </tr>
+    <tr>
+      <th>27593</th>
+      <td>48085</td>
+      <td>0.000056</td>
+      <td>0.000132</td>
+    </tr>
+  </tbody>
+</table>
+<p>27594 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topic_data</span> <span class="o">=</span> <span class="n">HyFI</span><span class="o">.</span><span class="n">load_dataframe</span><span class="p">(</span><span class="n">topic_file</span><span class="p">)</span>
+<span class="n">topic_data</span> <span class="o">=</span> <span class="n">topic_data</span><span class="p">[[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;topic0&quot;</span><span class="p">,</span> <span class="s2">&quot;topic1&quot;</span><span class="p">,</span> <span class="s2">&quot;topic7&quot;</span><span class="p">]]</span>
+<span class="n">topic_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;topic0&quot;</span><span class="p">:</span> <span class="s2">&quot;econ&quot;</span><span class="p">,</span> <span class="s2">&quot;topic1&quot;</span><span class="p">:</span> <span class="s2">&quot;banking&quot;</span><span class="p">,</span> <span class="s2">&quot;topic7&quot;</span><span class="p">:</span> <span class="s2">&quot;asean&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">topic_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>econ</th>
+      <th>banking</th>
+      <th>asean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>501330943</td>
+      <td>0.044409</td>
+      <td>0.954475</td>
+      <td>0.000052</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>501326169</td>
+      <td>0.000805</td>
+      <td>0.247236</td>
+      <td>0.000284</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>501325554</td>
+      <td>0.000130</td>
+      <td>0.649223</td>
+      <td>0.000046</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>501322478</td>
+      <td>0.000128</td>
+      <td>0.903942</td>
+      <td>0.000045</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>501321914</td>
+      <td>0.539477</td>
+      <td>0.194994</td>
+      <td>0.000052</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>27589</th>
+      <td>48239</td>
+      <td>0.648823</td>
+      <td>0.000088</td>
+      <td>0.000065</td>
+    </tr>
+    <tr>
+      <th>27590</th>
+      <td>48216</td>
+      <td>0.000195</td>
+      <td>0.000093</td>
+      <td>0.000069</td>
+    </tr>
+    <tr>
+      <th>27591</th>
+      <td>48132</td>
+      <td>0.000099</td>
+      <td>0.000047</td>
+      <td>0.000035</td>
+    </tr>
+    <tr>
+      <th>27592</th>
+      <td>48115</td>
+      <td>0.000250</td>
+      <td>0.000119</td>
+      <td>0.000088</td>
+    </tr>
+    <tr>
+      <th>27593</th>
+      <td>48085</td>
+      <td>0.000091</td>
+      <td>0.000043</td>
+      <td>0.000032</td>
+    </tr>
+  </tbody>
+</table>
+<p>27594 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># merge all together</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">topic_data</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">uncertainty_data</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>time</th>
+      <th>title</th>
+      <th>text</th>
+      <th>econ</th>
+      <th>banking</th>
+      <th>asean</th>
+      <th>uncertainty</th>
+      <th>improve</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>501330943</td>
+      <td>2023-07-25 18:19:23</td>
+      <td>Use consumer behaviour for providing loans, NB...</td>
+      <td>The National Bank of Cambodia (NBC) has asked ...</td>
+      <td>0.044409</td>
+      <td>0.954475</td>
+      <td>0.000052</td>
+      <td>0.000085</td>
+      <td>0.464935</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>501326169</td>
+      <td>2023-07-18 08:19:05</td>
+      <td>VIDEO: Consumers’ complaint mechanism soon, NB...</td>
+      <td>The National Bank of Cambodia has prepared a d...</td>
+      <td>0.000805</td>
+      <td>0.247236</td>
+      <td>0.000284</td>
+      <td>0.000458</td>
+      <td>0.001072</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>501325554</td>
+      <td>2023-07-17 18:19:37</td>
+      <td>Consumers’ complaint mechanism soon, NBC says</td>
+      <td>The National Bank of Cambodia has prepared a d...</td>
+      <td>0.000130</td>
+      <td>0.649223</td>
+      <td>0.000046</td>
+      <td>0.000086</td>
+      <td>0.654193</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>501322478</td>
+      <td>2023-07-11 18:19:19</td>
+      <td>NBC inks deal with UnionPay to expand cross-bo...</td>
+      <td>National Bank of Cambodia (NBC) on Monday sign...</td>
+      <td>0.000128</td>
+      <td>0.903942</td>
+      <td>0.000045</td>
+      <td>0.000114</td>
+      <td>0.000267</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>501321914</td>
+      <td>2023-07-10 18:17:17</td>
+      <td>Inflation drops lowest to 0.48%, says NBC</td>
+      <td>The average price of goods and services suppli...</td>
+      <td>0.539477</td>
+      <td>0.194994</td>
+      <td>0.000052</td>
+      <td>0.000080</td>
+      <td>0.161941</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>27685</th>
+      <td>48239</td>
+      <td>2014-03-18 17:00:00</td>
+      <td>US Stocks Rise Despite Russia’s Ukraine Move</td>
+      <td>NEW YORK, March 19, 2014 (AFP) – US stocks bar...</td>
+      <td>0.648823</td>
+      <td>0.000088</td>
+      <td>0.000065</td>
+      <td>0.000176</td>
+      <td>0.000412</td>
+    </tr>
+    <tr>
+      <th>27686</th>
+      <td>48216</td>
+      <td>2014-03-16 17:00:00</td>
+      <td>Greater Investments In Human Resource</td>
+      <td>PHNOM PENH, March 17, 2014 (Khmer Times) – Cam...</td>
+      <td>0.000195</td>
+      <td>0.000093</td>
+      <td>0.000069</td>
+      <td>0.000160</td>
+      <td>0.000375</td>
+    </tr>
+    <tr>
+      <th>27687</th>
+      <td>48132</td>
+      <td>2014-03-11 17:00:00</td>
+      <td>CNRP and CPP: No Consensus</td>
+      <td>PHNOM PENH: March 12. 2014 (Khmer Times) – CNR...</td>
+      <td>0.000099</td>
+      <td>0.000047</td>
+      <td>0.000035</td>
+      <td>0.000061</td>
+      <td>0.019791</td>
+    </tr>
+    <tr>
+      <th>27688</th>
+      <td>48115</td>
+      <td>2014-03-10 17:00:00</td>
+      <td>ILOCamfeba On Labor</td>
+      <td>PHNOM PENH: March 11, 2014 (Khmer Times) — The...</td>
+      <td>0.000250</td>
+      <td>0.000119</td>
+      <td>0.000088</td>
+      <td>0.258588</td>
+      <td>0.740238</td>
+    </tr>
+    <tr>
+      <th>27689</th>
+      <td>48085</td>
+      <td>2014-03-08 17:00:00</td>
+      <td>World Wide Web Turns 25</td>
+      <td>SAN FRANCISCO, March 9, 2014 (AFP) – Twenty-fi...</td>
+      <td>0.000091</td>
+      <td>0.000043</td>
+      <td>0.000032</td>
+      <td>0.000056</td>
+      <td>0.000132</td>
+    </tr>
+  </tbody>
+</table>
+<p>27690 rows × 9 columns</p>
+</div></div></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
