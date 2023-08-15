@@ -1,0 +1,771 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Crawling Khmer Times &#8212; Measuring Central Bank Policy Uncertainty</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-shadow.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-punk.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-noir.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-light.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-borderless.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/micromodal.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/tabs.js"></script>
+    <script src="../../_static/js/hoverxref.js"></script>
+    <script src="../../_static/js/tooltipster.bundle.min.js"></script>
+    <script src="../../_static/js/micromodal.min.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-SY9MF3HBFB"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-SY9MF3HBFB');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'supplementary/crawling/index';</script>
+    <link rel="shortcut icon" href="https://assets.entelecheia.ai/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Preprocessing the crawled data" href="../processing/index.html" />
+    <link rel="prev" title="Supplemental material" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Measuring Central Bank Policy Uncertainty</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Abstract
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../paper/introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/literature/index.html">Literature Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/methodology/index.html">Methodology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/results/index.html">Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/conclusion/index.html">Concluding Remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/references.html">References</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Supplemental material</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Crawling Khmer Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">Preprocessing the crawled data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topic/index.html">Topic modeling</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/entelecheia/nbcpu/blob/main/book/supplementary/crawling/index.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/entelecheia/nbcpu" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/entelecheia/nbcpu/edit/main/book/supplementary/crawling/index.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/entelecheia/nbcpu/issues/new?title=Issue%20on%20page%20%2Fsupplementary/crawling/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/supplementary/crawling/index.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Crawling Khmer Times</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-scraping">1. Web Scraping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text-extraction">2. Article Text Extraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-serialization">3. Data Serialization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crawling-workflow">Crawling Workflow</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="crawling-khmer-times">
+<h1>Crawling Khmer Times<a class="headerlink" href="#crawling-khmer-times" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<p>The dataset for Khmer Times is prepared as follows:</p>
+<section id="web-scraping">
+<h3>1. Web Scraping<a class="headerlink" href="#web-scraping" title="Permalink to this heading">#</a></h3>
+<p>Web scraping is performed using Python with the help of the <code class="docutils literal notranslate"><span class="pre">requests</span></code> and <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> libraries. A Python function is written to crawl the search results pages of the Khmer Times website and extract the URLs of the news articles. The function takes a search keyword as input and iteratively crawls the search results pages until it encounters a page that returns a 404 error, indicating that there are no more results.</p>
+<p>The structure of the search results pages is as follows:</p>
+<ul class="simple">
+<li><p>Each article is contained within an <code class="docutils literal notranslate"><span class="pre">&lt;article&gt;</span></code> tag with the class <code class="docutils literal notranslate"><span class="pre">item</span> <span class="pre">item-media</span></code>.</p></li>
+<li><p>The title of the article is contained within an <code class="docutils literal notranslate"><span class="pre">&lt;h2&gt;</span></code> tag with the class <code class="docutils literal notranslate"><span class="pre">item-title</span></code>.</p></li>
+<li><p>The URL of the article is contained within an <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code> tag within the <code class="docutils literal notranslate"><span class="pre">&lt;h2&gt;</span></code> tag.</p></li>
+</ul>
+<p>The function extracts the title and URL of each article and stores them in a list of dictionaries.</p>
+</section>
+<section id="article-text-extraction">
+<h3>2. Article Text Extraction<a class="headerlink" href="#article-text-extraction" title="Permalink to this heading">#</a></h3>
+<p>Another Python function is written to follow the URLs extracted in the previous step and scrape the text of the articles. The function iterates over the list of URLs and sends a GET request to each URL. It then parses the HTML of the article page using BeautifulSoup.</p>
+<p>The structure of the article pages is as follows:</p>
+<ul class="simple">
+<li><p>The text of the article is contained within multiple <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code> tags, which are themselves contained within a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> tag with the class <code class="docutils literal notranslate"><span class="pre">entry-content</span></code>.</p></li>
+<li><p>The categories of the article are contained within <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code> tags within a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> tag with the class <code class="docutils literal notranslate"><span class="pre">entry-meta</span></code>.</p></li>
+<li><p>The publication time of the article is contained within a <code class="docutils literal notranslate"><span class="pre">&lt;time&gt;</span></code> tag within the same <code class="docutils literal notranslate"><span class="pre">entry-meta</span></code> div.</p></li>
+</ul>
+<p>The function extracts the text, categories, and publication time of each article and stores them in a list of dictionaries.</p>
+</section>
+<section id="data-serialization">
+<h3>3. Data Serialization<a class="headerlink" href="#data-serialization" title="Permalink to this heading">#</a></h3>
+<p>The list of dictionaries containing the article data is then serialized to a JSON file using Python’s <code class="docutils literal notranslate"><span class="pre">json</span></code> library. The <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects representing the publication times of the articles are converted to ISO 8601 formatted strings before serialization, as <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects are not JSON serializable.</p>
+<p>The resulting JSON file contains an array of objects, where each object represents an article and has a <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">categories</span></code>, and <code class="docutils literal notranslate"><span class="pre">time</span></code> field. The <code class="docutils literal notranslate"><span class="pre">text</span></code> field contains the text of the article, the <code class="docutils literal notranslate"><span class="pre">categories</span></code> field contains a list of the categories of the article, and the <code class="docutils literal notranslate"><span class="pre">time</span></code> field contains the publication time of the article as an ISO 8601 formatted string.</p>
+<p>This JSON file serves as the dataset for this project.</p>
+</section>
+</section>
+<section id="crawling-workflow">
+<h2>Crawling Workflow<a class="headerlink" href="#crawling-workflow" title="Permalink to this heading">#</a></h2>
+<p>The crawling configuration is located in the <code class="docutils literal notranslate"><span class="pre">src/nbcpu/conf/fetcher</span></code> directory. You can print the configuration by running the following command:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nbcpu<span class="w"> </span>+fetcher<span class="o">=</span>khmer_all<span class="w"> </span><span class="nv">dryrun</span><span class="o">=</span>true
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## Command Line Interface for HyFI ##
+{&#39;about&#39;: {&#39;authors&#39;: &#39;Young Joon Lee &lt;entelecheia@hotmail.com&gt;&#39;,
+           &#39;description&#39;: &#39;Quantifying Central Bank Policy Uncertainty in a &#39;
+                          &#39;Highly Dollarized Economy: A Topic Modeling &#39;
+                          &#39;Approach&#39;,
+           &#39;homepage&#39;: &#39;https://nbcpu.entelecheia.ai&#39;,
+           &#39;license&#39;: &#39;MIT&#39;,
+           &#39;name&#39;: &#39;Measuring Central Bank Policy Uncertainty&#39;},
+ &#39;debug_mode&#39;: False,
+ &#39;dryrun&#39;: True,
+ &#39;fetcher&#39;: {&#39;_config_group_&#39;: &#39;/fetcher&#39;,
+             &#39;_config_name_&#39;: &#39;khmer_all&#39;,
+             &#39;_target_&#39;: &#39;nbcpu.fetcher.khmer.KhmerFetcher&#39;,
+             &#39;article_filename&#39;: &#39;articles.jsonl&#39;,
+             &#39;delay_between_requests&#39;: 0.0,
+             &#39;key_field&#39;: &#39;url&#39;,
+             &#39;link_filename&#39;: &#39;links.jsonl&#39;,
+             &#39;max_num_articles&#39;: None,
+             &#39;max_num_pages&#39;: None,
+             &#39;num_workers&#39;: 2,
+             &#39;output_dir&#39;: &#39;workspace/datasets/fetcher/khmer&#39;,
+             &#39;overwrite_existing&#39;: False,
+             &#39;print_every&#39;: 10,
+             &#39;search_keywords&#39;: [&#39;NBC&#39;,
+                                 &#39;Exchange Rate&#39;,
+                                 &#39;De-dollarization&#39;,
+                                 &#39;Inflation&#39;,
+                                 &#39;GDP&#39;,
+                                 &#39;Monetary Policy&#39;,
+                                 &#39;Finance&#39;,
+                                 &#39;Banking&#39;,
+                                 &#39;Stock Exchange&#39;,
+                                 &#39;Uncertain&#39;,
+                                 &#39;Economic&#39;,
+                                 &#39;Policy&#39;,
+                                 &#39;Financial&#39;,
+                                 &#39;Riel&#39;,
+                                 &#39;Bank&#39;,
+                                 &#39;Economy&#39;,
+                                 &#39;Securities Exchange&#39;,
+                                 &#39;National Bank of Cambodia&#39;],
+             &#39;search_url&#39;: &#39;https://www.khmertimeskh.com/page/{page}/?s={keyword}&#39;,
+             &#39;start_page&#39;: 1,
+             &#39;verbose&#39;: True},
+ &#39;hydra_log_dir&#39;: &#39;/home/yjlee/.hyfi/logs/hydra&#39;,
+ &#39;ignore_warnings&#39;: True,
+ &#39;logging_level&#39;: &#39;WARNING&#39;,
+ &#39;noop&#39;: False,
+ &#39;resolve&#39;: True,
+ &#39;verbose&#39;: False,
+ &#39;version&#39;: &#39;0.12.0&#39;}
+
+Dryrun is enabled, not running the HyFI config
+</pre></div>
+</div>
+</div>
+</div>
+<p>To crawl the news articles from the Khmer Times, run the following workflow:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!nbcpu +workflow=nbcpu tasks=&#39;[khmer_all]&#39; \
+    khmer_all.max_num_pages=1 khmer_all.max_num_articles=5 \
+        khmer_all.search_keywords=&#39;[NBC]&#39; \
+            mode=__info__
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2023-08-15 14:50:35,465][hyfi.main.config][INFO] - HyFi project [nbcpu] initialized
+[2023-08-15 14:50:36,516][nbcpu.fetcher.base][INFO] - Fetching links for keyword: NBC
+[2023-08-15 14:50:36,517][nbcpu.fetcher.base][INFO] - [Keyword: NBC] Page: 1
+[2023-08-15 14:50:36,903][nbcpu.fetcher.khmer][INFO] - Title: NBC to increase reserve requirements in foreign currency to 12.5%
+[2023-08-15 14:50:36,903][nbcpu.fetcher.khmer][INFO] - URL: https://www.khmertimeskh.com/501335210/nbc-to-increase-reserve-requirements-in-foreign-currency-to-12-5/
+[2023-08-15 14:50:36,904][nbcpu.fetcher.khmer][INFO] - Title: NBC inks deal with UnionPay to expand cross-border payment to China
+[2023-08-15 14:50:36,904][nbcpu.fetcher.khmer][INFO] - URL: https://www.khmertimeskh.com/501322478/nbc-inks-deal-with-unionpay-to-expand-cross-border-payment-to-china/
+[2023-08-15 14:50:36,904][nbcpu.fetcher.khmer][INFO] - Title: Rural credit institutions help people improve livelihoods, NBC says
+[2023-08-15 14:50:36,904][nbcpu.fetcher.khmer][INFO] - URL: https://www.khmertimeskh.com/501287567/rural-credit-institutions-help-people-improve-livelihoods-nbc-says/
+[2023-08-15 14:50:36,907][nbcpu.fetcher.base][INFO] - Reached max number of pages, stopping...
+[2023-08-15 14:50:36,907][nbcpu.fetcher.base][INFO] - Finished fetching links for keyword: NBC
+[2023-08-15 14:50:36,907][nbcpu.fetcher.base][INFO] - Total links fetched: 30
+[2023-08-15 14:50:36,915][nbcpu.fetcher.base][INFO] - Removed 0 duplicate links from 30 links
+[2023-08-15 14:50:36,916][nbcpu.fetcher.base][INFO] - Saved 30 links to /home/yjlee/workspace/projects/nbcpu/workspace/datasets/fetcher/khmer/links.jsonl
+[2023-08-15 14:50:40,769][nbcpu.fetcher.base][INFO] - Reached max number of articles, stopping...
+[2023-08-15 14:50:40,769][nbcpu.fetcher.base][INFO] - Finished scraping articles
+[2023-08-15 14:50:40,769][nbcpu.fetcher.base][INFO] - Total articles scraped: 5
+[2023-08-15 14:50:40,853][nbcpu.fetcher.base][INFO] - Reached max number of articles, stopping...
+[2023-08-15 14:50:40,853][nbcpu.fetcher.base][INFO] - Finished scraping articles
+[2023-08-15 14:50:40,853][nbcpu.fetcher.base][INFO] - Total articles scraped: 5
+[2023-08-15 14:50:40,867][nbcpu.fetcher.base][INFO] - Removed 0 duplicate articles from 10 articles
+[2023-08-15 14:50:40,868][nbcpu.fetcher.base][INFO] - Saved 10 articles to /home/yjlee/workspace/projects/nbcpu/workspace/datasets/fetcher/khmer/articles.jsonl
+</pre></div>
+</div>
+</div>
+</div>
+<p>Crawled articles are stored in a jsonl file. Each line is a json object with the following fields:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code>: the title of the article</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code>: the url of the article</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">keyword</span></code>: the keyword for which the article was found</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">categories</span></code>: the categories of the article</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code>: the timestamp of the article</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code>: the text of the article</p></li>
+</ul>
+<p>Example data look like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">HyFI</span><span class="o">.</span><span class="n">load_jsonl</span><span class="p">(</span>
+    <span class="s2">&quot;/home/yjlee/workspace/projects/nbcpu/workspace/datasets/fetcher/khmer/articles.jsonl&quot;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of articles: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of articles: 10
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;title&#39;: &#39;NBC to increase reserve requirements in foreign currency to 12.5%&#39;,
+ &#39;url&#39;: &#39;https://www.khmertimeskh.com/501335210/nbc-to-increase-reserve-requirements-in-foreign-currency-to-12-5/&#39;,
+ &#39;keyword&#39;: &#39;NBC&#39;,
+ &#39;categories&#39;: [&#39;Business&#39;],
+ &#39;time&#39;: &#39;2023-08-02T07:18:54+07:00&#39;,
+ &#39;text&#39;: &#39;The National Bank of Cambodia (NBC) will increase the reserve requirements in foreign currency, especially US dollars of banks and financial institutions in the country to 12.5 percent in 2024 after this monetary policy instrument has been raised to nine percent since January 1, 2023 from seven percent during the pre-pandemic period, said an NBC report.\nHowever, the Semi-Annual Report 2023 released on Monday by NBC—Cambodia’s central bank and monetary authority—pointed out that the reserve requirements in riel would be kept unchanged at seven percent to encourage consumers to use the national currency more in the economy through higher possibility in releasing loans in riel to businesses and individuals.\nChea Chanto, former Governor of NBC, said in the report that NBC has increased the reserve requirements—a part of deposits that all banks and financial institutions are required to keep to be ready in response to any case that a number of depositors withdraw cash from the bank in a remarkable speed and/or at the same—thanks to improved economic activities in the country.\n“In participation in maintaining the price stability and boosting the economic growth of the country, monetary policies have been implemented very flexibly and prudentially. Liquidity has been released into the market and then absorbed back in response to the actual demand to ensure that banks and financial institutions have sufficient liquidity,” Chanto said.\n“The sufficient liquidity will enable those institutions to provide loans to consumers at a more reasonable interest rate and take pressures away from the exchange rate,” said Chanto, adding that improved economic activities and effective monetary instruments have increased the demand for, leading to no selling-buying intervention for US dollar by NBC in the first half of 2023.\nLiquidity means that it is as high as possible for consumers to withdraw deposits back when they are in need of use in their consumption and banks and financial institutions to have on hand to be ready in response to the demand for loans or withdrawal from consumers, which can be called the strong resilience of banks and financial institutions against shocks or crises.\nThe report further pointed out that the increase in the reserve requirements in foreign currency has absorbed an amount of foreign-currency liquidity from banks and financial institutions, but released the liquidity by approximately $1.7 billion in the first half of this year compared to the pre-crisis period when the rates were set at 12.5 percent and eight percent for reserve requirements in dollar and riel respectively.\nThe report released after NBC’s semi-annual meeting indicated that the reserve requirements in US dollar and riel have been about $4.3 billion and $340.4 million respectively in the first half of 2023, which has also increased 32 percent and 19 percent respectively compared to the same period of the previous year in line with the rising deposits and overseas loans.\n“If riel is used more and more broadly, the implementation of the central bank’s monetary policies would be more and more effective in further boosting economic activities. However, the participation from all stakeholders including public institutions, private firms and the people is still the key to success in expanding the use of riel in all sectors,” Chanto added.\nSpeaking to Khmer Times yesterday, In Channy, President &amp; Group Managing Director of Acleda Bank Plc, said that NBC had decreased the reserve requirements in foreign currency to seven percent during Covid-19 pandemic from 12.5 percent before the health crisis, but then increased to nine percent since early this year and will raise the rate to 12.5 percent next year.\n“It is an incentive for riel as the central bank has implemented the monetary policy by having kept the reserve requirements in national currency unchanged, which would enable banks and financial institutions to increase loan release in riel that will be used more and more in the economy. It is not about being fair or unfair. It is about policy implementation,” said Channy.\nCambodia’s banking system consists of 59 commercial banks, nine specialised banks, five deposit-taking microfinance institutions (MDIs), 82 microfinance institutions (MFIs), 118 leasing firms, 35 payment institutions, one credit information-sharing service providers, six representative offices of foreign banks and 2,890 money exchangers, according to the report.\n\xa0&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "entelecheia/nbcpu",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./supplementary/crawling"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Supplemental material</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../processing/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Preprocessing the crawled data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-scraping">1. Web Scraping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text-extraction">2. Article Text Extraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-serialization">3. Data Serialization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crawling-workflow">Crawling Workflow</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Young Joon Lee
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

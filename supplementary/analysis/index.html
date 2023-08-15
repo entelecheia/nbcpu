@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Dataset Preparation for Khmer Times &#8212; Measuring Central Bank Policy Uncertainty</title>
+    <title>Topic analysis &#8212; Measuring Central Bank Policy Uncertainty</title>
   
   
   
@@ -85,11 +85,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'supplementary/data/khmer';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'supplementary/analysis/index';</script>
     <link rel="shortcut icon" href="https://assets.entelecheia.ai/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Data" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,19 +173,18 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../paper/introduction/index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../paper/literature/index.html">Literature Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/data/index.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../paper/methodology/index.html">Methodology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../paper/evaluation/index.html">Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../paper/results/index.html">Results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../paper/conclusion/index.html">Concluding Remarks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../paper/references.html">References</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Supplemental material</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">Dataset Preparation for Khmer Times</a></li>
-</ul>
-</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">Supplemental material</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../crawling/index.html">Crawling Khmer Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">Preprocessing the crawled data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topic/index.html">Topic modeling</a></li>
 </ul>
 </li>
 </ul>
@@ -235,55 +233,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/entelecheia/nbcpu/blob/main/book/supplementary/data/khmer.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onColab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img src="../../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="initThebeSBT()"
-  class="btn btn-sm btn-launch-thebe dropdown-item"
-  title="Launch Thebe"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-play"></i>
-  </span>
-<span class="btn__text-container">Live Code</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -309,7 +258,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/entelecheia/nbcpu/edit/main/book/supplementary/data/khmer.ipynb" target="_blank"
+      <li><a href="https://github.com/entelecheia/nbcpu/edit/main/book/supplementary/analysis/index.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -326,7 +275,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/entelecheia/nbcpu/issues/new?title=Issue%20on%20page%20%2Fsupplementary/data/khmer.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/entelecheia/nbcpu/issues/new?title=Issue%20on%20page%20%2Fsupplementary/analysis/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -356,7 +305,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/supplementary/data/khmer.ipynb" target="_blank"
+      <li><a href="../../_sources/supplementary/analysis/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -366,7 +315,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -425,9 +374,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -438,26 +385,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Dataset Preparation for Khmer Times</h1>
+    <h1>Topic analysis</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-scraping">1. Web Scraping</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text-extraction">2. Article Text Extraction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-serialization">3. Data Serialization</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-snippet">Example snippet</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -467,100 +399,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="dataset-preparation-for-khmer-times">
-<h1>Dataset Preparation for Khmer Times<a class="headerlink" href="#dataset-preparation-for-khmer-times" title="Permalink to this heading">#</a></h1>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
-<p>The dataset for Khmer Times is prepared as follows:</p>
-<section id="web-scraping">
-<h3>1. Web Scraping<a class="headerlink" href="#web-scraping" title="Permalink to this heading">#</a></h3>
-<p>Web scraping is performed using Python with the help of the <code class="docutils literal notranslate"><span class="pre">requests</span></code> and <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> libraries. A Python function is written to crawl the search results pages of the Khmer Times website and extract the URLs of the news articles. The function takes a search keyword as input and iteratively crawls the search results pages until it encounters a page that returns a 404 error, indicating that there are no more results.</p>
-<p>The structure of the search results pages is as follows:</p>
-<ul class="simple">
-<li><p>Each article is contained within an <code class="docutils literal notranslate"><span class="pre">&lt;article&gt;</span></code> tag with the class <code class="docutils literal notranslate"><span class="pre">item</span> <span class="pre">item-media</span></code>.</p></li>
-<li><p>The title of the article is contained within an <code class="docutils literal notranslate"><span class="pre">&lt;h2&gt;</span></code> tag with the class <code class="docutils literal notranslate"><span class="pre">item-title</span></code>.</p></li>
-<li><p>The URL of the article is contained within an <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code> tag within the <code class="docutils literal notranslate"><span class="pre">&lt;h2&gt;</span></code> tag.</p></li>
-</ul>
-<p>The function extracts the title and URL of each article and stores them in a list of dictionaries.</p>
-</section>
-<section id="article-text-extraction">
-<h3>2. Article Text Extraction<a class="headerlink" href="#article-text-extraction" title="Permalink to this heading">#</a></h3>
-<p>Another Python function is written to follow the URLs extracted in the previous step and scrape the text of the articles. The function iterates over the list of URLs and sends a GET request to each URL. It then parses the HTML of the article page using BeautifulSoup.</p>
-<p>The structure of the article pages is as follows:</p>
-<ul class="simple">
-<li><p>The text of the article is contained within multiple <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code> tags, which are themselves contained within a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> tag with the class <code class="docutils literal notranslate"><span class="pre">entry-content</span></code>.</p></li>
-<li><p>The categories of the article are contained within <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code> tags within a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> tag with the class <code class="docutils literal notranslate"><span class="pre">entry-meta</span></code>.</p></li>
-<li><p>The publication time of the article is contained within a <code class="docutils literal notranslate"><span class="pre">&lt;time&gt;</span></code> tag within the same <code class="docutils literal notranslate"><span class="pre">entry-meta</span></code> div.</p></li>
-</ul>
-<p>The function extracts the text, categories, and publication time of each article and stores them in a list of dictionaries.</p>
-</section>
-<section id="data-serialization">
-<h3>3. Data Serialization<a class="headerlink" href="#data-serialization" title="Permalink to this heading">#</a></h3>
-<p>The list of dictionaries containing the article data is then serialized to a JSON file using Python’s <code class="docutils literal notranslate"><span class="pre">json</span></code> library. The <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects representing the publication times of the articles are converted to ISO 8601 formatted strings before serialization, as <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects are not JSON serializable.</p>
-<p>The resulting JSON file contains an array of objects, where each object represents an article and has a <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">categories</span></code>, and <code class="docutils literal notranslate"><span class="pre">time</span></code> field. The <code class="docutils literal notranslate"><span class="pre">text</span></code> field contains the text of the article, the <code class="docutils literal notranslate"><span class="pre">categories</span></code> field contains a list of the categories of the article, and the <code class="docutils literal notranslate"><span class="pre">time</span></code> field contains the publication time of the article as an ISO 8601 formatted string.</p>
-<p>This JSON file serves as the dataset for this project.</p>
-</section>
-</section>
-<section id="results">
-<h2>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
-<p>We have saved 40002 articles from Khmer Times. Next task is to do the exploratory data analysis.</p>
-</section>
-<section id="example-snippet">
-<h2>Example snippet<a class="headerlink" href="#example-snippet" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># install nbcpu</span>
-<span class="o">%</span><span class="k">pip</span> install nbcpu
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nbcpu.fetcher.khmer</span> <span class="kn">import</span> <span class="n">KhmerFetcher</span>
-
-
-<span class="n">khmer</span> <span class="o">=</span> <span class="n">KhmerFetcher</span><span class="p">(</span>
-    <span class="n">search_keywords</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;NBC&quot;</span><span class="p">],</span>
-    <span class="n">max_num_pages</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">max_num_articles</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;./tmp/khmer&quot;</span><span class="p">,</span>
-    <span class="n">overwrite_existing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">khmer</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/yj.lee/.venvs/nbcpu/lib/python3.8/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
-  from .autonotebook import tqdm as notebook_tqdm
-INFO:nbcpu.fetcher.khmer:Fetching links for keyword: NBC
-INFO:nbcpu.fetcher.khmer:[Keyword: NBC] Page: 1
-INFO:nbcpu.fetcher.khmer:Title: NBC expanding Bakong operations to more Asian countries
-INFO:nbcpu.fetcher.khmer:URL: https://www.khmertimeskh.com/501317628/nbc-expanding-bakong-operations-to-more-asian-countries/
-INFO:nbcpu.fetcher.khmer:[Keyword: NBC] Page: 1
-INFO:nbcpu.fetcher.khmer:Title: All member banks of the Association of Banks in Cambodia have followed 10% loan portfolio in Riel as mandated by the NBC
-INFO:nbcpu.fetcher.khmer:URL: https://www.khmertimeskh.com/501265406/all-member-banks-of-the-association-of-banks-in-cambodia-have-followed-10-loan-portfolio-in-riel-as-mandated-by-the-nbc/
-INFO:nbcpu.fetcher.khmer:[Keyword: NBC] Page: 1
-INFO:nbcpu.fetcher.khmer:Title: Chea Serey is new NBC Dy Governor
-INFO:nbcpu.fetcher.khmer:URL: https://www.khmertimeskh.com/501252333/chea-serey-is-new-nbc-dy-governor/
-INFO:nbcpu.fetcher.khmer:Finished fetching links for keyword: NBC
-INFO:nbcpu.fetcher.khmer:Total links fetched: 30
-INFO:nbcpu.fetcher.khmer:Removed 0 duplicate links from 30 links
-INFO:nbcpu.fetcher.khmer:Saved 30 links to tmp/khmer/links.jsonl
-INFO:nbcpu.fetcher.khmer:Reached max number of articles, stopping...
-INFO:nbcpu.fetcher.khmer:Finished scraping articles
-INFO:nbcpu.fetcher.khmer:Total articles scraped: 5
-INFO:nbcpu.fetcher.khmer:Removed 0 duplicate articles from 5 articles
-INFO:nbcpu.fetcher.khmer:Saved 5 articles to tmp/khmer/articles.jsonl
-</pre></div>
-</div>
-</div>
-</div>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="topic-analysis">
+<h1>Topic analysis<a class="headerlink" href="#topic-analysis" title="Permalink to this heading">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -576,7 +416,7 @@ INFO:nbcpu.fetcher.khmer:Saved 5 articles to tmp/khmer/articles.jsonl
         },
         kernelOptions: {
             name: "python3",
-            path: "./supplementary/data"
+            path: "./supplementary/analysis"
         },
         predefinedOutput: true
     }
@@ -594,15 +434,6 @@ INFO:nbcpu.fetcher.khmer:Saved 5 articles to tmp/khmer/articles.jsonl
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="index.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Data</p>
-      </div>
-    </a>
 </div></div>
   
 </div>
@@ -612,27 +443,6 @@ INFO:nbcpu.fetcher.khmer:Saved 5 articles to tmp/khmer/articles.jsonl
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-scraping">1. Web Scraping</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text-extraction">2. Article Text Extraction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-serialization">3. Data Serialization</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-snippet">Example snippet</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

@@ -89,7 +89,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="https://assets.entelecheia.ai/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data" href="data/index.html" />
+    <link rel="next" title="Crawling Khmer Times" href="crawling/index.html" />
     <link rel="prev" title="References" href="../paper/references.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -178,16 +178,15 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../paper/introduction/index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../paper/literature/index.html">Literature Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../paper/data/index.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../paper/methodology/index.html">Methodology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../paper/evaluation/index.html">Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../paper/results/index.html">Results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../paper/conclusion/index.html">Concluding Remarks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../paper/references.html">References</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Supplemental material</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="data/index.html">Data</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="data/khmer.html">Dataset Preparation for Khmer Times</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="crawling/index.html">Crawling Khmer Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing/index.html">Preprocessing the crawled data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topic/index.html">Topic modeling</a></li>
 </ul>
 </li>
 </ul>
@@ -377,7 +376,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -393,6 +394,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -404,22 +414,73 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="supplemental-material">
 <h1>Supplemental material<a class="headerlink" href="#supplemental-material" title="Permalink to this heading">#</a></h1>
-<p>A. Crawling
-B. Preprocessing
-C. Topic modeling</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. No prior
-2. Filter out irrelevant documents
-3. 
+<p>All the code for this research is available on <a class="reference external" href="http://github.com/entelecheia/nbcpu">GitHub</a> and is pulished as a standalone Python package on <a class="reference external" href="https://pypi.org/project/nbcpu/">PyPI</a>. The package is called <code class="docutils literal notranslate"><span class="pre">nbcpu</span></code> and can be installed with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">nbcpu</span></code>.</p>
+<p>Built upon the <a class="reference external" href="https://hyfi.entelecheia.ai">Hydra Fast Interface (HyFI)</a> framework along with plugins, <a class="reference external" href="https://thematos.entelecheia.ai">ThematOS</a> and <a class="reference external" href="https://lexikanon.entelecheia.ai">Lexikanon</a>, the package provides a simple command-line interface for running the experiments described in this research. The package also contains the code for the experiments, which can be used as a reference for implementing similar experiments.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
+<p>The package can be installed with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">nbcpu</span></code>. The package requires Python 3.8 or higher.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>nbcpu
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">#</a></h2>
+<p>The package provides a command-line interface for running the experiments. The interface is built upon the <a class="reference external" href="https://hyfi.entelecheia.ai">Hydra Fast Interface (HyFI)</a> framework. The interface is divided into four main parts: crawling, processing, topic modeling, and analysis. Refer to each sub section for more details.</p>
+<p>The entire workflow comprises of the several sub configurations and packed into a single configuration called <code class="docutils literal notranslate"><span class="pre">nbcpu</span></code>. The configuration is located in the <code class="docutils literal notranslate"><span class="pre">src/nbcpu/conf</span></code> directory. The configuration is divided into several sub configurations, each of which is located in the <code class="docutils literal notranslate"><span class="pre">src/nbcpu/conf</span></code> directory.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># @package _global_</span>
+<span class="nt">defaults</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__init__</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">/fetcher@khmer_all</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">khmer_all</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">/task@nbcpu-datasets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu-datasets</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">/task@nbcpu-dataset_noprior_filter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu-dataset_noprior_filter</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">/task@nbcpu-dataset_uncertainty_filter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu-dataset_uncertainty_filter</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">/runner@nbcpu-topic_noprior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu-topic_noprior</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">/runner@nbcpu-topic_prior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu-topic_prior</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">/runner@nbcpu-topic_uncertainty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu-topic_uncertainty</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">/runner@nbcpu-topic_uncertainty_filtered</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu-topic_uncertainty_filtered</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">override /project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu</span>
+
+<span class="nt">_config_name_</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu</span>
+<span class="nt">verbose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">tasks</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">khmer_all</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu-datasets</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu-topic_noprior</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu-dataset_noprior_filter</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu-topic_prior</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu-topic_uncertainty</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu-dataset_uncertainty_filter</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu-topic_uncertainty_filtered</span>
+
+<span class="nt">nbcpu-topic_uncertainty_filtered</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">calls</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">infer</span>
+<span class="w">  </span><span class="nt">infer_args</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model_config_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${__project_root_path__:}/workspace/nbcpu-topic_uncertainty_filtered/model/configs/model(2)_config.yaml</span>
+<span class="w">  </span><span class="nt">corpus_to_infer</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text_col</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tokens</span>
+<span class="w">    </span><span class="nt">data_load</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">data_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${__project_root_path__:}/workspace/datasets/processed/topic_noprior_filtered/train.parquet</span>
+
+<span class="nt">global</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">num_workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">  </span><span class="nt">datasets_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${__get_path__:datasets}</span>
+<span class="w">  </span><span class="nt">workspace_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${__project_workspace_path__:}</span>
+</pre></div>
+</div>
+<p>To run the entire workflow, run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nbcpu<span class="w"> </span>+workflow<span class="o">=</span>nbcpu
 </pre></div>
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="data/index.html">Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="data/khmer.html">Dataset Preparation for Khmer Times</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="crawling/index.html">Crawling Khmer Times</a></li>
+<li class="toctree-l1"><a class="reference internal" href="processing/index.html">Preprocessing the crawled data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="topic/index.html">Topic modeling</a></li>
 </ul>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -463,11 +524,11 @@ C. Topic modeling</p>
       </div>
     </a>
     <a class="right-next"
-       href="data/index.html"
+       href="crawling/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data</p>
+        <p class="prev-next-title">Crawling Khmer Times</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -480,6 +541,21 @@ C. Topic modeling</p>
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
