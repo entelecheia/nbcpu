@@ -67,13 +67,13 @@ class BaseFetcher(BaseModel):
     def link_filepath(self) -> str:
         _path = Path(self.output_dir) / self.link_filename
         _path.parent.mkdir(parents=True, exist_ok=True)
-        return str(_path)
+        return str(_path.absolute())
 
     @property
     def article_filepath(self) -> str:
         _path = Path(self.output_dir) / self.article_filename
         _path.parent.mkdir(parents=True, exist_ok=True)
-        return str(_path)
+        return str(_path.absolute())
 
     @property
     def link_filepath_tmp(self) -> str:
