@@ -10,7 +10,7 @@ stopwords:
   # stopwords_fn: "lambda x: len(x) <= 2"
   # stopwords_list:
   stopwords_path: ${__project_root_path__:}/tests/assets/stopwords/nbcpu-topic.txt
-  verbose: true
+  verbose: false
 ngrams:
   max_len: 3
-verbose: true
+verbose: false
