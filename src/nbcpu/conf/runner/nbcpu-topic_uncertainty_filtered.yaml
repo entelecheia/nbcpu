@@ -5,10 +5,10 @@ defaults:
 task_name: nbcpu-topic_uncertainty_filtered
 run_args:
   k:
-    - 3
-    - 4
+    # - 3
+    # - 4
     - 5
-    - 6
+    # - 6
 model:
   train_args:
     interval: 10
