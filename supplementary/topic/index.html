@@ -188,6 +188,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../processing/index.html">Processing the Data</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Topic Modeling without Prior</a></li>
 <li class="toctree-l2"><a class="reference internal" href="prior.html">Topic Modeling with Prior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topic-uncertainty/index.html">Topic Modeling for Uncertainty Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topic-uncertainty/second.html">The Second Stage Uncertainty Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html">Topic analysis</a></li>
 </ul>
 </li>
@@ -464,10 +466,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-the-appropriate-k">Selecting the Appropriate k</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-results">Model Results</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-interpretation">Topic Interpretation</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-results">Model Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-interpretation">Topic Interpretation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-topics-for-the-second-stage-of-the-analysis">Filtering Topics for the Second Stage of the Analysis</a></li>
 </ul>
             </nav>
@@ -786,8 +786,9 @@ document.write(`
 <p><span class="caption-number">Fig. 2 </span><span class="caption-text">Wordcloud of the top 500 words in each topic from the LDA model with 20 topics. The size of the word is proportional to the frequency of the word in the topic.</span><a class="headerlink" href="#fig-lda-wordcloud-noprior" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
 <section id="topic-interpretation">
-<h3>Topic Interpretation<a class="headerlink" href="#topic-interpretation" title="Permalink to this heading">#</a></h3>
+<h2>Topic Interpretation<a class="headerlink" href="#topic-interpretation" title="Permalink to this heading">#</a></h2>
 <p>The following interpretation analyzes 20 topics extracted from a corpus of documents using Latent Dirichlet Allocation (LDA). These topics encompass a wide range of subjects, including politics, health, environment, technology, economy, culture, and international relations. The interpretation of each topic provides insights into the thematic structure of the corpus, reflecting societal, cultural, economic, and political dimensions. The analysis concludes with alternative considerations that could lead to a more nuanced understanding of the topics.</p>
 <ol class="arabic simple">
 <li><p><strong>Topic #0</strong>: Focuses on political dynamics, including elections, legal matters, human rights, corruption, and governance. It reflects the political landscape and the struggle for democracy and justice.</p></li>
@@ -811,7 +812,6 @@ document.write(`
 <li><p><strong>Topic #18</strong>: Addresses U.S. politics, military matters, nuclear issues, and international relations, reflecting global power dynamics.</p></li>
 <li><p><strong>Topic #19</strong>: Focuses on Southeast Asian politics and relations, including Malaysia, Indonesia, the Philippines, and related regional matters.</p></li>
 </ol>
-</section>
 </section>
 <section id="filtering-topics-for-the-second-stage-of-the-analysis">
 <h2>Filtering Topics for the Second Stage of the Analysis<a class="headerlink" href="#filtering-topics-for-the-second-stage-of-the-analysis" title="Permalink to this heading">#</a></h2>
@@ -978,10 +978,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-the-appropriate-k">Selecting the Appropriate k</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-results">Model Results</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-interpretation">Topic Interpretation</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-results">Model Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-interpretation">Topic Interpretation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-topics-for-the-second-stage-of-the-analysis">Filtering Topics for the Second Stage of the Analysis</a></li>
 </ul>
   </nav></div>

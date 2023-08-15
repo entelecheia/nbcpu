@@ -1,0 +1,1310 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Topic Modeling for Uncertainty Analysis &#8212; Measuring Central Bank Policy Uncertainty</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-shadow.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-punk.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-noir.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-light.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-borderless.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/micromodal.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/tabs.js"></script>
+    <script src="../../_static/js/hoverxref.js"></script>
+    <script src="../../_static/js/tooltipster.bundle.min.js"></script>
+    <script src="../../_static/js/micromodal.min.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-SY9MF3HBFB"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-SY9MF3HBFB');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'supplementary/topic-uncertainty/index';</script>
+    <link rel="shortcut icon" href="https://assets.entelecheia.ai/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="The Second Stage Uncertainty Model" href="second.html" />
+    <link rel="prev" title="Topic Modeling with Prior" href="../topic/prior.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Measuring Central Bank Policy Uncertainty</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Abstract
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../paper/introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/literature/index.html">Literature Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/methodology/index.html">Methodology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/results/index.html">Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/conclusion/index.html">Concluding Remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/references.html">References</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Supplementary Materials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../crawling/index.html">Crawling Khmer Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">Processing the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topic/index.html">Topic Modeling without Prior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topic/prior.html">Topic Modeling with Prior</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Topic Modeling for Uncertainty Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="second.html">The Second Stage Uncertainty Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/index.html">Topic analysis</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/entelecheia/nbcpu/blob/main/book/supplementary/topic-uncertainty/index.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/entelecheia/nbcpu" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/entelecheia/nbcpu/edit/main/book/supplementary/topic-uncertainty/index.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/entelecheia/nbcpu/issues/new?title=Issue%20on%20page%20%2Fsupplementary/topic-uncertainty/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/supplementary/topic-uncertainty/index.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Topic Modeling for Uncertainty Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#three-modifications">Three Modifications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-of-prior-knowledge">1. Integration of Prior Knowledge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strategic-removal-of-stop-words">2. Strategic Removal of Stop Words</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fine-tuning-of-model-parameters">3. Fine-Tuning of Model Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-details">Configuration Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-workflow">Running the Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-results">Model Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-findings">Key Findings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refinement-of-uncertainty-topic-modeling">Refinement of Uncertainty Topic Modeling</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="topic-modeling-for-uncertainty-analysis">
+<h1>Topic Modeling for Uncertainty Analysis<a class="headerlink" href="#topic-modeling-for-uncertainty-analysis" title="Permalink to this heading">#</a></h1>
+<p>The task of classifying uncertainty within the context of topic modeling requires a nuanced and specialized approach, diverging from conventional methods. This methodology is characterized by three distinct modifications, each contributing to the precise identification and analysis of uncertainty-related themes.</p>
+<section id="three-modifications">
+<h2>Three Modifications<a class="headerlink" href="#three-modifications" title="Permalink to this heading">#</a></h2>
+<section id="integration-of-prior-knowledge">
+<h3>1. Integration of Prior Knowledge<a class="headerlink" href="#integration-of-prior-knowledge" title="Permalink to this heading">#</a></h3>
+<p>The model is designed to incorporate prior knowledge, which serves as a guiding framework for identifying topics specifically related to uncertainty. The defined priors include:</p>
+<ul class="simple">
+<li><p><strong>Prior 0</strong>: Targeting terms synonymous with uncertainty, such as “uncertain,” “risk,” and “uncertainty.”</p></li>
+<li><p><strong>Prior 1</strong>: Concentrating on terms that denote enhancement or fortification, such as “improve,” “strengthen,” “ensure,” and “enhance.”</p></li>
+</ul>
+<p>These priors strategically channel the model’s focus towards themes intrinsically connected to uncertainty, thereby refining the relevance and specificity of the extracted topics.</p>
+</section>
+<section id="strategic-removal-of-stop-words">
+<h3>2. Strategic Removal of Stop Words<a class="headerlink" href="#strategic-removal-of-stop-words" title="Permalink to this heading">#</a></h3>
+<p>Beyond the elimination of standard stop words, the model is configured to exclude the top 100 words from each of the 10 topics identified in the previous model, totaling 896 words. This exclusion is carefully executed to preserve uncertainty-related words through manual inspection. By filtering out these common but non-contributory words, the model is enabled to concentrate on terms that are contextually significant and pertinent to the understanding of uncertainty.</p>
+</section>
+<section id="fine-tuning-of-model-parameters">
+<h3>3. Fine-Tuning of Model Parameters<a class="headerlink" href="#fine-tuning-of-model-parameters" title="Permalink to this heading">#</a></h3>
+<p>The model’s parameters are meticulously adjusted to resonate with the unique objective of classifying uncertainty. The key modifications include:</p>
+<ul class="simple">
+<li><p><strong>min_cf</strong>: Set at 500, this parameter stipulates the minimum collection frequency of words, focusing on terms with substantial corpus-wide presence.</p></li>
+<li><p><strong>min_df</strong>: Also set at 500, this parameter governs the minimum document frequency of words, accentuating terms that recur across diverse documents.</p></li>
+</ul>
+<p>These deliberate parameter adjustments, coupled with the strategic integration of prior knowledge and the removal of specific stop words, culminate in a bespoke approach to topic modeling. This approach is adept at capturing and classifying uncertainty-related themes, aligning seamlessly with the overarching research goals.</p>
+</section>
+</section>
+<section id="configuration-details">
+<h2>Configuration Details<a class="headerlink" href="#configuration-details" title="Permalink to this heading">#</a></h2>
+<p>The configuration for this specialized topic modeling with uncertainty analysis is encapsulated in the following command:</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nbcpu<span class="w"> </span>+model<span class="o">=</span>nbcpu-topic_uncertainty<span class="w"> </span><span class="nv">noop</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## Command Line Interface for HyFI ##
+{&#39;about&#39;: {&#39;authors&#39;: &#39;Young Joon Lee &lt;entelecheia@hotmail.com&gt;&#39;,
+           &#39;description&#39;: &#39;Quantifying Central Bank Policy Uncertainty in a &#39;
+                          &#39;Highly Dollarized Economy: A Topic Modeling &#39;
+                          &#39;Approach&#39;,
+           &#39;homepage&#39;: &#39;https://nbcpu.entelecheia.ai&#39;,
+           &#39;license&#39;: &#39;MIT&#39;,
+           &#39;name&#39;: &#39;Measuring Central Bank Policy Uncertainty&#39;},
+ &#39;debug_mode&#39;: False,
+ &#39;dryrun&#39;: False,
+ &#39;hydra_log_dir&#39;: &#39;/home/yjlee/.hyfi/logs/hydra&#39;,
+ &#39;ignore_warnings&#39;: True,
+ &#39;logging_level&#39;: &#39;WARNING&#39;,
+ &#39;model&#39;: {&#39;_config_group_&#39;: &#39;/model&#39;,
+           &#39;_config_name_&#39;: &#39;lda&#39;,
+           &#39;_target_&#39;: &#39;thematos.models.lda.LdaModel&#39;,
+           &#39;autosave&#39;: True,
+           &#39;batch&#39;: {&#39;_config_group_&#39;: &#39;/batch&#39;,
+                     &#39;_config_name_&#39;: &#39;__init__&#39;,
+                     &#39;batch_name&#39;: &#39;model&#39;,
+                     &#39;batch_num&#39;: None,
+                     &#39;batch_num_auto&#39;: False,
+                     &#39;batch_root&#39;: &#39;workspace/topic&#39;,
+                     &#39;config_dirname&#39;: &#39;configs&#39;,
+                     &#39;config_json&#39;: &#39;config.json&#39;,
+                     &#39;config_yaml&#39;: &#39;config.yaml&#39;,
+                     &#39;device&#39;: &#39;cpu&#39;,
+                     &#39;num_devices&#39;: 1,
+                     &#39;num_workers&#39;: 1,
+                     &#39;output_extention&#39;: None,
+                     &#39;output_suffix&#39;: None,
+                     &#39;random_seed&#39;: False,
+                     &#39;resume_latest&#39;: False,
+                     &#39;resume_run&#39;: False,
+                     &#39;seed&#39;: -1,
+                     &#39;verbose&#39;: True},
+           &#39;batch_name&#39;: &#39;model&#39;,
+           &#39;coherence_metric_list&#39;: [&#39;u_mass&#39;, &#39;c_uci&#39;, &#39;c_npmi&#39;, &#39;c_v&#39;],
+           &#39;corpus&#39;: {&#39;_config_group_&#39;: &#39;/dataset&#39;,
+                      &#39;_config_name_&#39;: &#39;topic_corpus&#39;,
+                      &#39;_target_&#39;: &#39;thematos.datasets.corpus.Corpus&#39;,
+                      &#39;batch&#39;: {&#39;_config_group_&#39;: &#39;/batch&#39;,
+                                &#39;_config_name_&#39;: &#39;__init__&#39;,
+                                &#39;batch_name&#39;: &#39;corpus&#39;,
+                                &#39;batch_num&#39;: None,
+                                &#39;batch_num_auto&#39;: False,
+                                &#39;batch_root&#39;: &#39;workspace/topic&#39;,
+                                &#39;config_dirname&#39;: &#39;configs&#39;,
+                                &#39;config_json&#39;: &#39;config.json&#39;,
+                                &#39;config_yaml&#39;: &#39;config.yaml&#39;,
+                                &#39;device&#39;: &#39;cpu&#39;,
+                                &#39;num_devices&#39;: 1,
+                                &#39;num_workers&#39;: 1,
+                                &#39;output_extention&#39;: None,
+                                &#39;output_suffix&#39;: None,
+                                &#39;random_seed&#39;: False,
+                                &#39;resume_latest&#39;: False,
+                                &#39;resume_run&#39;: False,
+                                &#39;seed&#39;: -1,
+                                &#39;verbose&#39;: True},
+                      &#39;batch_name&#39;: &#39;corpus&#39;,
+                      &#39;data_load&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.load.DSLoad.load_dataframe&#39;,
+                                    &#39;columns&#39;: None,
+                                    &#39;data_dir&#39;: None,
+                                    &#39;data_file&#39;: &#39;datasets/processed/topic_noprior_filtered/train.parquet&#39;,
+                                    &#39;filetype&#39;: None,
+                                    &#39;index_col&#39;: None,
+                                    &#39;verbose&#39;: False},
+                      &#39;id_col&#39;: &#39;id&#39;,
+                      &#39;module&#39;: None,
+                      &#39;ngramize&#39;: True,
+                      &#39;ngrams&#39;: {&#39;_config_group_&#39;: &#39;/ngrams&#39;,
+                                 &#39;_config_name_&#39;: &#39;tp_ngrams&#39;,
+                                 &#39;_target_&#39;: &#39;thematos.datasets.ngrams.NgramConfig&#39;,
+                                 &#39;delimiter&#39;: &#39;_&#39;,
+                                 &#39;max_cand&#39;: 5000,
+                                 &#39;max_len&#39;: 3,
+                                 &#39;min_cf&#39;: 20,
+                                 &#39;min_df&#39;: 10,
+                                 &#39;min_score&#39;: 0.5,
+                                 &#39;normalized&#39;: True,
+                                 &#39;workers&#39;: 0},
+                      &#39;path&#39;: {&#39;_config_name_&#39;: &#39;__batch__&#39;,
+                               &#39;batch_name&#39;: &#39;corpus&#39;,
+                               &#39;task_name&#39;: &#39;topic&#39;,
+                               &#39;task_root&#39;: &#39;workspace&#39;},
+                      &#39;pipelines&#39;: [],
+                      &#39;stopwords&#39;: {&#39;_config_group_&#39;: &#39;/stopwords&#39;,
+                                    &#39;_config_name_&#39;: &#39;__init__&#39;,
+                                    &#39;_target_&#39;: &#39;lexikanon.stopwords.Stopwords&#39;,
+                                    &#39;lowercase&#39;: True,
+                                    &#39;name&#39;: &#39;stopwords&#39;,
+                                    &#39;nltk_stopwords_lang&#39;: None,
+                                    &#39;stopwords_fn&#39;: None,
+                                    &#39;stopwords_list&#39;: None,
+                                    &#39;stopwords_path&#39;: &#39;/home/yjlee/.hyfi/logs/hydra/hyfi/2023-08-15/2023-08-15_19-05-04/tests/assets/stopwords/nbcpu-uncertainty.txt&#39;,
+                                    &#39;verbose&#39;: True},
+                      &#39;task_name&#39;: &#39;topic&#39;,
+                      &#39;task_root&#39;: &#39;workspace&#39;,
+                      &#39;text_col&#39;: &#39;tokens&#39;,
+                      &#39;timestamp_col&#39;: &#39;time&#39;,
+                      &#39;verbose&#39;: True,
+                      &#39;version&#39;: &#39;0.0.0&#39;},
+           &#39;eval_coherence&#39;: True,
+           &#39;model_args&#39;: {&#39;_config_group_&#39;: &#39;/model/config&#39;,
+                          &#39;_config_name_&#39;: &#39;lda&#39;,
+                          &#39;_target_&#39;: &#39;thematos.models.config.LdaConfig&#39;,
+                          &#39;alpha&#39;: 0.1,
+                          &#39;eta&#39;: 0.01,
+                          &#39;k&#39;: 10,
+                          &#39;min_cf&#39;: 500,
+                          &#39;min_df&#39;: 500,
+                          &#39;rm_top&#39;: 0,
+                          &#39;tw&#39;: 1},
+           &#39;model_type&#39;: &#39;LDA&#39;,
+           &#39;module&#39;: None,
+           &#39;path&#39;: {&#39;_config_name_&#39;: &#39;__batch__&#39;,
+                    &#39;batch_name&#39;: &#39;model&#39;,
+                    &#39;task_name&#39;: &#39;topic&#39;,
+                    &#39;task_root&#39;: &#39;workspace&#39;},
+           &#39;pipelines&#39;: [],
+           &#39;save_full&#39;: True,
+           &#39;set_wordprior&#39;: True,
+           &#39;task_name&#39;: &#39;topic&#39;,
+           &#39;task_root&#39;: &#39;workspace&#39;,
+           &#39;train_args&#39;: {&#39;_config_group_&#39;: &#39;/model/train&#39;,
+                          &#39;_config_name_&#39;: &#39;topic&#39;,
+                          &#39;_target_&#39;: &#39;thematos.models.config.TrainConfig&#39;,
+                          &#39;burn_in&#39;: 0,
+                          &#39;interval&#39;: 10,
+                          &#39;iterations&#39;: 100},
+           &#39;train_summary_args&#39;: {&#39;_config_group_&#39;: &#39;/model/summary&#39;,
+                                  &#39;_config_name_&#39;: &#39;topic_train&#39;,
+                                  &#39;_target_&#39;: &#39;thematos.models.config.TrainSummaryConfig&#39;,
+                                  &#39;flush&#39;: False,
+                                  &#39;initial_hp&#39;: True,
+                                  &#39;params&#39;: True,
+                                  &#39;topic_word_top_n&#39;: 10},
+           &#39;verbose&#39;: True,
+           &#39;version&#39;: &#39;0.0.0&#39;,
+           &#39;wc_args&#39;: {&#39;_config_group_&#39;: &#39;/model/plot&#39;,
+                       &#39;_config_name_&#39;: &#39;wordcloud&#39;,
+                       &#39;_target_&#39;: &#39;thematos.models.config.WordcloudConfig&#39;,
+                       &#39;dpi&#39;: 300,
+                       &#39;figsize&#39;: None,
+                       &#39;fontpath&#39;: None,
+                       &#39;height_multiple&#39;: 2,
+                       &#39;make_collage&#39;: True,
+                       &#39;mask_dir&#39;: None,
+                       &#39;num_cols&#39;: 5,
+                       &#39;num_images_per_page&#39;: 20,
+                       &#39;num_rows&#39;: None,
+                       &#39;output_file_format&#39;: &#39;wordcloud_p{page_num:02d}.png&#39;,
+                       &#39;save&#39;: True,
+                       &#39;title_color&#39;: &#39;green&#39;,
+                       &#39;title_fontsize&#39;: 14,
+                       &#39;titles&#39;: None,
+                       &#39;top_n&#39;: 500,
+                       &#39;wc&#39;: {&#39;_config_group_&#39;: &#39;/plot&#39;,
+                              &#39;_config_name_&#39;: &#39;wordcloud&#39;,
+                              &#39;_target_&#39;: &#39;thematos.plots.wordcloud.WordCloud&#39;,
+                              &#39;background_color&#39;: &#39;black&#39;,
+                              &#39;collocation_threshold&#39;: 30,
+                              &#39;collocations&#39;: True,
+                              &#39;color_func&#39;: None,
+                              &#39;colormap&#39;: &#39;PuBu&#39;,
+                              &#39;contour_color&#39;: &#39;steelblue&#39;,
+                              &#39;contour_width&#39;: 0,
+                              &#39;font_path&#39;: None,
+                              &#39;font_step&#39;: 1,
+                              &#39;height&#39;: 200,
+                              &#39;include_numbers&#39;: False,
+                              &#39;mask&#39;: None,
+                              &#39;max_font_size&#39;: None,
+                              &#39;max_words&#39;: 200,
+                              &#39;min_font_size&#39;: 4,
+                              &#39;min_word_length&#39;: 0,
+                              &#39;mode&#39;: &#39;RGB&#39;,
+                              &#39;normalize_plurals&#39;: True,
+                              &#39;prefer_horizontal&#39;: 0.9,
+                              &#39;regexp&#39;: None,
+                              &#39;relative_scaling&#39;: &#39;auto&#39;,
+                              &#39;repeat&#39;: False,
+                              &#39;scale&#39;: 1,
+                              &#39;stopwords&#39;: None,
+                              &#39;width&#39;: 400},
+                       &#39;width_multiple&#39;: 4},
+           &#39;wordprior&#39;: {&#39;_config_group_&#39;: &#39;/words&#39;,
+                         &#39;_config_name_&#39;: &#39;wordprior&#39;,
+                         &#39;_target_&#39;: &#39;thematos.models.prior.WordPrior&#39;,
+                         &#39;data_file&#39;: &#39;/home/yjlee/.hyfi/logs/hydra/hyfi/2023-08-15/2023-08-15_19-05-04/tests/assets/words/word_prior_uncertainty.yaml&#39;,
+                         &#39;lowercase&#39;: True,
+                         &#39;max_prior_weight&#39;: 1.0,
+                         &#39;min_prior_weight&#39;: 0.01,
+                         &#39;prior_data&#39;: None,
+                         &#39;verbose&#39;: True}},
+ &#39;noop&#39;: 1,
+ &#39;resolve&#39;: True,
+ &#39;verbose&#39;: False,
+ &#39;version&#39;: &#39;0.15.0&#39;}
+
+Dryrun is enabled, not running the HyFI config
+
+
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="running-the-workflow">
+<h2>Running the Workflow<a class="headerlink" href="#running-the-workflow" title="Permalink to this heading">#</a></h2>
+<p>The entire workflow can be executed using the following command:</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nbcpu<span class="w"> </span>+workflow<span class="o">=</span>nbcpu<span class="w"> </span><span class="nv">tasks</span><span class="o">=</span><span class="s1">&#39;[nbcpu-topic_uncertainty]&#39;</span><span class="w"> </span><span class="nv">mode</span><span class="o">=</span>__info__
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[<span class=" -Color -Color-Cyan">2023-08-15 19:07:43,714</span>][<span class=" -Color -Color-Blue">hyfi.joblib.joblib</span>][<span class=" -Color -Color-Green">INFO</span>] - initialized batcher with &lt;hyfi.joblib.batch.batcher.Batcher object at 0x7f5a586f5670&gt;
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:43,714</span>][<span class=" -Color -Color-Blue">hyfi.main.config</span>][<span class=" -Color -Color-Green">INFO</span>] - HyFi project [nbcpu] initialized
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:43,912</span>][<span class=" -Color -Color-Blue">hyfi.main.main</span>][<span class=" -Color -Color-Green">INFO</span>] - The HyFI config is not instantiatable, running HyFI task with the config
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:44,736</span>][<span class=" -Color -Color-Blue">hyfi.joblib.joblib</span>][<span class=" -Color -Color-Green">INFO</span>] - initialized batcher with &lt;hyfi.joblib.batch.batcher.Batcher object at 0x7f5a387bf250&gt;
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:45,870</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: corpus(1) in /home/yjlee/workspace/projects/nbcpu/workspace/topic/corpus
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:47,283</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: corpus(1) in /home/yjlee/workspace/projects/nbcpu/workspace/topic/corpus
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:47,283</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: model(0) in /home/yjlee/workspace/projects/nbcpu/workspace/topic/model
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:47,976</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: corpus(1) in /home/yjlee/workspace/projects/nbcpu/workspace/topic/corpus
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:49,701</span>][<span class=" -Color -Color-Blue">hyfi.batch.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Setting seed to 590167864
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:49,701</span>][<span class=" -Color -Color-Blue">hyfi.batch.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Init batch - Batch name: model, Batch num: 0
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:50,313</span>][<span class=" -Color -Color-Blue">hyfi.batch.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Setting seed to 2225682814
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:50,313</span>][<span class=" -Color -Color-Blue">hyfi.batch.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Init batch - Batch name: corpus, Batch num: 0
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:50,485</span>][<span class=" -Color -Color-Blue">hyfi.batch.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Init batch - Batch name: corpus, Batch num: 1
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:50,485</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: corpus(1) in /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/corpus
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:50,485</span>][<span class=" -Color -Color-Blue">hyfi.batch.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Init batch - Batch name: model, Batch num: 4
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:50,486</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: model(4) in /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/model
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:51,274</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: corpus(1) in /home/yjlee/workspace/projects/nbcpu/workspace/topic/corpus
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:51,274</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: runner(1) in /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/runner
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:51,275</span>][<span class=" -Color -Color-Blue">hyfi.workflow.workflow</span>][<span class=" -Color -Color-Green">INFO</span>] - Running task [nbcpu-topic_uncertainty] with [run={} verbose=False uses=&#39;nbcpu-topic_uncertainty&#39;]
+  0%|                                                     | 0/1 [00:00&lt;?, ?it/s][<span class=" -Color -Color-Cyan">2023-08-15 19:07:51,278</span>][<span class=" -Color -Color-Blue">thematos.models.prior</span>][<span class=" -Color -Color-Green">INFO</span>] - Loaded 2 words from /home/yjlee/workspace/projects/nbcpu/tests/assets/words/word_prior_uncertainty.yaml
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:51,278</span>][<span class=" -Color -Color-Blue">thematos.models.prior</span>][<span class=" -Color -Color-Green">INFO</span>] - Loaded 2 priors
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:51,277</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Set word prior with &lt;WordPrior 2 priors&gt;.
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:51,278</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Set words [&#39;uncertain&#39;, &#39;uncertainty&#39;, &#39;risk&#39;] to topic #0 as prior.
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:51,279</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - Loading corpus...
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:51,279</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - Processing documents in the column &#39;tokens&#39;...
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:53,478</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - 0    [national, bank, cambodia, nbc, ask, bank, fin...
+1    [national, bank, cambodia, prepare, draft, pro...
+2    [national, bank, cambodia, prepare, draft, pro...
+3    [national, bank, cambodia, nbc, monday, sign, ...
+4    [average, price, good, service, supply, market...
+Name: tokens, dtype: object
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:53,481</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - The first document: [&#39;national&#39; &#39;bank&#39; &#39;cambodia&#39; &#39;nbc&#39; &#39;ask&#39; &#39;bank&#39; &#39;financial&#39; &#39;institution&#39;
+ &#39;consider&#39; &#39;provide&#39; &#39;loan&#39; &#39;consumer&#39; &#39;base&#39; &#39;behaviour&#39; &#39;data&#39;
+ &#39;increase&#39; &#39;financial&#39; &#39;inclusion&#39; &#39;digital&#39; &#39;payment&#39; &#39;develop&#39; &#39;fast&#39;
+ &#39;country&#39; &#39;recommendation&#39; &#39;make&#39; &#39;launch&#39; &#39;cambodian&#39; &#39;share&#39; &#39;switch&#39;
+ &#39;event&#39; &#39;common&#39; &#39;payment&#39; &#39;withdrawal&#39; &#39;recently&#39; &#39;organise&#39; &#39;center&#39;
+ &#39;bank&#39; &#39;study&#39; &#39;cbs&#39; &#39;phnom&#39; &#39;penh&#39; &#39;preside&#39; &#39;deputy&#39; &#39;governor&#39; &#39;nbc&#39;
+ &#39;chea&#39; &#39;serey&#39; &#39;event&#39; &#39;also&#39; &#39;attend&#39; &#39;national&#39; &#39;international&#39; &#39;guest&#39;
+ &#39;central&#39; &#39;bank&#39; &#39;private&#39; &#39;bank&#39; &#39;financial&#39; &#39;institution&#39; &#39;include&#39;
+ &#39;sok&#39; &#39;voeun&#39; &#39;chairman&#39; &#39;cambodia&#39; &#39;microfinance&#39; &#39;association&#39; &#39;cma&#39;
+ &#39;char&#39; &#39;sopheap&#39; &#39;payment&#39; &#39;committee&#39; &#39;chairman&#39; &#39;association&#39; &#39;bank&#39;
+ &#39;cambodia&#39; &#39;abc&#39; &#39;ivana&#39; &#39;tranchini&#39; &#39;visa&#39; &#39;country&#39; &#39;manager&#39;
+ &#39;cambodia&#39; &#39;payment&#39; &#39;system&#39; &#39;important&#39; &#39;financial&#39; &#39;inclusion&#39;
+ &#39;process&#39; &quot;n&#39;t&quot; &#39;want&#39; &#39;make&#39; &#39;payment&#39; &#39;easy&#39; &#39;also&#39; &#39;want&#39; &#39;make&#39;
+ &#39;access&#39; &#39;credit&#39; &#39;easy&#39; &#39;comfortable&#39; &#39;potential&#39; &#39;look&#39; &#39;possibility&#39;
+ &#39;lending&#39; &#39;provide&#39; &#39;credit&#39; &#39;base&#39; &#39;payment&#39; &#39;behaviour&#39; &#39;client&#39; &#39;talk&#39;
+ &#39;big&#39; &#39;amount&#39; &#39;small&#39; &#39;amount&#39; &#39;serey&#39; &#39;underline&#39; &#39;could&#39; &#39;understand&#39;
+ &#39;behaviour&#39; &#39;client&#39; &#39;someone&#39; &#39;cautious&#39; &#39;spender&#39; &#39;someone&#39; &#39;habit&#39;
+ &#39;save&#39; &#39;lot&#39; &#39;get&#39; &#39;benefit&#39; &#39;term&#39; &#39;low&#39; &#39;interest&#39; &#39;rate&#39; &#39;financial&#39;
+ &#39;institution&#39; &#39;hope&#39; &#39;continue&#39; &#39;push&#39; &#39;forward&#39; &#39;usage&#39; &#39;data&#39; &#39;help&#39;
+ &#39;access&#39; &#39;financial&#39; &#39;service&#39; &#39;serey&#39; &#39;say&#39; &#39;serey&#39; &#39;tell&#39; &#39;khmer&#39;
+ &#39;time&#39; &#39;sideline&#39; &#39;event&#39; &#39;bank&#39; &#39;financial&#39; &#39;institution&#39; &#39;currently&#39;
+ &#39;use&#39; &#39;necessary&#39; &#39;data&#39; &#39;collateral&#39; &#39;identity&#39; &#39;income&#39; &#39;client&#39;
+ &#39;assess&#39; &#39;possibility&#39; &#39;lend&#39; &#39;data&#39; &#39;consumer&#39; &#39;behaviour&#39; &#39;already&#39;
+ &#39;exist&#39; &#39;use&#39; &#39;assessment&#39; &#39;decision-making&#39; &#39;loan&#39; &#39;release&#39; &#39;serey&#39;
+ &#39;far&#39; &#39;point&#39; &#39;require&#39; &#39;bank&#39; &#39;financial&#39; &#39;institution&#39; &#39;must&#39; &#39;get&#39;
+ &#39;consent&#39; &#39;client&#39; &#39;use&#39; &#39;type&#39; &#39;behaviour&#39; &#39;data&#39; &#39;protect&#39; &#39;client&#39;
+ &#39;privacy&#39; &#39;client&#39; &#39;want&#39; &#39;get&#39; &#39;loan&#39; &#39;allow&#39; &#39;bank&#39; &#39;use&#39; &#39;information&#39;
+ &#39;credit&#39; &#39;assessment&#39; &#39;would&#39; &#39;fine&#39; &#39;trade-off&#39; &#39;say&#39; &#39;example&#39; &#39;people&#39;
+ &#39;spend&#39; &#39;income&#39; &#39;financial&#39; &#39;institution&#39; &#39;use&#39; &#39;data&#39; &#39;consider&#39;
+ &#39;decide&#39; &#39;lend&#39; &#39;people&#39; &#39;behaviour&#39; &#39;might&#39; &#39;believe&#39; &#39;unable&#39; &#39;make&#39;
+ &#39;repayment&#39; &#39;financial&#39; &#39;institution&#39; &#39;lender&#39; &#39;however&#39; &#39;people&#39; &#39;habit&#39;
+ &#39;spending&#39; &#39;much&#39; &#39;less&#39; &#39;income&#39; &#39;may&#39; &#39;get&#39; &#39;credit&#39; &#39;easy&#39; &#39;serey&#39;
+ &#39;add&#39; &#39;bank&#39; &#39;financial&#39; &#39;institution&#39; &#39;officer&#39; &#39;also&#39; &#39;need&#39; &#39;explain&#39;
+ &#39;clearly&#39; &#39;advantage&#39; &#39;disadvantage&#39; &#39;customer&#39; &#39;addition&#39; &#39;request&#39;
+ &#39;consent&#39; &#39;data&#39; &#39;usage&#39; &#39;financial&#39; &#39;service&#39; &#39;consumer&#39; &#39;may&#39; &#39;lack&#39;
+ &#39;knowledge&#39; &#39;understand&#39; &#39;consequence&#39; &#39;say&#39; &#39;add&#39; &#39;officer&#39; &#39;ask&#39; &#39;make&#39;
+ &#39;decision&#39; &#39;permission&#39; &#39;serey&#39; &#39;also&#39; &#39;say&#39; &#39;number&#39; &#39;payment&#39; &#39;make&#39;
+ &#39;electronic&#39; &#39;system&#39; &#39;cambodia&#39; &#39;reach&#39; &#39;nearly&#39; &#39;percent&#39; &#39;country&#39;
+ &#39;gross&#39; &#39;domestic&#39; &#39;product&#39; &#39;gdp&#39; &#39;rise&#39; &#39;approximately&#39;
+ &#39;billion-nearly&#39; &#39;percent&#39; &#39;gdp&#39; &#39;last&#39; &#39;year&#39; &#39;electronic&#39; &#39;payment&#39;
+ &#39;volume&#39; &#39;rise&#39; &#39;percent&#39; &#39;annually&#39; &#39;transaction&#39; &#39;amount&#39; &#39;payment&#39;
+ &#39;voeun&#39; &#39;also&#39; &#39;ceo&#39; &#39;deposit-taking&#39; &#39;microfinance&#39; &#39;institution&#39; &#39;lolc&#39;
+ &#39;cambodia&#39; &#39;plc&#39; &#39;ask&#39; &#39;nbc&#39; &#39;work&#39; &#39;participate&#39; &#39;institution&#39; &#39;set&#39;
+ &#39;maximum&#39; &#39;limit&#39; &#39;day&#39; &#39;amount&#39; &#39;withdrawable&#39; &#39;cash&#39; &#39;transaction&#39;
+ &#39;atm&#39;]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:53,740</span>][<span class=" -Color -Color-Blue">hyfi.utils.iolibs</span>][<span class=" -Color -Color-Green">INFO</span>] - Loaded the file: /home/yjlee/workspace/projects/nbcpu/tests/assets/stopwords/nbcpu-uncertainty.txt, No. of words: 875
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:53,741</span>][<span class=" -Color -Color-Blue">hyfi.utils.iolibs</span>][<span class=" -Color -Color-Green">INFO</span>] - Remove duplicate words, No. of words: 871
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:53,741</span>][<span class=" -Color -Color-Blue">lexikanon.stopwords.stopwords</span>][<span class=" -Color -Color-Green">INFO</span>] - Loaded 871 stopwords from /home/yjlee/workspace/projects/nbcpu/tests/assets/stopwords/nbcpu-uncertainty.txt
+[<span class=" -Color -Color-Cyan">2023-08-15 19:07:53,741</span>][<span class=" -Color -Color-Blue">lexikanon.stopwords.stopwords</span>][<span class=" -Color -Color-Green">INFO</span>] - Loaded 871 stopwords
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:03,836</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - The first document: [&#39;national&#39; &#39;bank&#39; &#39;cambodia&#39; &#39;nbc&#39; &#39;ask&#39; &#39;bank&#39; &#39;financial&#39; &#39;institution&#39;
+ &#39;consider&#39; &#39;provide&#39; &#39;loan&#39; &#39;consumer&#39; &#39;base&#39; &#39;behaviour&#39; &#39;data&#39;
+ &#39;increase&#39; &#39;financial&#39; &#39;inclusion&#39; &#39;digital&#39; &#39;payment&#39; &#39;develop&#39; &#39;fast&#39;
+ &#39;country&#39; &#39;recommendation&#39; &#39;make&#39; &#39;launch&#39; &#39;cambodian&#39; &#39;share&#39; &#39;switch&#39;
+ &#39;event&#39; &#39;common&#39; &#39;payment&#39; &#39;withdrawal&#39; &#39;recently&#39; &#39;organise&#39; &#39;center&#39;
+ &#39;bank&#39; &#39;study&#39; &#39;cbs&#39; &#39;phnom&#39; &#39;penh&#39; &#39;preside&#39; &#39;deputy&#39; &#39;governor&#39; &#39;nbc&#39;
+ &#39;chea&#39; &#39;serey&#39; &#39;event&#39; &#39;also&#39; &#39;attend&#39; &#39;national&#39; &#39;international&#39; &#39;guest&#39;
+ &#39;central&#39; &#39;bank&#39; &#39;private&#39; &#39;bank&#39; &#39;financial&#39; &#39;institution&#39; &#39;include&#39;
+ &#39;sok&#39; &#39;voeun&#39; &#39;chairman&#39; &#39;cambodia&#39; &#39;microfinance&#39; &#39;association&#39; &#39;cma&#39;
+ &#39;char&#39; &#39;sopheap&#39; &#39;payment&#39; &#39;committee&#39; &#39;chairman&#39; &#39;association&#39; &#39;bank&#39;
+ &#39;cambodia&#39; &#39;abc&#39; &#39;ivana&#39; &#39;tranchini&#39; &#39;visa&#39; &#39;country&#39; &#39;manager&#39;
+ &#39;cambodia&#39; &#39;payment&#39; &#39;system&#39; &#39;important&#39; &#39;financial&#39; &#39;inclusion&#39;
+ &#39;process&#39; &quot;n&#39;t&quot; &#39;want&#39; &#39;make&#39; &#39;payment&#39; &#39;easy&#39; &#39;also&#39; &#39;want&#39; &#39;make&#39;
+ &#39;access&#39; &#39;credit&#39; &#39;easy&#39; &#39;comfortable&#39; &#39;potential&#39; &#39;look&#39; &#39;possibility&#39;
+ &#39;lending&#39; &#39;provide&#39; &#39;credit&#39; &#39;base&#39; &#39;payment&#39; &#39;behaviour&#39; &#39;client&#39; &#39;talk&#39;
+ &#39;big&#39; &#39;amount&#39; &#39;small&#39; &#39;amount&#39; &#39;serey&#39; &#39;underline&#39; &#39;could&#39; &#39;understand&#39;
+ &#39;behaviour&#39; &#39;client&#39; &#39;someone&#39; &#39;cautious&#39; &#39;spender&#39; &#39;someone&#39; &#39;habit&#39;
+ &#39;save&#39; &#39;lot&#39; &#39;get&#39; &#39;benefit&#39; &#39;term&#39; &#39;low&#39; &#39;interest&#39; &#39;rate&#39; &#39;financial&#39;
+ &#39;institution&#39; &#39;hope&#39; &#39;continue&#39; &#39;push&#39; &#39;forward&#39; &#39;usage&#39; &#39;data&#39; &#39;help&#39;
+ &#39;access&#39; &#39;financial&#39; &#39;service&#39; &#39;serey&#39; &#39;say&#39; &#39;serey&#39; &#39;tell&#39; &#39;khmer&#39;
+ &#39;time&#39; &#39;sideline&#39; &#39;event&#39; &#39;bank&#39; &#39;financial&#39; &#39;institution&#39; &#39;currently&#39;
+ &#39;use&#39; &#39;necessary&#39; &#39;data&#39; &#39;collateral&#39; &#39;identity&#39; &#39;income&#39; &#39;client&#39;
+ &#39;assess&#39; &#39;possibility&#39; &#39;lend&#39; &#39;data&#39; &#39;consumer&#39; &#39;behaviour&#39; &#39;already&#39;
+ &#39;exist&#39; &#39;use&#39; &#39;assessment&#39; &#39;decision-making&#39; &#39;loan&#39; &#39;release&#39; &#39;serey&#39;
+ &#39;far&#39; &#39;point&#39; &#39;require&#39; &#39;bank&#39; &#39;financial&#39; &#39;institution&#39; &#39;must&#39; &#39;get&#39;
+ &#39;consent&#39; &#39;client&#39; &#39;use&#39; &#39;type&#39; &#39;behaviour&#39; &#39;data&#39; &#39;protect&#39; &#39;client&#39;
+ &#39;privacy&#39; &#39;client&#39; &#39;want&#39; &#39;get&#39; &#39;loan&#39; &#39;allow&#39; &#39;bank&#39; &#39;use&#39; &#39;information&#39;
+ &#39;credit&#39; &#39;assessment&#39; &#39;would&#39; &#39;fine&#39; &#39;trade-off&#39; &#39;say&#39; &#39;example&#39; &#39;people&#39;
+ &#39;spend&#39; &#39;income&#39; &#39;financial&#39; &#39;institution&#39; &#39;use&#39; &#39;data&#39; &#39;consider&#39;
+ &#39;decide&#39; &#39;lend&#39; &#39;people&#39; &#39;behaviour&#39; &#39;might&#39; &#39;believe&#39; &#39;unable&#39; &#39;make&#39;
+ &#39;repayment&#39; &#39;financial&#39; &#39;institution&#39; &#39;lender&#39; &#39;however&#39; &#39;people&#39; &#39;habit&#39;
+ &#39;spending&#39; &#39;much&#39; &#39;less&#39; &#39;income&#39; &#39;may&#39; &#39;get&#39; &#39;credit&#39; &#39;easy&#39; &#39;serey&#39;
+ &#39;add&#39; &#39;bank&#39; &#39;financial&#39; &#39;institution&#39; &#39;officer&#39; &#39;also&#39; &#39;need&#39; &#39;explain&#39;
+ &#39;clearly&#39; &#39;advantage&#39; &#39;disadvantage&#39; &#39;customer&#39; &#39;addition&#39; &#39;request&#39;
+ &#39;consent&#39; &#39;data&#39; &#39;usage&#39; &#39;financial&#39; &#39;service&#39; &#39;consumer&#39; &#39;may&#39; &#39;lack&#39;
+ &#39;knowledge&#39; &#39;understand&#39; &#39;consequence&#39; &#39;say&#39; &#39;add&#39; &#39;officer&#39; &#39;ask&#39; &#39;make&#39;
+ &#39;decision&#39; &#39;permission&#39; &#39;serey&#39; &#39;also&#39; &#39;say&#39; &#39;number&#39; &#39;payment&#39; &#39;make&#39;
+ &#39;electronic&#39; &#39;system&#39; &#39;cambodia&#39; &#39;reach&#39; &#39;nearly&#39; &#39;percent&#39; &#39;country&#39;
+ &#39;gross&#39; &#39;domestic&#39; &#39;product&#39; &#39;gdp&#39; &#39;rise&#39; &#39;approximately&#39;
+ &#39;billion-nearly&#39; &#39;percent&#39; &#39;gdp&#39; &#39;last&#39; &#39;year&#39; &#39;electronic&#39; &#39;payment&#39;
+ &#39;volume&#39; &#39;rise&#39; &#39;percent&#39; &#39;annually&#39; &#39;transaction&#39; &#39;amount&#39; &#39;payment&#39;
+ &#39;voeun&#39; &#39;also&#39; &#39;ceo&#39; &#39;deposit-taking&#39; &#39;microfinance&#39; &#39;institution&#39; &#39;lolc&#39;
+ &#39;cambodia&#39; &#39;plc&#39; &#39;ask&#39; &#39;nbc&#39; &#39;work&#39; &#39;participate&#39; &#39;institution&#39; &#39;set&#39;
+ &#39;maximum&#39; &#39;limit&#39; &#39;day&#39; &#39;amount&#39; &#39;withdrawable&#39; &#39;cash&#39; &#39;transaction&#39;
+ &#39;atm&#39;]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:04,085</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - Total 27594 documents are loaded.
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:04,087</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - Extracting n-grams...
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,949</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - Total 1971 n-grams are extracted.
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,951</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;prei&quot;,&quot;kuk&quot;], name=&quot;&quot;, score=0.997459)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,951</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;ភុន&quot;,&quot;ច័ន្ទឧសភា&quot;], name=&quot;&quot;, score=0.997435)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,951</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;cashville&quot;,&quot;kidz&quot;], name=&quot;&quot;, score=0.996442)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,951</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;modus&quot;,&quot;operandi&quot;], name=&quot;&quot;, score=0.996309)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,951</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;suu&quot;,&quot;kyi&quot;], name=&quot;&quot;, score=0.996141)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,951</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;lese&quot;,&quot;majeste&quot;], name=&quot;&quot;, score=0.994870)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,951</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;ហ៊ុន&quot;,&quot;សែន&quot;], name=&quot;&quot;, score=0.994573)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,951</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;bharatiya&quot;,&quot;janata&quot;], name=&quot;&quot;, score=0.993389)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,951</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;los&quot;,&quot;angeles&quot;], name=&quot;&quot;, score=0.989665)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,951</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;kuala&quot;,&quot;lumpur&quot;], name=&quot;&quot;, score=0.987660)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,951</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;reduced&quot;,&quot;rapid&quot;], name=&quot;&quot;, score=0.501001)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,952</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;entry&quot;,&quot;exit&quot;], name=&quot;&quot;, score=0.500969)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,952</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;constitutional&quot;,&quot;amendment&quot;], name=&quot;&quot;, score=0.500843)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,952</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;governor&quot;,&quot;keut&quot;], name=&quot;&quot;, score=0.500629)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,952</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;severely&quot;,&quot;affect&quot;], name=&quot;&quot;, score=0.500479)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,952</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;liberation&quot;,&quot;front&quot;], name=&quot;&quot;, score=0.500423)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,952</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;emphasize&quot;,&quot;importance&quot;], name=&quot;&quot;, score=0.500367)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,952</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;weapon&quot;,&quot;mass&quot;], name=&quot;&quot;, score=0.500308)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,952</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;highlight&quot;,&quot;importance&quot;], name=&quot;&quot;, score=0.500183)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,952</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - tomotopy.label.Candidate(words=[&quot;atm&quot;,&quot;machine&quot;], name=&quot;&quot;, score=0.500026)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,952</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - Concatenating n-grams...
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,952</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - &lt;tomotopy.Document with words=&quot;ask consider provide base behaviour increase inclusion fast recommendation launch switch common withdrawal recently organise center cbs preside deputy governor chea serey attend guest voeun chairman cma char sopheap chairman abc ivana tranchini manager inclusion process easy easy comfortable potential look possibility provide base behaviour talk amount amount serey underline understand behaviour someone cautious spender someone habit save lot benefit term hope push forward usage serey serey sideline currently necessary collateral identity income assess possibility lend behaviour exist assessment decision-making release serey require consent type behaviour protect privacy assessment fine trade-off example spend income consider decide lend behaviour might believe unable repayment lender habit less income easy serey add explain clearly advantage disadvantage addition request consent usage lack knowledge understand consequence add ask permission serey electronic nearly gross domestic approximately billion-nearly electronic annually amount voeun ceo deposit-taking lolc ask participate maximum limit amount withdrawable atm&quot;&gt;
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:09,953</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - &lt;tomotopy.Document with words=&quot;san francisco march twenty-five ago wide web idea technical paper obscure scientist physic lab idea tim berners-lee cern lab switzerland outline easily file linked pave phenomenon touch billion present paper march mark birthday web idea bold almost happen tremendous amount hubris beginning marc weber creator curator silicon valley tim berners-lee propose blue unrequested weber cern colleague completely ignore proposal web rival begin idea connect launched arpanet forerunner wide web several idea connect berners-lee convince cern adopt demonstrate usefulness compile lab phone aspect design put forward berners-lee across various operate ability click link file host locate elsewhere web winner gate rival us-based compuserve minitel involve fee berners-lee free real underdog one predict succeed weber gopher minnesota beat web early gore white weber vice gore web topple gopher agency launch whitehouse gov website huge stamp approval web web release free gopher weber realize web competitor weber lose battle certainly different lot top-down wall garden web competitor berners-lee free publish wish internet-linked titan yahoo page amount host server explode disrupt birth guilty lack imagination web gartner michael mcguire personal web disrupt lot ability freely file web shake traditional music film push edge jim dempsey vice us-based center anybody listener anybody publisher never anything powerful underlying tenet web egalitarian principle dempsey remain web hobble regulation fragment wall portion freedom threaten never stop teenage kid watch little snippet cute dempsey trouble limit ability criticize tiered hard innovator critic activist audience threats web base equality concern creator weber web unify decade ago nothing write stone fragment anew historian reason provider win preferential willingness invade privacy restrain web freedom battle shape web effect billion smartphones web really half worldwide yet weber&quot;&gt;
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:10,248</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - &lt;tomotopy.Document with words=&quot;ask consider provide base behaviour increase inclusion fast recommendation launch switch common withdrawal recently organise center cbs preside deputy_governor chea_serey attend guest voeun chairman cma char sopheap chairman abc ivana tranchini manager inclusion process easy easy comfortable potential look possibility provide base behaviour talk amount amount serey underline understand behaviour someone cautious spender someone habit save lot benefit term hope push forward usage serey serey sideline currently necessary collateral identity income assess possibility lend behaviour exist assessment decision-making release serey require consent type behaviour protect privacy assessment fine trade-off example spend income consider decide lend behaviour might believe unable repayment lender habit less income easy serey add explain clearly advantage disadvantage addition request consent usage lack knowledge understand consequence add ask permission serey electronic nearly gross_domestic approximately billion-nearly electronic annually amount voeun ceo deposit-taking lolc ask participate maximum limit amount withdrawable atm&quot;&gt;
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:10,248</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - &lt;tomotopy.Document with words=&quot;san_francisco march twenty-five ago wide web idea technical paper obscure scientist physic lab idea tim berners-lee cern lab switzerland outline easily file linked pave phenomenon touch billion present paper march mark birthday web idea bold almost happen tremendous amount hubris beginning marc weber creator curator silicon_valley tim berners-lee propose blue unrequested weber cern colleague completely ignore proposal web rival begin idea connect launched arpanet forerunner wide web several idea connect berners-lee convince cern adopt demonstrate usefulness compile lab phone aspect design put forward berners-lee across various operate ability click link file host locate elsewhere web winner gate rival us-based compuserve minitel involve fee berners-lee free real underdog one predict succeed weber gopher minnesota beat web early gore white weber vice gore web topple gopher agency launch whitehouse gov website huge stamp approval web web release free gopher weber realize web competitor weber lose battle certainly different lot top-down wall garden web competitor berners-lee free publish wish internet-linked titan yahoo page amount host server explode disrupt birth guilty lack imagination web gartner michael mcguire personal web disrupt lot ability freely file web shake traditional music film push edge jim dempsey vice us-based center anybody listener anybody publisher never anything powerful underlying tenet web egalitarian principle dempsey remain web hobble regulation fragment wall portion freedom threaten never stop teenage kid watch little snippet cute dempsey trouble limit ability criticize tiered hard innovator critic activist audience threats web base equality concern creator weber web unify decade ago nothing write stone fragment anew historian reason provider win preferential willingness invade privacy restrain web freedom battle shape web effect billion smartphones web really half worldwide yet weber&quot;&gt;
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:10,248</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - Total 27594 documents are n-gramized.
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:10,250</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving dataframe to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/corpus/corpus_doc_ids.parquet
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:10,273</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to save data: 0:00:00.022347
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:10,274</span>][<span class=" -Color -Color-Blue">hyfi.composer.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving config to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/corpus/configs/corpus(1)_config.json
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:10,274</span>][<span class=" -Color -Color-Blue">hyfi.composer.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving config to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/corpus/configs/corpus(1)_config.yaml
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:10,871</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Set words [&#39;enhance&#39;, &#39;ensure&#39;, &#39;improve&#39;, &#39;strengthen&#39;] to topic #1 as prior.
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:11,425</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Number of docs: 27594
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:11,425</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Vocab size: 1102
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:11,425</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Number of words: 1916988
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:11,425</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Removed top words: []
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:11,425</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Training model by iterating over the corpus 100 times, 10 iterations at a time with 0 workers
+
+  0%|                                                    | 0/10 [00:00&lt;?, ?it/s][<span class=" -Color -Color-Cyan">2023-08-15 19:09:15,120</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 0	Log-likelihood: -7.758692721106333
+
+ 10%|████▍                                       | 1/10 [00:03&lt;00:33,  3.70s/it][<span class=" -Color -Color-Cyan">2023-08-15 19:09:18,869</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 10	Log-likelihood: -7.343293556088631
+
+ 20%|████████▊                                   | 2/10 [00:07&lt;00:29,  3.73s/it][<span class=" -Color -Color-Cyan">2023-08-15 19:09:22,708</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 20	Log-likelihood: -7.2300475972122795
+
+ 30%|█████████████▏                              | 3/10 [00:11&lt;00:26,  3.78s/it][<span class=" -Color -Color-Cyan">2023-08-15 19:09:26,708</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 30	Log-likelihood: -7.181403094694064
+
+ 40%|█████████████████▌                          | 4/10 [00:15&lt;00:23,  3.87s/it][<span class=" -Color -Color-Cyan">2023-08-15 19:09:30,682</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 40	Log-likelihood: -7.15484932973934
+
+ 50%|██████████████████████                      | 5/10 [00:19&lt;00:19,  3.91s/it][<span class=" -Color -Color-Cyan">2023-08-15 19:09:34,609</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 50	Log-likelihood: -7.137309273065852
+
+ 60%|██████████████████████████▍                 | 6/10 [00:23&lt;00:15,  3.91s/it][<span class=" -Color -Color-Cyan">2023-08-15 19:09:38,468</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 60	Log-likelihood: -7.122647192782161
+
+ 70%|██████████████████████████████▊             | 7/10 [00:27&lt;00:11,  3.90s/it][<span class=" -Color -Color-Cyan">2023-08-15 19:09:42,328</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 70	Log-likelihood: -7.112307842481844
+
+ 80%|███████████████████████████████████▏        | 8/10 [00:30&lt;00:07,  3.88s/it][<span class=" -Color -Color-Cyan">2023-08-15 19:09:46,239</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 80	Log-likelihood: -7.103769303813615
+
+ 90%|███████████████████████████████████████▌    | 9/10 [00:34&lt;00:03,  3.89s/it][<span class=" -Color -Color-Cyan">2023-08-15 19:09:50,140</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 90	Log-likelihood: -7.095995534976736
+
+100%|███████████████████████████████████████████| 10/10 [00:38&lt;00:00,  3.87s/it]
+&lt;Basic Info&gt;
+| LDAModel (current version: 0.12.5)
+| 27594 docs, 1916988 words
+| Total Vocabs: 131732, Used Vocabs: 1102
+| Entropy of words: 6.75978
+| Entropy of term-weighted words: 6.90695
+| Removed Vocabs: &lt;NA&gt;
+|
+&lt;Training Info&gt;
+| Iterations: 100, Burn-in steps: 0
+| Optimization Interval: 10
+| Log-likelihood per word: -7.09600
+|
+&lt;Initial Parameters&gt;
+| tw: TermWeight.IDF
+| min_cf: 500 (minimum collection frequency of words)
+| min_df: 500 (minimum document frequency of words)
+| rm_top: 0 (the number of top words to be removed)
+| k: 20 (the number of topics between 1 ~ 32767)
+| alpha: [0.1] (hyperparameter of Dirichlet distribution for document-topic, given as a single `float` in case of symmetric prior and as a list with length `k` of `float` in case of asymmetric prior.)
+| eta: 0.01 (hyperparameter of Dirichlet distribution for topic-word)
+| seed: 590167864 (random seed)
+| trained in version 0.12.5
+|
+&lt;Parameters&gt;
+| alpha (Dirichlet prior on the per-document topic distributions)
+|  [0.02006483 0.04694471 0.01432557 0.00799661 0.01058124 0.01064451
+|   0.00866108 0.00949337 0.00843484 0.00827856 0.0124673  0.01257223
+|   0.01054008 0.01247833 0.01060978 0.01064283 0.01324215 0.01039483
+|   0.01151689 0.01167775]
+| eta (Dirichlet prior on the per-topic word distribution)
+|  0.01
+|
+&lt;Topics&gt;
+| #0 (174430) : risk slow recovery cut remain fall fiscal weak hike likely slowdown grow strong domestic recession decline uncertainty increase survey fell
+| #1 (370043) : improve provide strengthen ensure enhance achieve implement increase contribute aim framework reduce goal address technical benefit forum strategic stakeholder financing
+| #2 (91486) : increase zone add special siem_reap provide attract korean invest produce expand boost ltd director complete facility collect income minimum operation
+| #3 (48287) : dispute arrest gold claim resolve ask accuse trust appeal title sell file send name seize involve fine mother problem try
+| #4 (95614) : attack reform citizen fact respect fight problem think win never organisation protect bear view act always clear sam word understand
+| #5 (76207) : list korean increase domestic negotiation free minimum boost incentive renewable raise stake attract potential reduce invest sign asset value footwear
+| #6 (59974) : accident hall ask concern protest spokesman add representative commission request ban process block claim accept hold remove administration assembly affect
+| #7 (68521) : kill arrest live leave attack die night try ask back never stop sell later mother lose away incident think protest
+| #8 (63445) : protest activist win freedom reform movement rally attack ban cabinet sanction poll claim assembly accuse sunday civil act hold post
+| #9 (53266) : fell york gain trader cut wall rally equity earnings drop loss fall profit hike yield hit corp surge record weak
+| #10 (102431) : live problem affect poor cause often think risk damage less bad enough long happen back die protect loss severe leave
+| #11 (88649) : siem_reap park kampot complete sell facility centre route connect phase locate produce ship resort hour add center line koh link
+| #12 (70812) : daily record reopen cent announce vaccinate today recovery drop ban remain household situation germany normal increase surge cause poor direct
+| #13 (62981) : increase abc respectively drop gain value compare pwsa gti period decline year-on-year decrease fell compare_period record fall footwear profit finish
+| #14 (63674) : arrest kandal kill live accuse send night son die ask koh morning body accident incident sell leave collapse vaccinate identify
+| #15 (68178) : article draft document accuse arrest request assembly fine appeal code submit ask procedure file register permit convict add send require
+| #16 (114897) : youth experience provide best launch benefit feature team grow ceo different learn together idea design foundation example various traditional understand
+| #17 (70406) : asset transfer ceo shareholder corporate regulator list trust executive provide portfolio launch operation grow best provider experience staff value agent
+| #18 (92694) : real_estate buy agent purchase transfer grow store provide ceo look affordable launch easy option experience re sell available invest convenient
+| #19 (80993) : request assembly register add draft affair spokesman civil sam reform process deputy discuss administration relevant submit ask hold procedure governor
+|
+
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:50,965</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - ==== Coherence : u_mass ====
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:50,965</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Average: -2.0675997963694988
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:50,965</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Per Topic: [-1.9086247983459215, -1.3976213790853773, -2.1882474353474812, -2.5721022891995746, -1.9975944984014402, -2.7226100753271103, -2.0055773674467345, -1.6916198990274103, -2.4384248735913547, -1.8001375528751784, -1.826303930648957, -2.4255806540436002, -2.220352322267821, -2.1150062333273456, -2.0433877722588516, -2.2476214746839625, -1.8547688291891224, -1.8227270593580585, -1.799965619790992, -2.2737218631736935]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:51,439</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - ==== Coherence : c_uci ====
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:51,440</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Average: 0.5407962501771852
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:51,440</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Per Topic: [0.7980955958033914, 0.6568717860517432, 0.37871382559844646, 0.24468810769433685, 0.24671037142181412, -0.5484771488713698, 0.2858446921351938, 0.5664955644072326, 0.4830281137375432, 1.3018222798657366, 0.39453938957949164, 0.6325481265318617, 0.37858146150510924, 1.7849392823267523, 0.7705559474225172, 0.9236258523830794, 0.13867486010456936, 0.6123869983666509, 0.2811976643458761, 0.4850822331337288]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:51,893</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - ==== Coherence : c_npmi ====
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:51,894</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Average: 0.066997714678115
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:51,894</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Per Topic: [0.08972189379830393, 0.08460459654168709, 0.04861142683257556, 0.03847374976484533, 0.027179217297177302, 0.00026794000017148797, 0.03754634335139229, 0.06217883791201524, 0.05328677116199519, 0.13792800009146242, 0.04825418436434792, 0.06778716593319205, 0.05224243061223199, 0.22305745521267398, 0.08509781648733664, 0.11051469073545851, 0.018417100260943384, 0.06588315923933655, 0.035715388916862274, 0.05318612504829075]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:54,502</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - ==== Coherence : c_v ====
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:54,503</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Average: 0.6176439623348415
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:54,503</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Per Topic: [0.7311489164829255, 0.7208846032619476, 0.5343140661716461, 0.5964014139026403, 0.5790759354829789, 0.48090492784976957, 0.5460225224494935, 0.7206535756587982, 0.6764586597681046, 0.7651297628879548, 0.5198783069849015, 0.5806703731417656, 0.4698037400841713, 0.5925369501113892, 0.7583050549030304, 0.6973470628261567, 0.5783749014139176, 0.6185191124677658, 0.5549376428127288, 0.6315117180347443]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:54,554</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Model saved to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/model/models/LDA_model(4)_k(20).mdl
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:54,605</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving dataframe to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/model/outputs/LDA_model(4)_k(20)-ll_per_word.csv
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:54,607</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to save data: 0:00:00.001788
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:55,011</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Log-likelihood per word plot saved to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/model/outputs/LDA_model(4)_k(20)-ll_per_word.png
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:55,079</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - ==== Document-Topic Distributions ====
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:55,079</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] -           id    topic0    topic1  ...   topic17   topic18   topic19
+27589  48239  0.000176  0.000412  ...  0.000091  0.000101  0.000102
+27590  48216  0.000160  0.000375  ...  0.000083  0.000092  0.000093
+27591  48132  0.000061  0.019791  ...  0.000032  0.000035  0.178651
+27592  48115  0.258588  0.740238  ...  0.000063  0.000069  0.000070
+27593  48085  0.000056  0.000132  ...  0.000029  0.000032  0.046560
+
+[5 rows x 21 columns]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:55,108</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving dataframe to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/model/outputs/LDA_model(4)_k(20)-doc_topic_dists.parquet
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:55,272</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to save data: 0:00:00.164053
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:55,272</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - ==== Topic-Word Distributions ====
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:55,273</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] -          add  increase   provide  ...        actual     elsewhere     seriously
+15  0.005102  0.000574  0.002074  ...  6.625699e-04  5.167474e-08  9.678460e-04
+16  0.002256  0.002083  0.004857  ...  3.056953e-08  2.804690e-04  3.048550e-04
+17  0.002904  0.003924  0.006911  ...  4.072869e-04  1.013075e-04  5.078265e-08
+18  0.003353  0.003373  0.005500  ...  1.029137e-03  6.048432e-04  3.891736e-08
+19  0.005899  0.001628  0.003265  ...  8.575640e-04  4.465753e-08  7.463032e-04
+
+[5 rows x 1102 columns]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:55,373</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving dataframe to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/model/outputs/LDA_model(4)_k(20)-topic_term_dists.parquet
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:55,499</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to save data: 0:00:00.125595
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:55,502</span>][<span class=" -Color -Color-Blue">hyfi.utils.iolibs</span>][<span class=" -Color -Color-Green">INFO</span>] - Save the list to the file: /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/model/outputs/LDA_model(4)_k(20)-used_vocab.txt, no. of words: 1102
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:55,505</span>][<span class=" -Color -Color-Blue">hyfi.utils.iolibs</span>][<span class=" -Color -Color-Green">INFO</span>] - Save the list to the file: /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/model/outputs/LDA_model(4)_k(20)-topic_top_words.txt, no. of words: 497
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:55,506</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving dataframe to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/model/outputs/LDA_model(4)_k(20)-topic_top_words_dists.csv
+[<span class=" -Color -Color-Cyan">2023-08-15 19:09:55,509</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to save data: 0:00:00.002590
+[<span class=" -Color -Color-Cyan">2023-08-15 19:10:10,546</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Making wordcloud collage with titles: [&#39;Topic 0&#39;, &#39;Topic 1&#39;, &#39;Topic 2&#39;, &#39;Topic 3&#39;, &#39;Topic 4&#39;, &#39;Topic 5&#39;, &#39;Topic 6&#39;, &#39;Topic 7&#39;, &#39;Topic 8&#39;, &#39;Topic 9&#39;, &#39;Topic 10&#39;, &#39;Topic 11&#39;, &#39;Topic 12&#39;, &#39;Topic 13&#39;, &#39;Topic 14&#39;, &#39;Topic 15&#39;, &#39;Topic 16&#39;, &#39;Topic 17&#39;, &#39;Topic 18&#39;, &#39;Topic 19&#39;]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:10:10,546</span>][<span class=" -Color -Color-Blue">hyfi.graphics.collage</span>][<span class=" -Color -Color-Green">INFO</span>] - Making page 1/1 with 20 images
+[<span class=" -Color -Color-Cyan">2023-08-15 19:10:10,546</span>][<span class=" -Color -Color-Blue">hyfi.graphics.collage</span>][<span class=" -Color -Color-Green">INFO</span>] - Page titles: [&#39;Topic 0&#39;, &#39;Topic 1&#39;, &#39;Topic 2&#39;, &#39;Topic 3&#39;, &#39;Topic 4&#39;, &#39;Topic 5&#39;, &#39;Topic 6&#39;, &#39;Topic 7&#39;, &#39;Topic 8&#39;, &#39;Topic 9&#39;, &#39;Topic 10&#39;, &#39;Topic 11&#39;, &#39;Topic 12&#39;, &#39;Topic 13&#39;, &#39;Topic 14&#39;, &#39;Topic 15&#39;, &#39;Topic 16&#39;, &#39;Topic 17&#39;, &#39;Topic 18&#39;, &#39;Topic 19&#39;]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:10:10,546</span>][<span class=" -Color -Color-Blue">hyfi.graphics.collage</span>][<span class=" -Color -Color-Green">INFO</span>] - Page output file: /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/model/outputs/wordcloud_collage/LDA_model(4)_k(20)_wordcloud_00.png
+[<span class=" -Color -Color-Cyan">2023-08-15 19:10:17,977</span>][<span class=" -Color -Color-Blue">hyfi.graphics.utils</span>][<span class=" -Color -Color-Green">INFO</span>] - Saved subplots to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/model/outputs/wordcloud_collage/LDA_model(4)_k(20)_wordcloud_00.png
+[<span class=" -Color -Color-Cyan">2023-08-15 19:10:17,978</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Yellow">WARNING</span>] - pyLDAvis is not installed. Please install it to save LDAvis.
+[<span class=" -Color -Color-Cyan">2023-08-15 19:10:17,994</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Model summary saved to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/model/outputs/model-summary.jsonl
+[<span class=" -Color -Color-Cyan">2023-08-15 19:10:17,994</span>][<span class=" -Color -Color-Blue">hyfi.composer.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving config to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/model/configs/model(4)_config.json
+[<span class=" -Color -Color-Cyan">2023-08-15 19:10:17,995</span>][<span class=" -Color -Color-Blue">hyfi.composer.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving config to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/model/configs/model(4)_config.yaml
+100%|████████████████████████████████████████████| 1/1 [02:26&lt;00:00, 146.74s/it]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:10:18,019</span>][<span class=" -Color -Color-Blue">thematos.runners.topic</span>][<span class=" -Color -Color-Green">INFO</span>] - Saved summaries to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/runner(1)_summaries.json
+[<span class=" -Color -Color-Cyan">2023-08-15 19:10:18,019</span>][<span class=" -Color -Color-Blue">hyfi.composer.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving config to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/runner/configs/runner(1)_config.json
+[<span class=" -Color -Color-Cyan">2023-08-15 19:10:18,019</span>][<span class=" -Color -Color-Blue">hyfi.composer.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving config to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/runner/configs/runner(1)_config.yaml
+
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="model-results">
+<h2>Model Results<a class="headerlink" href="#model-results" title="Permalink to this heading">#</a></h2>
+<p>The specialized Latent Dirichlet Allocation (LDA) model, designed to classify uncertainty, was applied to a corpus of 27,594 documents containing 1,916,988 words. Out of 131,732 total vocabs, 1,102 were used in the analysis, with specific parameters set to focus on uncertainty-related topics.</p>
+<section id="key-findings">
+<h3>Key Findings<a class="headerlink" href="#key-findings" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Topic #0</strong>: This topic prominently features terms directly related to uncertainty, such as “risk,” “slow recovery,” “recession,” “uncertainty,” and economic fluctuations like “cut,” “hike,” “fall,” “increase,” and “decline.” It encapsulates the economic uncertainty and potential risks in recovery and growth.</p></li>
+<li><p><strong>Topic #1</strong>: This topic aligns with the prior emphasizing improvement and strengthening. Terms like “improve,” “strengthen,” “ensure,” “achieve,” and “enhance” reflect efforts to mitigate uncertainty by enhancing frameworks, addressing goals, and implementing reforms.</p></li>
+<li><p><strong>Topic Coherence Scores</strong>: The coherence scores, including u_mass at -2.0798, c_uci at 0.4653, c_npmi at 0.0657, and c_v at 0.5938, indicate a reasonable level of interpretability and relevance of the topics, although there may be room for further refinement.</p></li>
+</ol>
+</section>
+<section id="interpretation">
+<h3>Interpretation<a class="headerlink" href="#interpretation" title="Permalink to this heading">#</a></h3>
+<p>The results demonstrate the model’s effectiveness in identifying and classifying uncertainty-related topics. The incorporation of prior knowledge, removal of specific stop words, and fine-tuning of model parameters have led to the extraction of themes that resonate with the concept of uncertainty.</p>
+<p>Topic #0 provides a comprehensive view of economic uncertainty, capturing the volatility and risks in the market. Topic #1, on the other hand, offers insights into strategies and efforts to navigate and mitigate uncertainty.</p>
+<p>The tailored approach to topic modeling for uncertainty has yielded meaningful insights into the themes of risk, recovery, and strategies to overcome uncertainty. The model’s configuration and the resulting topics align well with the research objectives, providing a nuanced understanding of uncertainty within the given context. The coherence scores suggest that the topics are interpretable, although further refinement and exploration may enhance the model’s precision and depth of analysis.</p>
+<p><a class="reference internal" href="#fig-lda-wordcloud-uncertainty"><span class="std std-numref">Fig. 4</span></a> shows the wordcloud of the top 500 words in each topic from the LDA model with 20 topics and uncertainty prior.</p>
+<figure class="align-default" id="fig-lda-wordcloud-uncertainty">
+<img alt="../../_images/LDA_model(3)_k(20)_wordcloud_00.png" src="../../_images/LDA_model(3)_k(20)_wordcloud_00.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Wordcloud of the top 500 words in each topic from the LDA model with 20 topics and uncertainty prior.</span><a class="headerlink" href="#fig-lda-wordcloud-uncertainty" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="refinement-of-uncertainty-topic-modeling">
+<h2>Refinement of Uncertainty Topic Modeling<a class="headerlink" href="#refinement-of-uncertainty-topic-modeling" title="Permalink to this heading">#</a></h2>
+<p>The refinement of uncertainty topic modeling is executed through a methodical two-stage process. Initially, documents are filtered according to specific criteria, and subsequently, the topic model is reapplied to this refined dataset. This iterative methodology sharpens the focus on themes pertinent to uncertainty, yielding a more accurate and detailed analysis.</p>
+<p>In the first stage, documents are identified and filtered based on their relevance to uncertainty topics, specifically topics 0 and 1. The selection is guided by the combined weight of these topics, which directly correspond to the concept of uncertainty. Following this identification, the selected documents are merged with the original dataset.</p>
+<p>The final stage of the process involves a further filtering of the data, adhering to the established selection criteria, and preparing the dataset for another round of topic modeling. This is achieved by applying the query <code class="docutils literal notranslate"><span class="pre">&quot;topic_relevant</span> <span class="pre">&gt;</span> <span class="pre">0.5&quot;</span></code>, ensuring that only documents meeting this threshold are retained.</p>
+<p>This systematic refinement process epitomizes a targeted approach to uncertainty topic modeling. It emphasizes the selection of documents that resonate with the themes of risk, uncertainty, and strategic mitigation. By employing this iterative and filtering technique, the analysis is honed in on the essential facets of uncertainty, thereby improving both the precision and interpretability of the findings. The configuration of the pipeline fortifies this approach, guaranteeing a methodical and replicable procedure that is in harmony with the overarching research goals and academic standards.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nbcpu<span class="w"> </span>+workflow<span class="o">=</span>nbcpu<span class="w"> </span><span class="nv">tasks</span><span class="o">=</span><span class="s1">&#39;[nbcpu-datasets_uncertainty_filter]&#39;</span><span class="w"> </span><span class="nv">mode</span><span class="o">=</span>__info__
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[<span class=" -Color -Color-Cyan">2023-08-15 19:16:38,472</span>][<span class=" -Color -Color-Blue">hyfi.joblib.joblib</span>][<span class=" -Color -Color-Green">INFO</span>] - initialized batcher with &lt;hyfi.joblib.batch.batcher.Batcher object at 0x7f27d820e610&gt;
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:38,473</span>][<span class=" -Color -Color-Blue">hyfi.main.config</span>][<span class=" -Color -Color-Green">INFO</span>] - HyFi project [nbcpu] initialized
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:38,669</span>][<span class=" -Color -Color-Blue">hyfi.main.main</span>][<span class=" -Color -Color-Green">INFO</span>] - The HyFI config is not instantiatable, running HyFI task with the config
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:39,529</span>][<span class=" -Color -Color-Blue">hyfi.joblib.joblib</span>][<span class=" -Color -Color-Green">INFO</span>] - initialized batcher with &lt;hyfi.joblib.batch.batcher.Batcher object at 0x7f27b8350760&gt;
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,726</span>][<span class=" -Color -Color-Blue">hyfi.workflow.workflow</span>][<span class=" -Color -Color-Green">INFO</span>] - Running task [nbcpu-datasets_uncertainty_filter] with [run={} verbose=False uses=&#39;nbcpu-datasets_uncertainty_filter&#39;]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,750</span>][<span class=" -Color -Color-Blue">hyfi.task.task</span>][<span class=" -Color -Color-Green">INFO</span>] - Running 1 pipeline(s)
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,750</span>][<span class=" -Color -Color-Blue">hyfi.task.task</span>][<span class=" -Color -Color-Green">INFO</span>] - Running pipeline: nbcpu-datasets_uncertainty_filter
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,762</span>][<span class=" -Color -Color-Blue">hyfi.task.task</span>][<span class=" -Color -Color-Green">INFO</span>] - Applying 6 pipes: [{&#39;_target_&#39;: &#39;hyfi.utils.datasets.load.DSLoad.load_dataframes&#39;, &#39;data_files&#39;: &#39;nbcpu-topic_uncertainty/model/outputs/LDA_model(3)_k(20)-doc_topic_dists.parquet&#39;, &#39;data_dir&#39;: None, &#39;filetype&#39;: None, &#39;split&#39;: None, &#39;concatenate&#39;: False, &#39;ignore_index&#39;: False, &#39;use_cached&#39;: False, &#39;verbose&#39;: True}, {&#39;_target_&#39;: &#39;hyfi.utils.datasets.basic.DSBasic.dataframe_eval_columns&#39;, &#39;expressions&#39;: {&#39;topic_relevant&#39;: &#39;topic0 + topic1&#39;}, &#39;engine&#39;: &#39;python&#39;, &#39;verbose&#39;: True}, {&#39;_target_&#39;: &#39;hyfi.utils.datasets.basic.DSBasic.dataframe_select_columns&#39;, &#39;columns&#39;: [&#39;id&#39;, &#39;topic_relevant&#39;], &#39;verbose&#39;: True}, {&#39;_target_&#39;: &#39;hyfi.utils.datasets.combine.DSCombine.merge_dataframes&#39;, &#39;right&#39;: &#39;datasets/processed/khmer_tokenized/train.parquet&#39;, &#39;how&#39;: &#39;inner&#39;, &#39;on&#39;: &#39;id&#39;, &#39;left_on&#39;: None, &#39;right_on&#39;: None, &#39;left_index&#39;: False, &#39;right_index&#39;: False, &#39;sort&#39;: False, &#39;suffixes&#39;: [&#39;_x&#39;, &#39;_y&#39;], &#39;copy&#39;: True, &#39;indicator&#39;: False, &#39;validate&#39;: None, &#39;verbose&#39;: True}, {&#39;_target_&#39;: &#39;hyfi.utils.datasets.basic.DSBasic.dataframe_print_head_and_tail&#39;, &#39;num_heads&#39;: 5, &#39;num_tails&#39;: 5, &#39;columns&#39;: [&#39;id&#39;, &#39;text&#39;, &#39;tokens&#39;, &#39;topic_relevant&#39;], &#39;verbose&#39;: True}, {&#39;_target_&#39;: &#39;hyfi.utils.datasets.slice.DSSlice.filter_and_sample_data&#39;, &#39;queries&#39;: [&#39;topic_relevant &gt; 0.5&#39;], &#39;sample_size&#39;: None, &#39;sample_seed&#39;: 42, &#39;output_dir&#39;: &#39;datasets/processed/topic_uncertainty_filtered&#39;, &#39;sample_filename&#39;: None, &#39;train_filename&#39;: &#39;train.parquet&#39;, &#39;discard_filename&#39;: &#39;discard.parquet&#39;, &#39;returning_data&#39;: &#39;train&#39;, &#39;verbose&#39;: True}]
+ Change directory to /home/yjlee/workspace/projects/nbcpu/workspace
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,767</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Returning partial function: hyfi.utils.datasets.load.DSLoad.load_dataframes with kwargs: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.load.DSLoad.load_dataframes&#39;, &#39;data_files&#39;: &#39;nbcpu-topic_uncertainty/model/outputs/LDA_model(3)_k(20)-doc_topic_dists.parquet&#39;, &#39;data_dir&#39;: None, &#39;filetype&#39;: None, &#39;split&#39;: None, &#39;concatenate&#39;: False, &#39;ignore_index&#39;: False, &#39;use_cached&#39;: False, &#39;verbose&#39;: True}
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,767</span>][<span class=" -Color -Color-Blue">hyfi.composer.composer</span>][<span class=" -Color -Color-Green">INFO</span>] - instantiating hyfi.utils.datasets.load.DSLoad.load_dataframes ...
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,770</span>][<span class=" -Color -Color-Blue">hyfi.utils.iolibs</span>][<span class=" -Color -Color-Green">INFO</span>] - Processing [1] files from [&#39;nbcpu-topic_uncertainty/model/outputs/LDA_model(3)_k(20)-doc_topic_dists.parquet&#39;]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,770</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.load</span>][<span class=" -Color -Color-Green">INFO</span>] - Loading data from nbcpu-topic_uncertainty/model/outputs/LDA_model(3)_k(20)-doc_topic_dists.parquet
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,791</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.load</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to load data: 0:00:00.020824
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,793</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Returning partial function: hyfi.utils.datasets.basic.DSBasic.dataframe_eval_columns with kwargs: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.basic.DSBasic.dataframe_eval_columns&#39;, &#39;expressions&#39;: {&#39;topic_relevant&#39;: &#39;topic0 + topic1&#39;}, &#39;engine&#39;: &#39;python&#39;, &#39;verbose&#39;: True}
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,793</span>][<span class=" -Color -Color-Blue">hyfi.composer.composer</span>][<span class=" -Color -Color-Green">INFO</span>] - instantiating hyfi.utils.datasets.basic.DSBasic.dataframe_eval_columns ...
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,795</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.basic</span>][<span class=" -Color -Color-Green">INFO</span>] - Evaluating column topic_relevant
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,801</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Returning partial function: hyfi.utils.datasets.basic.DSBasic.dataframe_select_columns with kwargs: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.basic.DSBasic.dataframe_select_columns&#39;, &#39;columns&#39;: [&#39;id&#39;, &#39;topic_relevant&#39;], &#39;verbose&#39;: True}
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,802</span>][<span class=" -Color -Color-Blue">hyfi.composer.composer</span>][<span class=" -Color -Color-Green">INFO</span>] - instantiating hyfi.utils.datasets.basic.DSBasic.dataframe_select_columns ...
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,803</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.basic</span>][<span class=" -Color -Color-Green">INFO</span>] - Selecting columns: [&#39;id&#39;, &#39;topic_relevant&#39;]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,808</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Returning partial function: hyfi.utils.datasets.combine.DSCombine.merge_dataframes with kwargs: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.combine.DSCombine.merge_dataframes&#39;, &#39;right&#39;: &#39;datasets/processed/khmer_tokenized/train.parquet&#39;, &#39;how&#39;: &#39;inner&#39;, &#39;on&#39;: &#39;id&#39;, &#39;left_on&#39;: None, &#39;right_on&#39;: None, &#39;left_index&#39;: False, &#39;right_index&#39;: False, &#39;sort&#39;: False, &#39;suffixes&#39;: [&#39;_x&#39;, &#39;_y&#39;], &#39;copy&#39;: True, &#39;indicator&#39;: False, &#39;validate&#39;: None, &#39;verbose&#39;: True}
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,809</span>][<span class=" -Color -Color-Blue">hyfi.composer.composer</span>][<span class=" -Color -Color-Green">INFO</span>] - instantiating hyfi.utils.datasets.combine.DSCombine.merge_dataframes ...
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:40,812</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.combine</span>][<span class=" -Color -Color-Green">INFO</span>] - Merging dataframes
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:44,247</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Running a pipe with hyfi.pipe.general_external_funcs
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:44,248</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Returning partial function: hyfi.utils.datasets.basic.DSBasic.dataframe_print_head_and_tail with kwargs: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.basic.DSBasic.dataframe_print_head_and_tail&#39;, &#39;num_heads&#39;: 5, &#39;num_tails&#39;: 5, &#39;columns&#39;: [&#39;id&#39;, &#39;text&#39;, &#39;tokens&#39;, &#39;topic_relevant&#39;], &#39;verbose&#39;: True}
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:44,249</span>][<span class=" -Color -Color-Blue">hyfi.composer.composer</span>][<span class=" -Color -Color-Green">INFO</span>] - instantiating hyfi.utils.datasets.basic.DSBasic.dataframe_print_head_and_tail ...
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:44,251</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.basic</span>][<span class=" -Color -Color-Green">INFO</span>] - Printing head and tail of dataframe
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:44,251</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.basic</span>][<span class=" -Color -Color-Green">INFO</span>] - Head:
+          id  ... topic_relevant
+0  501330943  ...       0.341887
+1  501326169  ...       0.001473
+2  501325554  ...       0.000277
+3  501322478  ...       0.000366
+4  501321914  ...       0.999255
+
+[5 rows x 4 columns]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:44,260</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.basic</span>][<span class=" -Color -Color-Green">INFO</span>] - Tail:
+          id  ... topic_relevant
+27605  48239  ...       0.000566
+27606  48216  ...       0.000515
+27607  48132  ...       0.000197
+27608  48115  ...       0.572823
+27609  48085  ...       0.000182
+
+[5 rows x 4 columns]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:44,272</span>][<span class=" -Color -Color-Blue">hyfi.pipeline.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Returning partial function: hyfi.utils.datasets.slice.DSSlice.filter_and_sample_data with kwargs: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.slice.DSSlice.filter_and_sample_data&#39;, &#39;queries&#39;: [&#39;topic_relevant &gt; 0.5&#39;], &#39;sample_size&#39;: None, &#39;sample_seed&#39;: 42, &#39;output_dir&#39;: &#39;datasets/processed/topic_uncertainty_filtered&#39;, &#39;sample_filename&#39;: None, &#39;train_filename&#39;: &#39;train.parquet&#39;, &#39;discard_filename&#39;: &#39;discard.parquet&#39;, &#39;returning_data&#39;: &#39;train&#39;, &#39;verbose&#39;: True}
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:44,273</span>][<span class=" -Color -Color-Blue">hyfi.composer.composer</span>][<span class=" -Color -Color-Green">INFO</span>] - instantiating hyfi.utils.datasets.slice.DSSlice.filter_and_sample_data ...
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:44,288</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.slice</span>][<span class=" -Color -Color-Green">INFO</span>] - filtering data by topic_relevant &gt; 0.5
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:44,292</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.slice</span>][<span class=" -Color -Color-Green">INFO</span>] - filtered 20693 documents
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:44,295</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving dataframe to /raid/cis/yjlee/workspace/projects/nbcpu/workspace/datasets/processed/topic_uncertainty_filtered/train.parquet
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:48,417</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to save data: 0:00:04.121659
+           id  ...                                         predicates
+4   501321914  ...  [average, supply, drop, significantly, may, lo...
+5   501320777  ...  [see, significant, mobile, financial, introduc...
+10  501272597  ...  [french, national, nbc, establish, gain, print...
+11  501258270  ...  [french, national, nbc, establish, gain, print...
+12  501092971  ...  [european, central, ecb, become, great, could,...
+
+[5 rows x 12 columns]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:16:48,438</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving dataframe to /raid/cis/yjlee/workspace/projects/nbcpu/workspace/datasets/processed/topic_uncertainty_filtered/discard.parquet
+[<span class=" -Color -Color-Cyan">2023-08-15 19:17:08,321</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to save data: 0:00:19.882527
+          id  ...                                         predicates
+0  501330943  ...  [national, ask, financial, consider, provide, ...
+1  501326169  ...  [national, prepare, standardised, common, fina...
+2  501325554  ...  [national, prepare, standardised, common, fina...
+3  501322478  ...  [national, nbc, sign, chinese, international, ...
+6  501319461  ...  [national, launch, share, enable, financial, m...
+
+[5 rows x 12 columns]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:17:08,338</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.slice</span>][<span class=" -Color -Color-Green">INFO</span>] - Created 0 samples, 6917 train samples, and 20693 discard samples
+ Change directory back to /raid/cis/yjlee/workspace/logs/hydra/nbcpu/2023-08-15/2023-08-15_19-16-37
+[<span class=" -Color -Color-Cyan">2023-08-15 19:17:08,554</span>][<span class=" -Color -Color-Blue">hyfi.task.task</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time for the task with 1 pipelines: 0:00:27.803055
+
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "entelecheia/nbcpu",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./supplementary/topic-uncertainty"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../topic/prior.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Topic Modeling with Prior</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="second.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Second Stage Uncertainty Model</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#three-modifications">Three Modifications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-of-prior-knowledge">1. Integration of Prior Knowledge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strategic-removal-of-stop-words">2. Strategic Removal of Stop Words</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fine-tuning-of-model-parameters">3. Fine-Tuning of Model Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-details">Configuration Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-workflow">Running the Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-results">Model Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-findings">Key Findings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refinement-of-uncertainty-topic-modeling">Refinement of Uncertainty Topic Modeling</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Young Joon Lee
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

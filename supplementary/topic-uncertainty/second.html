@@ -1,0 +1,989 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>The Second Stage Uncertainty Model &#8212; Measuring Central Bank Policy Uncertainty</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-shadow.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-punk.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-noir.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-light.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-borderless.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/micromodal.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/tabs.js"></script>
+    <script src="../../_static/js/hoverxref.js"></script>
+    <script src="../../_static/js/tooltipster.bundle.min.js"></script>
+    <script src="../../_static/js/micromodal.min.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-SY9MF3HBFB"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-SY9MF3HBFB');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'supplementary/topic-uncertainty/second';</script>
+    <link rel="shortcut icon" href="https://assets.entelecheia.ai/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Topic analysis" href="../analysis/index.html" />
+    <link rel="prev" title="Topic Modeling for Uncertainty Analysis" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Measuring Central Bank Policy Uncertainty</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Abstract
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../paper/introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/literature/index.html">Literature Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/methodology/index.html">Methodology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/results/index.html">Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/conclusion/index.html">Concluding Remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper/references.html">References</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Supplementary Materials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../crawling/index.html">Crawling Khmer Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">Processing the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topic/index.html">Topic Modeling without Prior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topic/prior.html">Topic Modeling with Prior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html">Topic Modeling for Uncertainty Analysis</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">The Second Stage Uncertainty Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/index.html">Topic analysis</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/entelecheia/nbcpu/blob/main/book/supplementary/topic-uncertainty/second.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/entelecheia/nbcpu" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/entelecheia/nbcpu/edit/main/book/supplementary/topic-uncertainty/second.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/entelecheia/nbcpu/issues/new?title=Issue%20on%20page%20%2Fsupplementary/topic-uncertainty/second.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/supplementary/topic-uncertainty/second.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Second Stage Uncertainty Model</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters">Model Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#priors">Priors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-topics">Number of Topics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-details">Configuration Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-workflow">Running the Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-results-of-the-second-stage-uncertainty-model">Model Results of the Second Stage Uncertainty Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-and-interpretation">Topics and Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-central-bank-policy-uncertainty">Quantifying Central Bank Policy Uncertainty</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-0-early-stage-of-uncertainty">Topic 0: Early Stage of Uncertainty</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-1-reactive-measures">Topic 1: Reactive Measures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-2-central-bank-actions">Topic 2: Central Bank Actions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-second-stage-uncertainty-model">
+<h1>The Second Stage Uncertainty Model<a class="headerlink" href="#the-second-stage-uncertainty-model" title="Permalink to this heading">#</a></h1>
+<p>The second stage of uncertainty topic modeling represents a further refinement in the analysis, focusing on a more nuanced understanding of the themes related to uncertainty. This stage introduces a new set of priors and a reduction in the number of topics, aiming to capture the core aspects of uncertainty with greater precision.</p>
+<section id="model-parameters">
+<h2>Model Parameters<a class="headerlink" href="#model-parameters" title="Permalink to this heading">#</a></h2>
+<section id="priors">
+<h3>Priors<a class="headerlink" href="#priors" title="Permalink to this heading">#</a></h3>
+<p>The model in this stage incorporates three specific priors, each targeting different facets of uncertainty:</p>
+<ul class="simple">
+<li><p><strong>Prior 0</strong>: Concentrates on terms that encapsulate the emotional and psychological dimensions of uncertainty, such as “uncertain,” “risk,” “uncertainty,” “fear,” “panic,” “concern,” and “shock.”</p></li>
+<li><p><strong>Prior 1</strong>: Focuses on terms that signify efforts to mitigate or address uncertainty, including “improve,” “strengthen,” “ensure,” and “enhance.”</p></li>
+<li><p><strong>Prior 2</strong>: Targets terms that reflect economic responses to uncertainty, such as “hike” and “cut.”</p></li>
+</ul>
+<p>These priors are carefully crafted to guide the model towards a comprehensive understanding of uncertainty, encompassing emotional reactions, strategic responses, and economic implications.</p>
+</section>
+<section id="number-of-topics">
+<h3>Number of Topics<a class="headerlink" href="#number-of-topics" title="Permalink to this heading">#</a></h3>
+<p>The model is configured with <code class="docutils literal notranslate"><span class="pre">k=5</span></code>, reducing the number of topics from the previous stage. This reduction aligns with the goal of honing in on the most salient aspects of uncertainty, allowing for a more focused and interpretable analysis.</p>
+</section>
+</section>
+<section id="configuration-details">
+<h2>Configuration Details<a class="headerlink" href="#configuration-details" title="Permalink to this heading">#</a></h2>
+<p>The configuration for this specialized topic modeling with uncertainty analysis is encapsulated in the following command:</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nbcpu<span class="w"> </span>+model<span class="o">=</span>nbcpu-topic_uncertainty_filtered<span class="w"> </span><span class="nv">noop</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## Command Line Interface for HyFI ##
+{&#39;about&#39;: {&#39;authors&#39;: &#39;Young Joon Lee &lt;entelecheia@hotmail.com&gt;&#39;,
+           &#39;description&#39;: &#39;Quantifying Central Bank Policy Uncertainty in a &#39;
+                          &#39;Highly Dollarized Economy: A Topic Modeling &#39;
+                          &#39;Approach&#39;,
+           &#39;homepage&#39;: &#39;https://nbcpu.entelecheia.ai&#39;,
+           &#39;license&#39;: &#39;MIT&#39;,
+           &#39;name&#39;: &#39;Measuring Central Bank Policy Uncertainty&#39;},
+ &#39;debug_mode&#39;: False,
+ &#39;dryrun&#39;: False,
+ &#39;hydra_log_dir&#39;: &#39;/home/yjlee/.hyfi/logs/hydra&#39;,
+ &#39;ignore_warnings&#39;: True,
+ &#39;logging_level&#39;: &#39;WARNING&#39;,
+ &#39;model&#39;: {&#39;_config_group_&#39;: &#39;/model&#39;,
+           &#39;_config_name_&#39;: &#39;lda&#39;,
+           &#39;_target_&#39;: &#39;thematos.models.lda.LdaModel&#39;,
+           &#39;autosave&#39;: True,
+           &#39;batch&#39;: {&#39;_config_group_&#39;: &#39;/batch&#39;,
+                     &#39;_config_name_&#39;: &#39;__init__&#39;,
+                     &#39;batch_name&#39;: &#39;model&#39;,
+                     &#39;batch_num&#39;: None,
+                     &#39;batch_num_auto&#39;: False,
+                     &#39;batch_root&#39;: &#39;workspace/topic&#39;,
+                     &#39;config_dirname&#39;: &#39;configs&#39;,
+                     &#39;config_json&#39;: &#39;config.json&#39;,
+                     &#39;config_yaml&#39;: &#39;config.yaml&#39;,
+                     &#39;device&#39;: &#39;cpu&#39;,
+                     &#39;num_devices&#39;: 1,
+                     &#39;num_workers&#39;: 1,
+                     &#39;output_extention&#39;: None,
+                     &#39;output_suffix&#39;: None,
+                     &#39;random_seed&#39;: False,
+                     &#39;resume_latest&#39;: False,
+                     &#39;resume_run&#39;: False,
+                     &#39;seed&#39;: -1,
+                     &#39;verbose&#39;: True},
+           &#39;batch_name&#39;: &#39;model&#39;,
+           &#39;coherence_metric_list&#39;: [&#39;u_mass&#39;, &#39;c_uci&#39;, &#39;c_npmi&#39;, &#39;c_v&#39;],
+           &#39;corpus&#39;: {&#39;_config_group_&#39;: &#39;/dataset&#39;,
+                      &#39;_config_name_&#39;: &#39;topic_corpus&#39;,
+                      &#39;_target_&#39;: &#39;thematos.datasets.corpus.Corpus&#39;,
+                      &#39;batch&#39;: {&#39;_config_group_&#39;: &#39;/batch&#39;,
+                                &#39;_config_name_&#39;: &#39;__init__&#39;,
+                                &#39;batch_name&#39;: &#39;corpus&#39;,
+                                &#39;batch_num&#39;: None,
+                                &#39;batch_num_auto&#39;: False,
+                                &#39;batch_root&#39;: &#39;workspace/topic&#39;,
+                                &#39;config_dirname&#39;: &#39;configs&#39;,
+                                &#39;config_json&#39;: &#39;config.json&#39;,
+                                &#39;config_yaml&#39;: &#39;config.yaml&#39;,
+                                &#39;device&#39;: &#39;cpu&#39;,
+                                &#39;num_devices&#39;: 1,
+                                &#39;num_workers&#39;: 1,
+                                &#39;output_extention&#39;: None,
+                                &#39;output_suffix&#39;: None,
+                                &#39;random_seed&#39;: False,
+                                &#39;resume_latest&#39;: False,
+                                &#39;resume_run&#39;: False,
+                                &#39;seed&#39;: -1,
+                                &#39;verbose&#39;: True},
+                      &#39;batch_name&#39;: &#39;corpus&#39;,
+                      &#39;data_load&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.load.DSLoad.load_dataframe&#39;,
+                                    &#39;columns&#39;: None,
+                                    &#39;data_dir&#39;: None,
+                                    &#39;data_file&#39;: &#39;datasets/processed/topic_uncertainty_filtered/train.parquet&#39;,
+                                    &#39;filetype&#39;: None,
+                                    &#39;index_col&#39;: None,
+                                    &#39;verbose&#39;: False},
+                      &#39;id_col&#39;: &#39;id&#39;,
+                      &#39;module&#39;: None,
+                      &#39;ngramize&#39;: True,
+                      &#39;ngrams&#39;: {&#39;_config_group_&#39;: &#39;/ngrams&#39;,
+                                 &#39;_config_name_&#39;: &#39;tp_ngrams&#39;,
+                                 &#39;_target_&#39;: &#39;thematos.datasets.ngrams.NgramConfig&#39;,
+                                 &#39;delimiter&#39;: &#39;_&#39;,
+                                 &#39;max_cand&#39;: 5000,
+                                 &#39;max_len&#39;: 3,
+                                 &#39;min_cf&#39;: 20,
+                                 &#39;min_df&#39;: 10,
+                                 &#39;min_score&#39;: 0.5,
+                                 &#39;normalized&#39;: True,
+                                 &#39;workers&#39;: 0},
+                      &#39;path&#39;: {&#39;_config_name_&#39;: &#39;__batch__&#39;,
+                               &#39;batch_name&#39;: &#39;corpus&#39;,
+                               &#39;task_name&#39;: &#39;topic&#39;,
+                               &#39;task_root&#39;: &#39;workspace&#39;},
+                      &#39;pipelines&#39;: [],
+                      &#39;stopwords&#39;: {&#39;_config_group_&#39;: &#39;/stopwords&#39;,
+                                    &#39;_config_name_&#39;: &#39;__init__&#39;,
+                                    &#39;_target_&#39;: &#39;lexikanon.stopwords.Stopwords&#39;,
+                                    &#39;lowercase&#39;: True,
+                                    &#39;name&#39;: &#39;stopwords&#39;,
+                                    &#39;nltk_stopwords_lang&#39;: None,
+                                    &#39;stopwords_fn&#39;: None,
+                                    &#39;stopwords_list&#39;: None,
+                                    &#39;stopwords_path&#39;: &#39;/home/yjlee/.hyfi/logs/hydra/hyfi/2023-08-15/2023-08-15_19-45-05/tests/assets/stopwords/nbcpu-uncertainty_filtered.txt&#39;,
+                                    &#39;verbose&#39;: True},
+                      &#39;task_name&#39;: &#39;topic&#39;,
+                      &#39;task_root&#39;: &#39;workspace&#39;,
+                      &#39;text_col&#39;: &#39;tokens&#39;,
+                      &#39;timestamp_col&#39;: &#39;time&#39;,
+                      &#39;verbose&#39;: True,
+                      &#39;version&#39;: &#39;0.0.0&#39;},
+           &#39;eval_coherence&#39;: True,
+           &#39;model_args&#39;: {&#39;_config_group_&#39;: &#39;/model/config&#39;,
+                          &#39;_config_name_&#39;: &#39;lda&#39;,
+                          &#39;_target_&#39;: &#39;thematos.models.config.LdaConfig&#39;,
+                          &#39;alpha&#39;: 0.1,
+                          &#39;eta&#39;: 0.01,
+                          &#39;k&#39;: 10,
+                          &#39;min_cf&#39;: 500,
+                          &#39;min_df&#39;: 500,
+                          &#39;rm_top&#39;: 0,
+                          &#39;tw&#39;: 1},
+           &#39;model_type&#39;: &#39;LDA&#39;,
+           &#39;module&#39;: None,
+           &#39;path&#39;: {&#39;_config_name_&#39;: &#39;__batch__&#39;,
+                    &#39;batch_name&#39;: &#39;model&#39;,
+                    &#39;task_name&#39;: &#39;topic&#39;,
+                    &#39;task_root&#39;: &#39;workspace&#39;},
+           &#39;pipelines&#39;: [],
+           &#39;save_full&#39;: True,
+           &#39;set_wordprior&#39;: True,
+           &#39;task_name&#39;: &#39;topic&#39;,
+           &#39;task_root&#39;: &#39;workspace&#39;,
+           &#39;train_args&#39;: {&#39;_config_group_&#39;: &#39;/model/train&#39;,
+                          &#39;_config_name_&#39;: &#39;topic&#39;,
+                          &#39;_target_&#39;: &#39;thematos.models.config.TrainConfig&#39;,
+                          &#39;burn_in&#39;: 0,
+                          &#39;interval&#39;: 10,
+                          &#39;iterations&#39;: 100},
+           &#39;train_summary_args&#39;: {&#39;_config_group_&#39;: &#39;/model/summary&#39;,
+                                  &#39;_config_name_&#39;: &#39;topic_train&#39;,
+                                  &#39;_target_&#39;: &#39;thematos.models.config.TrainSummaryConfig&#39;,
+                                  &#39;flush&#39;: False,
+                                  &#39;initial_hp&#39;: True,
+                                  &#39;params&#39;: True,
+                                  &#39;topic_word_top_n&#39;: 10},
+           &#39;verbose&#39;: True,
+           &#39;version&#39;: &#39;0.0.0&#39;,
+           &#39;wc_args&#39;: {&#39;_config_group_&#39;: &#39;/model/plot&#39;,
+                       &#39;_config_name_&#39;: &#39;wordcloud&#39;,
+                       &#39;_target_&#39;: &#39;thematos.models.config.WordcloudConfig&#39;,
+                       &#39;dpi&#39;: 300,
+                       &#39;figsize&#39;: None,
+                       &#39;fontpath&#39;: None,
+                       &#39;height_multiple&#39;: 2,
+                       &#39;make_collage&#39;: True,
+                       &#39;mask_dir&#39;: None,
+                       &#39;num_cols&#39;: 5,
+                       &#39;num_images_per_page&#39;: 20,
+                       &#39;num_rows&#39;: None,
+                       &#39;output_file_format&#39;: &#39;wordcloud_p{page_num:02d}.png&#39;,
+                       &#39;save&#39;: True,
+                       &#39;title_color&#39;: &#39;green&#39;,
+                       &#39;title_fontsize&#39;: 14,
+                       &#39;titles&#39;: None,
+                       &#39;top_n&#39;: 500,
+                       &#39;wc&#39;: {&#39;_config_group_&#39;: &#39;/plot&#39;,
+                              &#39;_config_name_&#39;: &#39;wordcloud&#39;,
+                              &#39;_target_&#39;: &#39;thematos.plots.wordcloud.WordCloud&#39;,
+                              &#39;background_color&#39;: &#39;black&#39;,
+                              &#39;collocation_threshold&#39;: 30,
+                              &#39;collocations&#39;: True,
+                              &#39;color_func&#39;: None,
+                              &#39;colormap&#39;: &#39;PuBu&#39;,
+                              &#39;contour_color&#39;: &#39;steelblue&#39;,
+                              &#39;contour_width&#39;: 0,
+                              &#39;font_path&#39;: None,
+                              &#39;font_step&#39;: 1,
+                              &#39;height&#39;: 200,
+                              &#39;include_numbers&#39;: False,
+                              &#39;mask&#39;: None,
+                              &#39;max_font_size&#39;: None,
+                              &#39;max_words&#39;: 200,
+                              &#39;min_font_size&#39;: 4,
+                              &#39;min_word_length&#39;: 0,
+                              &#39;mode&#39;: &#39;RGB&#39;,
+                              &#39;normalize_plurals&#39;: True,
+                              &#39;prefer_horizontal&#39;: 0.9,
+                              &#39;regexp&#39;: None,
+                              &#39;relative_scaling&#39;: &#39;auto&#39;,
+                              &#39;repeat&#39;: False,
+                              &#39;scale&#39;: 1,
+                              &#39;stopwords&#39;: None,
+                              &#39;width&#39;: 400},
+                       &#39;width_multiple&#39;: 4},
+           &#39;wordprior&#39;: {&#39;_config_group_&#39;: &#39;/words&#39;,
+                         &#39;_config_name_&#39;: &#39;wordprior&#39;,
+                         &#39;_target_&#39;: &#39;thematos.models.prior.WordPrior&#39;,
+                         &#39;data_file&#39;: &#39;/home/yjlee/.hyfi/logs/hydra/hyfi/2023-08-15/2023-08-15_19-45-05/tests/assets/words/word_prior_uncertainty_filtered.yaml&#39;,
+                         &#39;lowercase&#39;: True,
+                         &#39;max_prior_weight&#39;: 1.0,
+                         &#39;min_prior_weight&#39;: 0.01,
+                         &#39;prior_data&#39;: None,
+                         &#39;verbose&#39;: True}},
+ &#39;noop&#39;: 1,
+ &#39;resolve&#39;: True,
+ &#39;verbose&#39;: False,
+ &#39;version&#39;: &#39;0.15.0&#39;}
+
+Dryrun is enabled, not running the HyFI config
+
+
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="running-the-workflow">
+<h2>Running the Workflow<a class="headerlink" href="#running-the-workflow" title="Permalink to this heading">#</a></h2>
+<p>The entire workflow can be executed using the following command:</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nbcpu<span class="w"> </span>+workflow<span class="o">=</span>nbcpu<span class="w"> </span><span class="nv">tasks</span><span class="o">=</span><span class="s1">&#39;[nbcpu-topic_uncertainty_filtered]&#39;</span><span class="w"> </span><span class="nv">mode</span><span class="o">=</span>__info__
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[<span class=" -Color -Color-Cyan">2023-08-15 19:45:59,528</span>][<span class=" -Color -Color-Blue">hyfi.joblib.joblib</span>][<span class=" -Color -Color-Green">INFO</span>] - initialized batcher with &lt;hyfi.joblib.batch.batcher.Batcher object at 0x7f010418ebe0&gt;
+[<span class=" -Color -Color-Cyan">2023-08-15 19:45:59,529</span>][<span class=" -Color -Color-Blue">hyfi.main.config</span>][<span class=" -Color -Color-Green">INFO</span>] - HyFi project [nbcpu] initialized
+[<span class=" -Color -Color-Cyan">2023-08-15 19:45:59,718</span>][<span class=" -Color -Color-Blue">hyfi.main.main</span>][<span class=" -Color -Color-Green">INFO</span>] - The HyFI config is not instantiatable, running HyFI task with the config
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:00,546</span>][<span class=" -Color -Color-Blue">hyfi.joblib.joblib</span>][<span class=" -Color -Color-Green">INFO</span>] - initialized batcher with &lt;hyfi.joblib.batch.batcher.Batcher object at 0x7f00e43217c0&gt;
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:01,674</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: corpus(1) in /home/yjlee/workspace/projects/nbcpu/workspace/topic/corpus
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:03,099</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: corpus(1) in /home/yjlee/workspace/projects/nbcpu/workspace/topic/corpus
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:03,100</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: model(0) in /home/yjlee/workspace/projects/nbcpu/workspace/topic/model
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:03,805</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: corpus(1) in /home/yjlee/workspace/projects/nbcpu/workspace/topic/corpus
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:05,521</span>][<span class=" -Color -Color-Blue">hyfi.batch.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Setting seed to 3184339343
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:05,521</span>][<span class=" -Color -Color-Blue">hyfi.batch.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Init batch - Batch name: model, Batch num: 0
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:06,125</span>][<span class=" -Color -Color-Blue">hyfi.batch.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Setting seed to 3213887147
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:06,125</span>][<span class=" -Color -Color-Blue">hyfi.batch.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Init batch - Batch name: corpus, Batch num: 0
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:06,292</span>][<span class=" -Color -Color-Blue">hyfi.batch.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Init batch - Batch name: corpus, Batch num: 1
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:06,292</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: corpus(1) in /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty_filtered/corpus
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:06,293</span>][<span class=" -Color -Color-Blue">hyfi.batch.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Init batch - Batch name: model, Batch num: 4
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:06,293</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: model(4) in /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty_filtered/model
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:07,065</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: corpus(1) in /home/yjlee/workspace/projects/nbcpu/workspace/topic/corpus
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:07,065</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: runner(1) in /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty_filtered/runner
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:07,065</span>][<span class=" -Color -Color-Blue">hyfi.workflow.workflow</span>][<span class=" -Color -Color-Green">INFO</span>] - Running task [nbcpu-topic_uncertainty_filtered] with [run={} verbose=False uses=&#39;nbcpu-topic_uncertainty_filtered&#39;]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:07,066</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - &gt; Loading config for batch_name: model batch_num: -1
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:07,066</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Loading config from /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty_filtered/model/configs/model(2)_config.yaml
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:07,096</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Merging config with the loaded config
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:07,125</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Updating config with config_kwargs: {}
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:08,623</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: corpus(0) in /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty_filtered/corpus
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:08,624</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: model(2) in /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty_filtered/model
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:08,637</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Model loaded from /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty_filtered/model/models/LDA_model(2)_k(5).mdl
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:08,638</span>][<span class=" -Color -Color-Blue">hyfi.utils.iolibs</span>][<span class=" -Color -Color-Green">INFO</span>] - Processing [1] files from [&#39;/home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty_filtered/model/outputs/LDA_model(2)_k(5)-ll_per_word.csv&#39;]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:08,638</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.load</span>][<span class=" -Color -Color-Green">INFO</span>] - Loading data from /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty_filtered/model/outputs/LDA_model(2)_k(5)-ll_per_word.csv
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:08,640</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.load</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to load data: 0:00:00.002268
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:08,641</span>][<span class=" -Color -Color-Blue">hyfi.utils.iolibs</span>][<span class=" -Color -Color-Green">INFO</span>] - Processing [1] files from [&#39;/home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty_filtered/model/outputs/LDA_model(2)_k(5)-doc_topic_dists.parquet&#39;]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:08,641</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.load</span>][<span class=" -Color -Color-Green">INFO</span>] - Loading data from /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty_filtered/model/outputs/LDA_model(2)_k(5)-doc_topic_dists.parquet
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:08,739</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.load</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to load data: 0:00:00.097628
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:08,739</span>][<span class=" -Color -Color-Blue">hyfi.utils.iolibs</span>][<span class=" -Color -Color-Green">INFO</span>] - Processing [1] files from [&#39;/home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty_filtered/model/outputs/LDA_model(2)_k(5)-topic_term_dists.parquet&#39;]
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:08,740</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.load</span>][<span class=" -Color -Color-Green">INFO</span>] - Loading data from /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty_filtered/model/outputs/LDA_model(2)_k(5)-topic_term_dists.parquet
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:08,761</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.load</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to load data: 0:00:00.021842
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:08,762</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - Loading corpus...
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:08,762</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - Processing documents in the column &#39;tokens&#39;...
+[<span class=" -Color -Color-Cyan">2023-08-15 19:46:43,286</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - Total 27594 documents are loaded.
+[<span class=" -Color -Color-Cyan">2023-08-15 19:47:02,935</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving dataframe to /home/yjlee/workspace/projects/nbcpu/workspace/topic/corpus/corpus_doc_ids.parquet
+[<span class=" -Color -Color-Cyan">2023-08-15 19:47:02,958</span>][<span class=" -Color -Color-Blue">hyfi.composer.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving config to /home/yjlee/workspace/projects/nbcpu/workspace/topic/corpus/configs/corpus(1)_config.json
+[<span class=" -Color -Color-Cyan">2023-08-15 19:47:02,959</span>][<span class=" -Color -Color-Blue">hyfi.composer.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving config to /home/yjlee/workspace/projects/nbcpu/workspace/topic/corpus/configs/corpus(1)_config.yaml
+[<span class=" -Color -Color-Cyan">2023-08-15 19:47:04,126</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Number of documents inferred: 27594
+[<span class=" -Color -Color-Cyan">2023-08-15 19:47:04,176</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Inferred topics:
+          id    topic0    topic1    topic2    topic3    topic4  log_likelihood
+0  501330943  0.000177  0.000333  0.000149  0.999217  0.000125     -451.052487
+1  501326169  0.001222  0.995933  0.001027  0.000954  0.000864      -63.390180
+2  501325554  0.067655  0.932007  0.000122  0.000113  0.000103     -557.345116
+3  501322478  0.000243  0.999190  0.000205  0.000190  0.000172     -315.419008
+4  501321914  0.999414  0.000262  0.000117  0.000109  0.000098     -569.363809
+[<span class=" -Color -Color-Cyan">2023-08-15 19:47:04,188</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving dataframe to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty_filtered/model/outputs/inferred_topics/LDA_model(2)_k(5)-inferred_doc_topic_dists.parquet
+[<span class=" -Color -Color-Cyan">2023-08-15 19:47:04,276</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to save data: 0:00:00.087966
+[<span class=" -Color -Color-Cyan">2023-08-15 19:47:04,277</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Inferred topics saved to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty_filtered/model/outputs/inferred_topics/LDA_model(2)_k(5)-inferred_doc_topic_dists.parquet
+
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="model-results-of-the-second-stage-uncertainty-model">
+<h2>Model Results of the Second Stage Uncertainty Model<a class="headerlink" href="#model-results-of-the-second-stage-uncertainty-model" title="Permalink to this heading">#</a></h2>
+<p>The second stage uncertainty model has been applied to a refined corpus of 6,917 documents and 259,912 words, utilizing 233 out of 46,850 total vocabs. The model’s configuration reflects the specific focus on uncertainty, with 5 topics and tailored hyperparameters.</p>
+<section id="topics-and-interpretation">
+<h3>Topics and Interpretation<a class="headerlink" href="#topics-and-interpretation" title="Permalink to this heading">#</a></h3>
+<p>The topics generated by the model align with the priors and provide insights into different facets of uncertainty:</p>
+<ul class="simple">
+<li><p><strong>Topic #0</strong>: This topic captures the dynamics of risk and uncertainty in economic recovery. Terms like “risk,” “uncertainty,” “slowdown,” and “concern” reflect the challenges and uncertainties in economic growth and asset management.</p></li>
+<li><p><strong>Topic #1</strong>: Focused on strategies to mitigate uncertainty, this topic includes terms such as “improve,” “ensure,” “strengthen,” and “collaboration.” It represents efforts to enhance technical capabilities, establish strategic collaborations, and achieve relevant goals.</p></li>
+<li><p><strong>Topic #2</strong>: Reflecting economic responses to uncertainty, this topic includes terms like “cut,” “hike,” “fell,” and “fear.” It captures the volatility and concerns related to financial markets and economic indicators.</p></li>
+<li><p><strong>Topic #3</strong>: This topic emphasizes reform and goal-oriented strategies to address uncertainty. Terms like “reform,” “reduce,” “target,” and “improve” signify a focus on long-term planning and recovery.</p></li>
+<li><p><strong>Topic #4</strong>: Concentrating on socio-economic aspects, this topic includes terms like “poor,” “income,” “vulnerable,” and “efficiency.” It reflects the challenges and strategies related to poverty reduction, income enhancement, and resilience building.</p></li>
+</ul>
+<p><a class="reference internal" href="#fig-lda-wordcloud-uncertainty-2nd"><span class="std std-numref">Fig. 5</span></a> shows the wordcloud of the top 500 words in each topic from the LDA model with 5 topics and uncertainty prior.</p>
+<figure class="align-default" id="fig-lda-wordcloud-uncertainty-2nd">
+<img alt="../../_images/LDA_model(2)_k(5)_wordcloud_00.png" src="../../_images/LDA_model(2)_k(5)_wordcloud_00.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Wordcloud of the top 500 words in each topic from the LDA model with 5 topics and uncertainty prior.</span><a class="headerlink" href="#fig-lda-wordcloud-uncertainty-2nd" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="quantifying-central-bank-policy-uncertainty">
+<h2>Quantifying Central Bank Policy Uncertainty<a class="headerlink" href="#quantifying-central-bank-policy-uncertainty" title="Permalink to this heading">#</a></h2>
+<p>In the research aimed at quantifying Central Bank Policy Uncertainty, the second stage uncertainty model has yielded insights into different aspects and stages of uncertainty, particularly focusing on topics 0, 1, and 2. These topics collectively encapsulate the complexity of central bank policy uncertainty.</p>
+<section id="topic-0-early-stage-of-uncertainty">
+<h3>Topic 0: Early Stage of Uncertainty<a class="headerlink" href="#topic-0-early-stage-of-uncertainty" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Interpretation</strong>: This topic captures the early indicators and dynamics of risk and uncertainty, reflecting terms like “risk,” “recovery,” “slow,” and “uncertainty.”</p></li>
+<li><p><strong>Relevance</strong>: It represents the early stage of uncertainty where economic challenges and asset management concerns begin to emerge, setting the stage for potential central bank interventions.</p></li>
+</ul>
+</section>
+<section id="topic-1-reactive-measures">
+<h3>Topic 1: Reactive Measures<a class="headerlink" href="#topic-1-reactive-measures" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Interpretation</strong>: Focused on mitigation strategies, this topic includes terms such as “improve,” “ensure,” “strengthen,” and “framework.”</p></li>
+<li><p><strong>Relevance</strong>: It signifies the reactive measures that might be employed to enhance technical capabilities, establish strategic collaborations, and achieve relevant goals in response to unfolding uncertainties.</p></li>
+</ul>
+</section>
+<section id="topic-2-central-bank-actions">
+<h3>Topic 2: Central Bank Actions<a class="headerlink" href="#topic-2-central-bank-actions" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Interpretation</strong>: Reflecting direct economic responses, this topic includes terms like “cut,” “hike,” “fell,” and “fear.”</p></li>
+<li><p><strong>Relevance</strong>: It captures the actions of the central bank, such as interest rate cuts or hikes, and the associated market reactions and fears. This topic is directly related to the central bank’s policy decisions in the face of economic uncertainty.</p></li>
+</ul>
+<p>The three relevant topics provide a comprehensive view of central bank policy uncertainty, delineating the early stage of uncertainty, the reactive measures, and the specific actions of the central bank. They may represent different stages of uncertainty, each dealing with various facets of central bank policy. This nuanced understanding enhances the ability to quantify and analyze central bank policy uncertainty, offering valuable insights for policymakers, economists, and financial analysts. The model’s coherence and alignment with the research objectives underscore its effectiveness in exploring the multifaceted nature of uncertainty within the context of central banking.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "entelecheia/nbcpu",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./supplementary/topic-uncertainty"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Topic Modeling for Uncertainty Analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../analysis/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Topic analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters">Model Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#priors">Priors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-topics">Number of Topics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-details">Configuration Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-workflow">Running the Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-results-of-the-second-stage-uncertainty-model">Model Results of the Second Stage Uncertainty Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-and-interpretation">Topics and Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-central-bank-policy-uncertainty">Quantifying Central Bank Policy Uncertainty</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-0-early-stage-of-uncertainty">Topic 0: Early Stage of Uncertainty</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-1-reactive-measures">Topic 1: Reactive Measures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-2-central-bank-actions">Topic 2: Central Bank Actions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Young Joon Lee
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
