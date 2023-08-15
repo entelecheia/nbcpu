@@ -89,7 +89,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="https://assets.entelecheia.ai/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Topic modeling" href="../topic/index.html" />
+    <link rel="next" title="Topic Modeling without Prior" href="../topic/index.html" />
     <link rel="prev" title="Crawling Khmer Times" href="../crawling/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -186,7 +186,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Supplemental Material</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../crawling/index.html">Crawling Khmer Times</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Processing the Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../topic/index.html">Topic modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topic/index.html">Topic Modeling without Prior</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html">Topic analysis</a></li>
 </ul>
 </li>
@@ -480,106 +480,28 @@ document.write(`
 <li><p><strong>Stopwords Settings:</strong> Defines the rules for removing common words that may not contribute to the analysis, such as pronouns, conjunctions, determiners, etc.</p></li>
 <li><p><strong>Tagger Settings:</strong> Utilizes the NLTK tagger for part-of-speech tagging, with options for lemmatization and stemming.</p></li>
 </ul>
-<p>The detailed JSON configuration for tokenization is provided in the code snippet below:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nbcpu<span class="w"> </span>+tokenizer<span class="o">=</span>nbcpu<span class="w"> </span><span class="nv">dryrun</span><span class="o">=</span>true
+<p>The detailed configuration for tokenization is shown below:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nltk_universal</span>
+
+<span class="nt">stopwords</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stopwords_fn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;lambda</span><span class="nv"> </span><span class="s">x:</span><span class="nv"> </span><span class="s">len(x)</span><span class="nv"> </span><span class="s">&lt;=</span><span class="nv"> </span><span class="s">2&quot;</span>
+<span class="w">  </span><span class="c1"># stopwords_list:</span>
+<span class="w">  </span><span class="nt">nltk_stopwords_lang</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">english</span>
+<span class="w">  </span><span class="nt">stopwords_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${__project_root_path__:}/tests/assets/stopwords/nbcpu-tokenizer.txt</span>
+<span class="w">  </span><span class="nt">verbose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">lowercase</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">include_whitespace_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">strip_pos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">tagger</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">lemmatize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">verbose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## Command Line Interface for HyFI ##
-{&#39;about&#39;: {&#39;authors&#39;: &#39;Young Joon Lee &lt;entelecheia@hotmail.com&gt;&#39;,
-           &#39;description&#39;: &#39;Quantifying Central Bank Policy Uncertainty in a &#39;
-                          &#39;Highly Dollarized Economy: A Topic Modeling &#39;
-                          &#39;Approach&#39;,
-           &#39;homepage&#39;: &#39;https://nbcpu.entelecheia.ai&#39;,
-           &#39;license&#39;: &#39;MIT&#39;,
-           &#39;name&#39;: &#39;Measuring Central Bank Policy Uncertainty&#39;},
- &#39;debug_mode&#39;: False,
- &#39;dryrun&#39;: True,
- &#39;hydra_log_dir&#39;: &#39;/home/yjlee/.hyfi/logs/hydra&#39;,
- &#39;ignore_warnings&#39;: True,
- &#39;logging_level&#39;: &#39;WARNING&#39;,
- &#39;noop&#39;: False,
- &#39;resolve&#39;: True,
- &#39;tokenizer&#39;: {&#39;_config_group_&#39;: &#39;/tokenizer&#39;,
-               &#39;_config_name_&#39;: &#39;nltk&#39;,
-               &#39;_target_&#39;: &#39;lexikanon.tokenizers.NLTKTokenizer&#39;,
-               &#39;include_whitespace_token&#39;: False,
-               &#39;lowercase&#39;: True,
-               &#39;normalizer&#39;: {&#39;_config_group_&#39;: &#39;/normalizer&#39;,
-                              &#39;_config_name_&#39;: &#39;formal_en&#39;,
-                              &#39;_target_&#39;: &#39;lexikanon.normalizers.Normalizer&#39;,
-                              &#39;ftfy&#39;: {&#39;decode_inconsistent_utf8&#39;: True,
-                                       &#39;fix_c1_controls&#39;: True,
-                                       &#39;fix_character_width&#39;: True,
-                                       &#39;fix_encoding&#39;: True,
-                                       &#39;fix_latin_ligatures&#39;: True,
-                                       &#39;fix_line_breaks&#39;: True,
-                                       &#39;fix_surrogates&#39;: True,
-                                       &#39;max_decode_length&#39;: 1000000,
-                                       &#39;normalization&#39;: &#39;NFKC&#39;,
-                                       &#39;remove_control_chars&#39;: True,
-                                       &#39;remove_terminal_escapes&#39;: True,
-                                       &#39;replace_lossy_sequences&#39;: True,
-                                       &#39;restore_byte_a0&#39;: True,
-                                       &#39;uncurl_quotes&#39;: True,
-                                       &#39;unescape_html&#39;: &#39;auto&#39;},
-                              &#39;hanja2hangle&#39;: False,
-                              &#39;num_repeats&#39;: 2,
-                              &#39;spaces&#39;: {&#39;collapse_whitespaces&#39;: True,
-                                         &#39;fix_whitespaces&#39;: True,
-                                         &#39;num_spaces_for_tab&#39;: 4,
-                                         &#39;replace_tabs&#39;: True,
-                                         &#39;strip&#39;: True},
-                              &#39;special_characters&#39;: {&#39;fix_ellipsis&#39;: True,
-                                                     &#39;fix_emoticons&#39;: False,
-                                                     &#39;fix_hyphens&#39;: True,
-                                                     &#39;fix_slashes&#39;: True,
-                                                     &#39;fix_tildes&#39;: True,
-                                                     &#39;regular_parentheses_only&#39;: False,
-                                                     &#39;single_quotes_only&#39;: False}},
-               &#39;noun_postags&#39;: [&#39;NOUN&#39;],
-               &#39;postag_delim&#39;: &#39;/&#39;,
-               &#39;postag_length&#39;: None,
-               &#39;postags&#39;: [&#39;NOUN&#39;, &#39;VERB&#39;, &#39;PRT&#39;, &#39;ADJ&#39;, &#39;ADV&#39;],
-               &#39;punct_postags&#39;: [&#39;.&#39;],
-               &#39;sentence_separator&#39;: &#39;\\n&#39;,
-               &#39;stop_postags&#39;: [&#39;PRON&#39;, &#39;ADP&#39;, &#39;CONJ&#39;, &#39;DET&#39;, &#39;NUM&#39;, &#39;X&#39;, &#39;.&#39;],
-               &#39;stopwords&#39;: {&#39;_config_group_&#39;: &#39;/stopwords&#39;,
-                             &#39;_config_name_&#39;: &#39;__init__&#39;,
-                             &#39;_target_&#39;: &#39;lexikanon.stopwords.Stopwords&#39;,
-                             &#39;lowercase&#39;: True,
-                             &#39;name&#39;: &#39;stopwords&#39;,
-                             &#39;nltk_stopwords_lang&#39;: &#39;english&#39;,
-                             &#39;stopwords_fn&#39;: &#39;lambda x: len(x) &lt;= 2&#39;,
-                             &#39;stopwords_list&#39;: None,
-                             &#39;stopwords_path&#39;: &#39;/home/yjlee/.hyfi/logs/hydra/hyfi/2023-08-15/2023-08-15_16-06-11/tests/assets/stopwords/nbcpu-tokenizer.txt&#39;,
-                             &#39;verbose&#39;: False},
-               &#39;strip_pos&#39;: False,
-               &#39;tagger&#39;: {&#39;_config_group_&#39;: &#39;/tokenizer/tagger&#39;,
-                          &#39;_config_name_&#39;: &#39;nltk&#39;,
-                          &#39;_target_&#39;: &#39;lexikanon.tokenizers.nltk.NLTKTagger&#39;,
-                          &#39;language&#39;: &#39;english&#39;,
-                          &#39;lemmatize&#39;: True,
-                          &#39;lemmatizer&#39;: {&#39;_target_&#39;: &#39;nltk.stem.WordNetLemmatizer&#39;},
-                          &#39;stem&#39;: False,
-                          &#39;stemmer&#39;: {&#39;_target_&#39;: &#39;nltk.stem.PorterStemmer&#39;},
-                          &#39;tagset&#39;: &#39;universal&#39;,
-                          &#39;verbose&#39;: False},
-               &#39;tokenize_each_word&#39;: False,
-               &#39;verbose&#39;: False,
-               &#39;wordpieces_prefix&#39;: &#39;##&#39;},
- &#39;verbose&#39;: False,
- &#39;version&#39;: &#39;0.13.0&#39;}
-
-Dryrun is enabled, not running the HyFI config
-
-
+<p>You can also use the <code class="docutils literal notranslate"><span class="pre">nbcpu</span> <span class="pre">+tokenizer=nbcpu</span></code> command to see the default configuration. The <code class="docutils literal notranslate"><span class="pre">dryrun=true</span></code> option is used to print the configuration without running the tokenizer.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nbcpu<span class="w"> </span>+tokenizer<span class="o">=</span>nbcpu<span class="w"> </span><span class="nv">dryrun</span><span class="o">=</span><span class="nb">true</span>
 </pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="tokenization-workflow">
@@ -593,386 +515,81 @@ Dryrun is enabled, not running the HyFI config
 <li><p><strong>Evaluating and Filtering Data:</strong> Applies expressions to evaluate specific columns, filters data based on queries, and samples the data if needed.</p></li>
 <li><p><strong>Printing Head and Tail:</strong> Prints the beginning and end of the DataFrame for verification.</p></li>
 </ul>
-<p>The detailed YAML configuration for the tokenization workflow is provided in the code snippet below:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nbcpu<span class="w"> </span>+pipeline<span class="o">=</span>nbcpu-datasets_tokenize<span class="w"> </span><span class="nv">dryrun</span><span class="o">=</span>true
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## Command Line Interface for HyFI ##
-{&#39;about&#39;: {&#39;authors&#39;: &#39;Young Joon Lee &lt;entelecheia@hotmail.com&gt;&#39;,
-           &#39;description&#39;: &#39;Quantifying Central Bank Policy Uncertainty in a &#39;
-                          &#39;Highly Dollarized Economy: A Topic Modeling &#39;
-                          &#39;Approach&#39;,
-           &#39;homepage&#39;: &#39;https://nbcpu.entelecheia.ai&#39;,
-           &#39;license&#39;: &#39;MIT&#39;,
-           &#39;name&#39;: &#39;Measuring Central Bank Policy Uncertainty&#39;},
- &#39;debug_mode&#39;: False,
- &#39;dryrun&#39;: True,
- &#39;hydra_log_dir&#39;: &#39;/home/yjlee/.hyfi/logs/hydra&#39;,
- &#39;ignore_warnings&#39;: True,
- &#39;logging_level&#39;: &#39;WARNING&#39;,
- &#39;noop&#39;: False,
- &#39;pipeline&#39;: {&#39;dataframe_eval_columns&#39;: {&#39;desc&#39;: None,
-                                         &#39;env&#39;: None,
-                                         &#39;name&#39;: None,
-                                         &#39;pipe_obj_arg_name&#39;: None,
-                                         &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
-                                         &#39;return_pipe_obj&#39;: False,
-                                         &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.basic.DSBasic.dataframe_eval_columns&#39;,
-                                                 &#39;engine&#39;: &#39;python&#39;,
-                                                 &#39;expressions&#39;: None,
-                                                 &#39;verbose&#39;: False},
-                                         &#39;use_pipe_obj&#39;: True,
-                                         &#39;verbose&#39;: False},
-              &#39;dataframe_print_head_and_tail&#39;: {&#39;desc&#39;: None,
-                                                &#39;env&#39;: None,
-                                                &#39;name&#39;: None,
-                                                &#39;pipe_obj_arg_name&#39;: None,
-                                                &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
-                                                &#39;return_pipe_obj&#39;: False,
-                                                &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.basic.DSBasic.dataframe_print_head_and_tail&#39;,
-                                                        &#39;columns&#39;: None,
-                                                        &#39;num_heads&#39;: 5,
-                                                        &#39;num_tails&#39;: 5,
-                                                        &#39;verbose&#39;: False},
-                                                &#39;use_pipe_obj&#39;: True,
-                                                &#39;verbose&#39;: False},
-              &#39;dataframe_select_columns&#39;: {&#39;desc&#39;: None,
-                                           &#39;env&#39;: None,
-                                           &#39;name&#39;: None,
-                                           &#39;pipe_obj_arg_name&#39;: None,
-                                           &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
-                                           &#39;return_pipe_obj&#39;: False,
-                                           &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.basic.DSBasic.dataframe_select_columns&#39;,
-                                                   &#39;columns&#39;: None,
-                                                   &#39;verbose&#39;: False},
-                                           &#39;use_pipe_obj&#39;: True,
-                                           &#39;verbose&#39;: False},
-              &#39;dataset_to_pandas&#39;: {&#39;desc&#39;: None,
-                                    &#39;env&#39;: None,
-                                    &#39;name&#39;: None,
-                                    &#39;pipe_obj_arg_name&#39;: None,
-                                    &#39;pipe_target&#39;: &#39;hyfi.pipe.general_instance_methods&#39;,
-                                    &#39;return_pipe_obj&#39;: False,
-                                    &#39;run&#39;: {&#39;_target_&#39;: &#39;to_pandas&#39;},
-                                    &#39;use_pipe_obj&#39;: True,
-                                    &#39;verbose&#39;: True},
-              &#39;extract_tokens&#39;: {&#39;desc&#39;: None,
-                                 &#39;env&#39;: None,
-                                 &#39;name&#39;: None,
-                                 &#39;pipe_obj_arg_name&#39;: None,
-                                 &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
-                                 &#39;return_pipe_obj&#39;: False,
-                                 &#39;run&#39;: {&#39;_target_&#39;: &#39;lexikanon.pipes.tokenize.extract_tokens&#39;,
-                                         &#39;batch_size&#39;: 1000,
-                                         &#39;batched&#39;: True,
-                                         &#39;extracted_col&#39;: &#39;extracted_tokens&#39;,
-                                         &#39;load_from_cache_file&#39;: True,
-                                         &#39;nouns_only&#39;: False,
-                                         &#39;num_heads&#39;: 1,
-                                         &#39;num_tails&#39;: 1,
-                                         &#39;num_workers&#39;: 1,
-                                         &#39;postag_delim&#39;: None,
-                                         &#39;postag_length&#39;: None,
-                                         &#39;postags&#39;: None,
-                                         &#39;remove_columns&#39;: None,
-                                         &#39;stop_postags&#39;: None,
-                                         &#39;strip_pos&#39;: None,
-                                         &#39;token_col&#39;: &#39;tokens&#39;,
-                                         &#39;tokenizer&#39;: &#39;simple&#39;,
-                                         &#39;verbose&#39;: False},
-                                 &#39;use_pipe_obj&#39;: True,
-                                 &#39;verbose&#39;: False},
-              &#39;filter_and_sample_data&#39;: {&#39;columns_to_apply&#39;: None,
-                                         &#39;desc&#39;: None,
-                                         &#39;env&#39;: None,
-                                         &#39;name&#39;: None,
-                                         &#39;num_workers&#39;: 1,
-                                         &#39;pipe_obj_arg_name&#39;: None,
-                                         &#39;pipe_target&#39;: &#39;hyfi.pipe.dataframe_external_funcs&#39;,
-                                         &#39;return_pipe_obj&#39;: False,
-                                         &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.slice.DSSlice.filter_and_sample_data&#39;,
-                                                 &#39;discard_filename&#39;: None,
-                                                 &#39;output_dir&#39;: &#39;.&#39;,
-                                                 &#39;queries&#39;: None,
-                                                 &#39;returning_data&#39;: &#39;train&#39;,
-                                                 &#39;sample_filename&#39;: None,
-                                                 &#39;sample_seed&#39;: 42,
-                                                 &#39;sample_size&#39;: None,
-                                                 &#39;train_filename&#39;: &#39;train.parquet&#39;,
-                                                 &#39;verbose&#39;: False},
-                                         &#39;use_batcher&#39;: False,
-                                         &#39;use_pipe_obj&#39;: True,
-                                         &#39;verbose&#39;: False},
-              &#39;filter_data_by_queries&#39;: {&#39;columns_to_apply&#39;: None,
-                                         &#39;desc&#39;: None,
-                                         &#39;env&#39;: None,
-                                         &#39;name&#39;: None,
-                                         &#39;num_workers&#39;: 1,
-                                         &#39;pipe_obj_arg_name&#39;: None,
-                                         &#39;pipe_target&#39;: &#39;hyfi.pipe.dataframe_external_funcs&#39;,
-                                         &#39;return_pipe_obj&#39;: False,
-                                         &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.slice.DSSlice.filter_data_by_queries&#39;,
-                                                 &#39;queries&#39;: None,
-                                                 &#39;verbose&#39;: False},
-                                         &#39;use_batcher&#39;: False,
-                                         &#39;use_pipe_obj&#39;: True,
-                                         &#39;verbose&#39;: False},
-              &#39;initial_object&#39;: None,
-              &#39;load_dataframe&#39;: {&#39;columns_to_apply&#39;: None,
-                                 &#39;desc&#39;: None,
-                                 &#39;env&#39;: None,
-                                 &#39;name&#39;: None,
-                                 &#39;num_workers&#39;: 1,
-                                 &#39;pipe_obj_arg_name&#39;: None,
-                                 &#39;pipe_target&#39;: &#39;hyfi.pipe.dataframe_external_funcs&#39;,
-                                 &#39;return_pipe_obj&#39;: False,
-                                 &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.load.DSLoad.load_dataframe&#39;,
-                                         &#39;columns&#39;: None,
-                                         &#39;data_dir&#39;: None,
-                                         &#39;data_file&#39;: None,
-                                         &#39;filetype&#39;: None,
-                                         &#39;index_col&#39;: None,
-                                         &#39;verbose&#39;: False},
-                                 &#39;use_batcher&#39;: False,
-                                 &#39;use_pipe_obj&#39;: False,
-                                 &#39;verbose&#39;: False},
-              &#39;load_dataframes&#39;: {&#39;columns_to_apply&#39;: None,
-                                  &#39;desc&#39;: None,
-                                  &#39;env&#39;: None,
-                                  &#39;name&#39;: None,
-                                  &#39;num_workers&#39;: 1,
-                                  &#39;pipe_obj_arg_name&#39;: None,
-                                  &#39;pipe_target&#39;: &#39;hyfi.pipe.dataframe_external_funcs&#39;,
-                                  &#39;return_pipe_obj&#39;: False,
-                                  &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.load.DSLoad.load_dataframes&#39;,
-                                          &#39;concatenate&#39;: False,
-                                          &#39;data_dir&#39;: None,
-                                          &#39;data_files&#39;: None,
-                                          &#39;filetype&#39;: None,
-                                          &#39;ignore_index&#39;: False,
-                                          &#39;split&#39;: None,
-                                          &#39;use_cached&#39;: False,
-                                          &#39;verbose&#39;: False},
-                                  &#39;use_batcher&#39;: False,
-                                  &#39;use_pipe_obj&#39;: False,
-                                  &#39;verbose&#39;: False},
-              &#39;load_dataset&#39;: {&#39;desc&#39;: None,
-                               &#39;env&#39;: None,
-                               &#39;name&#39;: None,
-                               &#39;pipe_obj_arg_name&#39;: None,
-                               &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
-                               &#39;return_pipe_obj&#39;: False,
-                               &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.load.DSLoad.load_dataset&#39;,
-                                       &#39;cache_dir&#39;: None,
-                                       &#39;data_dir&#39;: None,
-                                       &#39;data_files&#39;: None,
-                                       &#39;download_config&#39;: None,
-                                       &#39;download_mode&#39;: None,
-                                       &#39;features&#39;: None,
-                                       &#39;name&#39;: None,
-                                       &#39;num_proc&#39;: None,
-                                       &#39;path&#39;: None,
-                                       &#39;split&#39;: None,
-                                       &#39;verification_mode&#39;: None},
-                               &#39;use_pipe_obj&#39;: False,
-                               &#39;verbose&#39;: False},
-              &#39;load_dataset_from_disk&#39;: {&#39;desc&#39;: None,
-                                         &#39;env&#39;: None,
-                                         &#39;name&#39;: None,
-                                         &#39;pipe_obj_arg_name&#39;: None,
-                                         &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
-                                         &#39;return_pipe_obj&#39;: False,
-                                         &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.load.DSLoad.load_dataset_from_disk&#39;,
-                                                 &#39;dataset_path&#39;: None,
-                                                 &#39;keep_in_memory&#39;: None,
-                                                 &#39;num_heads&#39;: 1,
-                                                 &#39;num_tails&#39;: 1,
-                                                 &#39;storage_options&#39;: None,
-                                                 &#39;verbose&#39;: False},
-                                         &#39;use_pipe_obj&#39;: False,
-                                         &#39;verbose&#39;: False},
-              &#39;merge_dataframes&#39;: {&#39;desc&#39;: None,
-                                   &#39;env&#39;: None,
-                                   &#39;name&#39;: None,
-                                   &#39;pipe_obj_arg_name&#39;: None,
-                                   &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
-                                   &#39;return_pipe_obj&#39;: False,
-                                   &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.combine.DSCombine.merge_dataframes&#39;,
-                                           &#39;copy&#39;: True,
-                                           &#39;how&#39;: &#39;inner&#39;,
-                                           &#39;indicator&#39;: False,
-                                           &#39;left_index&#39;: False,
-                                           &#39;left_on&#39;: None,
-                                           &#39;on&#39;: None,
-                                           &#39;right&#39;: None,
-                                           &#39;right_index&#39;: False,
-                                           &#39;right_on&#39;: None,
-                                           &#39;sort&#39;: False,
-                                           &#39;suffixes&#39;: [&#39;_x&#39;, &#39;_y&#39;],
-                                           &#39;validate&#39;: None,
-                                           &#39;verbose&#39;: False},
-                                   &#39;use_pipe_obj&#39;: True,
-                                   &#39;verbose&#39;: False},
-              &#39;sample_data&#39;: {&#39;columns_to_apply&#39;: None,
-                              &#39;desc&#39;: None,
-                              &#39;env&#39;: None,
-                              &#39;name&#39;: None,
-                              &#39;num_workers&#39;: 1,
-                              &#39;pipe_obj_arg_name&#39;: None,
-                              &#39;pipe_target&#39;: &#39;hyfi.pipe.dataframe_external_funcs&#39;,
-                              &#39;return_pipe_obj&#39;: False,
-                              &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.slice.DSSlice.sample_data&#39;,
-                                      &#39;group_by&#39;: None,
-                                      &#39;remove_columns&#39;: None,
-                                      &#39;sample_seed&#39;: 123,
-                                      &#39;sample_size_per_group&#39;: None,
-                                      &#39;value_col&#39;: None,
-                                      &#39;verbose&#39;: False},
-                              &#39;use_batcher&#39;: False,
-                              &#39;use_pipe_obj&#39;: True,
-                              &#39;verbose&#39;: False},
-              &#39;sample_dataset&#39;: {&#39;desc&#39;: None,
-                                 &#39;env&#39;: None,
-                                 &#39;name&#39;: None,
-                                 &#39;pipe_obj_arg_name&#39;: None,
-                                 &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
-                                 &#39;return_pipe_obj&#39;: False,
-                                 &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.slice.DSSlice.sample_dataset&#39;,
-                                         &#39;num_heads&#39;: 1,
-                                         &#39;num_tails&#39;: 1,
-                                         &#39;randomize&#39;: True,
-                                         &#39;sample_seed&#39;: 42,
-                                         &#39;sample_size&#39;: 100,
-                                         &#39;split&#39;: None,
-                                         &#39;verbose&#39;: False},
-                                 &#39;use_pipe_obj&#39;: True,
-                                 &#39;verbose&#39;: False},
-              &#39;save_dataframes&#39;: {&#39;columns_to_apply&#39;: None,
-                                  &#39;desc&#39;: None,
-                                  &#39;env&#39;: None,
-                                  &#39;name&#39;: None,
-                                  &#39;num_workers&#39;: 1,
-                                  &#39;pipe_obj_arg_name&#39;: None,
-                                  &#39;pipe_target&#39;: &#39;hyfi.pipe.dataframe_external_funcs&#39;,
-                                  &#39;return_pipe_obj&#39;: False,
-                                  &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.save.DSSave.save_dataframes&#39;,
-                                          &#39;columns&#39;: None,
-                                          &#39;data_dir&#39;: None,
-                                          &#39;data_file&#39;: None,
-                                          &#39;filetype&#39;: &#39;parquet&#39;,
-                                          &#39;index&#39;: False,
-                                          &#39;suffix&#39;: None,
-                                          &#39;verbose&#39;: False},
-                                  &#39;use_batcher&#39;: False,
-                                  &#39;use_pipe_obj&#39;: True,
-                                  &#39;verbose&#39;: False},
-              &#39;save_dataset_to_disk&#39;: {&#39;desc&#39;: None,
-                                       &#39;env&#39;: None,
-                                       &#39;name&#39;: None,
-                                       &#39;pipe_obj_arg_name&#39;: None,
-                                       &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
-                                       &#39;return_pipe_obj&#39;: False,
-                                       &#39;run&#39;: {&#39;_target_&#39;: &#39;hyfi.utils.datasets.save.DSSave.save_dataset_to_disk&#39;,
-                                               &#39;dataset_path&#39;: None,
-                                               &#39;max_shard_size&#39;: None,
-                                               &#39;num_proc&#39;: None,
-                                               &#39;num_shards&#39;: None,
-                                               &#39;storage_options&#39;: None,
-                                               &#39;verbose&#39;: False},
-                                       &#39;use_pipe_obj&#39;: True,
-                                       &#39;verbose&#39;: False},
-              &#39;steps&#39;: [{&#39;uses&#39;: &#39;load_dataset&#39;,
-                         &#39;verbose&#39;: True,
-                         &#39;with&#39;: {&#39;data_files&#39;: &#39;datasets/raw/khmer_articles.parquet&#39;,
-                                  &#39;path&#39;: &#39;parquet&#39;,
-                                  &#39;split&#39;: &#39;train&#39;}},
-                        {&#39;uses&#39;: &#39;sample_dataset&#39;,
-                         &#39;with&#39;: {&#39;randomize&#39;: True,
-                                  &#39;sample_size&#39;: 1000,
-                                  &#39;verbose&#39;: True}},
-                        {&#39;uses&#39;: &#39;tokenize_dataset&#39;,
-                         &#39;with&#39;: {&#39;load_from_cache_file&#39;: False,
-                                  &#39;num_workers&#39;: 1,
-                                  &#39;text_col&#39;: &#39;text&#39;,
-                                  &#39;token_col&#39;: &#39;tokenized&#39;,
-                                  &#39;tokenizer&#39;: &#39;nbcpu&#39;,
-                                  &#39;verbose&#39;: True}},
-                        {&#39;uses&#39;: &#39;extract_tokens&#39;,
-                         &#39;with&#39;: {&#39;extracted_col&#39;: &#39;tokens&#39;,
-                                  &#39;load_from_cache_file&#39;: False,
-                                  &#39;num_workers&#39;: 1,
-                                  &#39;strip_pos&#39;: True,
-                                  &#39;token_col&#39;: &#39;tokenized&#39;,
-                                  &#39;tokenizer&#39;: &#39;nbcpu&#39;,
-                                  &#39;verbose&#39;: True}},
-                        {&#39;uses&#39;: &#39;extract_tokens&#39;,
-                         &#39;with&#39;: {&#39;extracted_col&#39;: &#39;adjnouns&#39;,
-                                  &#39;load_from_cache_file&#39;: False,
-                                  &#39;num_workers&#39;: 1,
-                                  &#39;postags&#39;: [&#39;ADJ&#39;, &#39;NOUN&#39;],
-                                  &#39;strip_pos&#39;: True,
-                                  &#39;token_col&#39;: &#39;tokenized&#39;,
-                                  &#39;tokenizer&#39;: &#39;nbcpu&#39;,
-                                  &#39;verbose&#39;: True}},
-                        {&#39;uses&#39;: &#39;extract_tokens&#39;,
-                         &#39;with&#39;: {&#39;extracted_col&#39;: &#39;predicates&#39;,
-                                  &#39;load_from_cache_file&#39;: False,
-                                  &#39;num_workers&#39;: 1,
-                                  &#39;postags&#39;: [&#39;VERB&#39;, &#39;PRT&#39;, &#39;ADJ&#39;, &#39;ADV&#39;],
-                                  &#39;strip_pos&#39;: True,
-                                  &#39;token_col&#39;: &#39;tokenized&#39;,
-                                  &#39;tokenizer&#39;: &#39;nbcpu&#39;,
-                                  &#39;verbose&#39;: True}},
-                        {&#39;uses&#39;: &#39;dataset_to_pandas&#39;, &#39;verbose&#39;: True},
-                        {&#39;uses&#39;: &#39;dataframe_eval_columns&#39;,
-                         &#39;with&#39;: {&#39;expressions&#39;: {&#39;id&#39;: &quot;url.str.split(&#39;/&#39;).str[3]&quot;},
-                                  &#39;verbose&#39;: True}},
-                        {&#39;uses&#39;: &#39;filter_and_sample_data&#39;,
-                         &#39;with&#39;: {&#39;discard_filename&#39;: &#39;discard.parquet&#39;,
-                                  &#39;output_dir&#39;: &#39;datasets/processed/khmer_tokenized_sample&#39;,
-                                  &#39;queries&#39;: [&#39;tokens.str.len() &gt; 50&#39;],
-                                  &#39;train_filename&#39;: &#39;train.parquet&#39;,
-                                  &#39;verbose&#39;: True}},
-                        {&#39;uses&#39;: &#39;dataframe_print_head_and_tail&#39;,
-                         &#39;verbose&#39;: True,
-                         &#39;with&#39;: {&#39;columns&#39;: [&#39;id&#39;,
-                                              &#39;text&#39;,
-                                              &#39;tokens&#39;,
-                                              &#39;adjnouns&#39;,
-                                              &#39;predicates&#39;],
-                                  &#39;verbose&#39;: True}}],
-              &#39;tokenize_dataset&#39;: {&#39;desc&#39;: None,
-                                   &#39;env&#39;: None,
-                                   &#39;name&#39;: None,
-                                   &#39;pipe_obj_arg_name&#39;: None,
-                                   &#39;pipe_target&#39;: &#39;hyfi.pipe.general_external_funcs&#39;,
-                                   &#39;return_pipe_obj&#39;: False,
-                                   &#39;run&#39;: {&#39;_target_&#39;: &#39;lexikanon.pipes.tokenize.tokenize_dataset&#39;,
-                                           &#39;batch_size&#39;: 1000,
-                                           &#39;batched&#39;: True,
-                                           &#39;load_from_cache_file&#39;: True,
-                                           &#39;num_heads&#39;: 1,
-                                           &#39;num_tails&#39;: 1,
-                                           &#39;num_workers&#39;: 1,
-                                           &#39;remove_columns&#39;: None,
-                                           &#39;text_col&#39;: &#39;text&#39;,
-                                           &#39;token_col&#39;: &#39;tokens&#39;,
-                                           &#39;tokenizer&#39;: &#39;simple&#39;,
-                                           &#39;verbose&#39;: False},
-                                   &#39;use_pipe_obj&#39;: True,
-                                   &#39;verbose&#39;: False},
-              &#39;use_task_as_initial_object&#39;: False},
- &#39;resolve&#39;: True,
- &#39;verbose&#39;: False,
- &#39;version&#39;: &#39;0.13.0&#39;}
+<p>The detailed YAML configuration for the tokenization workflow is shown below:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu-datasets</span>
 
+<span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">load_dataset</span>
+<span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">data_files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datasets/raw/khmer_articles.parquet</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">parquet</span>
+<span class="w">      </span><span class="nt">split</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
+<span class="w">    </span><span class="nt">verbose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tokenize_dataset</span>
+<span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">tokenizer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu</span>
+<span class="w">      </span><span class="nt">num_workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${oc.select:global.num_workers,1}</span>
+<span class="w">      </span><span class="nt">text_col</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">text</span>
+<span class="w">      </span><span class="nt">token_col</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tokenized</span>
+<span class="w">      </span><span class="nt">load_from_cache_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">verbose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extract_tokens</span>
+<span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">tokenizer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu</span>
+<span class="w">      </span><span class="nt">num_workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${oc.select:global.num_workers,1}</span>
+<span class="w">      </span><span class="nt">token_col</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tokenized</span>
+<span class="w">      </span><span class="nt">extracted_col</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tokens</span>
+<span class="w">      </span><span class="nt">strip_pos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">load_from_cache_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">verbose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extract_tokens</span>
+<span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">tokenizer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu</span>
+<span class="w">      </span><span class="nt">num_workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${oc.select:global.num_workers,1}</span>
+<span class="w">      </span><span class="nt">token_col</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tokenized</span>
+<span class="w">      </span><span class="nt">extracted_col</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adjnouns</span>
+<span class="w">      </span><span class="nt">postags</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADJ</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOUN</span>
+<span class="w">      </span><span class="nt">strip_pos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">load_from_cache_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">verbose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extract_tokens</span>
+<span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">tokenizer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbcpu</span>
+<span class="w">      </span><span class="nt">num_workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${oc.select:global.num_workers,1}</span>
+<span class="w">      </span><span class="nt">token_col</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tokenized</span>
+<span class="w">      </span><span class="nt">extracted_col</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">predicates</span>
+<span class="w">      </span><span class="nt">postags</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VERB</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PRT</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADJ</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADV</span>
+<span class="w">      </span><span class="nt">strip_pos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">load_from_cache_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">verbose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataset_to_pandas</span>
+<span class="w">    </span><span class="nt">verbose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataframe_eval_columns</span>
+<span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">expressions</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;url.str.split(&#39;/&#39;).str[3]&quot;</span>
+<span class="w">      </span><span class="nt">verbose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter_and_sample_data</span>
+<span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">queries</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;tokens.str.len()</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">50&quot;</span>
+<span class="w">      </span><span class="nt">output_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datasets/processed/khmer_tokenized</span>
+<span class="w">      </span><span class="nt">train_filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train.parquet</span>
+<span class="w">      </span><span class="nt">discard_filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discard.parquet</span>
+<span class="w">      </span><span class="nt">verbose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataframe_print_head_and_tail</span>
+<span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">columns</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">id</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">text</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">tokens</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">adjnouns</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">predicates</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">verbose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">verbose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="execution">
@@ -1136,7 +753,7 @@ Map (num_proc=100): 100%|███████████| 1000/1000 [00:03&lt;
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Topic modeling</p>
+        <p class="prev-next-title">Topic Modeling without Prior</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

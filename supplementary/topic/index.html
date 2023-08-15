@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Topic modeling &#8212; Measuring Central Bank Policy Uncertainty</title>
+    <title>Topic Modeling without Prior &#8212; Measuring Central Bank Policy Uncertainty</title>
   
   
   
@@ -186,7 +186,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Supplemental Material</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../crawling/index.html">Crawling Khmer Times</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../processing/index.html">Processing the Data</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Topic modeling</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Topic Modeling without Prior</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html">Topic analysis</a></li>
 </ul>
 </li>
@@ -236,6 +236,55 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/entelecheia/nbcpu/blob/main/book/supplementary/topic/index.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -261,7 +310,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/entelecheia/nbcpu/edit/main/book/supplementary/topic/index.md" target="_blank"
+      <li><a href="https://github.com/entelecheia/nbcpu/edit/main/book/supplementary/topic/index.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -308,7 +357,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/supplementary/topic/index.md" target="_blank"
+      <li><a href="../../_sources/supplementary/topic/index.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -318,7 +367,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -377,7 +426,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -388,11 +439,33 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Topic modeling</h1>
+    <h1>Topic Modeling without Prior</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-details">Configuration Details</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-type-and-parameters">Model Type and Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#corpus-configuration">Corpus Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word-cloud-visualization">Word Cloud Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-configuration">Batch Configuration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-workflow">Execution Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-workflow">Running the Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coherence-values-and-selection-of-k">Coherence Values and Selection of k</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-the-appropriate-k">Selecting the Appropriate k</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-results">Model Results</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -402,25 +475,316 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="topic-modeling">
-<h1>Topic modeling<a class="headerlink" href="#topic-modeling" title="Permalink to this heading">#</a></h1>
-<p>Removed top words: [‘cambodia’, ‘year’, ‘country’, ‘government’, ‘percent’, ‘people’, ‘china’, ‘bank’, ‘development’, ‘market’]
-Number of docs: 39637
-Vocab size: 17577
-Number of words: 5390968</p>
-<p>A. Crawling
-B. Preprocessing
-C. Topic modeling
-D. Analysis</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. No prior
-2. Filter out irrelevant documents
-3.
+  <section class="tex2jax_ignore mathjax_ignore" id="topic-modeling-without-prior">
+<h1>Topic Modeling without Prior<a class="headerlink" href="#topic-modeling-without-prior" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<p>Topic modeling without prior is a crucial step in understanding the underlying topics in a corpus of text without any preconceived notions or biases. In the context of this research, the Latent Dirichlet Allocation (LDA) model is used to uncover the hidden thematic structure in the Cambodian news articles.</p>
+</section>
+<section id="configuration-details">
+<h2>Configuration Details<a class="headerlink" href="#configuration-details" title="Permalink to this heading">#</a></h2>
+<section id="model-type-and-parameters">
+<h3>Model Type and Parameters<a class="headerlink" href="#model-type-and-parameters" title="Permalink to this heading">#</a></h3>
+<p>The model used is LDA, with the following hyperparameters:</p>
+<ul class="simple">
+<li><p><strong>Number of Topics (k):</strong> 20</p></li>
+<li><p><strong>Alpha:</strong> 0.1</p></li>
+<li><p><strong>Eta:</strong> 0.01</p></li>
+</ul>
+<p>These hyperparameters control the distribution of topics over documents (Alpha) and the distribution of words over topics (Eta).</p>
+</section>
+<section id="corpus-configuration">
+<h3>Corpus Configuration<a class="headerlink" href="#corpus-configuration" title="Permalink to this heading">#</a></h3>
+<p>The corpus is configured to include n-grams up to a maximum length of 3, with a minimum frequency of 20 and a minimum document frequency of 10. The text column used for modeling is ‘adjnouns’, focusing on adjectives and nouns.</p>
+</section>
+<section id="word-cloud-visualization">
+<h3>Word Cloud Visualization<a class="headerlink" href="#word-cloud-visualization" title="Permalink to this heading">#</a></h3>
+<p>The configuration also includes settings for generating word cloud visualizations for the topics. The word clouds are configured with the following properties:</p>
+<ul class="simple">
+<li><p><strong>Background Color:</strong> Black</p></li>
+<li><p><strong>Colormap:</strong> PuBu</p></li>
+<li><p><strong>Width:</strong> 400</p></li>
+<li><p><strong>Height:</strong> 200</p></li>
+</ul>
+</section>
+<section id="batch-configuration">
+<h3>Batch Configuration<a class="headerlink" href="#batch-configuration" title="Permalink to this heading">#</a></h3>
+<p>The batch configuration controls the execution environment, including the device (CPU), number of devices, and number of workers. It also specifies the paths for the configuration files and the output directory.</p>
+</section>
+</section>
+<section id="execution-workflow">
+<h2>Execution Workflow<a class="headerlink" href="#execution-workflow" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Load Dataset:</strong> The dataset is loaded from the specified Parquet file containing the tokenized text.</p></li>
+<li><p><strong>Train LDA Model:</strong> The LDA model is trained on the corpus using the specified hyperparameters.</p></li>
+<li><p><strong>Evaluate Coherence:</strong> The coherence of the topics is evaluated using metrics such as U-Mass, C-UCI, C-NPMI, and C-V.</p></li>
+<li><p><strong>Generate Word Clouds:</strong> Word clouds are generated for the top words in each topic, providing a visual representation of the topics.</p></li>
+<li><p><strong>Inference (Optional):</strong> The model can be used to infer topics on new or unseen data.</p></li>
+</ol>
+</section>
+<section id="running-the-workflow">
+<h2>Running the Workflow<a class="headerlink" href="#running-the-workflow" title="Permalink to this heading">#</a></h2>
+<p>The entire workflow can be executed using the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!nbcpu<span class="w"> </span>+workflow<span class="o">=</span>nbcpu<span class="w"> </span><span class="nv">tasks</span><span class="o">=</span><span class="s1">&#39;[nbcpu-topic_noprior]&#39;</span><span class="w"> </span><span class="nv">mode</span><span class="o">=</span>__info__
 </pre></div>
 </div>
-<p>40002/40002</p>
-<p>Created 0 samples, 39713 train samples, and 289 discard samples</p>
-<p>uncertainty docs</p>
-<p>Created 0 samples, 6917 train samples, and 20693 discard samples</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nbcpu<span class="w"> </span>+workflow<span class="o">=</span>nbcpu<span class="w"> </span><span class="nv">tasks</span><span class="o">=</span><span class="s1">&#39;[nbcpu-topic_noprior]&#39;</span><span class="w"> </span><span class="nv">mode</span><span class="o">=</span>__info__
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[<span class=" -Color -Color-Cyan">2023-08-15 17:05:23,109</span>][<span class=" -Color -Color-Blue">hyfi.joblib.joblib</span>][<span class=" -Color -Color-Green">INFO</span>] - initialized batcher with &lt;hyfi.joblib.batch.batcher.Batcher object at 0x7f19e0456880&gt;
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:23,110</span>][<span class=" -Color -Color-Blue">hyfi.main.config</span>][<span class=" -Color -Color-Green">INFO</span>] - HyFi project [nbcpu] initialized
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:23,298</span>][<span class=" -Color -Color-Blue">hyfi.main.main</span>][<span class=" -Color -Color-Green">INFO</span>] - The HyFI config is not instantiatable, running HyFI task with the config
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:24,126</span>][<span class=" -Color -Color-Blue">hyfi.joblib.joblib</span>][<span class=" -Color -Color-Green">INFO</span>] - initialized batcher with &lt;hyfi.joblib.batch.batcher.Batcher object at 0x7f19e0065c10&gt;
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:25,269</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: corpus(1) in /home/yjlee/workspace/projects/nbcpu/workspace/topic/corpus
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:26,715</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: corpus(1) in /home/yjlee/workspace/projects/nbcpu/workspace/topic/corpus
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:26,716</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: model(0) in /home/yjlee/workspace/projects/nbcpu/workspace/topic/model
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:27,425</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: corpus(1) in /home/yjlee/workspace/projects/nbcpu/workspace/topic/corpus
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:29,188</span>][<span class=" -Color -Color-Blue">hyfi.batch.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Setting seed to 165648969
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:29,188</span>][<span class=" -Color -Color-Blue">hyfi.batch.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Init batch - Batch name: model, Batch num: 0
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:29,989</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: corpus(3) in /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/corpus
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:29,989</span>][<span class=" -Color -Color-Blue">hyfi.batch.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Init batch - Batch name: model, Batch num: 6
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:29,989</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: model(6) in /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/model
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:30,782</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: corpus(1) in /home/yjlee/workspace/projects/nbcpu/workspace/topic/corpus
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:30,782</span>][<span class=" -Color -Color-Blue">hyfi.task.batch</span>][<span class=" -Color -Color-Green">INFO</span>] - Initalized batch: runner(3) in /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/runner
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:30,782</span>][<span class=" -Color -Color-Blue">hyfi.workflow.workflow</span>][<span class=" -Color -Color-Green">INFO</span>] - Running task [nbcpu-topic_noprior] with [run={} verbose=False uses=&#39;nbcpu-topic_noprior&#39;]
+  0%|                                                     | 0/1 [00:00&lt;?, ?it/s][<span class=" -Color -Color-Cyan">2023-08-15 17:05:30,784</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - Loading corpus...
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:30,785</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - Processing documents in the column &#39;adjnouns&#39;...
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:34,442</span>][<span class=" -Color -Color-Blue">hyfi.utils.iolibs</span>][<span class=" -Color -Color-Green">INFO</span>] - Loaded the file: /home/yjlee/workspace/projects/nbcpu/tests/assets/stopwords/nbcpu-topic.txt, No. of words: 21
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:34,442</span>][<span class=" -Color -Color-Blue">hyfi.utils.iolibs</span>][<span class=" -Color -Color-Green">INFO</span>] - Remove duplicate words, No. of words: 21
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:34,442</span>][<span class=" -Color -Color-Blue">lexikanon.stopwords.stopwords</span>][<span class=" -Color -Color-Green">INFO</span>] - Loaded 21 stopwords from /home/yjlee/workspace/projects/nbcpu/tests/assets/stopwords/nbcpu-topic.txt
+[<span class=" -Color -Color-Cyan">2023-08-15 17:05:34,442</span>][<span class=" -Color -Color-Blue">lexikanon.stopwords.stopwords</span>][<span class=" -Color -Color-Green">INFO</span>] - Loaded 21 stopwords
+[<span class=" -Color -Color-Cyan">2023-08-15 17:06:12,690</span>][<span class=" -Color -Color-Blue">thematos.datasets.corpus</span>][<span class=" -Color -Color-Green">INFO</span>] - Total 39637 documents are loaded.
+[<span class=" -Color -Color-Cyan">2023-08-15 17:06:33,336</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving dataframe to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/corpus/corpus_doc_ids.parquet
+[<span class=" -Color -Color-Cyan">2023-08-15 17:06:33,368</span>][<span class=" -Color -Color-Blue">hyfi.composer.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving config to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/corpus/configs/corpus(3)_config.json
+[<span class=" -Color -Color-Cyan">2023-08-15 17:06:33,369</span>][<span class=" -Color -Color-Blue">hyfi.composer.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving config to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/corpus/configs/corpus(3)_config.yaml
+[<span class=" -Color -Color-Cyan">2023-08-15 17:06:35,336</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Number of docs: 39637
+[<span class=" -Color -Color-Cyan">2023-08-15 17:06:35,336</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Vocab size: 24764
+[<span class=" -Color -Color-Cyan">2023-08-15 17:06:35,336</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Number of words: 7206156
+[<span class=" -Color -Color-Cyan">2023-08-15 17:06:35,336</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Removed top words: []
+[<span class=" -Color -Color-Cyan">2023-08-15 17:06:35,336</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Training model by iterating over the corpus 100 times, 10 iterations at a time with 0 workers
+
+  0%|                                                    | 0/10 [00:00&lt;?, ?it/s][<span class=" -Color -Color-Cyan">2023-08-15 17:06:39,356</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 0	Log-likelihood: -9.56337265225683
+
+ 10%|████▍                                       | 1/10 [00:04&lt;00:36,  4.04s/it][<span class=" -Color -Color-Cyan">2023-08-15 17:06:43,295</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 10	Log-likelihood: -9.144156799923582
+
+ 20%|████████▊                                   | 2/10 [00:07&lt;00:31,  3.98s/it][<span class=" -Color -Color-Cyan">2023-08-15 17:06:47,272</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 20	Log-likelihood: -8.979668309579871
+
+ 30%|█████████████▏                              | 3/10 [00:11&lt;00:27,  3.98s/it][<span class=" -Color -Color-Cyan">2023-08-15 17:06:51,308</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 30	Log-likelihood: -8.875918495887053
+
+ 40%|█████████████████▌                          | 4/10 [00:15&lt;00:24,  4.00s/it][<span class=" -Color -Color-Cyan">2023-08-15 17:06:55,122</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 40	Log-likelihood: -8.807991873686014
+
+ 50%|██████████████████████                      | 5/10 [00:19&lt;00:19,  3.93s/it][<span class=" -Color -Color-Cyan">2023-08-15 17:06:58,964</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 50	Log-likelihood: -8.758273433104282
+
+ 60%|██████████████████████████▍                 | 6/10 [00:23&lt;00:15,  3.90s/it][<span class=" -Color -Color-Cyan">2023-08-15 17:07:02,810</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 60	Log-likelihood: -8.722993516418107
+
+ 70%|██████████████████████████████▊             | 7/10 [00:27&lt;00:11,  3.88s/it][<span class=" -Color -Color-Cyan">2023-08-15 17:07:06,473</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 70	Log-likelihood: -8.695350780812172
+
+ 80%|███████████████████████████████████▏        | 8/10 [00:31&lt;00:07,  3.81s/it][<span class=" -Color -Color-Cyan">2023-08-15 17:07:09,944</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 80	Log-likelihood: -8.674064501996195
+
+ 90%|███████████████████████████████████████▌    | 9/10 [00:34&lt;00:03,  3.71s/it][<span class=" -Color -Color-Cyan">2023-08-15 17:07:13,307</span>][<span class=" -Color -Color-Blue">thematos.models.lda</span>][<span class=" -Color -Color-Green">INFO</span>] - Iteration: 90	Log-likelihood: -8.656676192642903
+
+100%|███████████████████████████████████████████| 10/10 [00:37&lt;00:00,  3.80s/it]
+&lt;Basic Info&gt;
+| LDAModel (current version: 0.12.5)
+| 39637 docs, 7206156 words
+| Total Vocabs: 177295, Used Vocabs: 24764
+| Entropy of words: 8.14474
+| Entropy of term-weighted words: 8.96706
+| Removed Vocabs: &lt;NA&gt;
+|
+&lt;Training Info&gt;
+| Iterations: 100, Burn-in steps: 0
+| Optimization Interval: 10
+| Log-likelihood per word: -8.65668
+|
+&lt;Initial Parameters&gt;
+| tw: TermWeight.IDF
+| min_cf: 10 (minimum collection frequency of words)
+| min_df: 10 (minimum document frequency of words)
+| rm_top: 0 (the number of top words to be removed)
+| k: 20 (the number of topics between 1 ~ 32767)
+| alpha: [0.1] (hyperparameter of Dirichlet distribution for document-topic, given as a single `float` in case of symmetric prior and as a list with length `k` of `float` in case of asymmetric prior.)
+| eta: 0.01 (hyperparameter of Dirichlet distribution for topic-word)
+| seed: 165648969 (random seed)
+| trained in version 0.12.5
+|
+&lt;Parameters&gt;
+| alpha (Dirichlet prior on the per-document topic distributions)
+|  [0.04001153 0.03526779 0.03648445 0.05125729 0.0339137  0.02823607
+|   0.03101887 0.06172507 0.01710778 0.05294487 0.03747123 0.02802146
+|   0.03800969 0.04706813 0.03247076 0.04857473 0.03060325 0.02949386
+|   0.04723632 0.0597007 ]
+| eta (Dirichlet prior on the per-topic word distribution)
+|  0.01
+|
+&lt;Topics&gt;
+| #0 (382083) : military trump myanmar north_korea chinese nuclear united_state washington trade beijing japan south war sea sanction taiwan foreign bangladesh security philippine
+| #1 (325901) : digital technology company internet online service huawei mobile user platform customer data app business startup network smart payment e-commerce tech
+| #2 (370817) : russia trump ukraine russian putin european britain europe germany republican moscow war brexit israel turkey sanction state ukrainian deal vote
+| #3 (378769) : water city road river tourist village province area resident siem_reap boat waste bus house angkor phnom_penh restaurant temple construction site
+| #4 (348318) : party election political cpp opposition cnrp democracy prime_minister cambodian human_right government hun_sen rainsy law cambodia leader peace hun khmer_rouge national_assembly
+| #5 (164841) : india indian pakistan australia modi iran australian tobacco afghanistan hiv refugee taliban new_delhi sri_lanka saudi afghan saudi_arabia state brazil attack
+| #6 (287468) : property company real_estate investor market csx project construction developer port investment price sale share firm ipo hong_kong buyer bond revenue
+| #7 (601260) : global world economic development challenge policy system region climate_change sustainable strategy future international change action social approach crisis security need
+| #8 (171616) : rice farmer agriculture food agricultural tonne fish production crop fishery price export ton cassava vegetable market product rubber farm une
+| #9 (553151) : asean cooperation cambodia trade minister chinese vietnam meeting regional development region bilateral relation rcep tourism japan visit economic agreement cambodian
+| #10 (380564) : covid-19 health vaccine case tourism virus tourist airline flight pandemic vaccination infection outbreak hospital omicron disease medical patient travel coronavirus
+| #11 (254731) : game club football sport team player season league match athlete champion fan stadium tournament world_cup coach premier_league sea_game final minute
+| #12 (319822) : police court victim drug prison district judge suspect money provincial case commune phnom_penh crime riel municipal arrest woman complaint lawyer
+| #13 (302899) : art film artist music book life story street history museum father khmer_rouge thing kim culture friend family malaysia muslim show
+| #14 (365010) : bank loan banking nbc customer insurance financial payment riel currency credit cambodia deposit service financial_institution branch transaction commercial account plc
+| #15 (437692) : student child education school woman programme skill university youth teacher young scholarship training program cambodia cambodian family event community award
+| #16 (226136) : land ministry forest province authority law provincial government ngo community commune wildlife environment mine official najib administration area national minister
+| #17 (226055) : energy electricity adb project solar power climate oil green coal emission gas fuel renewable_energy plant supply development climate_change cambodia household
+| #18 (533641) : inflation market growth price economy rate index dollar currency low stock central_bank debt analyst high fed bank data share global
+| #19 (575382) : tax worker cambodia export sector factory business investment trade labour industry garment product government enterprise ministry smes law job union
+|
+
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:17,226</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - ==== Coherence : u_mass ====
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:17,227</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Average: -1.8225879015599518
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:17,227</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Per Topic: [-1.7071110993560232, -1.8081845262829659, -1.9131969426555329, -1.811269795871564, -1.3498192320627342, -3.6912594260915204, -2.107448523708784, -1.5613924125327066, -1.7372444610161113, -1.2590741935951324, -1.987925993990261, -1.7684996986493575, -1.6468222499235743, -1.8500283847239365, -1.762784460925799, -1.7677539558873556, -1.7047070441749212, -2.095960403158903, -1.4203746205291528, -1.500900606062698]
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:19,494</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - ==== Coherence : c_uci ====
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:19,494</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Average: 1.0290000781633546
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:19,494</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Per Topic: [0.8846061521441189, 1.4163701471052752, 1.2353016988971701, 1.1061697342330765, 1.4993583851860008, -1.7158872630061799, 0.7693377098738617, 0.5218923677913766, 2.002831510850781, 0.46210398687947474, 0.7581604351451704, 2.2781620212723417, 1.9218682460540089, 1.429650347371691, 1.222235377414929, 1.4120445604430085, 0.6236365491622836, 1.2744142344769005, 1.1367955585912328, 0.3409498033805712]
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:21,940</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - ==== Coherence : c_npmi ====
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:21,940</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Average: 0.13420203630003497
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:21,940</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Per Topic: [0.10735044089151692, 0.16965737425944216, 0.1473561039724611, 0.13021031021718948, 0.19018021260943738, -0.015063386206600554, 0.10214679442049843, 0.06938342508611049, 0.22812465841815108, 0.06926619686808591, 0.10172751391793497, 0.25444843275076423, 0.22586250026539234, 0.14509603937295965, 0.16011320009893742, 0.1765525283148321, 0.07502636700932833, 0.14680306438121216, 0.14759230757004674, 0.05220664178299874]
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:55,167</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - ==== Coherence : c_v ====
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:55,168</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Average: 0.7397635974735023
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:55,168</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Per Topic: [0.7337397843599319, 0.7812566518783569, 0.8287632763385773, 0.7284845173358917, 0.7675876900553703, 0.6177206009626388, 0.7108045041561126, 0.6586671024560928, 0.8340025961399078, 0.6441118210554123, 0.6904611855745315, 0.8438107550144196, 0.785612553358078, 0.7714586138725281, 0.810454261302948, 0.7887740135192871, 0.6361881583929062, 0.7001782149076462, 0.808130270242691, 0.6550653785467148]
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:55,312</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Model saved to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/model/models/LDA_model(6)_k(20).mdl
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:55,399</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving dataframe to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/model/outputs/LDA_model(6)_k(20)-ll_per_word.csv
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:55,401</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to save data: 0:00:00.001868
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:55,802</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Log-likelihood per word plot saved to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/model/outputs/LDA_model(6)_k(20)-ll_per_word.png
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:55,898</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - ==== Document-Topic Distributions ====
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:55,898</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] -           id    topic0    topic1  ...   topic17   topic18   topic19
+39632  48187  0.669679  0.000036  ...  0.011932  0.000048  0.058952
+39633  48132  0.069668  0.000039  ...  0.000033  0.000052  0.059065
+39634  48115  0.000111  0.000098  ...  0.000082  0.000131  0.681714
+39635  48085  0.000037  0.543615  ...  0.000027  0.000044  0.000055
+39636  48087  0.000106  0.000093  ...  0.000078  0.000125  0.000158
+
+[5 rows x 21 columns]
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:55,927</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving dataframe to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/model/outputs/LDA_model(6)_k(20)-doc_topic_dists.parquet
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:56,156</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to save data: 0:00:00.228368
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:56,156</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - ==== Topic-Word Distributions ====
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:56,163</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] -     cambodia  government  ...  sinan_chairman  planning_construction
+15  0.004534    0.000712  ...    6.901873e-09           6.901873e-09
+16  0.002654    0.004698  ...    1.318271e-08           1.318271e-08
+17  0.004470    0.003312  ...    1.327619e-08           1.327619e-08
+18  0.000122    0.000938  ...    5.694903e-09           5.694903e-09
+19  0.007558    0.004678  ...    1.506013e-05           6.056809e-09
+
+[5 rows x 24764 columns]
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:56,278</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving dataframe to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/model/outputs/LDA_model(6)_k(20)-topic_term_dists.parquet
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:59,551</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to save data: 0:00:03.272927
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:59,595</span>][<span class=" -Color -Color-Blue">hyfi.utils.iolibs</span>][<span class=" -Color -Color-Green">INFO</span>] - Save the list to the file: /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/model/outputs/LDA_model(6)_k(20)-used_vocab.txt, no. of words: 24764
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:59,618</span>][<span class=" -Color -Color-Blue">hyfi.utils.iolibs</span>][<span class=" -Color -Color-Green">INFO</span>] - Save the list to the file: /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/model/outputs/LDA_model(6)_k(20)-topic_top_words.txt, no. of words: 763
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:59,619</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving dataframe to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/model/outputs/LDA_model(6)_k(20)-topic_top_words_dists.csv
+[<span class=" -Color -Color-Cyan">2023-08-15 17:07:59,622</span>][<span class=" -Color -Color-Blue">hyfi.utils.datasets.save</span>][<span class=" -Color -Color-Green">INFO</span>] -  &gt;&gt; elapsed time to save data: 0:00:00.002545
+[<span class=" -Color -Color-Cyan">2023-08-15 17:08:13,463</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Making wordcloud collage with titles: [&#39;Topic 0&#39;, &#39;Topic 1&#39;, &#39;Topic 2&#39;, &#39;Topic 3&#39;, &#39;Topic 4&#39;, &#39;Topic 5&#39;, &#39;Topic 6&#39;, &#39;Topic 7&#39;, &#39;Topic 8&#39;, &#39;Topic 9&#39;, &#39;Topic 10&#39;, &#39;Topic 11&#39;, &#39;Topic 12&#39;, &#39;Topic 13&#39;, &#39;Topic 14&#39;, &#39;Topic 15&#39;, &#39;Topic 16&#39;, &#39;Topic 17&#39;, &#39;Topic 18&#39;, &#39;Topic 19&#39;]
+[<span class=" -Color -Color-Cyan">2023-08-15 17:08:13,464</span>][<span class=" -Color -Color-Blue">hyfi.graphics.collage</span>][<span class=" -Color -Color-Green">INFO</span>] - Making page 1/1 with 20 images
+[<span class=" -Color -Color-Cyan">2023-08-15 17:08:13,464</span>][<span class=" -Color -Color-Blue">hyfi.graphics.collage</span>][<span class=" -Color -Color-Green">INFO</span>] - Page titles: [&#39;Topic 0&#39;, &#39;Topic 1&#39;, &#39;Topic 2&#39;, &#39;Topic 3&#39;, &#39;Topic 4&#39;, &#39;Topic 5&#39;, &#39;Topic 6&#39;, &#39;Topic 7&#39;, &#39;Topic 8&#39;, &#39;Topic 9&#39;, &#39;Topic 10&#39;, &#39;Topic 11&#39;, &#39;Topic 12&#39;, &#39;Topic 13&#39;, &#39;Topic 14&#39;, &#39;Topic 15&#39;, &#39;Topic 16&#39;, &#39;Topic 17&#39;, &#39;Topic 18&#39;, &#39;Topic 19&#39;]
+[<span class=" -Color -Color-Cyan">2023-08-15 17:08:13,464</span>][<span class=" -Color -Color-Blue">hyfi.graphics.collage</span>][<span class=" -Color -Color-Green">INFO</span>] - Page output file: /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/model/outputs/wordcloud_collage/LDA_model(6)_k(20)_wordcloud_00.png
+[<span class=" -Color -Color-Cyan">2023-08-15 17:08:20,427</span>][<span class=" -Color -Color-Blue">hyfi.graphics.utils</span>][<span class=" -Color -Color-Green">INFO</span>] - Saved subplots to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/model/outputs/wordcloud_collage/LDA_model(6)_k(20)_wordcloud_00.png
+[<span class=" -Color -Color-Cyan">2023-08-15 17:08:20,428</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Yellow">WARNING</span>] - pyLDAvis is not installed. Please install it to save LDAvis.
+[<span class=" -Color -Color-Cyan">2023-08-15 17:08:20,459</span>][<span class=" -Color -Color-Blue">thematos.models.base</span>][<span class=" -Color -Color-Green">INFO</span>] - Model summary saved to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/model/outputs/model-summary.jsonl
+[<span class=" -Color -Color-Cyan">2023-08-15 17:08:20,460</span>][<span class=" -Color -Color-Blue">hyfi.composer.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving config to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/model/configs/model(6)_config.json
+[<span class=" -Color -Color-Cyan">2023-08-15 17:08:20,460</span>][<span class=" -Color -Color-Blue">hyfi.composer.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving config to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/model/configs/model(6)_config.yaml
+100%|████████████████████████████████████████████| 1/1 [02:49&lt;00:00, 169.70s/it]
+[<span class=" -Color -Color-Cyan">2023-08-15 17:08:20,485</span>][<span class=" -Color -Color-Blue">thematos.runners.topic</span>][<span class=" -Color -Color-Green">INFO</span>] - Saved summaries to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/runner(3)_summaries.json
+[<span class=" -Color -Color-Cyan">2023-08-15 17:08:20,486</span>][<span class=" -Color -Color-Blue">hyfi.composer.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving config to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/runner/configs/runner(3)_config.json
+[<span class=" -Color -Color-Cyan">2023-08-15 17:08:20,486</span>][<span class=" -Color -Color-Blue">hyfi.composer.config</span>][<span class=" -Color -Color-Green">INFO</span>] - Saving config to /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_noprior/runner/configs/runner(3)_config.yaml
+
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/0ba73c8838227c4a4a6971b27ccbb7cf56d6f44a706633e0ac1ea99e2e3b4d54.png" src="../../_images/0ba73c8838227c4a4a6971b27ccbb7cf56d6f44a706633e0ac1ea99e2e3b4d54.png" />
+</div>
+</div>
+</section>
+<section id="coherence-values-and-selection-of-k">
+<h2>Coherence Values and Selection of k<a class="headerlink" href="#coherence-values-and-selection-of-k" title="Permalink to this heading">#</a></h2>
+<p>The selection of the optimal number of topics (k) is a critical step in topic modeling, especially in Latent Dirichlet Allocation (LDA). This process involves evaluating the coherence of the topics generated for different values of k and selecting the one that maximizes coherence. In this analysis, we examine four different models with k values of 10, 20, 30, and 40. We evaluate the coherence using four different metrics: U-Mass, C-UCI, C-NPMI, and C-V. The results are plotted to visually assess the optimal k value.</p>
+<p>The following table summarizes the coherence values for each model:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>k</p></th>
+<th class="head"><p>U-Mass</p></th>
+<th class="head"><p>C-UCI</p></th>
+<th class="head"><p>C-NPMI</p></th>
+<th class="head"><p>C-V</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>-1.6788</p></td>
+<td><p>0.6621</p></td>
+<td><p>0.0936</p></td>
+<td><p>0.6675</p></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>-2.1309</p></td>
+<td><p>0.7761</p></td>
+<td><p>0.1226</p></td>
+<td><p>0.7350</p></td>
+</tr>
+<tr class="row-even"><td><p>30</p></td>
+<td><p>-2.0985</p></td>
+<td><p>0.9463</p></td>
+<td><p>0.1385</p></td>
+<td><p>0.7349</p></td>
+</tr>
+<tr class="row-odd"><td><p>40</p></td>
+<td><p>-2.4415</p></td>
+<td><p>0.7213</p></td>
+<td><p>0.1351</p></td>
+<td><p>0.7603</p></td>
+</tr>
+</tbody>
+</table>
+<section id="selecting-the-appropriate-k">
+<h3>Selecting the Appropriate k<a class="headerlink" href="#selecting-the-appropriate-k" title="Permalink to this heading">#</a></h3>
+<p>Based on the plot and the coherence values, the optimal k can be selected. Generally, the value of k that maximizes the coherence value is considered optimal. However, the choice might vary depending on the specific coherence metric used and the interpretability of the topics.</p>
+<p>The selection of k is a nuanced process that depends on both quantitative metrics and qualitative assessment. While coherence values provide a quantitative measure, the interpretability and relevance of the topics should also be considered. It might be beneficial to examine the actual topics generated for the selected k and assess their relevance to the domain of interest.</p>
+<p>Here, we select k = 20 as the optimal number of topics. The topics generated for this model are examined in the next section.</p>
+</section>
+</section>
+<section id="model-results">
+<h2>Model Results<a class="headerlink" href="#model-results" title="Permalink to this heading">#</a></h2>
+<p>The Latent Dirichlet Allocation (LDA) model was applied to a corpus of 39,637 documents, resulting in the identification of 20 distinct topics. The model’s coherence scores and detailed topic-word distributions provide insights into the underlying themes within the corpus.</p>
+<ol class="arabic simple">
+<li><p><strong>Topics Identification</strong>: The 20 topics identified represent distinct themes within the corpus. For example:</p>
+<ul class="simple">
+<li><p><strong>Topic 0</strong>: Focused on political themes, indicating a substantial portion of the corpus may be related to political discourse.</p></li>
+<li><p><strong>Topic 1</strong>: Centered on health and the COVID-19 pandemic, reflecting the global relevance of health issues.</p></li>
+</ul>
+</li>
+<li><p><strong>Document-Topic Distributions</strong>: The distribution of topics within documents provides a granular view of the corpus’s thematic structure. This can be valuable for content categorization, recommendation systems, or understanding the evolution of themes over time.</p></li>
+<li><p><strong>Visualizations</strong>: The word cloud collages offer a visual representation of the topics, aiding in the intuitive understanding of the main themes. This can be particularly useful for communicating results to non-technical stakeholders.</p></li>
+</ol>
+<p>The following figure shows the wordcloud of the top 500 words in each topic from the LDA model with 20 topics. The size of the word is proportional to the frequency of the word in the topic.</p>
+<figure class="align-default" id="fig-lda-wordcloud-noprior">
+<a class="reference internal image-reference" href="../../_images/LDA_model(1)_k(20)_wordcloud_00.png"><img alt="../../_images/LDA_model(1)_k(20)_wordcloud_00.png" src="../../_images/LDA_model(1)_k(20)_wordcloud_00.png" style="width: 900.0px; height: 363.6px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Wordcloud of the top 500 words in each topic from the LDA model with 20 topics. The size of the word is proportional to the frequency of the word in the topic.</span><a class="headerlink" href="#fig-lda-wordcloud-noprior" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><img alt="" src="../../_images/LDA_model(1)_k(20)_wordcloud_00.png" /></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -481,6 +845,34 @@ D. Analysis</p>
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-details">Configuration Details</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-type-and-parameters">Model Type and Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#corpus-configuration">Corpus Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word-cloud-visualization">Word Cloud Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-configuration">Batch Configuration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-workflow">Execution Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-workflow">Running the Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coherence-values-and-selection-of-k">Coherence Values and Selection of k</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-the-appropriate-k">Selecting the Appropriate k</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-results">Model Results</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
