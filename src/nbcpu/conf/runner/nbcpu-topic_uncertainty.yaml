@@ -5,9 +5,9 @@ defaults:
 task_name: nbcpu-topic_uncertainty
 run_args:
   k:
-    - 5
-    - 10
-    - 15
+    # - 5
+    # - 10
+    # - 15
     - 20
 model:
   train_args:
