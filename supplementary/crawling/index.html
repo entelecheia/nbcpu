@@ -187,6 +187,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Crawling Khmer Times</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../processing/index.html">Processing the Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../topic/index.html">Topic Modeling without Prior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topic/prior.html">Topic Modeling with Prior</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html">Topic analysis</a></li>
 </ul>
 </li>
@@ -521,17 +522,17 @@ document.write(`
 <section id="configuration-and-commands">
 <h3>Configuration and Commands<a class="headerlink" href="#configuration-and-commands" title="Permalink to this heading">#</a></h3>
 <p>The crawling configuration is located in the <code class="docutils literal notranslate"><span class="pre">src/nbcpu/conf/fetcher</span></code> directory. To print the configuration, use:</p>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nbcpu<span class="w"> </span>+fetcher<span class="o">=</span>khmer_all<span class="w"> </span><span class="nv">dryrun</span><span class="o">=</span>true
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## Command Line Interface for HyFI ##
 {&#39;about&#39;: {&#39;authors&#39;: &#39;Young Joon Lee &lt;entelecheia@hotmail.com&gt;&#39;,
