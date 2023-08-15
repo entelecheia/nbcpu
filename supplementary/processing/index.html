@@ -600,7 +600,12 @@ document.write(`
 </div>
 <p>This command initiates the entire processing workflow as defined in the configuration, including normalization, lemmatization, tokenization, and extraction of specific parts of speech. The <code class="docutils literal notranslate"><span class="pre">mode=__info__</span></code> part of the command provides informational output, allowing you to monitor the progress and verify the process.</p>
 <p>By executing this command, you will transform the raw data crawled from Khmer Times into a structured and consistent format, ready for topic modeling and further analysis.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nbcpu<span class="w"> </span>+workflow<span class="o">=</span>nbcpu<span class="w"> </span><span class="nv">tasks</span><span class="o">=</span><span class="s1">&#39;[nbcpu-datasets]&#39;</span><span class="w"> </span><span class="nv">mode</span><span class="o">=</span>__info__
 </pre></div>
@@ -704,6 +709,7 @@ Map (num_proc=100): 100%|███████████| 1000/1000 [00:03&lt;
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 </section>
