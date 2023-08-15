@@ -12,7 +12,7 @@ defaults:
   - override /project: nbcpu
 
 _config_name_: nbcpu
-verbose: true
+verbose: false
 tasks:
   - khmer_all
   - nbcpu-datasets
