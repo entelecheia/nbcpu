@@ -13,4 +13,4 @@ stopwords:
   verbose: true
 ngrams:
   max_len: 3
-verbose: true
+verbose: false
