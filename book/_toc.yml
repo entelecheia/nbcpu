@@ -13,7 +13,7 @@ chapters:
   - file: paper/references
   - file: supplementary/index
     sections:
-      - file: supplementary/data/index
-        sections:
-          - file: supplementary/crawling/index
-          - file: supplementary/processing/index
+      - file: supplementary/crawling/index
+      - file: supplementary/processing/index
+      - file: supplementary/topic/index
+      - file: supplementary/anlysis/index
