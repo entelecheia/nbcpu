@@ -4,7 +4,7 @@ Economic policy uncertainty, with implications for financial markets, economic p
 
 **Financial Measures**
 
-These measures often utilize stock market volatility, such as the VIX index, or differences between expected and actual financial parameters ({cite:t}`kaveh-yazdy:2021aa'). For instance, forecast errors in the stock market or discrepancies in expected and actual macroeconomic parameters, collected via surveys, are often employed to gauge uncertainty.
+These measures often utilize stock market volatility, such as the VIX index, or differences between expected and actual financial parameters ({cite:t}`kaveh-yazdy:2021aa`). For instance, forecast errors in the stock market or discrepancies in expected and actual macroeconomic parameters, collected via surveys, are often employed to gauge uncertainty.
 
 **Textual Measures**
 
