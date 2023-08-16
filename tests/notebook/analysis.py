@@ -35,40 +35,32 @@ data = (
     .merge(uncertainty_data, on="id")
     .merge(infer_data, on="id")
 )
-
+data.set_index("time", inplace=True)
 # %%
 # aggregate by time (monthly) and plot
 import matplotlib.pyplot as plt
+import pandas as pd
 
-weight_data = data[["time", "uncertainty", "improve", "econ", "banking", "asean"]]
+weight_data = data[
+    ["uncertainty", "improve", "econ", "banking", "asean", "risk"]
+]
+weight_data["econ_risk"] = weight_data["econ"] * weight_data["risk"]
 # starting from 2017-01
-weight_data = weight_data[weight_data["time"] >= "2017-01-01"]
-weight_data["period"] = weight_data["time"].dt.to_period("M")
-agg_data = weight_data.groupby(["period"]).mean().reset_index()
+weight_data = weight_data[weight_data.index >= "2017-01-01"]
+
+agg_data = weight_data.groupby(pd.Grouper(freq="M")).mean()
+agg_data
+
+# %%
 # rolling average 3 months
-# agg_data = agg_data.rolling(3).mean()
-agg_data.plot(y=["uncertainty", "econ"], figsize=(20, 10))
-xticks = agg_data["period"].dt.strftime("%Y-%m").tolist()
-# every 6 months
-xticks = [xticks[i] if i % 6 == 0 else "" for i in range(len(xticks))]
-plt.xticks(range(len(xticks)), xticks)
+agg_data = agg_data.rolling(3).mean()
+agg_data.plot(y=["econ_risk"], figsize=(20, 10))
 plt.show()
-
 # %%
-# proportion of econ topic documents (econ weight > 0.5)
-econ_data = data[data["econ"] > 0.6]
-uncertain_econ_data = econ_data[econ_data["risk"] > 0.5]
-econ_data["period"] = econ_data["time"].dt.to_period("M")
-uncertain_econ_data["period"] = uncertain_econ_data["time"].dt.to_period("M")
-
-agg_data = uncertain_econ_data.groupby(["period"]).count().reset_index()
-# divide by total number of documents
-total_count = data.groupby(["period"]).count().reset_index()
-agg_data["econ"] = agg_data["econ"] / total_count["econ"]
-agg_data.plot(y=["id"], figsize=(20, 10))
-
-# %%
+total_count = data.groupby(pd.Grouper(freq="M")).count()
 total_count.plot(y=["id"], figsize=(20, 10))
+
+
 # %%
 # %%
 econ_data = data[data["econ"] > 0.5]
