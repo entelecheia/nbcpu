@@ -37,4 +37,28 @@ This dataset will provide a rich source of information from which to analyze and
 
 ## Exploratory Data Analysis
 
-We have collected 40,002 articles from the three news outlets. The articles were published between January 1, 2016 and July 31, 2023.
+We have collected 40,002 articles from the three news outlets. The articles were published between January 1, 2014 and July 31, 2023. After preprocessing, we are left with 39,632 articles.
+
+### Yearly Distribution
+
+The dataset spans from 2014 to 2023, with a total of 39,632 articles. The following observations can be made from the yearly distribution:
+
+- **2014**: The dataset begins with 2,047 articles, having an average length of 3,345 words.
+- **2015-2018**: A gradual increase in the number of articles is observed, reaching 3,530 in 2018, with average lengths ranging from 3,162 to 3,486 words.
+- **2019-2020**: The number of articles continues to grow, reaching 4,688 in 2020, with average lengths around 3,400 words.
+- **2021-2022**: A significant increase is noted, with 5,493 articles in 2021 and 6,866 in 2022, though the average length slightly decreases to around 3,100 words.
+- **2023**: The data for 2023 includes 3,750 articles, with an average length of 3,255 words.
+
+### Overall Trends
+
+- **Number of Articles**: The dataset shows a consistent upward trend in the number of articles over the years, reflecting a growing interest in the subjects related to uncertainty, economics, and central bank policy.
+- **Average Length**: The average length of the articles remains relatively stable, with minor fluctuations. The overall average length across all years is 3,247 words.
+
+```{figure} ./figs/num_articles_trend.png
+---
+width: 80%
+align: center
+name: fig-num-articles-trend
+---
+Number of articles over time
+```

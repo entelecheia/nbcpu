@@ -190,7 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="prior.html">Topic Modeling with Prior</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../topic-uncertainty/index.html">Topic Modeling for Uncertainty Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../topic-uncertainty/second.html">The Second Stage Uncertainty Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../analysis/index.html">Anaylisis of the results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/index.html">Analysis of the results</a></li>
 </ul>
 </li>
 </ul>
@@ -715,7 +715,7 @@ document.write(`
 </section>
 <section id="coherence-values-and-selection-of-k">
 <h2>Coherence Values and Selection of k<a class="headerlink" href="#coherence-values-and-selection-of-k" title="Permalink to this heading">#</a></h2>
-<p>The selection of the optimal number of topics (k) is a critical step in topic modeling, especially in Latent Dirichlet Allocation (LDA). This process involves evaluating the coherence of the topics generated for different values of k and selecting the one that maximizes coherence. In this analysis, we examine four different models with k values of 10, 20, 30, and 40. We evaluate the coherence using four different metrics: U-Mass, C-UCI, C-NPMI, and C-V. The results are plotted to visually assess the optimal k value in <a class="reference internal" href="#fig-lda-cv-noprior"><span class="std std-numref">Fig. 1</span></a>.</p>
+<p>The selection of the optimal number of topics (k) is a critical step in topic modeling, especially in Latent Dirichlet Allocation (LDA). This process involves evaluating the coherence of the topics generated for different values of k and selecting the one that maximizes coherence. In this analysis, we examine four different models with k values of 10, 20, 30, and 40. We evaluate the coherence using four different metrics: U-Mass, C-UCI, C-NPMI, and C-V. The results are plotted to visually assess the optimal k value in <a class="reference internal" href="#fig-lda-cv-noprior"><span class="std std-numref">Fig. 2</span></a>.</p>
 <p>The following table summarizes the coherence values for each model:</p>
 <table class="colwidths-auto table">
 <thead>
@@ -761,7 +761,7 @@ document.write(`
 <figure class="align-default" id="fig-lda-cv-noprior">
 <a class="reference internal image-reference" href="../../_images/cv-noprior.png"><img alt="../../_images/cv-noprior.png" src="../../_images/cv-noprior.png" style="width: 70%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Coherence values for different k values</span><a class="headerlink" href="#fig-lda-cv-noprior" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Coherence values for different k values</span><a class="headerlink" href="#fig-lda-cv-noprior" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -779,11 +779,11 @@ document.write(`
 <li><p><strong>Document-Topic Distributions</strong>: The distribution of topics within documents provides a granular view of the corpus’s thematic structure. This can be valuable for content categorization, recommendation systems, or understanding the evolution of themes over time.</p></li>
 <li><p><strong>Visualizations</strong>: The word cloud collages offer a visual representation of the topics, aiding in the intuitive understanding of the main themes. This can be particularly useful for communicating results to non-technical stakeholders.</p></li>
 </ol>
-<p><a class="reference internal" href="#fig-lda-wordcloud-noprior"><span class="std std-numref">Fig. 2</span></a> shows the wordcloud of the top 500 words in each topic from the LDA model with 20 topics. The size of the word is proportional to the frequency of the word in the topic.</p>
+<p><a class="reference internal" href="#fig-lda-wordcloud-noprior"><span class="std std-numref">Fig. 3</span></a> shows the wordcloud of the top 500 words in each topic from the LDA model with 20 topics. The size of the word is proportional to the frequency of the word in the topic.</p>
 <figure class="align-default" id="fig-lda-wordcloud-noprior">
 <img alt="../../_images/LDA_model(1)_k(20)_wordcloud_00.png" src="../../_images/LDA_model(1)_k(20)_wordcloud_00.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Wordcloud of the top 500 words in each topic from the LDA model with 20 topics. The size of the word is proportional to the frequency of the word in the topic.</span><a class="headerlink" href="#fig-lda-wordcloud-noprior" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Wordcloud of the top 500 words in each topic from the LDA model with 20 topics. The size of the word is proportional to the frequency of the word in the topic.</span><a class="headerlink" href="#fig-lda-wordcloud-noprior" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
