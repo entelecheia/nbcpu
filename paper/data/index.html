@@ -403,9 +403,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-sources">Data sources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">Data Collection</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gathering-the-raw-dataset">Gathering the Raw Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-sources">Data Sources</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#khmer-times">Khmer Times</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phnom-penh-post">Phnom Penh Post</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">Data Collection</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-scraping">Web Scraping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keyword-filtering">Keyword Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-frame">Time Frame</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">Exploratory Data Analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#yearly-distribution">Yearly Distribution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-trends">Overall Trends</a></li>
@@ -424,51 +432,54 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data">
 <h1>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h1>
+<p>This section delineates the meticulous process of gathering, filtering, and analyzing articles from two major Cambodian news outlets. The resulting dataset, rich in content and chronological depth, forms the foundation for a comprehensive exploration of central bank policy uncertainty in Cambodia’s highly dollarized economy.</p>
 <section id="data-sources">
-<h2>Data sources<a class="headerlink" href="#data-sources" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.khmertimeskh.com/">Khmer Times</a></p></li>
-<li><p><a class="reference external" href="https://www.phnompenhpost.com/">Phnom Penh Post</a></p></li>
-</ul>
+<h2>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this heading">#</a></h2>
+<p>The research draws upon articles from two major Cambodian news outlets: Khmer Times and Phnom Penh Post. These platforms were selected for their extensive coverage of economic and financial matters in Cambodia, including the country’s monetary policy.</p>
+<section id="khmer-times">
+<h3>Khmer Times<a class="headerlink" href="#khmer-times" title="Permalink to this heading">#</a></h3>
+<p>Khmer Times, a prominent English language newspaper in Cambodia, offers a broad spectrum of news, encompassing domestic and international affairs, politics, business, lifestyle, and culture. Its comprehensive reporting on economic issues makes it a valuable source for this research.</p>
+</section>
+<section id="phnom-penh-post">
+<h3>Phnom Penh Post<a class="headerlink" href="#phnom-penh-post" title="Permalink to this heading">#</a></h3>
+<p>The Phnom Penh Post, recognized as Cambodia’s oldest independent newspaper, provides detailed insights into various subjects, including politics, economy, lifestyle, and culture. Its in-depth analysis of domestic economic affairs and policies adds a significant dimension to the dataset.</p>
+</section>
 </section>
 <section id="data-collection">
 <h2>Data Collection<a class="headerlink" href="#data-collection" title="Permalink to this heading">#</a></h2>
-<p>For the purpose of this research, we will be utilizing articles from three major news outlets in Cambodia: Khmer Times and Phnom Penh Post. These sources were chosen for their relevance, comprehensiveness, and reputation as credible news platforms in Cambodia, providing a diverse range of coverage on the economic and financial matters of the country.</p>
-<p><strong>1. Khmer Times</strong></p>
-<p>Khmer Times is a major English language newspaper in Cambodia. It covers a wide range of topics, including domestic and international news, politics, business, lifestyle, and culture. The newspaper is known for its extensive coverage of economic issues, including the country’s monetary policy.</p>
-<p><strong>2. Phnom Penh Post</strong></p>
-<p>The Phnom Penh Post is the oldest independent newspaper in Cambodia, offering both English and Khmer editions. It provides in-depth coverage of various topics, from politics to economy, lifestyle, and culture. It is particularly regarded for its detailed analysis of domestic economic affairs and policies.</p>
-<p>We will gather articles from these sources using automated methods.</p>
+<p>The data collection process is methodically designed to gather relevant articles from the selected news outlets, ensuring a rich and focused dataset.</p>
+<section id="web-scraping">
+<h3>Web Scraping<a class="headerlink" href="#web-scraping" title="Permalink to this heading">#</a></h3>
+<p>Utilizing Python libraries such as <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> and <code class="docutils literal notranslate"><span class="pre">requests</span></code>, articles are extracted from the websites of Khmer Times and Phnom Penh Post. The scraping process retrieves essential details, including the headline, date, and full text of each article.</p>
 </section>
-<section id="gathering-the-raw-dataset">
-<h2>Gathering the Raw Dataset<a class="headerlink" href="#gathering-the-raw-dataset" title="Permalink to this heading">#</a></h2>
-<p><strong>Web Scraping:</strong></p>
-<p>We will use web scraping tools to extract articles from the websites of the three news outlets. The Python libraries <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> and <code class="docutils literal notranslate"><span class="pre">requests</span></code> will be particularly useful for this task. We will extract the headline, date, and full text of each article.</p>
-<p><strong>Keyword Filtering:</strong></p>
-<p>Once we have a comprehensive dataset of articles, we will filter the articles based on relevant keywords related to economic policy, such as “National Bank of Cambodia”, “monetary policy”, “exchange rate”, “currency stabilization”, “de-dollarization”, and “U.S. Federal Reserve”, among others. This will ensure we are only analyzing articles relevant to our research.</p>
-<p><strong>Time Frame:</strong></p>
-<p>We will determine a specific time frame for our study, and only gather articles published within this period. This will allow us to understand the evolution of policy uncertainty over a specified period of time.</p>
-<p>This dataset will provide a rich source of information from which to analyze and measure the uncertainty surrounding Cambodia’s central bank policy.</p>
+<section id="keyword-filtering">
+<h3>Keyword Filtering<a class="headerlink" href="#keyword-filtering" title="Permalink to this heading">#</a></h3>
+<p>To maintain relevance to the research objectives, the dataset is filtered using specific keywords related to economic policy, such as “National Bank of Cambodia,” “monetary policy,” “exchange rate,” and more. This step refines the dataset to include only articles pertinent to central bank policy uncertainty.</p>
+</section>
+<section id="time-frame">
+<h3>Time Frame<a class="headerlink" href="#time-frame" title="Permalink to this heading">#</a></h3>
+<p>The research considers articles published between January 1, 2014, and July 31, 2023. This defined time frame enables a chronological analysis of policy uncertainty, capturing its evolution over nearly a decade.</p>
+</section>
 </section>
 <section id="exploratory-data-analysis">
 <h2>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this heading">#</a></h2>
-<p>We have collected 40,002 articles from the three news outlets. The articles were published between January 1, 2014 and July 31, 2023. After preprocessing, we are left with 39,632 articles.</p>
+<p>The initial collection yielded 40,002 articles, which after preprocessing, resulted in a final dataset of 39,632 articles.</p>
 <section id="yearly-distribution">
 <h3>Yearly Distribution<a class="headerlink" href="#yearly-distribution" title="Permalink to this heading">#</a></h3>
-<p>The dataset spans from 2014 to 2023, with a total of 39,632 articles. The following observations can be made from the yearly distribution:</p>
+<p>The dataset’s yearly distribution reveals insightful patterns:</p>
 <ul class="simple">
-<li><p><strong>2014</strong>: The dataset begins with 2,047 articles, having an average length of 3,345 words.</p></li>
-<li><p><strong>2015-2018</strong>: A gradual increase in the number of articles is observed, reaching 3,530 in 2018, with average lengths ranging from 3,162 to 3,486 words.</p></li>
-<li><p><strong>2019-2020</strong>: The number of articles continues to grow, reaching 4,688 in 2020, with average lengths around 3,400 words.</p></li>
-<li><p><strong>2021-2022</strong>: A significant increase is noted, with 5,493 articles in 2021 and 6,866 in 2022, though the average length slightly decreases to around 3,100 words.</p></li>
-<li><p><strong>2023</strong>: The data for 2023 includes 3,750 articles, with an average length of 3,255 words.</p></li>
+<li><p><strong>2014</strong>: Starting with 2,047 articles, averaging 3,345 words each.</p></li>
+<li><p><strong>2015-2018</strong>: A steady growth in articles, peaking at 3,530 in 2018, with average lengths oscillating between 3,162 and 3,486 words.</p></li>
+<li><p><strong>2019-2020</strong>: Continued expansion, culminating in 4,688 articles in 2020, maintaining an average length around 3,400 words.</p></li>
+<li><p><strong>2021-2022</strong>: A marked surge, with 5,493 and 6,866 articles in consecutive years, though the average length slightly recedes to approximately 3,100 words.</p></li>
+<li><p><strong>2023</strong>: The partial year includes 3,750 articles, averaging 3,255 words each.</p></li>
 </ul>
 </section>
 <section id="overall-trends">
 <h3>Overall Trends<a class="headerlink" href="#overall-trends" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>Number of Articles</strong>: The dataset shows a consistent upward trend in the number of articles over the years, reflecting a growing interest in the subjects related to uncertainty, economics, and central bank policy.</p></li>
-<li><p><strong>Average Length</strong>: The average length of the articles remains relatively stable, with minor fluctuations. The overall average length across all years is 3,247 words.</p></li>
+<li><p><strong>Number of Articles</strong>: The dataset exhibits a consistent growth in the number of articles, indicative of an escalating interest in subjects related to uncertainty, economics, and central bank policy in Cambodia.</p></li>
+<li><p><strong>Average Length</strong>: Despite minor fluctuations, the average length of the articles remains relatively stable across the years, with an overall mean of 3,247 words.</p></li>
 </ul>
 <figure class="align-center" id="fig-num-articles-trend">
 <a class="reference internal image-reference" href="../../_images/num_articles_trend.png"><img alt="../../_images/num_articles_trend.png" src="../../_images/num_articles_trend.png" style="width: 80%;" /></a>
@@ -547,9 +558,17 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-sources">Data sources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">Data Collection</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gathering-the-raw-dataset">Gathering the Raw Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-sources">Data Sources</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#khmer-times">Khmer Times</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phnom-penh-post">Phnom Penh Post</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">Data Collection</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-scraping">Web Scraping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keyword-filtering">Keyword Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-frame">Time Frame</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">Exploratory Data Analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#yearly-distribution">Yearly Distribution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-trends">Overall Trends</a></li>

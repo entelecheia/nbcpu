@@ -1,1 +1,13 @@
-# Concluding Remarks
+## Concluding Remarks
+
+The exploration of central bank policy uncertainty in Cambodia's highly dollarized economy has unveiled a multifaceted landscape where traditional monetary policy tools are challenged by the underdevelopment of the financial market. This research has employed a sophisticated dual-model approach, utilizing Latent Dirichlet Allocation (LDA) models, to classify and measure the intensity of policy uncertainty. The results provide a nuanced understanding of the specific sources of policy uncertainty and how these evolve over time.
+
+The dual-model approach has proven effective in capturing not only the overall level of policy uncertainty but also the distribution of this uncertainty across different policy areas. By focusing on key areas such as Exchange Rate Policy Uncertainty, Currency Stabilization Policy Uncertainty, and De-dollarization Policy Uncertainty, the research has illuminated the complex interplay of factors that contribute to uncertainty in Cambodia's monetary landscape.
+
+The narrative and comparative evaluation methods have further strengthened the validity of the findings, aligning the topic-based measures with manual examination of articles and established uncertainty indices. This alignment underscores the robustness of the methodology and its potential applicability in other economic contexts.
+
+However, the research also acknowledges the inherent complexities and potential limitations of the approach. The assumption that the relative weight of uncertainty-related topics in an article is indicative of the intensity of uncertainty was carefully validated but warrants consideration in different economic settings. The robustness of the findings was also verified through sensitivity analysis, reflecting a commitment to methodological rigor.
+
+The insights derived from this research offer valuable contributions to both academic discourse and practical applications. For policymakers, economists, and financial analysts, the understanding of policy uncertainty's specific sources and evolution can inform risk assessment, decision-making, policy formulation, and strategic planning. The methodology itself, adaptable and extendable, can serve as a blueprint for similar analyses in other economic environments.
+
+In conclusion, this research has navigated the intricate terrain of central bank policy uncertainty in Cambodia, offering a methodologically robust and contextually rich analysis. It stands as a testament to the potential of integrating quantitative topic modeling with qualitative content analysis, bridging the gap between data-driven insights and the nuanced understanding of economic phenomena. Future research could further explore correlations with external economic indicators, sentiment analysis, or predictive modeling, expanding the horizons of understanding and application in the realm of policy uncertainty.
