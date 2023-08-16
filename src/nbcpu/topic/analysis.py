@@ -1,6 +1,6 @@
 import logging
-from typing import Dict, List, Optional, Union
 from pathlib import Path
+from typing import Dict, List, Optional, Union
 
 import matplotlib.pyplot as plt
 import pandas as pd
