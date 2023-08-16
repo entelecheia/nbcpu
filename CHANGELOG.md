@@ -1,5 +1,20 @@
 <!--next-version-placeholder-->
 
+## v0.17.0 (2023-08-16)
+
+### Feature
+
+* **data:** Update dataset metrics and add trends analysis ([`75f6a6d`](https://github.com/entelecheia/nbcpu/commit/75f6a6d70fbfe8bb15e83db388a24194b58247de))
+* **book:** Add num_articles_trend figure ([`28ce980`](https://github.com/entelecheia/nbcpu/commit/28ce980a644110ca060992b0020dcf70b8480fbd))
+* **analysis:** Add TopicAnalysis class in nbcpu module ([`a5890f3`](https://github.com/entelecheia/nbcpu/commit/a5890f341d5a454f5ce8d2b9dca53d10aa366d68))
+* **topic:** Add TopicAnalysis module ([`8b8bd87`](https://github.com/entelecheia/nbcpu/commit/8b8bd87b2a440492fc29a019ddd46daf7b36e6c5))
+
+### Documentation
+
+* Update analysis notebook ([`750e4f8`](https://github.com/entelecheia/nbcpu/commit/750e4f86ef81d6eccaf575f10d764a7daca3273a))
+* Update analysis notebook ([`a0ae755`](https://github.com/entelecheia/nbcpu/commit/a0ae755e462045d1c3dcbdd7e7145b55a48a817e))
+* Update topic notebooks ([`00c5f66`](https://github.com/entelecheia/nbcpu/commit/00c5f66fbc2e779f1d664e46bbc6e546c78a964c))
+
 ## v0.16.0 (2023-08-15)
 
 ### Feature
