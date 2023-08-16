@@ -27,7 +27,7 @@
 
 <!-- Links: -->
 
-**Quantifying Central Bank Policy Uncertainty in a Highly Dollarized Economy: A Topic Modeling Approach**
+**Quantifying Central Bank Policy Uncertainty in Cambodia: A Topic Modeling Approach**
 
 Understanding and measuring central bank policy uncertainty are fundamental to predicting economic outcomes, particularly in economies like Cambodia where the monetary policy tools are underdeveloped and the economy is heavily dollarized. This study aims to develop and evaluate topic-based measures of policy uncertainty in the Cambodian context, using narrative text data derived from major news media outlets. Leveraging Latent Dirichlet Allocation (LDA), a widely-used generative model for text data, we estimate the document-topic and topic-word distributions from a corpus of news articles, thereby deriving measures of policy uncertainty.
 
