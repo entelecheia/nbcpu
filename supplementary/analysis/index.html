@@ -428,7 +428,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -444,6 +446,25 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#yearly-distribution">Yearly Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-trends">Overall Trends</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-trend-analysis">Topic Trend Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainty-analysis">Uncertainty Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis">Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-retrieval-for-uncertainty-analysis">Article Retrieval for Uncertainty Analysis</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -455,26 +476,33 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="anaylisis-of-the-results">
 <h1>Anaylisis of the results<a class="headerlink" href="#anaylisis-of-the-results" title="Permalink to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nbcpu</span> <span class="kn">import</span> <span class="n">HyFI</span>
-
-<span class="n">meta_file</span> <span class="o">=</span> <span class="s2">&quot;/home/yjlee/workspace/projects/nbcpu/workspace/datasets/processed/khmer_tokenized/train.parquet&quot;</span>
-<span class="n">uncertainty_file</span> <span class="o">=</span> <span class="s2">&quot;/home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty/model/outputs/LDA_model(4)_k(20)-doc_topic_dists.parquet&quot;</span>
-<span class="n">topic_file</span> <span class="o">=</span> <span class="s2">&quot;/home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_prior/model/outputs/LDA_model(1)_k(20)-doc_topic_dists.parquet&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meta</span> <span class="o">=</span> <span class="n">HyFI</span><span class="o">.</span><span class="n">load_dataframe</span><span class="p">(</span><span class="n">meta_file</span><span class="p">)</span>
-<span class="n">meta</span> <span class="o">=</span> <span class="n">meta</span><span class="p">[[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">]]</span>
-<span class="n">meta</span>
-</pre></div>
-</div>
-</div>
+<p>The analysis of the results from the topic modeling and subsequent refinements provides valuable insights into the themes related to uncertainty, particularly in the context of central bank policy.</p>
+<section id="exploratory-data-analysis-eda">
+<h2>Exploratory Data Analysis (EDA)<a class="headerlink" href="#exploratory-data-analysis-eda" title="Permalink to this heading">#</a></h2>
+<p>The Exploratory Data Analysis (EDA) provides an overview of the dataset used for the topic modeling, focusing on the number of articles and their average length over the years. Here’s a detailed analysis of the data:</p>
+<section id="yearly-distribution">
+<h3>Yearly Distribution<a class="headerlink" href="#yearly-distribution" title="Permalink to this heading">#</a></h3>
+<p>The dataset spans from 2014 to 2023, with a total of 39,632 articles. The following observations can be made from the yearly distribution:</p>
+<ul class="simple">
+<li><p><strong>2014</strong>: The dataset begins with 2,047 articles, having an average length of 3,345 words.</p></li>
+<li><p><strong>2015-2018</strong>: A gradual increase in the number of articles is observed, reaching 3,530 in 2018, with average lengths ranging from 3,162 to 3,486 words.</p></li>
+<li><p><strong>2019-2020</strong>: The number of articles continues to grow, reaching 4,688 in 2020, with average lengths around 3,400 words.</p></li>
+<li><p><strong>2021-2022</strong>: A significant increase is noted, with 5,493 articles in 2021 and 6,866 in 2022, though the average length slightly decreases to around 3,100 words.</p></li>
+<li><p><strong>2023</strong>: The data for 2023 includes 3,750 articles, with an average length of 3,255 words.</p></li>
+</ul>
+</section>
+<section id="overall-trends">
+<h3>Overall Trends<a class="headerlink" href="#overall-trends" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Number of Articles</strong>: The dataset shows a consistent upward trend in the number of articles over the years, reflecting a growing interest in the subjects related to uncertainty, economics, and central bank policy.</p></li>
+<li><p><strong>Average Length</strong>: The average length of the articles remains relatively stable, with minor fluctuations. The overall average length across all years is 3,247 words.</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:hyfi.utils.datasets.load:Loading data from /home/yjlee/workspace/projects/nbcpu/workspace/datasets/processed/khmer_tokenized/train.parquet
+INFO:hyfi.utils.datasets.load: &gt;&gt; elapsed time to load data: 0:00:03.509520
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -493,498 +521,283 @@ document.write(`
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>id</th>
-      <th>time</th>
-      <th>title</th>
-      <th>text</th>
+      <th>Year</th>
+      <th>num_articles</th>
+      <th>avg_length</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>501330943</td>
-      <td>2023-07-25 18:19:23</td>
-      <td>Use consumer behaviour for providing loans, NB...</td>
-      <td>The National Bank of Cambodia (NBC) has asked ...</td>
+      <td>2014</td>
+      <td>2047</td>
+      <td>3345.254030</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>501326169</td>
-      <td>2023-07-18 08:19:05</td>
-      <td>VIDEO: Consumers’ complaint mechanism soon, NB...</td>
-      <td>The National Bank of Cambodia has prepared a d...</td>
+      <td>2015</td>
+      <td>2804</td>
+      <td>3162.745720</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>501325554</td>
-      <td>2023-07-17 18:19:37</td>
-      <td>Consumers’ complaint mechanism soon, NBC says</td>
-      <td>The National Bank of Cambodia has prepared a d...</td>
+      <td>2016</td>
+      <td>3345</td>
+      <td>3486.932436</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>501322478</td>
-      <td>2023-07-11 18:19:19</td>
-      <td>NBC inks deal with UnionPay to expand cross-bo...</td>
-      <td>National Bank of Cambodia (NBC) on Monday sign...</td>
+      <td>2017</td>
+      <td>3183</td>
+      <td>3174.949419</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>501321914</td>
-      <td>2023-07-10 18:17:17</td>
-      <td>Inflation drops lowest to 0.48%, says NBC</td>
-      <td>The average price of goods and services suppli...</td>
+      <td>2018</td>
+      <td>3530</td>
+      <td>3182.720963</td>
     </tr>
     <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
+      <th>5</th>
+      <td>2019</td>
+      <td>3926</td>
+      <td>3423.020122</td>
     </tr>
     <tr>
-      <th>39997</th>
-      <td>48187</td>
-      <td>2014-03-15 17:00:00</td>
-      <td>Cuban Americans Hold Meeting</td>
-      <td>MIAMI, March 16 (Reuters) – Cuban Americans me...</td>
+      <th>6</th>
+      <td>2020</td>
+      <td>4688</td>
+      <td>3365.567193</td>
     </tr>
     <tr>
-      <th>39998</th>
-      <td>48132</td>
-      <td>2014-03-11 17:00:00</td>
-      <td>CNRP and CPP: No Consensus</td>
-      <td>PHNOM PENH: March 12. 2014 (Khmer Times) – CNR...</td>
+      <th>7</th>
+      <td>2021</td>
+      <td>5493</td>
+      <td>3144.084653</td>
     </tr>
     <tr>
-      <th>39999</th>
-      <td>48115</td>
-      <td>2014-03-10 17:00:00</td>
-      <td>ILOCamfeba On Labor</td>
-      <td>PHNOM PENH: March 11, 2014 (Khmer Times) — The...</td>
+      <th>8</th>
+      <td>2022</td>
+      <td>6866</td>
+      <td>3103.058549</td>
     </tr>
     <tr>
-      <th>40000</th>
-      <td>48085</td>
-      <td>2014-03-08 17:00:00</td>
-      <td>World Wide Web Turns 25</td>
-      <td>SAN FRANCISCO, March 9, 2014 (AFP) – Twenty-fi...</td>
+      <th>9</th>
+      <td>2023</td>
+      <td>3750</td>
+      <td>3255.596800</td>
     </tr>
     <tr>
-      <th>40001</th>
-      <td>48087</td>
-      <td>2014-03-08 17:00:00</td>
-      <td>Sarah Palin on Nukes</td>
-      <td>NATIONAL HARBOR, March 9, 2014 (AFP) – Sarah P...</td>
+      <th>0</th>
+      <td>Total</td>
+      <td>39632</td>
+      <td>3247.926751</td>
     </tr>
   </tbody>
 </table>
-<p>39637 rows × 4 columns</p>
 </div></div></div>
 </div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/1efe142e6dd84608776d8af4028dfd9a2872bed12c473451c073b9046942b6de.png" src="../../_images/1efe142e6dd84608776d8af4028dfd9a2872bed12c473451c073b9046942b6de.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:hyfi.utils.datasets.load:Loading data from /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_prior/model/outputs/LDA_model(1)_k(20)-doc_topic_dists.parquet
+INFO:hyfi.utils.datasets.load: &gt;&gt; elapsed time to load data: 0:00:00.011518
+</pre></div>
+</div>
+<img alt="../../_images/ad8cf639261671f83ad4869c1a51c6ed0707cfcbe2f124817a55d185ad24f5ef.png" src="../../_images/ad8cf639261671f83ad4869c1a51c6ed0707cfcbe2f124817a55d185ad24f5ef.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="topic-trend-analysis">
+<h2>Topic Trend Analysis<a class="headerlink" href="#topic-trend-analysis" title="Permalink to this heading">#</a></h2>
+<p>In the analysis of topic trends, we focus on three key areas: Economic, Banking, and ASEAN-related topics. The dataset spans from 2014 to 2023, and the topic weights represent the prominence of each topic within the corpus for each year. Here’s a detailed analysis of the trends:</p>
+<ul class="simple">
+<li><p><strong>Economic Topic</strong>: The declining trend in the Economic topic may reflect a shift in focus or changes in the global economic landscape. The consistent decrease might indicate a reduced emphasis on general economic indicators.</p></li>
+<li><p><strong>Banking Topic</strong>: The upward trend in the Banking topic, with a notable spike in 2020, suggests an increasing interest in banking and financial services, possibly driven by regulatory changes, technological advancements, or economic events.</p></li>
+<li><p><strong>ASEAN Topic</strong>: The fluctuation in the ASEAN topic, with a significant increase in 2020, may reflect regional developments, cooperation, or challenges within the ASEAN community.</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:hyfi.utils.datasets.load:Loading data from /home/yjlee/workspace/projects/nbcpu/book/supplementary/analysis/workspace/outputs/topic_data.parquet
+INFO:hyfi.utils.datasets.load: &gt;&gt; elapsed time to load data: 0:00:00.009436
+INFO:hyfi.utils.datasets.load:Loading data from /home/yjlee/workspace/projects/nbcpu/workspace/nbcpu-topic_uncertainty_filtered/model/outputs/inferred_topics/LDA_model(2)_k(5)-inferred_doc_topic_dists.parquet
+INFO:hyfi.utils.datasets.load: &gt;&gt; elapsed time to load data: 0:00:00.008979
+INFO:hyfi.utils.datasets.load:Loading data from /home/yjlee/workspace/projects/nbcpu/workspace/datasets/processed/khmer_tokenized/train.parquet
+INFO:hyfi.utils.datasets.load: &gt;&gt; elapsed time to load data: 0:00:03.401324
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Economic</th>
+      <th>Banking</th>
+      <th>Asean</th>
+    </tr>
+    <tr>
+      <th>timestamp</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-12-31</th>
+      <td>0.313100</td>
+      <td>0.044459</td>
+      <td>0.015407</td>
+    </tr>
+    <tr>
+      <th>2015-12-31</th>
+      <td>0.305647</td>
+      <td>0.051065</td>
+      <td>0.012842</td>
+    </tr>
+    <tr>
+      <th>2016-12-31</th>
+      <td>0.141942</td>
+      <td>0.058665</td>
+      <td>0.013761</td>
+    </tr>
+    <tr>
+      <th>2017-12-31</th>
+      <td>0.136633</td>
+      <td>0.065213</td>
+      <td>0.012843</td>
+    </tr>
+    <tr>
+      <th>2018-12-31</th>
+      <td>0.106295</td>
+      <td>0.066703</td>
+      <td>0.015911</td>
+    </tr>
+    <tr>
+      <th>2019-12-31</th>
+      <td>0.091526</td>
+      <td>0.077333</td>
+      <td>0.016898</td>
+    </tr>
+    <tr>
+      <th>2020-12-31</th>
+      <td>0.096598</td>
+      <td>0.100020</td>
+      <td>0.079986</td>
+    </tr>
+    <tr>
+      <th>2021-12-31</th>
+      <td>0.095097</td>
+      <td>0.090853</td>
+      <td>0.066534</td>
+    </tr>
+    <tr>
+      <th>2022-12-31</th>
+      <td>0.091314</td>
+      <td>0.080484</td>
+      <td>0.031264</td>
+    </tr>
+    <tr>
+      <th>2023-12-31</th>
+      <td>0.086958</td>
+      <td>0.088777</td>
+      <td>0.017232</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/87fe921945c0fb6a4f6cfac0e8e537abd2960164427347c0999f1f843e8f9e86.png" src="../../_images/87fe921945c0fb6a4f6cfac0e8e537abd2960164427347c0999f1f843e8f9e86.png" />
+</div>
+</div>
+</section>
+<section id="uncertainty-analysis">
+<h2>Uncertainty Analysis<a class="headerlink" href="#uncertainty-analysis" title="Permalink to this heading">#</a></h2>
+<p>The uncertainty analysis focuses on the examination of economic activity, specifically targeting instances where the Economic topic weight is greater than 0.5. This threshold represents a significant concentration on economic themes within the documents, and the analysis aims to understand the trends and patterns related to uncertainty within this context.</p>
+<section id="methodology">
+<h3>Methodology<a class="headerlink" href="#methodology" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Data Selection</strong>: The data is filtered to include only those documents where the Economic topic weight is greater than 0.5. This ensures a focus on documents that are highly relevant to economic activity.</p></li>
+<li><p><strong>Aggregation</strong>: The data is aggregated to provide a consolidated view of the uncertainty trends. The analysis considers data after January 1, 2015, to focus on recent trends.</p></li>
+<li><p><strong>Plotting</strong>: The uncertainty values are plotted over time, providing a visual representation of how uncertainty has evolved in the context of economic activity.</p></li>
+</ol>
+</section>
+<section id="analysis">
+<h3>Analysis<a class="headerlink" href="#analysis" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Trends</strong>: The plot of uncertainty reveals specific patterns and fluctuations that correspond to various economic events and conditions. Peaks in the uncertainty graph may align with significant economic events, policy changes, or market volatility.</p></li>
+<li><p><strong>Correlation with Economic Activity</strong>: By focusing on documents with a high Economic topic weight, the analysis provides insights into how uncertainty is manifested within the economic discourse. This can reveal how uncertainty is linked to specific economic indicators, policies, or sectors.</p></li>
+<li><p><strong>Temporal Dynamics</strong>: The time-series analysis allows for the examination of seasonal patterns, cyclical trends, or responses to one-off events. This temporal perspective can help in understanding the underlying drivers of uncertainty within the economic context.</p></li>
+</ul>
+<p>The uncertainty analysis provides a nuanced view of how uncertainty is expressed and evolves within the realm of economic activity. By focusing on documents with a strong economic emphasis, the analysis captures the specific language, themes, and concerns that characterize uncertainty in this domain.</p>
+<p>The insights derived from this analysis can be valuable for economists, policymakers, investors, and business leaders who need to understand the nature and implications of uncertainty in the economic landscape. It can inform risk assessment, decision-making, policy formulation, and strategic planning.</p>
+<p>Further research could explore correlations with external economic indicators, conduct sentiment analysis to gauge the tone of the discourse, or apply machine learning techniques to predict future uncertainty trends based on historical patterns. By integrating these additional layers of analysis, a more comprehensive and actionable understanding of economic uncertainty can be achieved.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/319165185e98b1793fd577e320e1bd1531dba33dbb5a54218e338e1502629645.png" src="../../_images/319165185e98b1793fd577e320e1bd1531dba33dbb5a54218e338e1502629645.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="article-retrieval-for-uncertainty-analysis">
+<h2>Article Retrieval for Uncertainty Analysis<a class="headerlink" href="#article-retrieval-for-uncertainty-analysis" title="Permalink to this heading">#</a></h2>
+<p>The article retrieval process is a vital step in conducting a nuanced and context-specific analysis of uncertainty. By carefully selecting the topic, date range, and number of articles, the analysis ensures that the most relevant and insightful materials are gathered for further examination.</p>
+<p>This approach can be adapted and extended for various research objectives, such as tracking the discourse on other topics, conducting longitudinal studies, or integrating with other quantitative measures. It serves as a bridge between quantitative topic modeling and qualitative content analysis, leveraging the strengths of both methodologies to provide a comprehensive understanding of the subject matter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uncertainty_data</span> <span class="o">=</span> <span class="n">HyFI</span><span class="o">.</span><span class="n">load_dataframe</span><span class="p">(</span><span class="n">uncertainty_file</span><span class="p">)</span>
-<span class="n">uncertainty_data</span> <span class="o">=</span> <span class="n">uncertainty_data</span><span class="p">[[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;topic0&quot;</span><span class="p">,</span> <span class="s2">&quot;topic1&quot;</span><span class="p">]]</span>
-<span class="n">uncertainty_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
-    <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;topic0&quot;</span><span class="p">:</span> <span class="s2">&quot;uncertainty&quot;</span><span class="p">,</span> <span class="s2">&quot;topic1&quot;</span><span class="p">:</span> <span class="s2">&quot;improve&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">articles</span> <span class="o">=</span> <span class="n">ta</span><span class="o">.</span><span class="n">find_articles</span><span class="p">(</span>
+    <span class="n">topic</span><span class="o">=</span><span class="s2">&quot;Uncertainty&quot;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2021-01-01&quot;</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;2021-01-31&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">20</span>
 <span class="p">)</span>
-<span class="n">uncertainty_data</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">articles</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>uncertainty</th>
-      <th>improve</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>501330943</td>
-      <td>0.000085</td>
-      <td>0.464935</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>501326169</td>
-      <td>0.000458</td>
-      <td>0.001072</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>501325554</td>
-      <td>0.000086</td>
-      <td>0.654193</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>501322478</td>
-      <td>0.000114</td>
-      <td>0.000267</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>501321914</td>
-      <td>0.000080</td>
-      <td>0.161941</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>27589</th>
-      <td>48239</td>
-      <td>0.000176</td>
-      <td>0.000412</td>
-    </tr>
-    <tr>
-      <th>27590</th>
-      <td>48216</td>
-      <td>0.000160</td>
-      <td>0.000375</td>
-    </tr>
-    <tr>
-      <th>27591</th>
-      <td>48132</td>
-      <td>0.000061</td>
-      <td>0.019791</td>
-    </tr>
-    <tr>
-      <th>27592</th>
-      <td>48115</td>
-      <td>0.258588</td>
-      <td>0.740238</td>
-    </tr>
-    <tr>
-      <th>27593</th>
-      <td>48085</td>
-      <td>0.000056</td>
-      <td>0.000132</td>
-    </tr>
-  </tbody>
-</table>
-<p>27594 rows × 3 columns</p>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topic_data</span> <span class="o">=</span> <span class="n">HyFI</span><span class="o">.</span><span class="n">load_dataframe</span><span class="p">(</span><span class="n">topic_file</span><span class="p">)</span>
-<span class="n">topic_data</span> <span class="o">=</span> <span class="n">topic_data</span><span class="p">[[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;topic0&quot;</span><span class="p">,</span> <span class="s2">&quot;topic1&quot;</span><span class="p">,</span> <span class="s2">&quot;topic7&quot;</span><span class="p">]]</span>
-<span class="n">topic_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
-    <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;topic0&quot;</span><span class="p">:</span> <span class="s2">&quot;econ&quot;</span><span class="p">,</span> <span class="s2">&quot;topic1&quot;</span><span class="p">:</span> <span class="s2">&quot;banking&quot;</span><span class="p">,</span> <span class="s2">&quot;topic7&quot;</span><span class="p">:</span> <span class="s2">&quot;asean&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span>
-<span class="p">)</span>
-<span class="n">topic_data</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Throughout 2020, almost every sector of Cambodia’s economy was struck hard by the COVID-19 pandemic. Hospitality and construction, two of the Kingdom’s key industry were no exceptions. In an exclusive interview with Khmer Times’ Taing Rinith, Faz Ghotbi, executive chairman at Elite Hospitality &amp; Trading, with more than 20 years of experience in these two sectors, gives his insights on how critical the situation is, as well as his perspective on recovery in the future.\nKT: Can you tell us briefly about yourself and your ventures in Cambodia?\nFaz Ghotbi: My background is mostly in construction and hospitality. I have been working internationally in many countries in the Middle East such as Dubai, United Arab Emirates, and Lebanon. The reason I decided to come to live in Cambodia is because I fell in love with the people because of their friendliness and hospitality. I have been settled down here for almost 20 years and even received\xa0 Cambodian citizenship.\nThroughout the years, I have been a co-founder and co-owner of several construction projects in Phnom Penh such as Palace Gate Hotel &amp; Resort, Epic 1 and\xa0 2 clubs, Steak &amp; Pan, and Eden Garden Mall. I brought two international awards to Cambodia, including Best Retail Development for Eden Garden Mall and the Prix Villegiature Award 2019 for the Best Charming Hotel in Asia for Palace Gate Hotel.\n\xa0\nKT: Since early last year, Cambodia’s hospitality sector has suffered greatly from the effects of the COVID-19 pandemic. In the meantime, how has it affected your group which is specialised in this industry?\nFaz Ghotbi: It was a very different year for all business sectors around the world. Some businesses such as hospitality and entertainment have been hit dramatically and we were no exception. Since last year, all of our five nightclubs have been closed. The revenue from our two restaurants dropped by 80 percent. We also lost 90 percent of the revenue from our hotels because of the travel restrictions imposed by the government. We have struggled a lot but, so far, we never stopped paying the salaries of our staff, even those who work for our businesses which are\xa0 closed. Although we have had to reduce their salaries to 80 percent and then to 70 percent, we will never go less than 50 percent. It is true that we are losing money, but they\xa0 worked hard with us during the good times and I know that I must do the same during this difficult time. I will continue this until I run out of cash.\nBecause some of these properties were closed for two or three months, I’ve used this opportunity to renovate them.\nKT: And how about your construction business? How has it been doing so far?\nFaz Ghotbi: We also developed Borey Eden Garden. The development has been suspended because I needed the cash that I was using to research the property to spend on my other businesses. I have rented the lands and I have to\xa0 pay the rent to the landlords. The landlords can compromise for one or two months, but they cannot do it for a long time. However, in general, COVID-19 has not much affected\xa0 Cambodia’s construction projects. Most of them are proceeding while some of them have slowed down a bit.\nAlso, I don’t think COVID-19 will lead to a real estate crash in Cambodia. You may see some people who need money and sell their properties under market value but, in Cambodia, the value of the properties will never drop because there is an end-user market. These end-users, who need the properties for use, represent 80 percent of the market. And these users are increasing in number because the middle class is growing very fast, while young Cambodian people are seeking more independence and looking for shop houses or flat houses when they have a family.\nKT: When and how do you think Cambodia’s hospitality will recover?\nFaz Ghotbi: In our meeting with the World Bank, Cambodia’s economy, especially construction, was cited to increase by 4 percent in 2021. No doubt, Cambodia’s GDP [gross domestic product] will be positive in 2021, but I’m sure that the hospitality business will not jump back this year. This sector might still struggle in 2021 because of COVID-19 but, as soon as the vaccine is distributed all over the world, I think when WHO [the World Health Organization] approves AstraZeneca’s COVID-19 vaccine, it will be distributed to the mass market because it needs to be stored at only 5 degrees Celsius in a normal fridge – and it’s very cheap at around only $3. I see that it is very positive for the hospitality business because very soon COVAX will be distributed all over the world and soon COVID-19 will no longer be scary. I expect a travel boom when the pandemic is over, probably in 2022 or 2023. (COVAX is co-led by Gavi, an international organisation created in 2000 to improve access to new and underused vaccines for children living in the world’s poorest countries, and the Coalition for Epidemic Preparedness Innovations and WHO. Its aim is to accelerate the development and manufacture of COVID-19 vaccines and to guarantee fair and equitable access for every country in the world.)\nHowever, this is not the first pandemic, and it will not be the last pandemic. So hopefully, we will learn from this lesson so that we can be prepared for a future pandemic.\n\xa0\nKT: How optimistic are you about the future of the construction sector in Cambodia?\nFaz Ghotbi: I am very positive about construction in Cambodia for two main factors. First, because Cambodian end-users are there, and second because bank loans are getting getting cheaper and cheaper and there is more and more competition coming into the microfinance market space. This will allow everyone to go and buy properties, which is a long-term investment in the country. This is something cultural because people even buy property for future generations of their families. Plus, we have Chinese moving to Cambodia and purchasing expensive properties. Their injections [of cash] will make property in Cambodia positive in 2021.&#39;
+ &#39;AFP – Asian markets suffered further losses yesterday, tracking a rout in New York and Europe as markets were hit by a perfect storm of worries about the slow rollout of vaccines, surging infections, a stuttering economic recovery and high valuations.\nThe Federal Reserve added to the sense of concern as it warned that the economy was struggling in the face of a new wave of COVID-19 infections that is hammering the northern hemisphere and forcing governments to reimpose strict containment measures.\nThe US central bank said the “pace of the recovery in economic activity and employment has moderated in recent months” and said it would maintain its ultra-loose monetary policy for the foreseeable future.\nChair Jerome Powell added that “overall economic activity remains below its level before the pandemic, and the path ahead remains highly uncertain”.\nWhile there were few surprises from the meeting and Powell’s comments, they provided a dose of reality to investors about the state of the economy, despite broad long-term optimism.\nOANDA’s Jeffrey Halley said: “It seems that the market was looking for something more concrete. Disappointed inflationistas headed for the exit to lick their wounds, although frankly, they should have expected nothing less from the Fed.”\nWorries about inoculations are rife, with the US and Europe struggling to get their programmes into gear owing to supply problems.\nThe European Union and Britain are locked in a row over access to AstraZeneca’s jab, with both sides insisting the company uphold contractual delivery promises to each of them – although the pharmaceutical firm has warned there is not enough to go around.\nAll three main Wall Street markets ended more than 2 percent lower, while London, Paris and Frankfurt were each more than 1 percent off.\nAsia was also a sea of red.\nHong Kong lost more than 2 percent, along with Jakarta and Wellington, while Shanghai and Sydney were almost 2 percent off.\nTokyo, Seoul, Mumbai, Singapore, Taipei and Bangkok lost more than 1 percent.\n“Nerves about vaccine rollouts weighed on market sentiment and significant volatility among some stocks targeted by retail investors added to investor fluxomics,” said Axi Strategist Stephen Innes.\nHopes for the reopening of economies were “getting pushed back well into the second quarter due to messed up vaccination and rollout strategies”.\nAnd observers said prices would likely drop further before resuming advances.\n“Investors should monitor, the risk of a correction,” said Tai Hui, at JP Morgan Asset Management.\n“We are still constructive on global economic fundamentals over the next 12 to 18 months, which should support equities, corporate credit and emerging market fixed income.”\nHong Kong and Shanghai were also being squeezed by the Chinese central bank’s decision to suck liquidity out of financial markets as it looks to avert a bubble developing.\nAdding to the weakness in Hong Kong, Cathay Pacific plunged more than 8 percent after the flag-carrier unveiled an $870 million bond sale to shore up its finances.\nInvestors are also worried by signs that the proposed $1.9 trillion stimulus might not be ready until March as progress is halted by the Senate impeachment trial of Donald Trump.&#39;
+ &#39;Following a run of significant share price increases early this past week, Cambodia Securities Exchange-listed Phnom Penh SEZ Plc (PPSP), dropped yesterday to 1,460 riels per share. Earlier this week, PPSP stock had reached an all-time high of 1,590 riels a share.\nCSX Chief Operations Officer Ha Jong Weon said on Tuesday that the decreasing share prices of PPSP over the last few weeks were the result of some investors aggressively selling their PPSP holdings. He noted prior to market close on Tuesday that there no longer appeared to be any signs of a strong “sell” desire among investors towards PPSP shares.\nHe added: “Currently, investors have come to feel confident about the [share price] increase of PPSP because of [what was] a very low price compared to the [company’s] book value and [its] previous stable price of around KHR 2,300.”\nThe recent uptick, previous to yesterday’s drop, followed weeks of downward pressure on PPSP’s stock price.\nIn response to questions that had been asked as to why the share price of PPSP had risen so significantly early this week, Phnom Penh SEZ Plc Chief Financial Officer Fong Nee Wai said: “Our company shares [are a] very much undervalued stock. The net tangible assets per share [are] way higher than our current share price in the market, hence our share price is certainly undervalued. Our company has very good fundamental[s]. As long as good investors have followed this in the market, they will know this is the good time to buy in our stock,” he added.\n“I believe [there] are investors in the market [who] surely could read and know about this fact, hence this is a good time to buy-in and [hold PPSP] shares,” Fong added.\nDuring the extraordinary general shareholder meeting last October, PPSP shareholders confirmed there would be no dividend distribution in 2020 and also approved a share buyback. That was set for mid-December 2020, but has been delayed pending approval by the Securities and Exchange Commission of Cambodia (SECC).\nFong said that PPSP plans to proceed with the share buyback announced during its extraordinary general shareholder meeting last October once SECC officials give that approval. He also addressed PPSP’s recent share price increase.\n“[Regarding] the share buyback and our shares actively trading in the market recently, we are not involved in any share trading presently to buy our shares in the market via [the] CSX [and will not be] until we have officially obtained approval from the Securities and Exchange Commission of Cambodia,” said Fong.\n“If we purchased our shares now, we [would be] subject to [a penalty imposed] by the SECC as we [would be acting] against the listing rules. Not until we have obtained officially the approval from the SECC [will we] buy back our shares from the market,” he added.\n“Now we are scheduling [a] meeting with the SECC’s Director-General. [We were] supposed to meet [on] Tuesday this week but, due to their busy meeting schedules, we [are] still waiting [for] their formal response to confirm the meeting request. If we could meet them within [a] few days then we could see whether our request is [going to be] approved by the SECC [soon],” Fong added.\n“Please be assured that, as soon as we have received confirmation from [the] SECC, we will inform you of the outcome and our action on [the] share buyback [as officially approved and guided by the SECC],” he added.\nWong Pang Nam, Deputy Chief Financial Officer of PPSP, explained PPSP’s share price being up this week (prior to yesterday), by sharing that there has been increased buying interest in the stock. He said the stock market is driven by sentiment and herd instincts.\n“Once market participants feel that share prices are cheap and [investors] are buying, interest for a particular [stock rises and] all will follow,” he added.\n“The market is aware of the company’s intention [for a] share buyback and possibly [it] is anticipating that the share price will go higher. But, having said that, the company’s intention was already made known last year during our EGM [extraordinary general meeting] and yet our share price [kept] going down because of continued selling by certain shareholders,” he added.\nWong added that there [are] no logical answers as to why shares go up and down. He did note that shares go up because there are more buyers than sellers and shares go down because there are more sellers than buyers. He stated that the fundamentals of the company [are] also important if one wants to try to explain [further] but, in his experience, he noted it is impossible to know what the stock market will do, adding that the beauty of the stock market is its being very unpredictable.\nHe also mentioned that PPSP shares reaching an all-time low, triggered investors to perceive upside value in the shares and start buying, which prompted others to follow, echoing his “herd mentality” theory again as to why investors reversed course.\n\xa0&#39;
+ &#39;LONDON (AFP) –Yesterday marks one year since China confirmed its first death from COVID-19, a 61-year-old man who was a regular at Wuhan city’s market, where the pandemic emerged before spreading around the world.\nNearly two million deaths later, the pandemic is still thriving, with new variants again prompting governments from Israel to Australia to impose lockdowns, curfews and restrictions – even with mass inoculation drives underway.\nRussia announced yesterday that 1.5 million people around the world had received its Sputnik V coronavirus vaccine as part of an initiative.\nThe Russian Direct Investment Fund (RDIF), which has financed the development of the Sputnik V coronavirus vaccine, confirmed the figure to AFP without offering a breakdown of where the jab was distributed.\n“We cannot say how many of them are in Russia and in the rest of the world,” RDIF spokesman Arseny Palagin said, adding that individual nations could release data separately.\nRussia became the first country last August to register a vaccine, months ahead of western competitors, and Moscow has boasted of more than one billion orders for the jab abroad.\nBritain on Sunday raced against the clock to vaccinate as many people as possible while Germany warned of the “hardest” days yet to come with Europe battling to contain soaring coronavirus infections.\nUK Health Secretary Matt Hancock said Sunday that every adult in Britain will be offered a jab by autumn, with officials vaccinating 200,000 people daily in a race to meet a target of 15 million of the most vulnerable by mid-February.\nThe vaccine drive comes as Britain recorded another 563 fatalities from the virus, bringing its deaths to over 81,400, one of the highest tolls in Europe.\nSoaring cases are forcing UK medical chiefs to try to prevent hospitals from being overwhelmed and the government to reinforce its campaign for people to abide by stay-at-home orders.\n“Of course we are all tired of restrictions, but we must find the collective strength to get through this critical stage and save as many lives as we can,” England’s Chief Medical Officer Chris Whitty wrote in The Sunday Times.\nGermany topped 40,000 fatalities on Sunday, the centre for disease control announced.\nChancellor Merkel warned in a weekly video message that the country had yet to feel the full impact of socialising over the Christmas and New Year.\nThe coming weeks will be “the hardest phase of the pandemic” so far, she said, with hospitals stretched to their limits. More than 1.9 million people have been infected so far, with almost 17,000 new cases in Germany since Saturday.\nIn France, where there has been criticism of the slow pace of vaccinations, more than 50,000 doses of the Moderna vaccine were due to arrive yesterday, Health Minister Olivier Veran said.\nAustralia’s third-largest city lifted stay-at-home orders yesterday, after mass testing and tracing across Brisbane found no new coronavirus cases despite fears over a contagious strain entering the community.\nMore than two million people were ordered into a snap lockdown Friday after a cleaner at a quarantine hotel contracted the UK variant of COVID-19 from a returned traveller.\nRussia, meanwhile, confirmed its first case of the UK strain of the virus.\nAnd Britain said it had helped raise $1 billion from global donors towards the drive to help “vulnerable countries” access coronavirus vaccines, by match-funding contributions.\n\xa0&#39;
+ &#39;In a shocking development, outpatients at a public hospital are being allowed to blatantly disregard social distancing measures strictly put in place to prevent any spread of COVID-19.\nA patient who visited the Ministry of Health-managed Calmette hospital yesterday morning revealed that social distancing measures were completely disregarded with staff seemingly unconcerned as they passed by.\nThe patient snapped a photo as he was waiting for a prescription, which showed people huddling together as they waited for service.\n“At first I was surprised to see scores of people not social distancing, disregarding signs put on chairs to leave them empty as a social distancing measure with some even sharing the same seat,” said the patient who chose not to be named.\n“It made me uncomfortable and it made me worry about the risk of catching COVID-19. Medical staff were milling about but nothing was being done to rectify the situation and the outside area was also crowded with people in close proximity,” he added.\nThe patient said masks were being worn by most, although he did notice some not being worn properly.\nHe noted that being a Monday the hospital was crowded with scores\xa0sitting on benches outside either waiting for family members or waiting to find a spot inside to be attended to.\nHe said other virus preventive measures, however, were in place such as visitors having their temperature taken upon entering and being sprayed with sanitiser.\nThe patient said that the previous week, he also encountered a total disregard for social distancing when he went for registration at the hospital.\nHe wondered how the Health Ministry will be able to convince other establishments, such as banks, to enforce social distancing when its own hospital was not doing so.\nMinistry of Health spokeswoman Or Vandine could not be reached for comment after multiple attempts to contact her. Ministry spokesman Ly Sovann declined to comment.\nCalmette Hospital staff likewise declined to comment.\nCalmette Hospital is a public institution managed by the Ministry of Health, which has enforced virus prevention measures across the country.\nIn the past, the ministry has banned gatherings of more than 20 people and restaurants have had to change their operations to comply with the ministry’s measures.\nThe Ministry of Health’s Standard Operating Procedures to prevent the spread of COVID-19 state that people should keep at least two metres from each other, wear facemasks, sanitise their hands and avoid crowded areas.\nIn May, government officials warned restaurants that they would be closed if they didn’t strictly enforce virus prevention measures, including wearing face masks and maintaining social distancing.\nIn August, two restaurants were shut down for not implementing the measures..\nOver Christmas, restaurants and businesses scrambled to keep in line with ministry guidelines, with some completely cancelling events.\nMeanwhile, the Ministry of Health yesterday reported a new case of COVID-19, a 28-year-old female from Battambang province, who returned from Thailand on January 8. She is being treated at they\xa0 provincial referral hospital.\nThe number of Cambodian migrant workers cluster cases has now risen to 27 with the overall tally in the Kingdom now at 392.\nIn another development, there has been reports that over 2,000 migrant workers have completed the mandatory 14 day quarantine and some of them have returned to their homes. They had returned to Battambang, Pailin, Oddar Meanchey, and Banteay Meanchey provinces from December 20 to January 10.\n\xa0\nDirector of Battambang Provincial Health Department, Voeurng Bunreth, said that from December 20 to January 10 a total of 2,312 workers has returned from Thailand and now there are 1,427 workers still in quarantine.\n“The management committee of the quarantine centre in Battambang province has allowed 568 more migrant workers to return home after they finished their quarantine,” he said.\nBunreth said those who completed the 14 day period were issued a certificate to confirm they had complied with the Ministry of Health measures during their quarantine.\nLy Sary, deputy governor of Banteay Meanchey province, said that up to now, a total of 824 workers (368 females) have returned to their houses after ending their 14 days quarantine.\nHe said more than 4,000 workers came through the border international checkpoints border crossings from December 20 to January 7 and 3,754 workers are still in quarantine.\nHe added that over the last few days, he observed that on average 200 to 250 migrant workers return to the province per day.\nDeputy governor of Oddar Meanchey province Dy Rado said that 3,135 migrant workers returned to the province from November 20 to January 10. He said 125 have completed their quarantine and nearly two thousand have yet to do so.\nMeanwhile, on the instructions of Health Minister Mam Bun Heng, Vandine and Health Ministry officials yesterday accompanied Dr Li Ailan, WHO representative to Cambodia, and a Khmer-Soviet Friendship Hospital medical team on a visit to the Cambodian-Thai border in Banteay Meanchey, Battambang and Pailin provinces to provide support for health officials in their efforts to prevent the entry of COVID-19 from neighbouring countries.\n\xa0\n\xa0&#39;
+ &#39;The New Year 2021 has arrived, but the political situation in Cambodia remains intense, characterised by the confrontation between the ruling Cambodian People’s Party and members of the court-dissolved CNRP who are in exile overseas. In an exclusive interview with Khmer Times, political analyst and academician Em Sovannara said Cambodia’s politics, despite being affected by international spheres of influence, has little chance of achieving national reconciliation between the two parties.\nKT: What is your opinion on Cambodia’s political situation in recent years?\nSovannara: From my own view, the domestic political situation seems to be calm, but within the international framework, Cambodia, which has been struck by the COVID-19 pandemic, is also being affected politically. Cambodian political elites are still seeing pressure from the Western world, including the partial loss of EBA and so on, which seems to lead to the decline of the Kingdom’s foreign policy. Given such an atmosphere, the situation is not completely favourable to Cambodia’s government.\n\xa0\nKT: Sam Rainsy has been recently charged for violating “lèse-majesté” for insulting King Norodom Sihamoni on Facebook posts. How do you judge that?\nSovannara: We should not focus on “individual politics” and rather more on “integrated politics”. The individuals are far less important than national integration. When Sam Rainsy insulted the King, it means he broke the law, and he has to accept the penalty in accordance with the law. However, in the meantime, I believe that Cambodia should open more space for freedom of speech in response to the call from the international community for a better outcome of diplomatic and trade relations.\n\xa0\nKT: Mu Sochua and several other members of the former CNRP, who are also living in exile, vowed to return to Cambodia despite facing arrest and trial. How do you feel about their actions?\nSovannara: For now, I don’t think their vows will cause any chaos or shift the current scale of politics in Cambodia. However, if they keep their word and return to the Kingdom, and then are arrested and tried, it is likely that Cambodia will face more pressure from the international community, which will criticise the Kingdom for restricting political and personal freedom. Given these, the Western world will find ways to put more burden on Cambodia.\n\xa0\nKT: Do you think Cambodia’s politics still has space for national reconciliation, particularly between the two conflicting parties?\nSovannara: I have very little hope for reconciliation. Cambodian people used to have a culture of friendliness and forgiveness in the past, but I think that was gone a long time ago. In 2014, we saw the ruling party and the main opposition party build up a “dialogue culture”, which was warmly welcomed by the Cambodian people. Yet, this was short-lived and disappeared just a year later. Given this, we can no longer depend on dialogue culture. The future of\xa0 negotiation now depends upon individual politicians. With these individuals not seeing eye to eye and even calling for vengeance, it is difficult to fix this fraction.\n\xa0\nKT: One of the biggest events in the world is Joe Biden’s victory in the United States presidential election. Do you think the new administration will shift the political situation in Cambodia?\nSovannara: This will indeed affect Cambodia’s politics. President Trump, as I have observed, does not pay much attention to external affairs. Biden, on the other hand, so far has shown great heed on the international atmosphere, especially when he was working as the Vice President in the Obama administration. We are likely to see changes in countries in the region, and Cambodia is no exception. I think for Cambodia, there could be positive changes if the Kingdom adjusts itself to the new political atmosphere and proposal. Otherwise, they could be negative changes if Cambodia opposes it.&#39;
+ &#39;The Singaporean investor service Moody’s sees Asia as being in a better position to absorb the ongoing economic shock of the COVID-19 pandemic in 2021 than other global regions.\n“Most economies in Asia entered the pandemic with stronger starting positions, in terms of growth and external metrics, as compared with other regions. Countries with stronger governance and better control over the pandemic will face fewer strains on growth prospects and [have] a quicker reversal of negative fiscal metrics,” it said.\nHowever, it said the Coronavirus fallout will weigh on near-term growth and pose risks to growth prospects over the next few years.\n“While the scale of policy support across the region has been unprecedented in the wake of the pandemic, these measures are unlikely to fully mitigate the effects of the Coronavirus on near-term growth. A number of secular shifts will accelerate as a result of the pandemic, which will further drive the differentiation in credit quality. Supply-chain reconfiguration, increased digitisation and the capacity to address rising social inequalities resulting from a setback in living standards will have divergent effects across the region,” it continued.\nMoody’s said that long-standing risks will continue to weigh on economies.\n“There is significant uncertainty around the future path of the pandemic and economic disruptions. Given this uncertainty, sudden shifts in sentiment could induce unstable capital flows in the region, although funding likely will be less of a constraint as a whole in Asia in 2021 [than it was] in 2020 because of ample liquidity. Shifts in sentiment would challenge highly indebted Asian issuers. The risk of extreme weather events is also rising amid global climate change,” it added.\nThe report comes after Moody’s retained Cambodia’s B2 stable credit rating at the start of the year, crediting its robust gross domestic product growth prospects for its confidence in Cambodia’s debt burden.\nA report by the World Bank was also positive about the Kingdom getting growth back on track in 2021.\n“The economy was projected to contract by 2 percent in 2020 but is expected to bounce back and grow by 4 percent in 2021, it added.\nThe report recommended boosting pro-poor and growth-enhancing public investment including cash-for-work projects, while promoting labour-intensive sectors to generate jobs by taking advantage of the quick recovery of domestic demand for consumer goods.\nIt also noted the opportunities to facilitate an expansion of domestic and foreign investment arising from recent bilateral and regional free trade agreements, including the Cambodia-China Free Trade Agreement and Regional Comprehensive Economic Partnership.\nHowever, the Development Outlook update published in September by the Asian Development Bank went one step further, predicting that the Cambodian economy would rebound at a 5.9 percent growth rate with inflation predicted at 1.8 percent in 2021.\n“The enhancement of agricultural performance and increased volume of non-garment manufacturing exports are among the explanatory factors,” it said.&#39;
+ &#39;David Morgan, one of the most recognised analysts in the precious metals industry and a consultant for hedge funds, high-net-worth investors, mining companies, depositories and bullion dealers said he is confident silver will outperform gold in 2021.\nMorgan is the founder and owner of the Morgan Report, which is widely regarded as a world-class publication designed to build and secure wealth. He is also the author of The Silver Manifesto and a featured speaker at investment conferences worldwide. Based on the current economic situation globally, Morgan believes everyone should have some physical metal to gain leverage by going into mining equities. His ideas are expressed in the movie Four Horsemen, a feature documentary.\n“There have been many silver stocks that have done quite well. I think for the considerable future, the next three years or so, silver will continue to outperform gold,” he said in a recent interview with market news website Investment Intel.\nMorgan noted silver is used mainly for technology, in electricals and electronics as well as in microwaves, washing machines and fridges. Smart devices also use silver and it is used widely for medical purposes because there are antimicrobial properties in silver. Medical uses include instruments that are inserted or injected and in wound-care products.\nMorgan said there will be a huge demand for silver in green energy, for items such as solar panels.\xa0 The question as to how much will be used for green energy purposes will depend on whether laws are passed to ensure a minimum quality standard which would require higher levels of silver. “A lot of people are aware of green energy so a push from the demand side on the consumer level and industry will push solar bigger than it has [gone] already,” Morgan said.\nA survey by the The US Geological Survey (USGS) stated the world’s silver supply will be depleted by 2025, making it the first widely used industrial commodity to have its in-ground supply exhausted.\nAccording to finance website 401kRollover.com, this led billionaire and silver expert Keith Neumeyer to forecast a compression that would send the price of silver to triple digits.\nPrecious metals expert John Halloran added “smart money” is buying silver because of the shortages.\n“Even the US government stockpile has been completely exhausted. The US, Canadian and Chinese mints have all been forced to acquire silver on the market,” Halloran has been quoted as saying.\nThe 401kRollover.com site said, “To conservatively turn one buck into two or three will be a real possibility in the physical silver market by 2025. Low supply and high demand currently position silver for big gains and in the current investment environment, many would be happy to see that level of return over the next few years.\nHowever, when asked if silver production was declining, the same as gold, Morgan said he doesn’t necessarily think so.\n“The USGS said silver will be the first to go off the period chart, but I’m aware of a couple of silver deposits which are in the billion-ounce category. You don’t mine that over a year: You mine that over 20 or 30 years.\n“I think we’ve hit peak gold, but I don’t think we’ve hit peak silver yet,” he said.\n“It is my belief that silver’s highest value would be as a monetary asset, like gold, not a commodity to put in your cell phone,” Morgan added.\n\xa0&#39;
+ &#39;Cambodia’s real estate surge certainly slowed down over the height of pandemic fears in 2020, but that did not mean buyers lost interest in the market altogether. Realestate.com.kh, the largest real estate classifieds portal in Cambodia, reports Boeung Keng Kang (BKK) district topped property search inquiries in 2020.\nThe BKK district’s search volume on Realestate.com.kh was followed by properties in Chamkarmon, Daun Penh, 7 Makara, and Toul Kork. The real estate website collected data from over 2 million visitors to Realestate.com.kh throughout 2020.\n“2020 was a challenging year for real estate markets globally, including Cambodia. However, there was still some good activity in the market and some very interesting trends that we are still seeing as we enter 2021,” said Thomas O’Sullivan, CEO of Realestate.com.kh.\nHe explains that local and international investors that understand the Cambodian market are very much on the hunt for “good deals” and property for sale under market value. Due to the pandemic and its effects on the property market in Cambodia, many sellers were keen to sell property, even if that meant selling for less than what they might have got pre-pandemic.\nThe first 2 quarters of 2020 appeared bleak to industry experts as Cambodia’s property market, particularly in Phnom Penh, was largely driven by high-end developments geared towards the local elite and foreign investors, the latter being heavily stymied following international travel restrictions. Realestate.com.kh reports that it was also during this time that property searches significantly declined.\n“Prior to COVID-19, most condominiums would have liked to have been selling more properties to Cambodians, but the international market’s interest in properties here was simply too strong to ignore.” Thomas observed, “And because international buyers typically have stronger purchasing power, developers naturally focused more on the international market; it was much better cash flow for the project.”\nIn an effort to continue to stimulate investment from international buyers, In June 2020, Realestate.com.kh launched the first-ever Black Friday Property Sale in Cambodia which featured new developments and resale properties at discounted prices. The event managed to book over $15,000,000 worth of property across the country in a span of 4 hours. Black Friday Property Sale’s success reignited interest from international buyers but also highlighted the local buyer’s market looking for attractive deals.\n“As COVID-19 hit, condo developers shifted to focus on the local market. The most successful developers in 2020 were quick to move and adapt to the new market conditions, created payment plans that suited local buyers, and moved their marketing away from GRR, leaseback schemes, etc., as local buyers are less interested in these,” Thomas said.\nHe noted that the most interesting trend to come out of 2020, was the massive shift towards condos for local buyers alongside the sustained popularity of borey properties.\nThe National Bank of Cambodia (NBC) published a 4% growth forecast for the year 2021 on the back of a strong financial sector. The report expects renewed activity in the construction and property sectors following the re-entry of foreign direct investments, revenue recovery, and overall economic growth.\n\xa0\nLink to original article:\nhttps://www.realestate.com.kh/news/bkk-district-most-popular-district-phnom-penh-2020/&#39;
+ &#39;AFP – London will enjoy a very strong year for stock market flotations, analysts say, arguing that both Brexit and Coronavirus offer firms a unique opportunity to expand.\nVarious big-name businesses that have seen booming online demand from home-bound customers during COVID-19 lockdowns have revealed eye-catching plans for initial public offerings (IPOs) in recent weeks.\nClarity over Britain’s final departure from the European Union on Jan 1 acted as a catalyst for many companies to raise funds, according to specialists, while the rollout of COVID-19 vaccines also soothed investor concerns over the deadly pandemic.\n“Looking to the year ahead, we can expect 2021 to be a very strong year for the UK IPO market,” said Scott McCubbin at London-based financial services giant EY.\n“An uptick in IPO activity may well intensify the competition for investment, placing greater emphasis on preparing early for IPO and raising profile with investors.\n“Confidence continues to build with the Brexit deal now giving clarity around the future relationship with Europe and the rollout of COVID-19 vaccinations.”\nAdded to the mixture, online money transfer specialist TransferWise has reportedly appointed banks to coordinate a planned float.\nThe IPO market has also attracted interest in recent years from the easier availability of financing, alongside ultra-low interest rates.\n“Over the past few years we have also seen a strengthening in the financing available for UK and European companies in the early stages of their growth,” said Marcus Stuttard, head of UK primary markets at the London Stock Exchange.\n“This means that there are now an increasing number of dynamic businesses at the stage and size of development that are ideal for an IPO.\nBritain ranked only behind China and the United States in terms of the total amount of cash raised on the stock market last year, according to a recent EY study.\nThe British capital represented more than 40 percent of the total IPO amounts raised in Europe.\nBrexit could deliver a further boost because the government wants to relax certain stock exchange regulations.&#39;
+ &#39;MANILA (Manila Times) – The Philippines would be “in serious trouble” if COVID-19 cases in the country would reach millions, President Rodrigo Duterte said, as he raised the possibility of using “draconian measures” to curb the spread of the virus.\nDuterte aired his concern after coronavirus infections surged past 500,000.\n“I hope it would not reach millions because then we would be in serious trouble. We would be no better than the other countries whose rise are really exponential,” he said.\nThe President raised the possibility of using “draconian measures” such as preventing everyone from leaving their homes.\nHe said this would have a severe impact on the economy.\n“When people are dying on the streets then maybe I can use the draconian measures of telling everybody to stay put inside their houses. The problem is how to sustain those who have nothing, those who get by with what they have on a daily basis,” Duterte said.\n“So, it behooves now on the government to really answer for their daily needs. And I think that we will be able to surmount if it’s just food but it will, at the same time, kill the economy because nobody’s working again,” he added.\nThe president urged the public to be “religious” in observing health and safety protocols such as wearing of face masks and face shields, frequent handwashing, and physical distancing.\nThe Philippines has one of the highest numbers of COVID-19 cases in Asia, and fresh infections are increasing daily.\nAuthorities had reported that cases of the new strain first seen in the United Kingdom were discovered in Bontoc, Mountain Province and other areas.\nAlethea de Guzman, epidemiology bureau medical specialist, said the cases in Bontoc belonged to a definite cluster and that the transmission is still contained in a single area.\nNo community transmission\n“Here in Bontoc, while we are seeing that, yes, there are positive cases, these only belong to a single cluster in a village, and we can still connect these to other cases. We do not see a strong evidence to suggest there is community transmission,” de Guzman said.\nShe added that regardless of the variant, the strategies for the prevention, detection, isolation, treatment and recovery of COVID-19 patients remain the same.\nIn a related development, some 60,000 overseas Filipino workers (OFWs) who signified their intentions to be repatriated have changed their minds and opted to stay in their host countries after being inoculated with coronavirus disease 2019 (COVID-19) vaccine.\n“There are about 100,000 (OFWs) who (recently) applied for repatriation. Suddenly 60 percent of those who asked for repatriation said that they are not going home anymore. It turned out that they were already vaccinated, thus making them immune (from the coronavirus) and increasing their reemployment chances,” said Labour Secretary Silvestre Bello 3rd in a virtual briefing on Wednesday.\nBello said that many of those who opted to stay were from Middle East countries that have started their vaccination drive such as Abu Dhabi and Dubai in the United Arab Emirates (UAE), Saudi Arabia, Bahrain, Qatar, Kuwait and Oman. All used the Pfizer- BioNTech jab, except for Bahrain which is also using China’s Sinopharm.\nBello said that a lot of Europe-based Filipino workers have also stayed put in their host countries because of the insurance benefits accorded them.\nMeanwhile, the Food and Drug Administration (FDA) has given its emergency use authorisation (EUA) approval to the vaccine made by British-Swedish drugmaker AstraZeneca.\nDuring a media briefing on Thursday, FDA Director-General Rolando Enrique Domingo said that the interim data for AZD1222 from its ongoing phase three trials had an efficacy of 70 percent.\nHe added that the vaccine had only transient side effects.\nDomingo said that AstraZeneca can now supply the vaccine to emergency response stakeholders such as the Department of Health (DoH) and the National Task Force on COVID-19.\n\xa0&#39;
+ &#39;The real estate market in the fourth financial quarter remains under pressure from the COVID-19 pandemic, of which retail is the most affected, followed by the office and condominium sector.\nThe land and borey sector tend to stay robust thanks to the strong financial position and high confidence of local developers, as well as the continuous government’s efforts in infrastructure development nationwide.\nAccording to CBRE Cambodia, recent research entitled Market View Update Q4 2020: Where are we in the market circle?, landed property or borey are oversupplied at this stage of the market cycle. Serviced apartments, condominiums and offices (both centrally-owned and strata-titled) are in the contraction stage, meaning there are more vacancies plus more completions. The retail sector is in the recovery stage, where vacancies started to decrease with no new completions.\nDespite the negative effect on the economy, the COVID-19 pandemic did also bring light to two real estate sectors – industrial estates and the retail high street. The industrial sector is projected to boom in the post-COVID-19 period because investors have learned their lessons and will diversify their factories’ locations even more – and Cambodia is one of the ideal choices.\nSimilarly, COVID-19 also helped standalone retail, known as high street retail, to expand. Because of the social-distancing regulation and customers’ fears, the retail sector such as big shopping malls tends to get fewer footfalls. Rather, the opposite happened to the high street, which has attracted more and more customers. This could lead the market sector to a future positive trend.\nWhen it came to condominiums over the course of 2020, there were a total of 17 new launches, three expansions and eight completions. Another 13,016 units are expected to complete in 2021, leading to a 50 percent supply increase. In the meantime, sales price dropped for all categories, but the mid-range saw the highest decrease – 12.38 percent – followed by high-end (6.19 percent) and affordable (3.11 percent).\nOne condominium project in Phnom Penh that is gaining plenty of attention is The Bridge. It is among the newest additions to Cambodia’s booming real estate sector. The Bridge is luxury, beauty, convenience and comfort rolled into one.\nThe Bridge is located in a prime district, where government offices, retail shops, restaurants, entertainment joints, sports clubs, embassies, markets, banks, Diamond Island Convention Centre &amp; Exhibition Hall, Phnom Penh City Hall, Aeon Mall 1 and other conveniences are just a short distance away. The Phnom Penh International Airport and other transportation hubs can be reached in less than 20 minutes.\nThe development also features The Bridge Lifestyle Mall, another high-end shopping destination. Collins Cambodia, a popular restaurant, is also located within its premises.\nOccupants of The Bridge have access to a sundeck swimming pool, children’s playground, family gym, function halls, among other amenities. From their perch, they also have picture-perfect views of the Phnom Penh skyline, Tonle Sap, Mekong and Bassac Rivers.\n\xa0&#39;
+ &#39;The Kingdom’s construction and property sectors have been on a slump for most of 2020. The usual foreign clientele, looking to develop and/or buy luxury properties for more attractive costs, have dwindled in the past year causing high-end projects to stall, drop prices, and even rethink marketing strategies.\nCambodia’s property sector is still not out of the woods almost a year later. According to Realestate.com.kh’s Market Trends, median sale prices for residential properties in Phnom Penh ended the year with up to 30% lower median sale prices.\nKey highlights of the sale price trend in Phnom Penh: \nNovember 28 incident applied additional pressure on the property market\nDaun Penh, Chamkarmon, Chroy Changvar, and Toul Kork apartment/condo median sale prices down by as much as 30%\nMeanchey, 7 Makara, and Por Sen Chey, apartment/condo median sale prices down by up to 11%\nThe new cluster of cases may apply an extended period of market pressures\n\xa0\nPrices displayed on Market Trends are median sale prices found across Phnom Penh and are designed as a guide to navigate price ranges. Realestate.com.kh is advising interested buyers to visit the condominiums for sale in Phnom Penh page for the specific price of projects they may be interested in.\nThe considerable drop in median condo sale prices can be attributed to the first local COVID-19 transmission last November 28. The November 28 incident caused a new round of scares as local transmissions pose a large threat to economic recovery. The confidence built over the past months of cases trickling in was shaken as more people chose to stay home in the weeks following the incident.\nIn a report by the Khmer Times, Prime Minister Hun Sen declared that the November 28 incident has ended with health authorities effectively tracing and placing persons of interest under quarantine.\nLast December 31, the National Bank of Cambodia released a forecast that the nation’s economy would grow by 4%. The report attributes the expected growth to a strong financial sector with the construction and property sectors expected to see renewed activity in line with the entry of foreign direct investments, revenue recovery, and the overall economic growth to follow. Though experts caution that without a working vaccine in circulation, prospects for growth are susceptible to further market disruptions.\n\xa0\nLink to original article:\n\xa0\nhttps://www.realestate.com.kh/news/30-percent-lower-condo-sale-prices-phnom-penh/&#39;
+ &#39;AFP – Wind power accounted for more than half of Britain’s daily generated electricity on Dec 26 in the wake of Storm Bella, warming more homes than ever, according to energy giant Drax.\nThe percentage of wind power in the country’s energy mixture hit a record 50.67 percent, the company said over the weekend, beating the previous record of 50 percent last August.\n“For the first time ever [on Dec 26], amid #StormBella, more than half of Great Britain’s electricity was generated by the wind,” Drax Group tweeted.\nIt added: “This is the first time ever wind has supplied the majority of the country’s power over the course of a whole day.”\nThe encouraging news comes ahead of COP26, the UN’s global climate change summit, which will be held in Glasgow, Scotland, next year.\nThe British government wants offshore wind farms to provide one-third of the country’s electricity by 2030, as part of its strategy to reach net-zero carbon emissions by 2050 to help meet its commitments under the Paris climate accord.\nThe UK has also placed nuclear power at the heart of its low-carbon energy policy.\n“Britain has experienced a renewables revolution over the last decade with the growth of biomass, wind and solar power,” Drax said.\nAdded to the brightening picture, National Grid’s Electricity System Operator (NGESO) division declared yesterday that this year was a historic year for UK renewables.\n“2020 was the greenest year on record for Britain’s electricity system, with average carbon intensity — the measure of CO2 emissions per unit of electricity consumed – reaching a new low,” NGESO said in a statement.\nNational Grid also revealed that on Christmas Day, Dec 25, the share of coal in the UK electricity mix stood at zero for the first time.\nThat compared with just 1.8 percent the previous year and 20 percent in 2009.\nWind power or wind energy is the use of wind to provide mechanical power through wind turbines to turn electric generators for electrical power. Wind power is a popular sustainable, renewable source of power that has a much smaller impact on the environment compared with burning fossil fuels.\nWind farms consist of many individual wind turbines, which are connected to the electric power transmission network. Onshore wind is an inexpensive source of electric power, competitive with or in many places cheaper than coal or gas plants. Onshore wind farms have a greater visual impact on the landscape than other power stations, as they need to be spread over more land and need to be built away from dense populations. Offshore wind is steadier and stronger than on land and offshore farms have less visual impact, but construction and maintenance costs are significantly higher. Small onshore wind farms can feed some energy into the grid or provide power to isolated off-grid locations. Wind is a growing source of power in Cambodia.&#39;
+ &#39;WASHINGTON, — There would be a more transmissible variant of the coronavirus that evolved in the United States and is fueling spread of the virus, according to the White House coronavirus task force.\nThe new strain, in addition to the variant found in Britain, is already spreading in communities and may be 50 percent more transmissible, according to a report obtained by U.S. media that the task force issued to states on Jan. 3.\nThe task force said the recent spike in cases has been at nearly twice the rate seen in the spring and summer seasons, according to the report.\n“This acceleration suggests there may be a USA variant that has evolved here, in addition to the UK variant that is already spreading in our communities and may be 50 percent more transmissible,” said the report, calling for aggressive mitigation to match a much more aggressive virus.\n“Without uniform implementation of effective face masking (two or three ply and well-fitting) and strict social distancing, epidemics could quickly worsen as these variants spread and become predominant,” said the report.\nScott Gottlieb, the former commissioner of the U.S. Food and Drug Administration, told CNBC on Friday that the new strain the White House task force has found appears to be behaving like the one circulating in the United Kingdom.\nThe latest development came as the country has identified a total of 52 cases of a coronavirus variant first identified in Britain, according to data updated Thursday by the U.S. Centers for Disease Control and Prevention (CDC).\nThis includes 26 cases in California, 22 cases in Florida, two cases in Colorado, and one case each in Georgia and New York.\nThe agency cautions that its numbers, which are updated Tuesdays and Thursdays, may not immediately match those reported by states and local officials.\nThe variant first identified in Britain seems to spread more easily and quickly than other variants. Currently, there is no evidence that it causes more severe illness or increased risk of death, according to the CDC.\nAs the country struggles to speed up its COVID-19 vaccine rollout, the report said that vaccines must “be put in arms now.”\n“Do not delay the rapid immunization of those over 65 and vulnerable to severe disease; recommend creation of high throughput vaccination sites with use of EMT personnel to monitor for potential anaphylaxis and fully utilize nursing students. No vaccines should be in freezers but should instead be put in arms now; active and aggressive immunization in the face of this surge would save lives,” said the report.\nThe United States has recorded over 21.8 million cases with over 367,900 related deaths as of Friday afternoon, according to the real-time count kept by Johns Hopkins University. Xinhua&#39;
+ &#39;Managing Director of CBRE Cambodia, Ann Sothida predicted that Cambodia’s real estate market will improve by 60 percent in 2021 compared with 2020, yet expected it to be lower than 2019 baselines.\nCBRE is the foremost property consultant in Cambodia having conducted business in the country since 1993.\nSothida told Khmer Times that 2021 will be a better year for the property market. However, it will recover sector by sector.\n“Due to the introduction of the COVID-19 vaccine, the market is expected to improve a lot. However, foreign investors still need time to prepare and wait for the situation in their home countries to improve before they start investing in Cambodia,” Sothida said.\nShe added the fastest recovering one among all sectors is residences because the market has relied on local buyers.\nThe office market is projected to be the second-fastest-growing market after housing, followed by industrial estates and the retail market. Meanwhile, the hospitality sector will take a much longer time to recover. That is estimated to be by 2022 or 2023.\nSothida also added, despite the uncertainty, 2021 will hold plenty of opportunity because there may be more real estate sold below the market price. Thus, investors should prepare more cash to seize any opportunities arising.\nProperty investors or those businessmen looking for property opportunities in Cambodia have an array of luxurious properties to choose from. One of them stands out from the rest: The Palms.\nLocated on the banks of the Mekong River along National Road 1, The Palms is beauty, convenience, green-living and luxury all rolled into one.\nRinged by palm trees and lush greenery, the more than 200 cluster homes and villas of The Palms offer residents cool, serene and luxurious living amid the din and bustle of the city. It also offers a one-of-a-kind investment opportunity to would-be-buyers.\nDeveloped by Oxley World Bridge, The Palms features an array of amenities seldom seen in other properties. Those include water playgrounds, a swimming pool, a barbecue area, an artificial beach and hydrotherapy pools.\nTalking of convenience, malls, markets, banks/ATMs, fine- dining restaurants, embassies, transportation hubs, entertainment joints, sports clubs, government offices, tourist attractions and other conveniences are just a stone’s throw away from The Palms.\nEverything you need can be found within minutes or just a few metres away from The Palms.\n\xa0&#39;
+ &#39;The construction and property sector of Cambodia may see a gradual recovery in 2021, says the National Bank of Cambodia. According to NBC’s report last December 21, the Kingdom’s economy is expected to grow by a positive 4% in the first half of 2021 on the back of a robust financial sector.\nNBC’s Macroeconomic and Banking Sector Outlook for 2021 reports that the financial sector’s active asset, mainly composed of banks, continues to grow and weather the pressures caused by the global pandemic. The report adds that the inflation rate is expected to be at a manageable level of 3%.\nAccording to a Khmer Times report, NBC’s report echoes these concerns saying, “The prediction depends solely on the efficacy of the vaccines, the speed in the recovery of Cambodia’s economic partners, and the strengthening of our domestic economic foundation.”\nThe tourism and garment sectors felt the immediate brunt of the pressure while the construction and real estate sectors followed as the pandemic persisted in 2020, according to the report.\nThe report adds that the construction and real estate sectors are expected to see renewed activity in line with the entry of foreign direct investments, revenue recovery, and the overall economic growth to follow.\nEconomic watchdogs and monitoring groups are, across-the-board, optimistic about the Kingdom’s gradual recovery in 2021. A few key developers have also expressed the same positive outlook for Cambodia’s construction and property market.\n\xa0\nLink to original article:\n\xa0\nhttps://www.realestate.com.kh/news/cambodian-property-sector-recovery-2021-nbc/&#39;
+ &#39;The National Bank of Cambodia (NBC) has forecast that the Kingdom’s estimated economic growth will be 4 per cent in 2021, according to its Macroeconomic and Banking Sector Update 2020 report.\nThe prediction for positive economic growth is based on the efficacy of COVID-19 vaccines over the first half of the year.\nDuring 2020, updates on the state of the nation’s economy, taking into account the devastation of the pandemic, had predicted an overall contraction of Cambodia’s economy of 1.9 percent.\nThe latest NBC forecast is in line with international financial institutions’ predictions for Cambodia’s economic growth in 2021. Those figures range from 4 to 6.8 percent.\n“The prediction depends solely on the efficacy of the vaccines, the speed in recovery of Cambodia’s economic partners and the strengthening of our domestic economic foundation,” the NBC said.\nIt added that a continued strengthening in domestic economic activities will support and mitigate the impact on Cambodia’s economy from the slowdown of exports. The implementation of government policy promoting the development of small and medium enterprises, boosting innovation, and the use of technology in all sectors will be significant in strengthening domestic growth.\nThe central bank said agriculture will be the sector with the highest potential to offset unemployment and support the livelihoods of the poor. It also identified that speeding up economic diversification and its implementation throughout the industrial sector would help the country’s economy recover faster from the current crisis.&#39;
+ &#39;Phnom Penh: PRASAC, the largest financial institution in Cambodia,\xa0has teamed up with Phnom Penh Solid Waste Management Authority to offer convenient waste collection bill payment services\xa0as part of PRASAC’s expansion of services to customers on top of EDC, PPWSA, Northline and Westline school bill payment services.\nPRASAC’s customers will be able to make payment for waste collection fee via PRASAC Mobile Banking, PRASAC Internet Banking, ATM, and branch offices in a convenient, fast and secure manner with reasonable fee charge of KHR 500 or USD 0.12 per transaction.\n“PRASAC is pleased to work with PPSWMA in bringing this hassle-free waste collection bill payment service to our valued customers. Paying waste collection fee is indispensable to keep our capital clean and hygienic,” said Say Sony, PRASAC Executive Vice President. “And with this initiative providing an easy access to pay waste collection bill conveniently, Phnom Penh dwellers can be at peace of mind that they can fulfill the obligation without fail.”\n“With PRASAC Mobile Banking and with so many ATMs in close proximity to our customers, they can settle the waste collection fee in a convenient, fast and secure manner on a monthly or yearly basis,” added Sony.\nHe continued, “Customers can come and open a savings account with PRASAC today to receive a beautiful ATM card instantly and enjoy the use of PRASAC Mobile &amp; Internet Banking to pay bills easily.”\nPlease note that PRASAC, a financial institution among the top 5 largest banks in Cambodia, provides financial services to clients such as Loans\u200b, Deposits\u200b, Water Bill Payment\u200b, \u200bElectricity Bill Payment, \u200bInterbank Fund Transfer via Bakong and Retail Pay System, Fund Transfer within PRASAC, Cash-by-Code\u200b, Foreign Exchange\u200b,\u200b Phone Top-up\u200b, Bank Confirmation, Payroll Service\u200b, Fast Payment\u200b, ATM\u200b, Cash Deposit Machine, \u200bInternet Banking, Mobile Banking, POS\u200b, Cambodian Shared Switch (CSS) and others with\u200b a network of nearly 200 offices\u200b and 10,000 employees.&#39;
+ &#39;The government has decided to increase the budget allocated to four border provinces for the quarantine of Cambodian workers returning from Thailand by 700 million riels ($170,000).\nMinistry of Secretary of State York Sambath told local media on January 8 that Pailin, Battambang and Banteay Meanchey have been allocated an additional 200 million riels ($49,000) each. Oddar Meanchey province has been provided with an extra 100 million riels ($24,000).\nShe said the funds have already been transferred to those province’s governors. Additionally, the government is providing support materials to the border provinces for the battle against COVID-19 in the region.\nOn January 8, the\xa0Pattaya Mail Media Group reported on the challenges facing Cambodian workers returning home from Thailand.\nThe report cites that although Thai border points remain closed for most purposes, the principal ones are still open and are admitting limited numbers of Cambodian workers returning to Thailand, subject to 14 days quarantine as well as allowing returning Cambodians into their homeland. One problem facing returning Cambodians is that wages in the Kingdom are much lower than in Thailand.\nPhorn Chanta, a 51-year-old farmer, said that his job working as a gardener for a real estate company near Bangkok earned him $400 a month prior to his termination because of the recession. Back home in Phnom Penh, he is scraping by while working as a labourer in a seafood market for one tenth of that amount.\n\xa0&#39;]
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>econ</th>
-      <th>banking</th>
-      <th>asean</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>501330943</td>
-      <td>0.044409</td>
-      <td>0.954475</td>
-      <td>0.000052</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>501326169</td>
-      <td>0.000805</td>
-      <td>0.247236</td>
-      <td>0.000284</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>501325554</td>
-      <td>0.000130</td>
-      <td>0.649223</td>
-      <td>0.000046</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>501322478</td>
-      <td>0.000128</td>
-      <td>0.903942</td>
-      <td>0.000045</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>501321914</td>
-      <td>0.539477</td>
-      <td>0.194994</td>
-      <td>0.000052</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>27589</th>
-      <td>48239</td>
-      <td>0.648823</td>
-      <td>0.000088</td>
-      <td>0.000065</td>
-    </tr>
-    <tr>
-      <th>27590</th>
-      <td>48216</td>
-      <td>0.000195</td>
-      <td>0.000093</td>
-      <td>0.000069</td>
-    </tr>
-    <tr>
-      <th>27591</th>
-      <td>48132</td>
-      <td>0.000099</td>
-      <td>0.000047</td>
-      <td>0.000035</td>
-    </tr>
-    <tr>
-      <th>27592</th>
-      <td>48115</td>
-      <td>0.000250</td>
-      <td>0.000119</td>
-      <td>0.000088</td>
-    </tr>
-    <tr>
-      <th>27593</th>
-      <td>48085</td>
-      <td>0.000091</td>
-      <td>0.000043</td>
-      <td>0.000032</td>
-    </tr>
-  </tbody>
-</table>
-<p>27594 rows × 4 columns</p>
-</div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># merge all together</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">topic_data</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">uncertainty_data</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
-<span class="n">data</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>time</th>
-      <th>title</th>
-      <th>text</th>
-      <th>econ</th>
-      <th>banking</th>
-      <th>asean</th>
-      <th>uncertainty</th>
-      <th>improve</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>501330943</td>
-      <td>2023-07-25 18:19:23</td>
-      <td>Use consumer behaviour for providing loans, NB...</td>
-      <td>The National Bank of Cambodia (NBC) has asked ...</td>
-      <td>0.044409</td>
-      <td>0.954475</td>
-      <td>0.000052</td>
-      <td>0.000085</td>
-      <td>0.464935</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>501326169</td>
-      <td>2023-07-18 08:19:05</td>
-      <td>VIDEO: Consumers’ complaint mechanism soon, NB...</td>
-      <td>The National Bank of Cambodia has prepared a d...</td>
-      <td>0.000805</td>
-      <td>0.247236</td>
-      <td>0.000284</td>
-      <td>0.000458</td>
-      <td>0.001072</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>501325554</td>
-      <td>2023-07-17 18:19:37</td>
-      <td>Consumers’ complaint mechanism soon, NBC says</td>
-      <td>The National Bank of Cambodia has prepared a d...</td>
-      <td>0.000130</td>
-      <td>0.649223</td>
-      <td>0.000046</td>
-      <td>0.000086</td>
-      <td>0.654193</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>501322478</td>
-      <td>2023-07-11 18:19:19</td>
-      <td>NBC inks deal with UnionPay to expand cross-bo...</td>
-      <td>National Bank of Cambodia (NBC) on Monday sign...</td>
-      <td>0.000128</td>
-      <td>0.903942</td>
-      <td>0.000045</td>
-      <td>0.000114</td>
-      <td>0.000267</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>501321914</td>
-      <td>2023-07-10 18:17:17</td>
-      <td>Inflation drops lowest to 0.48%, says NBC</td>
-      <td>The average price of goods and services suppli...</td>
-      <td>0.539477</td>
-      <td>0.194994</td>
-      <td>0.000052</td>
-      <td>0.000080</td>
-      <td>0.161941</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>27685</th>
-      <td>48239</td>
-      <td>2014-03-18 17:00:00</td>
-      <td>US Stocks Rise Despite Russia’s Ukraine Move</td>
-      <td>NEW YORK, March 19, 2014 (AFP) – US stocks bar...</td>
-      <td>0.648823</td>
-      <td>0.000088</td>
-      <td>0.000065</td>
-      <td>0.000176</td>
-      <td>0.000412</td>
-    </tr>
-    <tr>
-      <th>27686</th>
-      <td>48216</td>
-      <td>2014-03-16 17:00:00</td>
-      <td>Greater Investments In Human Resource</td>
-      <td>PHNOM PENH, March 17, 2014 (Khmer Times) – Cam...</td>
-      <td>0.000195</td>
-      <td>0.000093</td>
-      <td>0.000069</td>
-      <td>0.000160</td>
-      <td>0.000375</td>
-    </tr>
-    <tr>
-      <th>27687</th>
-      <td>48132</td>
-      <td>2014-03-11 17:00:00</td>
-      <td>CNRP and CPP: No Consensus</td>
-      <td>PHNOM PENH: March 12. 2014 (Khmer Times) – CNR...</td>
-      <td>0.000099</td>
-      <td>0.000047</td>
-      <td>0.000035</td>
-      <td>0.000061</td>
-      <td>0.019791</td>
-    </tr>
-    <tr>
-      <th>27688</th>
-      <td>48115</td>
-      <td>2014-03-10 17:00:00</td>
-      <td>ILOCamfeba On Labor</td>
-      <td>PHNOM PENH: March 11, 2014 (Khmer Times) — The...</td>
-      <td>0.000250</td>
-      <td>0.000119</td>
-      <td>0.000088</td>
-      <td>0.258588</td>
-      <td>0.740238</td>
-    </tr>
-    <tr>
-      <th>27689</th>
-      <td>48085</td>
-      <td>2014-03-08 17:00:00</td>
-      <td>World Wide Web Turns 25</td>
-      <td>SAN FRANCISCO, March 9, 2014 (AFP) – Twenty-fi...</td>
-      <td>0.000091</td>
-      <td>0.000043</td>
-      <td>0.000032</td>
-      <td>0.000056</td>
-      <td>0.000132</td>
-    </tr>
-  </tbody>
-</table>
-<p>27690 rows × 9 columns</p>
-</div></div></div>
-</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1036,6 +849,31 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#yearly-distribution">Yearly Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-trends">Overall Trends</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-trend-analysis">Topic Trend Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainty-analysis">Uncertainty Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis">Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-retrieval-for-uncertainty-analysis">Article Retrieval for Uncertainty Analysis</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
