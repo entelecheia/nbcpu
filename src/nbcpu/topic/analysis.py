@@ -1,6 +1,6 @@
-import matplotlib.pyplot as plt
 from typing import Dict, List, Optional, Union
 
+import matplotlib.pyplot as plt
 import pandas as pd
 from hyfi import HyFI
 from hyfi.composer import BaseModel
