@@ -1,5 +1,21 @@
 <!--next-version-placeholder-->
 
+## v0.18.0 (2023-08-17)
+
+### Feature
+
+* **book:** Expand conclusion section in paper ([`9e39039`](https://github.com/entelecheia/nbcpu/commit/9e3903926337a2f96925dbf071929dabaf26cecd))
+* **results:** Expand content and detailed analysis ([`d64c334`](https://github.com/entelecheia/nbcpu/commit/d64c334a351c3c75d6d67993c58f18b9ea272f48))
+
+### Fix
+
+* **literature:** Correct citation formatting ([`3307e1c`](https://github.com/entelecheia/nbcpu/commit/3307e1c5bfea532dc0cd98534389b2d46801a381))
+* **book:** Update title of central bank policy analysis ([`9ca9acb`](https://github.com/entelecheia/nbcpu/commit/9ca9acb9ba9b315b2acea1cb2799f35a3d7acf65))
+
+### Documentation
+
+* **README.md:** Update file with detailed project description and usage instructions ([`98b5a72`](https://github.com/entelecheia/nbcpu/commit/98b5a72d6a952afcc4466824d6a289d8c49d8ed5))
+
 ## v0.17.0 (2023-08-16)
 
 ### Feature
