@@ -22,9 +22,9 @@ The topic-based method of measuring economic uncertainty has several strengths r
 
 2. **Flexibility:** It's not reliant on the presence of specific pre-determined keywords, which can sometimes lead to false positives (an article might contain all the keywords but not actually be about the specific type of uncertainty being measured) or false negatives (an article could be discussing a topic of uncertainty without using the specific keywords).
 
-3. **Disambiguation:** Topic-based methods can differentiate between different types of uncertainty, allowing for more nuanced analysis. For instance, the paper mentions the ability to differentiate between uncertainty related to "economic and financial distress", "institutional framework of monetary policy", "Norway’s relationship with the EU", and "technology and firm expansion".
+3. **Disambiguation:** Topic-based methods can differentiate between different types of uncertainty, allowing for more nuanced analysis. For instance, this method can differentiate between uncertainty related to "economic and financial distress", "institutional framework of monetary policy", "Norway’s relationship with the EU", and "technology and firm expansion".
 
-4. **Correlation with other measures:** The paper found positive correlations between the topic-based uncertainty measures and other established uncertainty proxies such as the US VIX and realized stock market volatility in Norway, suggesting that this method is valid and reliable.
+4. **Correlation with other measures:** There are positive correlations between the topic-based uncertainty measures and other established uncertainty proxies such as the US VIX and realized stock market volatility, suggesting that this method is valid and reliable.
 
 However, it's worth noting that topic-based methods also have limitations. The process of assigning labels based on the topic correlations may be subjective, and the measures may not capture all forms of uncertainty, especially those not frequently discussed in the news media. As with any method, topic-based measures are one tool in the larger toolbox for analyzing economic uncertainty and are likely to be most effective when used in conjunction with other methods.
 
