@@ -1,5 +1,11 @@
 <!--next-version-placeholder-->
 
+## v0.18.1 (2023-08-18)
+
+### Fix
+
+* **dependencies:** Upgrade lexikanon to 0.6.3 and thematos to 0.14.2 ([`46fcf9d`](https://github.com/entelecheia/nbcpu/commit/46fcf9dbea1a6e2738f7225e069b2bbe85e910b5))
+
 ## v0.18.0 (2023-08-17)
 
 ### Feature
