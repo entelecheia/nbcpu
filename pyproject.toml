@@ -15,9 +15,9 @@ nbcpu = 'nbcpu.__cli__:main'
 [tool.poetry.dependencies]
 python = ">=3.8.1,<3.12"
 click = "^8.1.3"
-hyfi = "^1.29.7"
-lexikanon = "^0.6.1"
-thematos = "^0.14.0"
+hyfi = "^1.29.8"
+lexikanon = "^0.6.3"
+thematos = "^0.14.2"
 # thematos = { path = "../thematos", develop = true }
 # lexikanon = { path = "../lexikanon", develop = true }
 # hyfi = { path = "../hyfi", develop = true }
