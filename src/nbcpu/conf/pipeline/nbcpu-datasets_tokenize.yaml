@@ -16,7 +16,7 @@ steps:
   - uses: tokenize_dataset
     with:
       tokenizer: nbcpu
-      num_workers: ${oc.select:global.num_workers,1}
+      num_workers: ${oc.select:variables.num_workers,1}
       text_col: text
       token_col: tokenized
       load_from_cache_file: false
@@ -24,7 +24,7 @@ steps:
   - uses: extract_tokens
     with:
       tokenizer: nbcpu
-      num_workers: ${oc.select:global.num_workers,1}
+      num_workers: ${oc.select:variables.num_workers,1}
       token_col: tokenized
       extracted_col: tokens
       strip_pos: true
@@ -33,7 +33,7 @@ steps:
   - uses: extract_tokens
     with:
       tokenizer: nbcpu
-      num_workers: ${oc.select:global.num_workers,1}
+      num_workers: ${oc.select:variables.num_workers,1}
       token_col: tokenized
       extracted_col: adjnouns
       postags:
@@ -45,7 +45,7 @@ steps:
   - uses: extract_tokens
     with:
       tokenizer: nbcpu
-      num_workers: ${oc.select:global.num_workers,1}
+      num_workers: ${oc.select:variables.num_workers,1}
       token_col: tokenized
       extracted_col: predicates
       postags:

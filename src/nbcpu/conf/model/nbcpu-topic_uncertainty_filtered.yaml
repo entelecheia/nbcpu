@@ -7,5 +7,5 @@ model_args:
   rm_top: 0
 set_wordprior: true
 wordprior:
-  data_file: ${__project_root_path__:}/tests/assets/words/word_prior_uncertainty_filtered.yaml
+  data_file: ${oc.select:variables.project_root_path,.}/tests/assets/words/word_prior_uncertainty_filtered.yaml
   verbose: true

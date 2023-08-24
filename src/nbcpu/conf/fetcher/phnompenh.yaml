@@ -24,7 +24,7 @@ search_keywords:
 start_page: 0
 max_num_pages: 2
 max_num_articles: 10
-output_dir: ${__project_workspace_path__:}/datasets/fetcher/phnompenh
+output_dir: ${oc.select:variables.project_root_path,.}/workspace/datasets/fetcher/phnompenh
 link_filename: links.jsonl
 article_filename: articles.jsonl
 overwrite_existing: false

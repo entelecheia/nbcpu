@@ -5,7 +5,7 @@ stopwords:
   stopwords_fn: "lambda x: len(x) <= 2"
   # stopwords_list:
   nltk_stopwords_lang: english
-  stopwords_path: ${__project_root_path__:}/tests/assets/stopwords/nbcpu-tokenizer.txt
+  stopwords_path: ${oc.select:variables.project_root_path,.}/tests/assets/stopwords/nbcpu-tokenizer.txt
   verbose: false
 lowercase: true
 include_whitespace_token: false
