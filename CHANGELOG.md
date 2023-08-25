@@ -1,5 +1,15 @@
 <!--next-version-placeholder-->
 
+## v0.18.2 (2023-08-25)
+
+### Fix
+
+* **dependencies:** Upgrade hyfi to 1.32.1, lexikanon to 0.6.4, thematos to 0.14.3 ([`c673f82`](https://github.com/entelecheia/nbcpu/commit/c673f82eff46d552ded53b2e79c268cf18d49f5e))
+
+### Documentation
+
+* Add korean version ([`cd0fd64`](https://github.com/entelecheia/nbcpu/commit/cd0fd642af1af57c8d174fc42b7d5bc05dc67388))
+
 ## v0.18.1 (2023-08-18)
 
 ### Fix
