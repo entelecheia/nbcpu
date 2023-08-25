@@ -57,11 +57,11 @@ nbcpu-topic_uncertainty_filtered:
     - train
     - infer
   infer_args:
-    model_config_file: ${__project_root_path__:}/workspace/nbcpu-topic_uncertainty_filtered/model/configs/model(2)_config.yaml
+    model_config_file: ${oc.select:variables.project_root_path,.}/workspace/nbcpu-topic_uncertainty_filtered/model/configs/model(2)_config.yaml
   corpus_to_infer:
     text_col: tokens
     data_load:
-      data_file: ${__project_root_path__:}/workspace/datasets/processed/topic_noprior_filtered/train.parquet
+      data_file: ${oc.select:variables.project_root_path,.}/workspace/datasets/processed/topic_noprior_filtered/train.parquet
 
 global:
   num_workers: 100
