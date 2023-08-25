@@ -477,11 +477,11 @@ document.write(`
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">infer</span>
 <span class="w">  </span><span class="nt">infer_args</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">model_config_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${__project_root_path__:}/workspace/nbcpu-topic_uncertainty_filtered/model/configs/model(2)_config.yaml</span>
+<span class="w">    </span><span class="nt">model_config_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${oc.select:variables.project_root_path,.}/workspace/nbcpu-topic_uncertainty_filtered/model/configs/model(2)_config.yaml</span>
 <span class="w">  </span><span class="nt">corpus_to_infer</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text_col</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tokens</span>
 <span class="w">    </span><span class="nt">data_load</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">data_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${__project_root_path__:}/workspace/datasets/processed/topic_noprior_filtered/train.parquet</span>
+<span class="w">      </span><span class="nt">data_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${oc.select:variables.project_root_path,.}/workspace/datasets/processed/topic_noprior_filtered/train.parquet</span>
 
 <span class="nt">global</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">num_workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
