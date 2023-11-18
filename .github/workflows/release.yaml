@@ -4,11 +4,12 @@ name: semantic-release
 on:
   workflow_call:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["lint & test"]
-    branches: [main]
-    types:
-      - completed
+  push:
+    branches:
+      - release*
+    paths:
+      - "src/**"
+      - "tests/**"
 
 permissions:
   contents: write
@@ -19,14 +20,12 @@ jobs:
   build:
     # Name the Job
     name: semantic-release
-    # check if the workflow result is success
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
-        python-version: [3.8]
+        python-version: [3.9]
 
     # Load all steps #
     steps:
