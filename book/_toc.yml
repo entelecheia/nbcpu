@@ -9,6 +9,8 @@ chapters:
   - file: paper/data/index
   - file: paper/methodology/index
   - file: paper/results/index
+  - file: paper/comparative/index
+  - file: paper/application/index
   - file: paper/conclusion/index
   - file: paper/references
   - file: supplementary/index
