@@ -1,6 +1,6 @@
 # Conclusion
 
-This research journey, set against the backdrop of Cambodia's highly dollarized economy, has unraveled the intricate layers of central bank policy uncertainty. Confronted with a developing financial market, traditional monetary policy tools encounter unique challenges. Our innovative approach, employing dual Latent Dirichlet Allocation (LDA) models, has provided a comprehensive and nuanced understanding of the multifaceted nature of policy uncertainty and its evolution over time.
+This research, set against the backdrop of Cambodia's highly dollarized economy, has unraveled the intricate layers of central bank policy uncertainty. Confronted with a developing financial market, traditional monetary policy tools encounter unique challenges. Our innovative approach, employing dual Latent Dirichlet Allocation (LDA) models, has provided a comprehensive and nuanced understanding of the multifaceted nature of policy uncertainty and its evolution over time.
 
 The dual-model framework, pivotal in our research, adeptly captures not only the overall magnitude of policy uncertainty but also its distribution across various policy realms. We concentrated on key policy areas like Exchange Rate Policy, Currency Stabilization, and De-dollarization, shedding light on the complex factors fueling uncertainty in Cambodia's monetary policy landscape. This comprehensive view offers a deeper understanding of the challenges and dynamics within Cambodia's unique economic setting.
 
