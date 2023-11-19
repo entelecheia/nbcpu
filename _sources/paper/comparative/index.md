@@ -1,6 +1,6 @@
 # Comparative Analysis
 
-In the 'Comparative Analysis' section of this research, we delve into a detailed examination of the topic-based uncertainty measure and the World Uncertainty Index (WUIKHM). This exploration brings to light the inherent differences in methodologies and underscores the strengths of the topic-based approach, which is central to our research.
+In this section, we delve into a detailed examination of the topic-based uncertainty measure and the World Uncertainty Index (WUIKHM). This exploration brings to light the inherent differences in methodologies and underscores the strengths of the topic-based approach, which is central to our research.
 
 ## Methodological Divergence
 
