@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Methodology &#8212; Measuring Central Bank Policy Uncertainty</title>
   
@@ -19,25 +18,25 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css?v=e236af4b" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.custom.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-shadow.min.css" />
@@ -46,31 +45,31 @@
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-light.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-borderless.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/micromodal.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../_static/tabs.js"></script>
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="../../_static/tabs.js?v=3ee01567"></script>
     <script src="../../_static/js/hoverxref.js"></script>
     <script src="../../_static/js/tooltipster.bundle.min.js"></script>
     <script src="../../_static/js/micromodal.min.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-SY9MF3HBFB"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -83,11 +82,23 @@ const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-SY9MF3HBFB');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'paper/methodology/index';</script>
-    <link rel="shortcut icon" href="https://assets.entelecheia.ai/favicon.png"/>
+    <link rel="icon" href="https://assets.entelecheia.ai/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Results" href="../results/index.html" />
@@ -101,10 +112,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -145,11 +155,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -177,7 +190,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Measuring Central Bank Policy Uncertainty</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -442,12 +466,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="methodology">
-<h1>Methodology<a class="headerlink" href="#methodology" title="Permalink to this heading">#</a></h1>
+<h1>Methodology<a class="headerlink" href="#methodology" title="Link to this heading">#</a></h1>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>Measuring central bank policy uncertainty involves gauging the uncertainty related to the monetary policy decisions taken by central banks, such as changes in interest rates, reserve requirements, or other monetary tools. These are several common approaches used:</p>
 <p><strong>1. Textual Analysis of Central Bank Communications:</strong> This involves analyzing the communications made by central banks, including minutes of the meetings, speeches, reports, press releases, and other forms of communication. The textual content can be analyzed manually or using automated natural language processing techniques. Researchers may look for keywords related to uncertainty or employ more sophisticated techniques, such as topic modeling or sentiment analysis, to quantify the level of uncertainty. For instance, the Baker, Bloom, and Davis EPU index uses this approach.</p>
 <p><strong>2. Financial Market-based Measures:</strong> These measures use financial market data to infer the level of policy uncertainty. The assumption is that financial markets incorporate all available information, including the perceived uncertainty about future monetary policy. Examples of such measures include options-implied volatility measures such as the VIX index, which captures the market’s expectation of future volatility, and the MOVE index, which specifically measures the volatility in U.S. Treasury markets.</p>
@@ -456,7 +480,7 @@ document.write(`
 <p><strong>5. Machine Learning Techniques:</strong> With advancements in technology, machine learning techniques are increasingly being used to measure policy uncertainty. For instance, Support Vector Machines, Logistic Regression, or Neural Networks can be used to classify and tag documents relevant to policy uncertainty.</p>
 </section>
 <section id="the-merits-of-topic-based-methods">
-<h2>The Merits of Topic-based Methods<a class="headerlink" href="#the-merits-of-topic-based-methods" title="Permalink to this heading">#</a></h2>
+<h2>The Merits of Topic-based Methods<a class="headerlink" href="#the-merits-of-topic-based-methods" title="Link to this heading">#</a></h2>
 <p>The topic-based method of measuring economic uncertainty has several strengths relative to other methods:</p>
 <ol class="arabic simple">
 <li><p><strong>Comprehensiveness:</strong> Unlike methods that rely on specific keywords, a topic-based approach analyzes the entire mixture of words in an article, providing a more holistic view of the content and theme of the article. This allows for a comprehensive understanding of the context in which uncertainty is discussed.</p></li>
@@ -467,12 +491,12 @@ document.write(`
 <p>However, it’s worth noting that topic-based methods also have limitations. The process of assigning labels based on the topic correlations may be subjective, and the measures may not capture all forms of uncertainty, especially those not frequently discussed in the news media. As with any method, topic-based measures are one tool in the larger toolbox for analyzing economic uncertainty and are likely to be most effective when used in conjunction with other methods.</p>
 </section>
 <section id="topic-modeling">
-<h2>Topic Modeling<a class="headerlink" href="#topic-modeling" title="Permalink to this heading">#</a></h2>
+<h2>Topic Modeling<a class="headerlink" href="#topic-modeling" title="Link to this heading">#</a></h2>
 <p>Topic modeling is an unsupervised machine learning technique that automatically identifies the main topics in a collection of documents. It provides a way of uncovering hidden thematic patterns in the text and categorizing the documents based on these themes.</p>
 <p>The output of topic modeling is a list of topics, each represented by a collection of words, and a weight or probability distribution over those words. Each document is then represented as a mixture of these topics. The idea is that certain combinations of words tend to appear together in documents on the same topic. For instance, a document about monetary policy might frequently use words like “interest”, “rates”, “central bank”, and “inflation”.</p>
 <p>There are several algorithms used for topic modeling, but one of the most popular ones is Latent Dirichlet Allocation (LDA).</p>
 <section id="latent-dirichlet-allocation-lda">
-<h3>Latent Dirichlet Allocation (LDA)<a class="headerlink" href="#latent-dirichlet-allocation-lda" title="Permalink to this heading">#</a></h3>
+<h3>Latent Dirichlet Allocation (LDA)<a class="headerlink" href="#latent-dirichlet-allocation-lda" title="Link to this heading">#</a></h3>
 <p>LDA is a generative probabilistic model that assumes each document is a mixture of a certain number of topics and each word in the document is attributable to one of the document’s topics. The “latent” in LDA refers to the fact that the assignment of words to topics is not observed and needs to be inferred.</p>
 <p>A generative model, such as Latent Dirichlet Allocation (LDA), tries to mimic the process of how the data was generated. In the context of text data and topic modeling, LDA attempts to reverse engineer the process by which a human might have written a collection of documents.</p>
 <p>When a human writes an article or a document, they typically have several topics or themes in mind. For example, if a journalist is writing an article about monetary policy in Cambodia, they might want to discuss topics such as inflation, interest rates, and the role of the National Bank of Cambodia. The writer doesn’t pick topics for each word randomly; instead, they have a distribution of topics in their mind, and words related to those topics are more likely to appear in the article.</p>
@@ -499,7 +523,7 @@ document.write(`
 </section>
 </section>
 <section id="the-output-of-topic-modeling">
-<h2>The Output of Topic Modeling<a class="headerlink" href="#the-output-of-topic-modeling" title="Permalink to this heading">#</a></h2>
+<h2>The Output of Topic Modeling<a class="headerlink" href="#the-output-of-topic-modeling" title="Link to this heading">#</a></h2>
 <p>The output of the LDA model will provide two primary components relevant to the research study: topic-word distributions and document-topic distributions.</p>
 <p><strong>Topic-Word Distributions:</strong></p>
 <p>A topic-word distribution is a matrix that indicates the probability of a word being part of a particular topic. This distribution allows us to understand the composition of each topic. In the context of this research, it provides insights into the primary themes discussed in the context of Cambodia’s monetary policy.</p>
@@ -509,7 +533,7 @@ document.write(`
 <p>In the context of this research, it can give a sense of the main themes addressed in each article, and by extension, it can provide insights into what aspects of monetary policy were of primary concern at different points in time. For example, if many articles around a certain date have a high probability for a topic related to inflation, it could suggest that inflation concerns were particularly salient at that time.</p>
 <p>Furthermore, the temporal trends in these topic probabilities can give insights into the evolution of monetary policy uncertainty over time. If the probabilities for certain topics increase during periods of economic instability or major policy changes, it would suggest that these topics contribute to monetary policy uncertainty.</p>
 <section id="estimation-of-lda-and-identification-of-uncertainty-topics">
-<h3>Estimation of LDA and Identification of Uncertainty Topics<a class="headerlink" href="#estimation-of-lda-and-identification-of-uncertainty-topics" title="Permalink to this heading">#</a></h3>
+<h3>Estimation of LDA and Identification of Uncertainty Topics<a class="headerlink" href="#estimation-of-lda-and-identification-of-uncertainty-topics" title="Link to this heading">#</a></h3>
 <p>Given the mathematical foundation of our LDA model, we further specify the methodology for identifying and quantifying uncertainty-related topics.</p>
 <p>Firstly, we define a set of seed words related to uncertainty to guide the second LDA model. These seed words represent the inherent vocabulary of uncertainty and are used to initialize the topic-word distribution for the uncertainty-related topics.</p>
 <p>The EM algorithm then comes into play to estimate both the topic-word and document-topic distributions. During the E-step, we calculate the posterior distribution of the topic assignments considering the observed words and the current estimates of the distributions:</p>
@@ -527,7 +551,7 @@ document.write(`
 </section>
 </section>
 <section id="quantifying-uncertainty">
-<h2>Quantifying Uncertainty<a class="headerlink" href="#quantifying-uncertainty" title="Permalink to this heading">#</a></h2>
+<h2>Quantifying Uncertainty<a class="headerlink" href="#quantifying-uncertainty" title="Link to this heading">#</a></h2>
 <p>Quantifying policy uncertainty in Cambodia’s highly dollarized economy necessitates a nuanced and multifaceted approach. Recognizing the complexity of this task, our research employs a dual-model approach, utilizing two separate Latent Dirichlet Allocation (LDA) models. The first model categorizes the topics of policy uncertainty, while the second measures the intensity of the uncertainty. This dual-model approach provides a comprehensive understanding of central bank policy uncertainty in the context of the National Bank of Cambodia.</p>
 <ol class="arabic">
 <li><p><strong>Topic Classification Model (Model 1):</strong></p>
@@ -538,7 +562,7 @@ document.write(`
 </li>
 </ol>
 <section id="aggregation">
-<h3>Aggregation<a class="headerlink" href="#aggregation" title="Permalink to this heading">#</a></h3>
+<h3>Aggregation<a class="headerlink" href="#aggregation" title="Link to this heading">#</a></h3>
 <p>The aggregation process transforms the uncertainty scores obtained from Model 2 into a time-series representation of policy uncertainty. This involves determining the time frame, normalizing the scores, aggregating them according to the chosen method (mean, median, or sum), applying smoothing techniques if necessary, and interpreting the final measure.</p>
 <p>The dual-model approach allows for the creation of policy uncertainty indices that track the level of policy uncertainty in each category over time. For example, a monthly Exchange Rate Policy Uncertainty Index could be computed by averaging the uncertainty scores of all articles classified under that category in each month. Similar indices could be created for other categories.</p>
 <p>This approach provides valuable insights into the specific sources of policy uncertainty and how these evolve over time. It captures not only the overall level of policy uncertainty but also how this uncertainty is distributed across different policy areas. The relative weight of uncertainty-related topics in an article is indicative of the intensity of uncertainty, an assumption validated by comparing the results with other indicators of policy uncertainty.</p>
@@ -603,6 +627,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -672,8 +697,8 @@ By Young Joon Lee
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

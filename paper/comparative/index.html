@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Comparative Analysis &#8212; Measuring Central Bank Policy Uncertainty</title>
   
@@ -19,25 +18,25 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css?v=e236af4b" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.custom.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-shadow.min.css" />
@@ -46,31 +45,31 @@
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-light.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-borderless.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/micromodal.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../_static/tabs.js"></script>
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="../../_static/tabs.js?v=3ee01567"></script>
     <script src="../../_static/js/hoverxref.js"></script>
     <script src="../../_static/js/tooltipster.bundle.min.js"></script>
     <script src="../../_static/js/micromodal.min.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-SY9MF3HBFB"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -83,11 +82,23 @@ const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-SY9MF3HBFB');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'paper/comparative/index';</script>
-    <link rel="shortcut icon" href="https://assets.entelecheia.ai/favicon.png"/>
+    <link rel="icon" href="https://assets.entelecheia.ai/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Application and Policy Recommendations" href="../application/index.html" />
@@ -101,10 +112,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -145,11 +155,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -177,7 +190,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Measuring Central Bank Policy Uncertainty</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -434,39 +458,39 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="comparative-analysis">
-<h1>Comparative Analysis<a class="headerlink" href="#comparative-analysis" title="Permalink to this heading">#</a></h1>
+<h1>Comparative Analysis<a class="headerlink" href="#comparative-analysis" title="Link to this heading">#</a></h1>
 <p>In this section, we delve into a detailed examination of the topic-based uncertainty measure and the World Uncertainty Index (WUIKHM). This exploration brings to light the inherent differences in methodologies and underscores the strengths of the topic-based approach, which is central to our research.</p>
 <section id="methodological-divergence">
-<h2>Methodological Divergence<a class="headerlink" href="#methodological-divergence" title="Permalink to this heading">#</a></h2>
+<h2>Methodological Divergence<a class="headerlink" href="#methodological-divergence" title="Link to this heading">#</a></h2>
 <p>The methodological divergence between the topic-based uncertainty measure and the World Uncertainty Index (WUIKHM) is quite pronounced. Our research primarily focuses on the topic-based measure, which employs advanced text analysis techniques, transcending the limitations of predefined keywords. This approach captures a broader and more nuanced spectrum of uncertainties within texts, identifying subtle themes and variations in the narrative. In contrast, the WUIKHM, following the methodology of the Economic Policy Uncertainty Index (EPU), relies on the frequency of certain keywords related to economic and policy uncertainty in news articles. While effective for its simplicity and replicability, this method may overlook various non-policy-related uncertainties, a gap that our topic-based measure aptly fills.</p>
 </section>
 <section id="scope-and-adaptability">
-<h2>Scope and Adaptability<a class="headerlink" href="#scope-and-adaptability" title="Permalink to this heading">#</a></h2>
+<h2>Scope and Adaptability<a class="headerlink" href="#scope-and-adaptability" title="Link to this heading">#</a></h2>
 <p>The topic-based uncertainty measure exhibits superior scope and adaptability. It is flexible and context-sensitive, capable of adjusting to new themes and issues, thus offering a more comprehensive depiction of uncertainty. The WUIKHM, though straightforward, is confined to economic policy aspects. Our approach, with its heightened context awareness, mitigates the risk of data misinterpretation due to unrelated keyword occurrences, a potential challenge for WUIKHM due to its fixed keyword dependency.</p>
 </section>
 <section id="capturing-the-dynamic-nature-of-uncertainty">
-<h2>Capturing the Dynamic Nature of Uncertainty<a class="headerlink" href="#capturing-the-dynamic-nature-of-uncertainty" title="Permalink to this heading">#</a></h2>
+<h2>Capturing the Dynamic Nature of Uncertainty<a class="headerlink" href="#capturing-the-dynamic-nature-of-uncertainty" title="Link to this heading">#</a></h2>
 <p>Our topic-based measure effectively captures the dynamic nature of uncertainty, especially in rapidly evolving scenarios like the COVID-19 pandemic. It identifies diverse uncertainties more adeptly than the WUIKHM, which, while valuable in its focus on policy-related uncertainties, may not be as agile in capturing uncertainties extending beyond policy matters.</p>
 </section>
 <section id="comparative-trend-illustration">
-<h2>Comparative Trend Illustration<a class="headerlink" href="#comparative-trend-illustration" title="Permalink to this heading">#</a></h2>
+<h2>Comparative Trend Illustration<a class="headerlink" href="#comparative-trend-illustration" title="Link to this heading">#</a></h2>
 <figure class="align-center" id="fig-comparative-plot">
 <a class="reference internal image-reference" href="../../_images/comparative_plot.png"><img alt="../../_images/comparative_plot.png" src="../../_images/comparative_plot.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Comparison Plot of Topic-Based Uncertainty and WUIKHM</span><a class="headerlink" href="#fig-comparative-plot" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Comparison Plot of Topic-Based Uncertainty and WUIKHM</span><a class="headerlink" href="#fig-comparative-plot" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Figure 2, in our research, offers a comparative illustration of trends between our topic-based uncertainty measure and WUIKHM from January 2015 onwards. This visual comparison underscores the variations in both methodologies over time, emphasizing how each captures different facets of uncertainty.</p>
 </section>
 <section id="multifaceted-view-of-uncertainty">
-<h2>Multifaceted View of Uncertainty<a class="headerlink" href="#multifaceted-view-of-uncertainty" title="Permalink to this heading">#</a></h2>
+<h2>Multifaceted View of Uncertainty<a class="headerlink" href="#multifaceted-view-of-uncertainty" title="Link to this heading">#</a></h2>
 <p>The findings from our topic-based approach reveal a multifaceted view of uncertainty, covering policy, societal, technological, and environmental aspects. This comprehensive analysis, juxtaposed with the WUIKHM, demonstrates the robustness of our method in capturing uncertainty in diverse contexts, particularly when new uncertainties emerge.</p>
 </section>
 <section id="contextualization-through-anecdotal-evidence">
-<h2>Contextualization through Anecdotal Evidence<a class="headerlink" href="#contextualization-through-anecdotal-evidence" title="Permalink to this heading">#</a></h2>
+<h2>Contextualization through Anecdotal Evidence<a class="headerlink" href="#contextualization-through-anecdotal-evidence" title="Link to this heading">#</a></h2>
 <p>Anecdotal evidence from news articles, particularly between October 1 and December 31, 2020, provides context to the observed high uncertainty scores. This evidence corroborates with the broader themes identified in our comparative analysis, encompassing a range of factors from the COVID-19 pandemic to socio-economic conditions. These instances, as depicted in Figure 2, enrich our understanding and complement the findings from the comparative analysis.</p>
 <p>This comparative analysis enriches the understanding of uncertainty by encompassing both policy-related and broader socio-economic factors. It underscores the efficacy of the topic-based approach in uncertainty analysis, highlighting its flexibility and adaptability as essential tools in addressing new and unforeseen challenges.</p>
 </section>
@@ -529,6 +553,7 @@ document.write(`
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -589,8 +614,8 @@ By Young Joon Lee
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

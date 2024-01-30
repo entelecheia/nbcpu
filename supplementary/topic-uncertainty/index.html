@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Topic Modeling for Uncertainty Analysis &#8212; Measuring Central Bank Policy Uncertainty</title>
   
@@ -19,25 +18,25 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css?v=e236af4b" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.custom.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-shadow.min.css" />
@@ -46,31 +45,31 @@
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-light.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-borderless.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/micromodal.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../_static/tabs.js"></script>
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="../../_static/tabs.js?v=3ee01567"></script>
     <script src="../../_static/js/hoverxref.js"></script>
     <script src="../../_static/js/tooltipster.bundle.min.js"></script>
     <script src="../../_static/js/micromodal.min.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-SY9MF3HBFB"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -83,11 +82,23 @@ const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-SY9MF3HBFB');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'supplementary/topic-uncertainty/index';</script>
-    <link rel="shortcut icon" href="https://assets.entelecheia.ai/favicon.png"/>
+    <link rel="icon" href="https://assets.entelecheia.ai/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="The Second Stage Uncertainty Model" href="second.html" />
@@ -101,10 +112,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -145,11 +155,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -177,7 +190,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Measuring Central Bank Policy Uncertainty</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -491,15 +515,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="topic-modeling-for-uncertainty-analysis">
-<h1>Topic Modeling for Uncertainty Analysis<a class="headerlink" href="#topic-modeling-for-uncertainty-analysis" title="Permalink to this heading">#</a></h1>
+<h1>Topic Modeling for Uncertainty Analysis<a class="headerlink" href="#topic-modeling-for-uncertainty-analysis" title="Link to this heading">#</a></h1>
 <p>The task of classifying uncertainty within the context of topic modeling requires a nuanced and specialized approach, diverging from conventional methods. This methodology is characterized by three distinct modifications, each contributing to the precise identification and analysis of uncertainty-related themes.</p>
 <section id="three-modifications">
-<h2>Three Modifications<a class="headerlink" href="#three-modifications" title="Permalink to this heading">#</a></h2>
+<h2>Three Modifications<a class="headerlink" href="#three-modifications" title="Link to this heading">#</a></h2>
 <section id="integration-of-prior-knowledge">
-<h3>1. Integration of Prior Knowledge<a class="headerlink" href="#integration-of-prior-knowledge" title="Permalink to this heading">#</a></h3>
+<h3>1. Integration of Prior Knowledge<a class="headerlink" href="#integration-of-prior-knowledge" title="Link to this heading">#</a></h3>
 <p>The model is designed to incorporate prior knowledge, which serves as a guiding framework for identifying topics specifically related to uncertainty. The defined priors include:</p>
 <ul class="simple">
 <li><p><strong>Prior 0</strong>: Targeting terms synonymous with uncertainty, such as “uncertain,” “risk,” and “uncertainty.”</p></li>
@@ -508,11 +532,11 @@ document.write(`
 <p>These priors strategically channel the model’s focus towards themes intrinsically connected to uncertainty, thereby refining the relevance and specificity of the extracted topics.</p>
 </section>
 <section id="strategic-removal-of-stop-words">
-<h3>2. Strategic Removal of Stop Words<a class="headerlink" href="#strategic-removal-of-stop-words" title="Permalink to this heading">#</a></h3>
+<h3>2. Strategic Removal of Stop Words<a class="headerlink" href="#strategic-removal-of-stop-words" title="Link to this heading">#</a></h3>
 <p>Beyond the elimination of standard stop words, the model is configured to exclude the top 100 words from each of the 10 topics identified in the previous model, totaling 896 words. This exclusion is carefully executed to preserve uncertainty-related words through manual inspection. By filtering out these common but non-contributory words, the model is enabled to concentrate on terms that are contextually significant and pertinent to the understanding of uncertainty.</p>
 </section>
 <section id="fine-tuning-of-model-parameters">
-<h3>3. Fine-Tuning of Model Parameters<a class="headerlink" href="#fine-tuning-of-model-parameters" title="Permalink to this heading">#</a></h3>
+<h3>3. Fine-Tuning of Model Parameters<a class="headerlink" href="#fine-tuning-of-model-parameters" title="Link to this heading">#</a></h3>
 <p>The model’s parameters are meticulously adjusted to resonate with the unique objective of classifying uncertainty. The key modifications include:</p>
 <ul class="simple">
 <li><p><strong>min_cf</strong>: Set at 500, this parameter stipulates the minimum collection frequency of words, focusing on terms with substantial corpus-wide presence.</p></li>
@@ -522,7 +546,7 @@ document.write(`
 </section>
 </section>
 <section id="configuration-details">
-<h2>Configuration Details<a class="headerlink" href="#configuration-details" title="Permalink to this heading">#</a></h2>
+<h2>Configuration Details<a class="headerlink" href="#configuration-details" title="Link to this heading">#</a></h2>
 <p>The configuration for this specialized topic modeling with uncertainty analysis is encapsulated in the following command:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
@@ -747,7 +771,7 @@ Dryrun is enabled, not running the HyFI config
 </div>
 </section>
 <section id="running-the-workflow">
-<h2>Running the Workflow<a class="headerlink" href="#running-the-workflow" title="Permalink to this heading">#</a></h2>
+<h2>Running the Workflow<a class="headerlink" href="#running-the-workflow" title="Link to this heading">#</a></h2>
 <p>The entire workflow can be executed using the following command:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
@@ -1066,10 +1090,10 @@ Name: tokens, dtype: object
 </div>
 </section>
 <section id="model-results">
-<h2>Model Results<a class="headerlink" href="#model-results" title="Permalink to this heading">#</a></h2>
+<h2>Model Results<a class="headerlink" href="#model-results" title="Link to this heading">#</a></h2>
 <p>The specialized Latent Dirichlet Allocation (LDA) model, designed to classify uncertainty, was applied to a corpus of 27,594 documents containing 1,916,988 words. Out of 131,732 total vocabs, 1,102 were used in the analysis, with specific parameters set to focus on uncertainty-related topics.</p>
 <section id="key-findings">
-<h3>Key Findings<a class="headerlink" href="#key-findings" title="Permalink to this heading">#</a></h3>
+<h3>Key Findings<a class="headerlink" href="#key-findings" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p><strong>Topic #0</strong>: This topic prominently features terms directly related to uncertainty, such as “risk,” “slow recovery,” “recession,” “uncertainty,” and economic fluctuations like “cut,” “hike,” “fall,” “increase,” and “decline.” It encapsulates the economic uncertainty and potential risks in recovery and growth.</p></li>
 <li><p><strong>Topic #1</strong>: This topic aligns with the prior emphasizing improvement and strengthening. Terms like “improve,” “strengthen,” “ensure,” “achieve,” and “enhance” reflect efforts to mitigate uncertainty by enhancing frameworks, addressing goals, and implementing reforms.</p></li>
@@ -1077,21 +1101,21 @@ Name: tokens, dtype: object
 </ol>
 </section>
 <section id="interpretation">
-<h3>Interpretation<a class="headerlink" href="#interpretation" title="Permalink to this heading">#</a></h3>
+<h3>Interpretation<a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h3>
 <p>The results demonstrate the model’s effectiveness in identifying and classifying uncertainty-related topics. The incorporation of prior knowledge, removal of specific stop words, and fine-tuning of model parameters have led to the extraction of themes that resonate with the concept of uncertainty.</p>
 <p>Topic #0 provides a comprehensive view of economic uncertainty, capturing the volatility and risks in the market. Topic #1, on the other hand, offers insights into strategies and efforts to navigate and mitigate uncertainty.</p>
 <p>The tailored approach to topic modeling for uncertainty has yielded meaningful insights into the themes of risk, recovery, and strategies to overcome uncertainty. The model’s configuration and the resulting topics align well with the research objectives, providing a nuanced understanding of uncertainty within the given context. The coherence scores suggest that the topics are interpretable, although further refinement and exploration may enhance the model’s precision and depth of analysis.</p>
 <p><a class="reference internal" href="#fig-lda-wordcloud-uncertainty"><span class="std std-numref">Fig. 6</span></a> shows the wordcloud of the top 500 words in each topic from the LDA model with 20 topics and uncertainty prior.</p>
 <figure class="align-default" id="fig-lda-wordcloud-uncertainty">
-<img alt="../../_images/LDA_model(3)_k(20)_wordcloud_00.png" src="../../_images/LDA_model(3)_k(20)_wordcloud_00.png" />
+<img alt="../../_images/LDA_model%283%29_k%2820%29_wordcloud_00.png" src="../../_images/LDA_model%283%29_k%2820%29_wordcloud_00.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Wordcloud of the top 500 words in each topic from the LDA model with 20 topics and uncertainty prior.</span><a class="headerlink" href="#fig-lda-wordcloud-uncertainty" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Wordcloud of the top 500 words in each topic from the LDA model with 20 topics and uncertainty prior.</span><a class="headerlink" href="#fig-lda-wordcloud-uncertainty" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="refinement-of-uncertainty-topic-modeling">
-<h2>Refinement of Uncertainty Topic Modeling<a class="headerlink" href="#refinement-of-uncertainty-topic-modeling" title="Permalink to this heading">#</a></h2>
+<h2>Refinement of Uncertainty Topic Modeling<a class="headerlink" href="#refinement-of-uncertainty-topic-modeling" title="Link to this heading">#</a></h2>
 <p>The refinement of uncertainty topic modeling is executed through a methodical two-stage process. Initially, documents are filtered according to specific criteria, and subsequently, the topic model is reapplied to this refined dataset. This iterative methodology sharpens the focus on themes pertinent to uncertainty, yielding a more accurate and detailed analysis.</p>
 <p>In the first stage, documents are identified and filtered based on their relevance to uncertainty topics, specifically topics 0 and 1. The selection is guided by the combined weight of these topics, which directly correspond to the concept of uncertainty. Following this identification, the selected documents are merged with the original dataset.</p>
 <p>The final stage of the process involves a further filtering of the data, adhering to the established selection criteria, and preparing the dataset for another round of topic modeling. This is achieved by applying the query <code class="docutils literal notranslate"><span class="pre">&quot;topic_relevant</span> <span class="pre">&gt;</span> <span class="pre">0.5&quot;</span></code>, ensuring that only documents meeting this threshold are retained.</p>
@@ -1246,6 +1270,7 @@ Name: tokens, dtype: object
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1314,8 +1339,8 @@ By Young Joon Lee
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

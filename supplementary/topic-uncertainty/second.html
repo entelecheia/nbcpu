@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>The Second Stage Uncertainty Model &#8212; Measuring Central Bank Policy Uncertainty</title>
   
@@ -19,25 +18,25 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css?v=e236af4b" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.custom.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster.bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-shadow.min.css" />
@@ -46,31 +45,31 @@
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-light.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/tooltipster-sideTip-borderless.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/micromodal.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../../_static/tabs.js"></script>
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="../../_static/tabs.js?v=3ee01567"></script>
     <script src="../../_static/js/hoverxref.js"></script>
     <script src="../../_static/js/tooltipster.bundle.min.js"></script>
     <script src="../../_static/js/micromodal.min.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-SY9MF3HBFB"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -83,11 +82,23 @@ const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-SY9MF3HBFB');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'supplementary/topic-uncertainty/second';</script>
-    <link rel="shortcut icon" href="https://assets.entelecheia.ai/favicon.png"/>
+    <link rel="icon" href="https://assets.entelecheia.ai/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Analysis of the results" href="../analysis/index.html" />
@@ -101,10 +112,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -145,11 +155,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -177,7 +190,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Measuring Central Bank Policy Uncertainty</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -494,15 +518,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-second-stage-uncertainty-model">
-<h1>The Second Stage Uncertainty Model<a class="headerlink" href="#the-second-stage-uncertainty-model" title="Permalink to this heading">#</a></h1>
+<h1>The Second Stage Uncertainty Model<a class="headerlink" href="#the-second-stage-uncertainty-model" title="Link to this heading">#</a></h1>
 <p>The second stage of uncertainty topic modeling represents a further refinement in the analysis, focusing on a more nuanced understanding of the themes related to uncertainty. This stage introduces a new set of priors and a reduction in the number of topics, aiming to capture the core aspects of uncertainty with greater precision.</p>
 <section id="model-parameters">
-<h2>Model Parameters<a class="headerlink" href="#model-parameters" title="Permalink to this heading">#</a></h2>
+<h2>Model Parameters<a class="headerlink" href="#model-parameters" title="Link to this heading">#</a></h2>
 <section id="priors">
-<h3>Priors<a class="headerlink" href="#priors" title="Permalink to this heading">#</a></h3>
+<h3>Priors<a class="headerlink" href="#priors" title="Link to this heading">#</a></h3>
 <p>The model in this stage incorporates three specific priors, each targeting different facets of uncertainty:</p>
 <ul class="simple">
 <li><p><strong>Prior 0</strong>: Concentrates on terms that encapsulate the emotional and psychological dimensions of uncertainty, such as “uncertain,” “risk,” “uncertainty,” “fear,” “panic,” “concern,” and “shock.”</p></li>
@@ -512,12 +536,12 @@ document.write(`
 <p>These priors are carefully crafted to guide the model towards a comprehensive understanding of uncertainty, encompassing emotional reactions, strategic responses, and economic implications.</p>
 </section>
 <section id="number-of-topics">
-<h3>Number of Topics<a class="headerlink" href="#number-of-topics" title="Permalink to this heading">#</a></h3>
+<h3>Number of Topics<a class="headerlink" href="#number-of-topics" title="Link to this heading">#</a></h3>
 <p>The model is configured with <code class="docutils literal notranslate"><span class="pre">k=5</span></code>, reducing the number of topics from the previous stage. This reduction aligns with the goal of honing in on the most salient aspects of uncertainty, allowing for a more focused and interpretable analysis.</p>
 </section>
 </section>
 <section id="configuration-details">
-<h2>Configuration Details<a class="headerlink" href="#configuration-details" title="Permalink to this heading">#</a></h2>
+<h2>Configuration Details<a class="headerlink" href="#configuration-details" title="Link to this heading">#</a></h2>
 <p>The configuration for this specialized topic modeling with uncertainty analysis is encapsulated in the following command:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
@@ -742,7 +766,7 @@ Dryrun is enabled, not running the HyFI config
 </div>
 </section>
 <section id="running-the-workflow">
-<h2>Running the Workflow<a class="headerlink" href="#running-the-workflow" title="Permalink to this heading">#</a></h2>
+<h2>Running the Workflow<a class="headerlink" href="#running-the-workflow" title="Link to this heading">#</a></h2>
 <p>The entire workflow can be executed using the following command:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
@@ -816,10 +840,10 @@ Dryrun is enabled, not running the HyFI config
 </div>
 </section>
 <section id="model-results-of-the-second-stage-uncertainty-model">
-<h2>Model Results of the Second Stage Uncertainty Model<a class="headerlink" href="#model-results-of-the-second-stage-uncertainty-model" title="Permalink to this heading">#</a></h2>
+<h2>Model Results of the Second Stage Uncertainty Model<a class="headerlink" href="#model-results-of-the-second-stage-uncertainty-model" title="Link to this heading">#</a></h2>
 <p>The second stage uncertainty model has been applied to a refined corpus of 6,917 documents and 259,912 words, utilizing 233 out of 46,850 total vocabs. The model’s configuration reflects the specific focus on uncertainty, with 5 topics and tailored hyperparameters.</p>
 <section id="topics-and-interpretation">
-<h3>Topics and Interpretation<a class="headerlink" href="#topics-and-interpretation" title="Permalink to this heading">#</a></h3>
+<h3>Topics and Interpretation<a class="headerlink" href="#topics-and-interpretation" title="Link to this heading">#</a></h3>
 <p>The topics generated by the model align with the priors and provide insights into different facets of uncertainty:</p>
 <ul class="simple">
 <li><p><strong>Topic #0</strong>: This topic captures the dynamics of risk and uncertainty in economic recovery. Terms like “risk,” “uncertainty,” “slowdown,” and “concern” reflect the challenges and uncertainties in economic growth and asset management.</p></li>
@@ -830,32 +854,32 @@ Dryrun is enabled, not running the HyFI config
 </ul>
 <p><a class="reference internal" href="#fig-lda-wordcloud-uncertainty-2nd"><span class="std std-numref">Fig. 7</span></a> shows the wordcloud of the top 500 words in each topic from the LDA model with 5 topics and uncertainty prior.</p>
 <figure class="align-default" id="fig-lda-wordcloud-uncertainty-2nd">
-<img alt="../../_images/LDA_model(2)_k(5)_wordcloud_00.png" src="../../_images/LDA_model(2)_k(5)_wordcloud_00.png" />
+<img alt="../../_images/LDA_model%282%29_k%285%29_wordcloud_00.png" src="../../_images/LDA_model%282%29_k%285%29_wordcloud_00.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Wordcloud of the top 500 words in each topic from the LDA model with 5 topics and uncertainty prior.</span><a class="headerlink" href="#fig-lda-wordcloud-uncertainty-2nd" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Wordcloud of the top 500 words in each topic from the LDA model with 5 topics and uncertainty prior.</span><a class="headerlink" href="#fig-lda-wordcloud-uncertainty-2nd" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="quantifying-central-bank-policy-uncertainty">
-<h2>Quantifying Central Bank Policy Uncertainty<a class="headerlink" href="#quantifying-central-bank-policy-uncertainty" title="Permalink to this heading">#</a></h2>
+<h2>Quantifying Central Bank Policy Uncertainty<a class="headerlink" href="#quantifying-central-bank-policy-uncertainty" title="Link to this heading">#</a></h2>
 <p>In the research aimed at quantifying Central Bank Policy Uncertainty, the second stage uncertainty model has yielded insights into different aspects and stages of uncertainty, particularly focusing on topics 0, 1, and 2. These topics collectively encapsulate the complexity of central bank policy uncertainty.</p>
 <section id="topic-0-early-stage-of-uncertainty">
-<h3>Topic 0: Early Stage of Uncertainty<a class="headerlink" href="#topic-0-early-stage-of-uncertainty" title="Permalink to this heading">#</a></h3>
+<h3>Topic 0: Early Stage of Uncertainty<a class="headerlink" href="#topic-0-early-stage-of-uncertainty" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Interpretation</strong>: This topic captures the early indicators and dynamics of risk and uncertainty, reflecting terms like “risk,” “recovery,” “slow,” and “uncertainty.”</p></li>
 <li><p><strong>Relevance</strong>: It represents the early stage of uncertainty where economic challenges and asset management concerns begin to emerge, setting the stage for potential central bank interventions.</p></li>
 </ul>
 </section>
 <section id="topic-1-reactive-measures">
-<h3>Topic 1: Reactive Measures<a class="headerlink" href="#topic-1-reactive-measures" title="Permalink to this heading">#</a></h3>
+<h3>Topic 1: Reactive Measures<a class="headerlink" href="#topic-1-reactive-measures" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Interpretation</strong>: Focused on mitigation strategies, this topic includes terms such as “improve,” “ensure,” “strengthen,” and “framework.”</p></li>
 <li><p><strong>Relevance</strong>: It signifies the reactive measures that might be employed to enhance technical capabilities, establish strategic collaborations, and achieve relevant goals in response to unfolding uncertainties.</p></li>
 </ul>
 </section>
 <section id="topic-2-central-bank-actions">
-<h3>Topic 2: Central Bank Actions<a class="headerlink" href="#topic-2-central-bank-actions" title="Permalink to this heading">#</a></h3>
+<h3>Topic 2: Central Bank Actions<a class="headerlink" href="#topic-2-central-bank-actions" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Interpretation</strong>: Reflecting direct economic responses, this topic includes terms like “cut,” “hike,” “fell,” and “fear.”</p></li>
 <li><p><strong>Relevance</strong>: It captures the actions of the central bank, such as interest rate cuts or hikes, and the associated market reactions and fears. This topic is directly related to the central bank’s policy decisions in the face of economic uncertainty.</p></li>
@@ -921,6 +945,7 @@ Dryrun is enabled, not running the HyFI config
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -993,8 +1018,8 @@ By Young Joon Lee
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
