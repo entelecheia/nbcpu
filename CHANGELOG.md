@@ -1,5 +1,19 @@
 <!--next-version-placeholder-->
 
+## v0.19.0 (2024-03-29)
+
+### Feature
+
+* **comparative-analysis:** Add comparative analysis document ([`8541dc4`](https://github.com/entelecheia/nbcpu/commit/8541dc4f0ff43cd60c3d7f1e0db3d51441438f6e))
+* **book:** Add comparative_plot.png ([`54c4a30`](https://github.com/entelecheia/nbcpu/commit/54c4a3054b3336db88910635a6bb1f0814c66ea1))
+* **book/paper/comparative:** Add Comparative Analysis section ([`b52b4ae`](https://github.com/entelecheia/nbcpu/commit/b52b4ae66d8ffdbce6bdf29c7ba070b8effb97ba))
+* **application:** Add new content and policy recommendations ([`de39435`](https://github.com/entelecheia/nbcpu/commit/de39435849a3d8e2c74c7df73e0093984ca7cc53))
+* **book:** Add comparative and application sections ([`845e4ef`](https://github.com/entelecheia/nbcpu/commit/845e4efb2c22df6ddb9261378dd32acc856db8be))
+
+### Fix
+
+* **pyproject:** Update Python and Hyfi versions ([`bb78456`](https://github.com/entelecheia/nbcpu/commit/bb78456ab2a62b296b090e6aa0ca478f2fecec55))
+
 ## v0.18.2 (2023-08-25)
 
 ### Fix
