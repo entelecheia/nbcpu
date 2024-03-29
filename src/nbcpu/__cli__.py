@@ -1,4 +1,5 @@
 """Command line interface for nbcpu"""
+
 from hyfi import hyfi_main
 
 
