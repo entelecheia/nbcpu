@@ -1,4 +1,5 @@
 """Base Fetcher"""
+
 import logging
 import multiprocessing as mp
 import time
